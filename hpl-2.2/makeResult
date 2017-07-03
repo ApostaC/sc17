@@ -1,0 +1,585 @@
+make -f Make.top startup_dir     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+mkdir include/TEST_1
+Make.top:74: recipe for target 'startup_dir' failed
+mkdir lib
+Make.top:74: recipe for target 'startup_dir' failed
+mkdir lib/TEST_1
+Make.top:74: recipe for target 'startup_dir' failed
+mkdir bin
+Make.top:74: recipe for target 'startup_dir' failed
+mkdir bin/TEST_1
+Make.top:74: recipe for target 'startup_dir' failed
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top startup_src     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/auxil       arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/auxil ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/auxil/TEST_1 ; \
+            ln -s /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+Make.top:188: recipe for target 'leaf' failed
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/blas        arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/blas ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/blas/TEST_1 ; \
+            ln -s /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+Make.top:188: recipe for target 'leaf' failed
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/comm        arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/comm ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/comm/TEST_1 ; \
+            ln -s /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+Make.top:188: recipe for target 'leaf' failed
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/grid        arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/grid ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/grid/TEST_1 ; \
+            ln -s /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+Make.top:188: recipe for target 'leaf' failed
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/panel       arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/panel ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/panel/TEST_1 ; \
+            ln -s /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+Make.top:188: recipe for target 'leaf' failed
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/pauxil      arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/pauxil ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/pauxil/TEST_1 ; \
+            ln -s /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+Make.top:188: recipe for target 'leaf' failed
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/pfact       arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/pfact ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/pfact/TEST_1 ; \
+            ln -s /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+Make.top:188: recipe for target 'leaf' failed
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/pgesv       arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/pgesv ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/pgesv/TEST_1 ; \
+            ln -s /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+Make.top:188: recipe for target 'leaf' failed
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top startup_tst     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=testing/matgen  arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd testing/matgen ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd testing/matgen/TEST_1 ; \
+            ln -s /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+Make.top:188: recipe for target 'leaf' failed
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=testing/timer   arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd testing/timer ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd testing/timer/TEST_1 ; \
+            ln -s /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+Make.top:188: recipe for target 'leaf' failed
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=testing/pmatgen arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd testing/pmatgen ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd testing/pmatgen/TEST_1 ; \
+            ln -s /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+Make.top:188: recipe for target 'leaf' failed
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=testing/ptimer  arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd testing/ptimer ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd testing/ptimer/TEST_1 ; \
+            ln -s /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+Make.top:188: recipe for target 'leaf' failed
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=testing/ptest   arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd testing/ptest ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd testing/ptest/TEST_1 ; \
+            ln -s /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+Make.top:188: recipe for target 'leaf' failed
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top refresh_src     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+cp makes/Make.auxil    src/auxil/TEST_1/Makefile
+cp makes/Make.blas     src/blas/TEST_1/Makefile
+cp makes/Make.comm     src/comm/TEST_1/Makefile
+cp makes/Make.grid     src/grid/TEST_1/Makefile
+cp makes/Make.panel    src/panel/TEST_1/Makefile
+cp makes/Make.pauxil   src/pauxil/TEST_1/Makefile
+cp makes/Make.pfact    src/pfact/TEST_1/Makefile
+cp makes/Make.pgesv    src/pgesv/TEST_1/Makefile
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top refresh_tst     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+cp makes/Make.matgen   testing/matgen/TEST_1/Makefile
+cp makes/Make.timer    testing/timer/TEST_1/Makefile
+cp makes/Make.pmatgen  testing/pmatgen/TEST_1/Makefile
+cp makes/Make.ptimer   testing/ptimer/TEST_1/Makefile
+cp makes/Make.ptest    testing/ptest/TEST_1/Makefile
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top refresh_src     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+cp makes/Make.auxil    src/auxil/TEST_1/Makefile
+cp makes/Make.blas     src/blas/TEST_1/Makefile
+cp makes/Make.comm     src/comm/TEST_1/Makefile
+cp makes/Make.grid     src/grid/TEST_1/Makefile
+cp makes/Make.panel    src/panel/TEST_1/Makefile
+cp makes/Make.pauxil   src/pauxil/TEST_1/Makefile
+cp makes/Make.pfact    src/pfact/TEST_1/Makefile
+cp makes/Make.pgesv    src/pgesv/TEST_1/Makefile
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top refresh_tst     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+cp makes/Make.matgen   testing/matgen/TEST_1/Makefile
+cp makes/Make.timer    testing/timer/TEST_1/Makefile
+cp makes/Make.pmatgen  testing/pmatgen/TEST_1/Makefile
+cp makes/Make.ptimer   testing/ptimer/TEST_1/Makefile
+cp makes/Make.ptest    testing/ptest/TEST_1/Makefile
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top build_src       arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/auxil/TEST_1;         make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/src/auxil/TEST_1'
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/src/auxil/TEST_1'
+Make.top:54: recipe for target 'build_src' failed
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+Makefile:72: recipe for target 'build' failed
+make -f Make.top startup_dir     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+mkdir include/TEST_1
+Make.top:74: recipe for target 'startup_dir' failed
+mkdir lib
+Make.top:74: recipe for target 'startup_dir' failed
+mkdir lib/TEST_1
+Make.top:74: recipe for target 'startup_dir' failed
+mkdir bin
+Make.top:74: recipe for target 'startup_dir' failed
+mkdir bin/TEST_1
+Make.top:74: recipe for target 'startup_dir' failed
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top startup_src     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/auxil       arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/auxil ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/auxil/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/blas        arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/blas ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/blas/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/comm        arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/comm ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/comm/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/grid        arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/grid ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/grid/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/panel       arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/panel ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/panel/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/pauxil      arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/pauxil ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/pauxil/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/pfact       arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/pfact ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/pfact/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/pgesv       arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/pgesv ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/pgesv/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top startup_tst     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=testing/matgen  arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd testing/matgen ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd testing/matgen/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=testing/timer   arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd testing/timer ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd testing/timer/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=testing/pmatgen arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd testing/pmatgen ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd testing/pmatgen/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=testing/ptimer  arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd testing/ptimer ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd testing/ptimer/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=testing/ptest   arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd testing/ptest ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd testing/ptest/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top refresh_src     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+cp makes/Make.auxil    src/auxil/TEST_1/Makefile
+cp makes/Make.blas     src/blas/TEST_1/Makefile
+cp makes/Make.comm     src/comm/TEST_1/Makefile
+cp makes/Make.grid     src/grid/TEST_1/Makefile
+cp makes/Make.panel    src/panel/TEST_1/Makefile
+cp makes/Make.pauxil   src/pauxil/TEST_1/Makefile
+cp makes/Make.pfact    src/pfact/TEST_1/Makefile
+cp makes/Make.pgesv    src/pgesv/TEST_1/Makefile
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top refresh_tst     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+cp makes/Make.matgen   testing/matgen/TEST_1/Makefile
+cp makes/Make.timer    testing/timer/TEST_1/Makefile
+cp makes/Make.pmatgen  testing/pmatgen/TEST_1/Makefile
+cp makes/Make.ptimer   testing/ptimer/TEST_1/Makefile
+cp makes/Make.ptest    testing/ptest/TEST_1/Makefile
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top refresh_src     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+cp makes/Make.auxil    src/auxil/TEST_1/Makefile
+cp makes/Make.blas     src/blas/TEST_1/Makefile
+cp makes/Make.comm     src/comm/TEST_1/Makefile
+cp makes/Make.grid     src/grid/TEST_1/Makefile
+cp makes/Make.panel    src/panel/TEST_1/Makefile
+cp makes/Make.pauxil   src/pauxil/TEST_1/Makefile
+cp makes/Make.pfact    src/pfact/TEST_1/Makefile
+cp makes/Make.pgesv    src/pgesv/TEST_1/Makefile
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top refresh_tst     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+cp makes/Make.matgen   testing/matgen/TEST_1/Makefile
+cp makes/Make.timer    testing/timer/TEST_1/Makefile
+cp makes/Make.pmatgen  testing/pmatgen/TEST_1/Makefile
+cp makes/Make.ptimer   testing/ptimer/TEST_1/Makefile
+cp makes/Make.ptest    testing/ptest/TEST_1/Makefile
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top build_src       arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/auxil/TEST_1;         make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/src/auxil/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/src/auxil/TEST_1'
+( cd src/blas/TEST_1;          make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/src/blas/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/src/blas/TEST_1'
+( cd src/comm/TEST_1;          make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/src/comm/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/src/comm/TEST_1'
+( cd src/grid/TEST_1;          make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/src/grid/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/src/grid/TEST_1'
+( cd src/panel/TEST_1;         make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/src/panel/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/src/panel/TEST_1'
+( cd src/pauxil/TEST_1;        make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/src/pauxil/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/src/pauxil/TEST_1'
+( cd src/pfact/TEST_1;         make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/src/pfact/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/src/pfact/TEST_1'
+( cd src/pgesv/TEST_1;         make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/src/pgesv/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/src/pgesv/TEST_1'
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top build_tst       arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd testing/matgen/TEST_1;    make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/testing/matgen/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/testing/matgen/TEST_1'
+( cd testing/timer/TEST_1;     make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/testing/timer/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/testing/timer/TEST_1'
+( cd testing/pmatgen/TEST_1;   make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/testing/pmatgen/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/testing/pmatgen/TEST_1'
+( cd testing/ptimer/TEST_1;    make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/testing/ptimer/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/testing/ptimer/TEST_1'
+( cd testing/ptest/TEST_1;     make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/testing/ptest/TEST_1'
+/usr/bin/gcc  -DHPL_CALL_CBLAS -I/home/aposta/sc17/hpl-2.2/include -I/home/aposta/sc17/hpl-2.2/include/Linux_ATHLON_CBLAS  -I/usr/lib/mpich/include -fomit-frame-pointer -O3 -funroll-loops -W -Wall -o /home/aposta/sc17/hpl-2.2/bin/Linux_ATHLON_CBLAS/xhpl HPL_pddriver.o         HPL_pdinfo.o           HPL_pdtest.o /home/aposta/sc17/hpl-2.2/lib/Linux_ATHLON_CBLAS/libhpl.a  /home/aposta/sc17/CBLAS/lib/blas_LINUX.a  /usr/lib/mpich/lib/libmpich.a
+Makefile:76: recipe for target 'dexe.grd' failed
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/testing/ptest/TEST_1'
+Make.top:64: recipe for target 'build_tst' failed
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+Makefile:72: recipe for target 'build' failed
+make -f Make.top startup_dir     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+mkdir include/TEST_1
+Make.top:74: recipe for target 'startup_dir' failed
+mkdir lib
+Make.top:74: recipe for target 'startup_dir' failed
+mkdir lib/TEST_1
+Make.top:74: recipe for target 'startup_dir' failed
+mkdir bin
+Make.top:74: recipe for target 'startup_dir' failed
+mkdir bin/TEST_1
+Make.top:74: recipe for target 'startup_dir' failed
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top startup_src     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/auxil       arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/auxil ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/auxil/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/blas        arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/blas ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/blas/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/comm        arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/comm ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/comm/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/grid        arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/grid ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/grid/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/panel       arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/panel ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/panel/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/pauxil      arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/pauxil ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/pauxil/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/pfact       arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/pfact ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/pfact/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=src/pgesv       arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/pgesv ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd src/pgesv/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top startup_tst     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=testing/matgen  arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd testing/matgen ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd testing/matgen/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=testing/timer   arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd testing/timer ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd testing/timer/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=testing/pmatgen arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd testing/pmatgen ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd testing/pmatgen/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=testing/ptimer  arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd testing/ptimer ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd testing/ptimer/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top leaf le=testing/ptest   arch=TEST_1
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd testing/ptest ; mkdir TEST_1 )
+Make.top:188: recipe for target 'leaf' failed
+( cd testing/ptest/TEST_1 ; \
+            ln -s -f /home/aposta/sc17/hpl-2.2/Make.TEST_1 Make.inc )
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top refresh_src     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+cp makes/Make.auxil    src/auxil/TEST_1/Makefile
+cp makes/Make.blas     src/blas/TEST_1/Makefile
+cp makes/Make.comm     src/comm/TEST_1/Makefile
+cp makes/Make.grid     src/grid/TEST_1/Makefile
+cp makes/Make.panel    src/panel/TEST_1/Makefile
+cp makes/Make.pauxil   src/pauxil/TEST_1/Makefile
+cp makes/Make.pfact    src/pfact/TEST_1/Makefile
+cp makes/Make.pgesv    src/pgesv/TEST_1/Makefile
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top refresh_tst     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+cp makes/Make.matgen   testing/matgen/TEST_1/Makefile
+cp makes/Make.timer    testing/timer/TEST_1/Makefile
+cp makes/Make.pmatgen  testing/pmatgen/TEST_1/Makefile
+cp makes/Make.ptimer   testing/ptimer/TEST_1/Makefile
+cp makes/Make.ptest    testing/ptest/TEST_1/Makefile
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top refresh_src     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+cp makes/Make.auxil    src/auxil/TEST_1/Makefile
+cp makes/Make.blas     src/blas/TEST_1/Makefile
+cp makes/Make.comm     src/comm/TEST_1/Makefile
+cp makes/Make.grid     src/grid/TEST_1/Makefile
+cp makes/Make.panel    src/panel/TEST_1/Makefile
+cp makes/Make.pauxil   src/pauxil/TEST_1/Makefile
+cp makes/Make.pfact    src/pfact/TEST_1/Makefile
+cp makes/Make.pgesv    src/pgesv/TEST_1/Makefile
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top refresh_tst     arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+cp makes/Make.matgen   testing/matgen/TEST_1/Makefile
+cp makes/Make.timer    testing/timer/TEST_1/Makefile
+cp makes/Make.pmatgen  testing/pmatgen/TEST_1/Makefile
+cp makes/Make.ptimer   testing/ptimer/TEST_1/Makefile
+cp makes/Make.ptest    testing/ptest/TEST_1/Makefile
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top build_src       arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd src/auxil/TEST_1;         make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/src/auxil/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/src/auxil/TEST_1'
+( cd src/blas/TEST_1;          make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/src/blas/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/src/blas/TEST_1'
+( cd src/comm/TEST_1;          make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/src/comm/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/src/comm/TEST_1'
+( cd src/grid/TEST_1;          make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/src/grid/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/src/grid/TEST_1'
+( cd src/panel/TEST_1;         make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/src/panel/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/src/panel/TEST_1'
+( cd src/pauxil/TEST_1;        make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/src/pauxil/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/src/pauxil/TEST_1'
+( cd src/pfact/TEST_1;         make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/src/pfact/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/src/pfact/TEST_1'
+( cd src/pgesv/TEST_1;         make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/src/pgesv/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/src/pgesv/TEST_1'
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+make -f Make.top build_tst       arch=TEST_1
+make[1]: Entering directory '/home/aposta/sc17/hpl-2.2'
+( cd testing/matgen/TEST_1;    make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/testing/matgen/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/testing/matgen/TEST_1'
+( cd testing/timer/TEST_1;     make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/testing/timer/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/testing/timer/TEST_1'
+( cd testing/pmatgen/TEST_1;   make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/testing/pmatgen/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/testing/pmatgen/TEST_1'
+( cd testing/ptimer/TEST_1;    make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/testing/ptimer/TEST_1'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/testing/ptimer/TEST_1'
+( cd testing/ptest/TEST_1;     make )
+make[2]: Entering directory '/home/aposta/sc17/hpl-2.2/testing/ptest/TEST_1'
+make[2]: Leaving directory '/home/aposta/sc17/hpl-2.2/testing/ptest/TEST_1'
+Make.top:64: recipe for target 'build_tst' failed
+make[1]: Leaving directory '/home/aposta/sc17/hpl-2.2'
+Makefile:72: recipe for target 'build' failed
