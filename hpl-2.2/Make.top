@@ -187,6 +187,6 @@ clean_guard_tst  :
 leaf             :
 	- ( $(CD) $(le) ; $(MKDIR) $(arch) )
 	- ( $(CD) $(le)/$(arch) ; \
-            $(LN_S) $(TOPdir)/Make.$(arch) Make.inc )
+            $(LN_S) -f $(TOPdir)/Make.$(arch) Make.inc )
 #
 ########################################################################
