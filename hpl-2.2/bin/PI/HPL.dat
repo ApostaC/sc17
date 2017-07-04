@@ -2,10 +2,10 @@ HPLinpack benchmark input file
 Innovative Computing Laboratory, University of Tennessee
 HPL.out      output file name (if any)
 8            device out (6=stdout,7=stderr,file)
-4            # of problems sizes (N)
-290 300 340 350  Ns
-4            # of NBs
-1 2 3 4      NBs
+1            # of problems sizes (N)
+5000		 Ns
+1            # of NBs
+50		     NBs
 0            PMAP process mapping (0=Row-,1=Column-major)
 3            # of process grids (P x Q)
 2 1 4        Ps
