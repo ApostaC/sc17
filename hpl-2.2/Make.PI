@@ -61,7 +61,7 @@ TOUCH        = touch
 # - Platform identifier ------------------------------------------------
 # ----------------------------------------------------------------------
 #
-ARCH         = TEST_2
+ARCH         = PI
 #
 # ----------------------------------------------------------------------
 # - HPL Directory Structure / HPL library ------------------------------
@@ -81,7 +81,7 @@ HPLlib       = $(LIBdir)/libhpl.a
 # header files,  MPlib  is defined  to be the name of  the library to be
 # used. The variable MPdir is only used for defining MPinc and MPlib.
 #
-MPdir        = /home/aposta/sc17/mpich
+MPdir        = /home/pi/sc17/mpich
 MPinc        = -I$(MPdir)/include
 MPlib        = $(MPdir)/lib/libmpich.so
 #
@@ -92,7 +92,7 @@ MPlib        = $(MPdir)/lib/libmpich.so
 # header files,  LAlib  is defined  to be the name of  the library to be
 # used. The variable LAdir is only used for defining LAinc and LAlib.
 #
-LAdir        = /home/aposta/sc17/CBLAS
+LAdir        = /home/pi/sc17/CBLAS
 LAinc        =
 LAlib        = $(LAdir)/lib/cblas_LINUX.a $(LAdir)/lib/blas_LINUX.a
 #
@@ -166,14 +166,14 @@ HPL_DEFS     = $(F2CDEFS) $(HPL_OPTS) $(HPL_INCLUDES)
 # - Compilers / linkers - Optimization flags ---------------------------
 # ----------------------------------------------------------------------
 #
-CC           = /home/aposta/sc17/mpich/bin/mpicc
+CC           = /home/pi/sc17/mpich/bin/mpicc
 CCNOOPT      = $(HPL_DEFS)
 CCFLAGS      = $(HPL_DEFS) -fomit-frame-pointer -fopenmp -O3 -funroll-loops
 #
 # On some platforms,  it is necessary  to use the Fortran linker to find
 # the Fortran internals used in the BLAS library.
 #
-LINKER       = /home/aposta/sc17/mpich/bin/mpif77
+LINKER       = /home/pi/sc17/mpich/bin/mpif77
 LINKFLAGS    = $(CCFLAGS) 
 #
 ARCHIVER     = ar

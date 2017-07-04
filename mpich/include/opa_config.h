@@ -47,14 +47,10 @@
 #endif
 
 /* define to 1 if we have support for gcc x86/x86_64 primitives */
-#ifndef OPA_HAVE_GCC_X86_32_64 
-#define OPA_HAVE_GCC_X86_32_64  1 
-#endif
+/* #undef HAVE_GCC_X86_32_64 */
 
 /* define to 1 if we have support for gcc x86 primitives for pre-Pentium 4 */
-#ifndef OPA_HAVE_GCC_X86_32_64_P3 
-#define OPA_HAVE_GCC_X86_32_64_P3  1 
-#endif
+/* #undef HAVE_GCC_X86_32_64_P3 */
 
 /* Define to 1 if you have the <intrin.h> header file. */
 /* #undef HAVE_INTRIN_H */
@@ -191,7 +187,7 @@
 
 /* The size of `void *', as computed by sizeof. */
 #ifndef OPA_SIZEOF_VOID_P 
-#define OPA_SIZEOF_VOID_P  8 
+#define OPA_SIZEOF_VOID_P  4 
 #endif
 
 /* Define to 1 if you have the ANSI C header files. */

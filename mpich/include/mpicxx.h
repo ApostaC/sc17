@@ -17,8 +17,8 @@
 // between 3.2.3 and 3.4.3 (!!)  Normally such changes
 // should only occur at major releases (e.g., version 3 to 4)
 #ifdef __GNUC__ 
-# if __GNUC__ >= 5 
-#  if __GNUC_MINOR__ > 2 && 4 == 2 
+# if __GNUC__ >= 4 
+#  if __GNUC_MINOR__ > 2 && 9 == 2 
 #  error 'Please use the same version of GCC and g++ for compiling MPICH and user MPI programs'
 #  endif
 # endif     
@@ -2546,7 +2546,7 @@ extern Datatype COMPLEX;
 extern Datatype DOUBLE_COMPLEX;
 #define MPIR_CXX_DOUBLE_COMPLEX 0x4c001035
 extern Datatype LONG_DOUBLE_COMPLEX;
-#define MPIR_CXX_LONG_DOUBLE_COMPLEX 0x4c002036
+#define MPIR_CXX_LONG_DOUBLE_COMPLEX 0x4c001036
 extern Datatype DATATYPE_NULL;
 
 #if 1

@@ -1,4 +1,4 @@
-prefix=/home/aposta/sc17/mpich
+prefix=/home/pi/sc17/mpich
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include

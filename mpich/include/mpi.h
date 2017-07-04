@@ -105,11 +105,11 @@ typedef int MPI_Datatype;
 #define MPI_UNSIGNED_SHORT ((MPI_Datatype)0x4c000204)
 #define MPI_INT            ((MPI_Datatype)0x4c000405)
 #define MPI_UNSIGNED       ((MPI_Datatype)0x4c000406)
-#define MPI_LONG           ((MPI_Datatype)0x4c000807)
-#define MPI_UNSIGNED_LONG  ((MPI_Datatype)0x4c000808)
+#define MPI_LONG           ((MPI_Datatype)0x4c000407)
+#define MPI_UNSIGNED_LONG  ((MPI_Datatype)0x4c000408)
 #define MPI_FLOAT          ((MPI_Datatype)0x4c00040a)
 #define MPI_DOUBLE         ((MPI_Datatype)0x4c00080b)
-#define MPI_LONG_DOUBLE    ((MPI_Datatype)0x4c00100c)
+#define MPI_LONG_DOUBLE    ((MPI_Datatype)0x4c00080c)
 #define MPI_LONG_LONG_INT  ((MPI_Datatype)0x4c000809)
 #define MPI_UNSIGNED_LONG_LONG ((MPI_Datatype)0x4c000819)
 #define MPI_LONG_LONG      MPI_LONG_LONG_INT
@@ -128,7 +128,7 @@ static const MPI_Datatype mpich_mpi_long               MPICH_ATTR_TYPE_TAG(long)
 static const MPI_Datatype mpich_mpi_unsigned_long      MPICH_ATTR_TYPE_TAG(unsigned long)      = MPI_UNSIGNED_LONG;
 static const MPI_Datatype mpich_mpi_float              MPICH_ATTR_TYPE_TAG(float)              = MPI_FLOAT;
 static const MPI_Datatype mpich_mpi_double             MPICH_ATTR_TYPE_TAG(double)             = MPI_DOUBLE;
-#if 0x4c00100c != 0x0c000000
+#if 0x4c00080c != 0x0c000000
 static const MPI_Datatype mpich_mpi_long_double        MPICH_ATTR_TYPE_TAG(long double)        = MPI_LONG_DOUBLE;
 #endif
 static const MPI_Datatype mpich_mpi_long_long_int      MPICH_ATTR_TYPE_TAG(long long int)      = MPI_LONG_LONG_INT;
@@ -214,10 +214,10 @@ static const MPI_Datatype mpich_mpi_long_double_int MPICH_ATTR_TYPE_TAG_LAYOUT_C
 /* Size-specific types (see MPI-2, 10.2.5) */
 #define MPI_REAL4             ((MPI_Datatype)0x4c000427)
 #define MPI_REAL8             ((MPI_Datatype)0x4c000829)
-#define MPI_REAL16            ((MPI_Datatype)0x4c00102b)
+#define MPI_REAL16            ((MPI_Datatype)MPI_DATATYPE_NULL)
 #define MPI_COMPLEX8          ((MPI_Datatype)0x4c000828)
 #define MPI_COMPLEX16         ((MPI_Datatype)0x4c00102a)
-#define MPI_COMPLEX32         ((MPI_Datatype)0x4c00202c)
+#define MPI_COMPLEX32         ((MPI_Datatype)MPI_DATATYPE_NULL)
 #define MPI_INTEGER1          ((MPI_Datatype)0x4c00012d)
 #define MPI_INTEGER2          ((MPI_Datatype)0x4c00022f)
 #define MPI_INTEGER4          ((MPI_Datatype)0x4c000430)
@@ -250,19 +250,19 @@ static const MPI_Datatype mpich_mpi_uint64_t MPICH_ATTR_TYPE_TAG_STDINT(uint64_t
 #define MPI_C_FLOAT_COMPLEX        ((MPI_Datatype)0x4c000840)
 #define MPI_C_COMPLEX              MPI_C_FLOAT_COMPLEX
 #define MPI_C_DOUBLE_COMPLEX       ((MPI_Datatype)0x4c001041)
-#define MPI_C_LONG_DOUBLE_COMPLEX  ((MPI_Datatype)0x4c002042)
+#define MPI_C_LONG_DOUBLE_COMPLEX  ((MPI_Datatype)0x4c001042)
 
 #ifdef MPICH_DEFINE_ATTR_TYPE_TYPES
 static const MPI_Datatype mpich_mpi_c_bool                MPICH_ATTR_TYPE_TAG_C99(_Bool)           = MPI_C_BOOL;
 static const MPI_Datatype mpich_mpi_c_float_complex       MPICH_ATTR_TYPE_TAG_C99(float _Complex)  = MPI_C_FLOAT_COMPLEX;
 static const MPI_Datatype mpich_mpi_c_double_complex      MPICH_ATTR_TYPE_TAG_C99(double _Complex) = MPI_C_DOUBLE_COMPLEX;
-#if 0x4c002042 != 0x0c000000
+#if 0x4c001042 != 0x0c000000
 static const MPI_Datatype mpich_mpi_c_long_double_complex MPICH_ATTR_TYPE_TAG_C99(long double _Complex) = MPI_C_LONG_DOUBLE_COMPLEX;
 #endif
 #endif
 
 /* address/offset types */
-#define MPI_AINT          ((MPI_Datatype)0x4c000843)
+#define MPI_AINT          ((MPI_Datatype)0x4c000443)
 #define MPI_OFFSET        ((MPI_Datatype)0x4c000844)
 #define MPI_COUNT         ((MPI_Datatype)0x4c000845)
 
@@ -270,7 +270,7 @@ static const MPI_Datatype mpich_mpi_c_long_double_complex MPICH_ATTR_TYPE_TAG_C9
 #define MPI_CXX_BOOL                ((MPI_Datatype)0x4c000133)
 #define MPI_CXX_FLOAT_COMPLEX       ((MPI_Datatype)0x4c000834)
 #define MPI_CXX_DOUBLE_COMPLEX      ((MPI_Datatype)0x4c001035)
-#define MPI_CXX_LONG_DOUBLE_COMPLEX ((MPI_Datatype)0x4c002036)
+#define MPI_CXX_LONG_DOUBLE_COMPLEX ((MPI_Datatype)0x4c001036)
 
 /* typeclasses */
 #define MPI_TYPECLASS_REAL 1
@@ -375,7 +375,7 @@ typedef enum MPIR_Win_model {
 } MPIR_Win_model_t;
 
 /* Upper bound on the overhead in bsend for each message buffer */
-#define MPI_BSEND_OVERHEAD 96
+#define MPI_BSEND_OVERHEAD 56
 
 /* Topology types */
 typedef enum MPIR_Topo_type { MPI_GRAPH=1, MPI_CART=2, MPI_DIST_GRAPH=3 } MPIR_Topo_type;
@@ -546,7 +546,7 @@ typedef int MPI_Info;
 #define MPI_COMM_TYPE_SHARED    1
 
 /* Definitions that are determined by configure. */
-typedef long MPI_Aint;
+typedef int MPI_Aint;
 typedef int MPI_Fint;
 typedef long long MPI_Count;
 
@@ -557,8 +557,8 @@ static const MPI_Datatype mpich_mpi_aint   MPICH_ATTR_TYPE_TAG(MPI_Aint)   = MPI
 /* FIXME: The following two definition are not defined by MPI and must not be
    included in the mpi.h file, as the MPI namespace is reserved to the MPI 
    standard */
-#define MPI_AINT_FMT_DEC_SPEC "%ld"
-#define MPI_AINT_FMT_HEX_SPEC "%lx"
+#define MPI_AINT_FMT_DEC_SPEC "%d"
+#define MPI_AINT_FMT_HEX_SPEC "%x"
 
 /* Let ROMIO know that MPI_Offset is already defined */
 #define HAVE_MPI_OFFSET

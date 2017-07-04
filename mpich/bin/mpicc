@@ -27,11 +27,11 @@
 #
 # Directory locations: Fixed for any MPI implementation.
 # Set from the directory arguments to configure (e.g., --prefix=/usr/local)
-prefix=/home/aposta/sc17/mpich
-exec_prefix=/home/aposta/sc17/mpich
-sysconfdir=/home/aposta/sc17/mpich/etc
-includedir=/home/aposta/sc17/mpich/include
-libdir=/home/aposta/sc17/mpich/lib
+prefix=/home/pi/sc17/mpich
+exec_prefix=/home/pi/sc17/mpich
+sysconfdir=/home/pi/sc17/mpich/etc
+includedir=/home/pi/sc17/mpich/include
+libdir=/home/pi/sc17/mpich/lib
 
 # Default settings for compiler, flags, and libraries.
 # Determined by a combination of environment variables and tests within

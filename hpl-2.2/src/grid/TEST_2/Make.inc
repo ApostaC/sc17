@@ -1,1 +1,1 @@
-/home/aposta/sc17/hpl-2.2/Make.TEST_2
+/home/pi/sc17/hpl-2.2/Make.TEST_2

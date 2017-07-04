@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/aposta/sc17/mpich/lib'
+libdir='/home/pi/sc17/mpich/lib'
