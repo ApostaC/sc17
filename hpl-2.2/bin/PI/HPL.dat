@@ -4,12 +4,12 @@ HPL-2000-32|4.out      output file name (if any)
 8            device out (6=stdout,7=stderr,file)
 1            # of problems sizes (N)
 2000		 Ns
-2            # of NBs
-32 4	     NBs
+4            # of NBs
+4 8 16 32 	     NBs
 0            PMAP process mapping (0=Row-,1=Column-major)
 3            # of process grids (P x Q)
-2 1 4        Ps
-2 4 1        Qs
+2 4 1        Ps
+2 1 4        Qs
 16.0         threshold
 3            # of panel fact
 0 1 2        PFACTs (0=left, 1=Crout, 2=Right)
