@@ -33,7 +33,6 @@ L1     : transposed form
 U      : transposed form
 EQUIL  : yes
 ALIGN  : 8 double precision words
-
 --------------------------------------------------------------------------------
 
 - The matrix A is randomly generated for each test.
