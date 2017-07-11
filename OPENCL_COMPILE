@@ -1,0 +1,1 @@
+g++ <sources> -lOpenCL -std=gnu++0X
