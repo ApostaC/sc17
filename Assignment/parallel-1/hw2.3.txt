@@ -1,0 +1,13 @@
+Sequential compute time T0=O(n^3)
+
+Compute time for first implementation	T1=O(n^3/p)+O(n^2)
+Compute time for second implementation	T2=O(n^3/p)+O(p*n^(3/2))
+
+Efficiency for first implementation		E1=T0/(p*T1)=1/(1+p/n)
+Efficiency for second implementation	E2=T0/(p*T2)=1/(1+p^2/n^(3/2))
+
+As efficiency need to be invariant,
+	for implementation 1: p=n
+	for implementation 2: p^2=n^(3/2)
+
+the second implementation is more scable;
