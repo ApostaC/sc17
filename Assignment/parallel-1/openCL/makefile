@@ -1,6 +1,6 @@
 #test
-SOURCE=main.cpp host_imp.cpp
-HEADERS=host_imp.h
+SOURCE=main.cpp 
+HEADERS=
 
 FLAGS= -lOpenCL -std=gnu++0x
 

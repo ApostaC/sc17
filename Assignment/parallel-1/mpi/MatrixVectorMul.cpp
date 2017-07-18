@@ -1,12 +1,9 @@
-#define DEBUG
 #include <mpi.h>
-#include <iostream>
 #include <stdio.h>
 #include <cstdlib>
 #include <time.h>
 #define MAX_ELEM 10
 
-using namespace std;
 
 void sendError(const char * s)
 {
@@ -87,8 +84,7 @@ int main(int argc , char *argv[])
 	//MPI_BCAST
 	MPI_Bcast(B,n,MPI_FLOAT,0,MPI_COMM_WORLD);
 	
-
-	//scatter the matrix
+	//SCATTER THE MATRIX TO ALL PROCESSORS
 	float *mat_buf=new float[n];
 	if(worldRank==0)
 	{
@@ -100,10 +96,9 @@ int main(int argc , char *argv[])
 				MPI_Send(mat[r],n,MPI_FLOAT,i,r,MPI_COMM_WORLD);
 			}
 		}
-
+		//PROCESSING MUTIPLICATION BY ROOT PROCESSOR
 		for(int r=0;r<m;r+=worldSize)
 		{
-			//TODO: POCESSING MULTIPLICATION
 			float ans=0;
 			for(int i=0;i<m;i++)
 				ans+=mat[r][i]*B[i];
