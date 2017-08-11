@@ -1,0 +1,1186 @@
+
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+*       BEGAN ATLAS3.10.3 INSTALL OF SECTION 2-4-1 ON 08/11/2017 AT 02:28     *
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+
+
+
+make[2]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/tune/blas/gemm ; make res/cMMRES.sum pre=c nb=88
+make[3]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+make xmmsearch
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+make[4]: 'xmmsearch' is up to date.
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+./xmmsearch -p c
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+./xgmmsearch -p c
+
+      Read in L1 Cache size as = 128KB.
+
+      Read in L1 Cache size as = 128KB.
+
+      Read in L1 Cache size as = 128KB.
+
+      Read in L1 Cache size as = 128KB.
+READ IN NUMBER OF GEMM REGISTERS = 16, MACC=1, lat=8:
+READ IN MU=3, NU=2 FROM REAL, nb=72, mf=5270.80
+
+FINDING UPPER BOUND ON NB:
+NB UPPER BOUND CHOSEN AS : 80 (5270.80)
+
+FINDING LOWER BOUND ON NB:
+   nb= 72, mu=  3, nu=  2, ku= 72, MACC=0, lat=8, mf=5270.80
+   nb= 68, mu=  3, nu=  2, ku= 72, MACC=0, lat=8, mf=5328.32
+   nb= 64, mu=  3, nu=  2, ku= 72, MACC=0, lat=8, mf=5254.07
+NB LOWER BOUND CHOSEN AS : 68
+
+FINDING BEST NB AND PREFETCH SETTING IN RANGE [68,80,4]:
+   nb= 68, pf=0, mu=  3, nu=  2, ku= 68, MACC=0, lat=8, mf=5386.66
+   nb= 72, pf=1, mu=  3, nu=  2, ku= 72, MACC=0, lat=8, mf=5405.94
+   nb= 76, pf=1, mu=  3, nu=  2, ku= 76, MACC=0, lat=8, mf=5406.00
+   nb= 80, pf=0, mu=  3, nu=  2, ku= 80, MACC=0, lat=8, mf=5405.07
+BEST NB=76, BEST PREFETCH=1 (5406.00)
+TRYING KUs FOR NB=76, PF=1, MU=3, NU=2 MACC=0, LAT=8:
+   KU=1, lat=6, mf=3823.41
+   KU=38, lat=8, mf=5196.61
+   KU=76, lat=8, mf=5354.57
+   KU=2, lat=8, mf=4985.94
+   KU=4, lat=8, mf=5160.27
+   KU=6, lat=8, mf=5289.74
+   KU=8, lat=8, mf=5327.93
+   KU=8, lat=8, mf=5327.93
+   KU=16, lat=8, mf=5214.97
+   KU=24, lat=8, mf=5289.74
+   KU=32, lat=8, mf=5270.85
+BEST KU=76, lat=8 (5406.00)
+FINDING BEST FETCH PATTERN FOR nb=76, mu=3, nu=2, ku=76
+   ifetch= 2, nfetch= 1, mf=5366.68
+   ifetch= 2, nfetch= 2, mf=5289.74
+   ifetch= 3, nfetch= 1, mf=5308.77
+   ifetch= 3, nfetch= 2, mf=5270.85
+   ifetch= 4, nfetch= 1, mf=5466.06
+   ifetch= 5, nfetch= 1, mf=5366.68
+   best case retimed as mf=5252.09
+BEST IFETCH=4, NFETCH=1 (5252.09)
+TRYING LOAD-AT-TOP (load-at-bottom 5252.09)
+   load-at-top, mf=5308.77
+STICKING WITH LOAD-AT-BOTTOM
+TRYING SWAP OF MACC (present, madd=0, lat=8, mf=5252.09)
+   macc=1, lat=8, mf=5308.77
+SWITCHING TO NEW MACC SETTING!
+
+SELECTED GENERATED KERNEL:
+ID=0 ROUT='sgmm.c' AUTH='Whaley/emit_mm' TA='T' TB='N' \
+   MULADD=1 PREF=1 LAT=8 NFTCH=1 IFTCH=4 FFTCH=1 KBMAX=0 KBMIN=0 KU=76  \
+   NU=2 MU=3 MB=76 NB=76 KB=76 L14NB=0 PFBCOLS=0 PFABLK=0 PFACOLS=0 STFLOAT=0  \
+   LDFLOAT=0 AOUTER=0 LDAB=1 BETAN1=0 LDISKB=1 KUISKB=0 KRUNTIME=0 NRUNTIME=0  \
+   MRUNTIME=0 LDCTOP=0 X87=0  \
+   MFLOP=5.308767e+03
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+./xummsearch -p c -n 76 -e res/cMMKSSE.sum
+     TESTING PRE='c' FILE='ATL_mm4x4x2US.c', NB=76 . . . PASSED!
+  0. NB= 76, rout=                         ATL_mm4x4x2US.c, MFLOP=4302.73
+     TESTING PRE='c' FILE='ATL_mm4x4x2_1_pref.c', NB=76 . . . PASSED!
+  1. NB= 76, rout=                    ATL_mm4x4x2_1_pref.c, MFLOP=4431.94
+  2. NB= 76, rout=                  ATL_mm4x4x2_1_prefCU.c, MFLOP=0.00
+     TESTING PRE='c' FILE='ATL_mm4x4x8_bpfabc.c', NB=80 . . . PASSED!
+  3. NB= 80, rout=                    ATL_mm4x4x8_bpfabc.c, MFLOP=4744.64
+  4. NB= 96, rout=                          ATL_mm4x3x8p.c, MFLOP=4886.56
+  5. NB= 84, rout=                          ATL_mm4x3x2p.c, MFLOP=4431.93
+     TESTING PRE='c' FILE='ATL_amm4x2xVL_simd.c', NB=80 . . . PASSED!
+  6. NB= 80, rout=                    ATL_amm4x2xVL_simd.c, MFLOP=46112.00
+  7. NB= 80, rout=                    ATL_amm8x2xVL_simd.c, MFLOP=-1.00
+  8. NB= 80, rout=                    ATL_amm8x4xVL_simd.c, MFLOP=-1.00
+  9. NB= 80, rout=                    ATL_amm8x5xVL_simd.c, MFLOP=-1.00
+ 10. NB= 96, rout=                    ATL_amm8x6xVL_simd.c, MFLOP=-1.00
+ 11. NB= 96, rout=                    ATL_amm4x3xVL_simd.c, MFLOP=42163.99
+ 12. NB= 80, rout=                    ATL_amm4x4xVL_simd.c, MFLOP=40988.44
+ 13. NB= 80, rout=                    ATL_amm4x5xVL_simd.c, MFLOP=42159.54
+ 14. NB= 96, rout=                    ATL_amm4x6xVL_simd.c, MFLOP=39884.86
+ 15. NB= 76, rout=                          ATL_gemm_SSE.c, MFLOP=-1.00
+ 16. NB= 76, rout=                          ATL_gemm_SSE.c, MFLOP=0.00
+ 17. NB= 56, rout=                       ATL_smm_sse1_56.c, MFLOP=8340.27
+ 18. NB= 60, rout=                       ATL_smm_sse1_60.c, MFLOP=8532.62
+ 19. NB= 64, rout=                       ATL_smm_sse1_64.c, MFLOP=8583.69
+ 20. NB= 56, rout=                      ATL_smm_sse1_56M.c, MFLOP=0.00
+ 21. NB= 56, rout=                      ATL_smm_sse1_56N.c, MFLOP=0.00
+ 22. NB= 60, rout=                      ATL_smm_sse1_60M.c, MFLOP=0.00
+ 23. NB= 60, rout=                      ATL_smm_sse1_60N.c, MFLOP=0.00
+ 24. NB= 64, rout=                      ATL_smm_sse1_64M.c, MFLOP=0.00
+ 25. NB= 64, rout=                      ATL_smm_sse1_64N.c, MFLOP=0.00
+ 26. NB= 76, rout=                        ATL_smm_sse1_K.c, MFLOP=0.00
+ 27. NB=112, rout=                      ATL_smm_sse2_112.c, MFLOP=9967.40
+ 28. NB=112, rout=                     ATL_smm_sse2_112M.c, MFLOP=0.00
+ 29. NB=112, rout=                     ATL_smm_sse2_112N.c, MFLOP=0.00
+ 30. NB= 76, rout=                     ATL_smm_sse2_112N.c, MFLOP=0.00
+ 31. NB= 60, rout=                     ATL_smm6x1x60_sse.c, MFLOP=-1.00
+ 32. NB= 84, rout=                    ATL_smm14x1x84_sse.c, MFLOP=4760.75
+ 33. NB= 84, rout=                  ATL_smm14x1x84_sseCU.c, MFLOP=0.00
+ 34. NB=120, rout=                    ATL_smm6x1x120_sse.c, MFLOP=5327.48
+ 35. NB= 84, rout=                     ATL_smm6x1x80_sse.c, MFLOP=-1.00
+ 36. NB= 80, rout=                   ATL_smm10x1x120_sse.c, MFLOP=5018.99
+ 37. NB= 76, rout=                    ATL_smm4x1x256_sse.c, MFLOP=5466.06
+ 38. NB= 76, rout=                    ATL_smm2x2x256_sse.c, MFLOP=8109.00
+ 39. NB= 80, rout=                      ATL_smm4x2x8_avx.c, MFLOP=34315.91
+ 40. NB= 80, rout=                    ATL_smm4x2x256_avx.c, MFLOP=38831.16
+ 41. NB= 76, rout=                   ATL_smm2x4x256_fma4.c, MFLOP=-1.00
+ 42. NB= 80, rout=                          ATL_mm4x4x8p.c, MFLOP=4790.86
+ 43. NB= 80, rout=                      ATL_smm4x4x16_av.c, MFLOP=-1.00
+ 44. NB= 76, rout=                       ATL_smm4x4x4_av.c, MFLOP=-1.00
+ 45. NB= 76, rout=                        ATL_smmMNCU_av.c, MFLOP=0.00
+ 46. NB= 96, rout=                        ATL_mm6x8x8_1p.c, MFLOP=4240.63
+ 47. NB= 76, rout=                        ATL_mm6x8x8_1p.c, MFLOP=0.00
+ 48. NB= 78, rout=                     ATL_smm6x1x60_x87.c, MFLOP=-1.00
+ 49. NB=120, rout=                           ATL_mm8x8x2.c, MFLOP=4087.84
+ 50. NB= 80, rout=                           ATL_mm8x8x2.c, MFLOP=4031.65
+ 51. NB= 80, rout=                    ATL_smm4x4x16_hppa.c, MFLOP=-1.00
+ 52. NB= 96, rout=                 make[5]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+./xmmksearch_sse -p c
+
+      Read in L1 Cache size as = 128KB.
+Default compiler & flags work fine
+
+
+FINDING SSEGEN REGISTER BLOCKING :
+   nb=80, mu=1, nu=1, mf=10391.44
+   nb=80, mu=2, nu=1, mf=12094.95
+   nb=72, mu=3, nu=1, mf=14328.37
+   nb=80, mu=4, nu=1, mf=13293.55
+   nb=80, mu=5, nu=1, mf=13790.50
+   nb=72, mu=6, nu=1, mf=14190.60
+   nb=56, mu=7, nu=1, mf=15704.55
+   nb=80, mu=8, nu=1, mf=13537.47
+   nb=72, mu=9, nu=1, mf=14190.60
+   nb=80, mu=10, nu=1, mf=14326.06
+   nb=44, mu=11, nu=1, mf=16970.22
+   nb=72, mu=12, nu=1, mf=14468.85
+   nb=52, mu=13, nu=1, mf=16588.58
+   nb=56, mu=14, nu=1, mf=16586.83
+   nb=80, mu=1, nu=2, mf=12094.95
+   nb=80, mu=2, nu=2, mf=11899.87
+   nb=72, mu=3, nu=2, mf=12833.24
+   nb=80, mu=4, nu=2, mf=12194.91
+   nb=80, mu=5, nu=2, mf=11996.62
+   nb=72, mu=6, nu=2, mf=12722.61
+   nb=72, mu=1, nu=3, mf=14190.60
+   nb=72, mu=2, nu=3, mf=12401.87
+   nb=72, mu=3, nu=3, mf=12196.88
+   nb=72, mu=4, nu=3, mf=12298.52
+   nb=80, mu=1, nu=4, mf=12720.55
+   nb=80, mu=2, nu=4, mf=11996.62
+   nb=80, mu=1, nu=5, mf=13174.86
+   nb=80, mu=2, nu=5, mf=11804.67
+   nb=72, mu=1, nu=6, mf=14468.85
+   nb=56, mu=1, nu=7, mf=15704.55
+
+BEST SSEGEN REGISTER BLOCK for NB=44 is 11x1 (16970.22)
+
+
+SEARCHING FOR BEST PREFETCH SETTING:
+   nb=44, pfAblk=0, pfACols=0, pfBCols=0, pfC=0, mf=16588.87
+   nb=44, pfAblk=0, pfACols=0, pfBCols=0, pfC=0, mf=16970.22
+   nb=44, pfAblk=0, pfACols=0, pfBCols=0, pfC=1, mf=16970.22
+   nb=44, pfAblk=0, pfACols=0, pfBCols=0, pfC=1, mf=16588.87
+   nb=44, pfAblk=0, pfACols=0, pfBCols=1, pfC=0, mf=16588.87
+   nb=44, pfAblk=0, pfACols=0, pfBCols=1, pfC=0, mf=16970.22
+   nb=44, pfAblk=0, pfACols=0, pfBCols=1, pfC=1, mf=16970.22
+   nb=44, pfAblk=0, pfACols=0, pfBCols=1, pfC=1, mf=17167.55
+   nb=44, pfAblk=0, pfACols=1, pfBCols=0, pfC=0, mf=16047.92
+   nb=44, pfAblk=0, pfACols=1, pfBCols=0, pfC=0, mf=16777.38
+   nb=44, pfAblk=0, pfACols=1, pfBCols=0, pfC=1, mf=16404.55
+   nb=44, pfAblk=0, pfACols=1, pfBCols=0, pfC=1, mf=16970.22
+   nb=44, pfAblk=0, pfACols=1, pfBCols=1, pfC=0, mf=16224.28
+   nb=44, pfAblk=0, pfACols=1, pfBCols=1, pfC=0, mf=16777.38
+   nb=44, pfAblk=0, pfACols=1, pfBCols=1, pfC=1, mf=16777.38
+   nb=44, pfAblk=0, pfACols=1, pfBCols=1, pfC=1, mf=16588.87
+   nb=44, pfAblk=1, pfACols=0, pfBCols=0, pfC=0, mf=17167.55
+   nb=44, pfAblk=1, pfACols=0, pfBCols=0, pfC=0, mf=17576.30
+   nb=44, pfAblk=1, pfACols=0, pfBCols=0, pfC=1, mf=17167.55
+   nb=44, pfAblk=1, pfACols=0, pfBCols=0, pfC=1, mf=16970.22
+   nb=44, pfAblk=1, pfACols=0, pfBCols=1, pfC=0, mf=17369.52
+   nb=44, pfAblk=1, pfACols=0, pfBCols=1, pfC=0, mf=17167.55
+   nb=44, pfAblk=1, pfACols=0, pfBCols=1, pfC=1, mf=17576.30
+   nb=44, pfAblk=1, pfACols=0, pfBCols=1, pfC=1, mf=16404.55
+   nb=44, pfAblk=1, pfACols=1, pfBCols=0, pfC=0, mf=16588.87
+   nb=44, pfAblk=1, pfACols=1, pfBCols=0, pfC=0, mf=16777.38
+   nb=44, pfAblk=1, pfACols=1, pfBCols=0, pfC=1, mf=16970.22
+   nb=44, pfAblk=1, pfACols=1, pfBCols=0, pfC=1, mf=16404.55
+   nb=44, pfAblk=1, pfACols=1, pfBCols=1, pfC=0, mf=16224.28
+   nb=44, pfAblk=1, pfACols=1, pfBCols=1, pfC=0, mf=16588.87
+   nb=44, pfAblk=1, pfACols=1, pfBCols=1, pfC=1, mf=16588.87
+   nb=44, pfAblk=1, pfACols=1, pfBCols=1, pfC=1, mf=16777.38
+BEST PRFTCH VALS: nb=44, pfAblk=1, pfACols=0, pfBCols=0, pfC=0 (17576.30)
+
+
+FINDING BEST NB:
+   nb=44 (16970.22)
+BEST NB=44 (17576.30)
+
+
+FINDING KU
+   ku=1 (18227.27)
+   ku=4 (18004.99)
+BEST KU=1 (18227.27)
+
+
+SSEGEN SEARCH SUCCESSFULLY FINISHED, BEST CASE IS:
+ID=10034 ROUT='cgenmm_sse.c' AUTH='Zalkin & Whaley' TA='T' TB='N' \
+   MULADD=0 PREF=0 LAT=1 NFTCH=0 IFTCH=0 FFTCH=0 KBMAX=2000 KBMIN=0 KU=1  \
+   NU=1 MU=11 MB=44 NB=44 KB=44 L14NB=0 PFBCOLS=0 PFABLK=1 PFACOLS=0 STFLOAT=0  \
+   LDFLOAT=0 AOUTER=0 LDAB=1 BETAN1=0 LDISKB=1 KUISKB=0 KRUNTIME=0 NRUNTIME=0  \
+   MRUNTIME=0 LDCTOP=0 X87=0  \
+   MFLOP=1.822727e+04
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+SUCCESSFUL FINISH FOR ./xummsearch
+
+       ATL_mm6x8x8_1p.c, MFLOP=4216.40
+ 53. NB= 76, rout=                        ATL_mm6x8x8_1p.c, MFLOP=0.00
+ 54. NB=120, rout=                           ATL_mm8x8x2.c, MFLOP=3564.52
+ 55. NB= 80, rout=                           ATL_mm8x8x2.c, MFLOP=3661.50
+ 56. NB= 76, rout=                     ATL_cmm4x4x128_av.c, MFLOP=-1.00
+ 57. NB= 80, rout=                       ATL_smm8x2x4_av.c, MFLOP=-1.00
+BEST CASE IS ID=8, NB=80, MFLOP=46112.00
+
+FINDING BEST BLOCKING FACTOR FOR CASE 8, MUL=16:
+   NB=16: 20796.60 MFLOP
+   NB=32: 31415.45 MFLOP
+   NB=48: 38852.72 MFLOP
+   NB=64: 36909.88 MFLOP
+   NB=80: 46112.00 MFLOP
+BEST BLOCKING FACTOR FOR CASE 8:  80
+
+BEST USER CASE 8, NB=80: 46112.00 MFLOP
+
+
+BEGIN BASIC MATMUL KERNEL TESTS:
+   Kernel CASES/ATL_amm4x2xVL_simd.c(8) passes basic tests
+   Kernel SSEGENOUTDIR/cgenmm_sse.c(10034) passes basic tests
+DONE BASIC KERNEL TESTS.
+
+
+BEST OF USER CASES AND EXTERNAL SEARCHES:
+ID=8 ROUT='CASES/ATL_amm4x2xVL_simd.c' AUTH='R. Clint Whaley' TA='T' TB='N' \
+   MULADD=1 PREF=0 LAT=8 NFTCH=0 IFTCH=0 FFTCH=0 KBMAX=0 KBMIN=0 KU=8 NU=2  \
+   MU=4 MB=80 NB=80 KB=80 L14NB=0 PFBCOLS=0 PFABLK=0 PFACOLS=0 STFLOAT=0  \
+   LDFLOAT=0 AOUTER=0 LDAB=1 BETAN1=0 LDISKB=1 KUISKB=0 KRUNTIME=1 NRUNTIME=1  \
+   MRUNTIME=1 LDCTOP=0 X87=0  \
+   MFLOP=4.611200e+04,4.918613e+04
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+rm: cannot remove 'res/cguMMRES.sum': No such file or directory
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+./xgmmsearch -p c -b 80 -o res/cguMMRES.sum
+READ IN NUMBER OF GEMM REGISTERS = 16, MACC=1, lat=8:
+READ IN MU=3, NU=2 FROM REAL, nb=80, mf=5327.02
+TRYING KUs FOR NB=80, PF=0, MU=3, NU=2 MACC=0, LAT=8:
+   KU=1, lat=6, mf=3803.05
+   KU=40, lat=8, mf=5444.96
+   KU=80, lat=8, mf=5432.10
+   KU=2, lat=8, mf=5088.22
+   KU=4, lat=8, mf=5232.57
+   KU=6, lat=8, mf=5269.94
+   KU=8, lat=8, mf=5444.96
+   KU=8, lat=8, mf=5444.96
+   KU=16, lat=8, mf=5385.34
+   KU=24, lat=8, mf=5505.91
+   KU=32, lat=8, mf=5405.07
+BEST KU=24, lat=8 (5505.91)
+FINDING BEST FETCH PATTERN FOR nb=80, mu=3, nu=2, ku=24
+   ifetch= 2, nfetch= 1, mf=5568.24
+   ifetch= 2, nfetch= 2, mf=5485.44
+   ifetch= 3, nfetch= 1, mf=5327.02
+   ifetch= 3, nfetch= 2, mf=5424.94
+   ifetch= 4, nfetch= 1, mf=5444.96
+   ifetch= 5, nfetch= 1, mf=5424.94
+   best case retimed as mf=5346.32
+BEST IFETCH=2, NFETCH=1 (5346.32)
+TRYING LOAD-AT-TOP (load-at-bottom 5346.32)
+   load-at-top, mf=5485.44
+SWITCHING TO LOAD-AT-TOP
+TRYING SWAP OF MACC (present, madd=0, lat=8, mf=5485.44)
+   macc=1, lat=8, mf=5405.07
+KEEPING MACC SETTING.
+
+SELECTED GENERATED KERNEL:
+ID=0 ROUT='sgmm.c' AUTH='Whaley/emit_mm' TA='T' TB='N' \
+   MULADD=0 PREF=0 LAT=8 NFTCH=1 IFTCH=2 FFTCH=1 KBMAX=0 KBMIN=0 KU=24  \
+   NU=2 MU=3 MB=80 NB=80 KB=80 L14NB=0 PFBCOLS=0 PFABLK=0 PFACOLS=0 STFLOAT=0  \
+   LDFLOAT=0 AOUTER=0 LDAB=1 BETAN1=0 LDISKB=1 KUISKB=0 KRUNTIME=0 NRUNTIME=0  \
+   MRUNTIME=0 LDCTOP=1 X87=0  \
+   MFLOP=5.485442e+03
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+3094 of /home/aposta/sc17/ATLAS//tune/blas/gemm/mmcuncpsearch.c
+   pre=c, loopO=JIK, ta=N tb=N, mb=76, nb=76, kb=76, lda=0, ldb=76, ldc=76
+   mu=3, nu=2, ku=76, muladd=1, lat=8 ====> mflop=4919.458000
+   pre=c, loopO=JIK, ta=N tb=N, mb=76, nb=76, kb=76, lda=0, ldb=76, ldc=76
+   mu=3, nu=2, ku=76, muladd=1, lat=8 ====> mflop=4919.458000
+   pre=c, loopO=JIK, ta=N tb=N, mb=72, nb=72, kb=72, lda=0, ldb=72, ldc=72
+   mu=3, nu=2, ku=72, muladd=1, lat=8 ====> mflop=5036.937000
+   pre=c, loopO=JIK, ta=N tb=N, mb=68, nb=68, kb=68, lda=0, ldb=68, ldc=68
+   mu=3, nu=2, ku=68, muladd=1, lat=8 ====> mflop=5107.072000
+   pre=c, loopO=JIK, ta=N tb=N, mb=64, nb=64, kb=64, lda=0, ldb=64, ldc=64
+   mu=3, nu=2, ku=64, muladd=1, lat=8 ====> mflop=5038.891000
+   pre=c, loopO=JIK, ta=N tb=N, mb=60, nb=60, kb=60, lda=0, ldb=60, ldc=60
+   mu=3, nu=2, ku=60, muladd=1, lat=8 ====> mflop=5197.690000
+   pre=c, loopO=JIK, ta=N tb=N, mb=56, nb=56, kb=56, lda=0, ldb=56, ldc=56
+   mu=3, nu=2, ku=56, muladd=1, lat=8 ====> mflop=5291.140000
+   pre=c, loopO=JIK, ta=N tb=N, mb=52, nb=52, kb=52, lda=0, ldb=52, ldc=52
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5310.734000
+   pre=c, loopO=JIK, ta=N tb=N, mb=48, nb=48, kb=48, lda=0, ldb=48, ldc=48
+   mu=3, nu=2, ku=48, muladd=1, lat=8 ====> mflop=5235.472000
+   pre=c, loopO=JIK, ta=N tb=N, mb=44, nb=44, kb=44, lda=0, ldb=44, ldc=44
+   mu=3, nu=2, ku=44, muladd=1, lat=8 ====> mflop=5198.624000
+   pre=c, loopO=JIK, ta=N tb=N, mb=40, nb=40, kb=40, lda=0, ldb=40, ldc=40
+   mu=3, nu=2, ku=40, muladd=1, lat=8 ====> mflop=5273.143000
+   pre=c, loopO=JIK, ta=N tb=N, mb=36, nb=36, kb=36, lda=0, ldb=36, ldc=36
+   mu=3, nu=2, ku=36, muladd=1, lat=8 ====> mflop=5198.858000
+   pre=c, loopO=JIK, ta=N tb=N, mb=32, nb=32, kb=32, lda=0, ldb=32, ldc=32
+   mu=3, nu=2, ku=32, muladd=1, lat=8 ====> mflop=5126.827000
+   pre=c, loopO=JIK, ta=N tb=N, mb=28, nb=28, kb=28, lda=0, ldb=28, ldc=28
+   mu=3, nu=2, ku=28, muladd=1, lat=8 ====> mflop=5022.229000
+   pre=c, loopO=JIK, ta=N tb=N, mb=24, nb=24, kb=24, lda=0, ldb=24, ldc=24
+   mu=3, nu=2, ku=24, muladd=1, lat=8 ====> mflop=4971.520000
+   pre=c, loopO=JIK, ta=N tb=N, mb=20, nb=20, kb=20, lda=0, ldb=20, ldc=20
+   mu=3, nu=2, ku=20, muladd=1, lat=8 ====> mflop=4921.867000
+   pre=c, loopO=JIK, ta=N tb=N, mb=16, nb=16, kb=16, lda=0, ldb=16, ldc=16
+   mu=3, nu=2, ku=16, muladd=1, lat=8 ====> mflop=4687.488000
+   pre=c, loopO=JIK, ta=N tb=N, mb=52, nb=52, kb=52, lda=0, ldb=52, ldc=52
+   mu=3, nu=2, ku=16, muladd=1, lat=8 ====> mflop=5310.734000
+
+cNB = 76 (5017.85), No copy cNB = 52 (5310.73)
+
+   pre=c, loopO=JIK, ta=N tb=N, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5180.295000
+   pre=c, loopO=JIK, ta=N tb=N, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=1, muladd=1, lat=8 ====> mflop=5073.485000
+   pre=c, loopO=JIK, ta=N tb=N, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=8 ====> mflop=5310.734000
+   pre=c, loopO=JIK, ta=N tb=N, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5180.295000
+   pre=c, loopO=JIK, ta=N tb=N, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=2 ====> mflop=5235.404000
+   pre=c, loopO=JIK, ta=N tb=N, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=3 ====> mflop=5291.699000
+   pre=c, loopO=JIK, ta=N tb=N, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=4 ====> mflop=5254.036000
+   pre=c, loopO=JIK, ta=N tb=N, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=6 ====> mflop=5329.906000
+   pre=c, loopO=JIK, ta=N tb=N, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=8 ====> mflop=5310.734000
+BEST for NN_52x52x52: mflop=5329.91
+pre=c ta=N tb=N nb=52 mu=3 nu=2 ku=4 muladd=1 lat=6
+   pre=c, loopO=JIK, ta=N tb=N, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5073.485000
+   pre=c, loopO=JIK, ta=N tb=N, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=1, muladd=1, lat=8 ====> mflop=5021.714000
+   pre=c, loopO=JIK, ta=N tb=N, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=8 ====> mflop=5272.800000
+   pre=c, loopO=JIK, ta=N tb=N, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5073.485000
+   pre=c, loopO=JIK, ta=N tb=N, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=2 ====> mflop=5349.217000
+   pre=c, loopO=JIK, ta=N tb=N, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=3 ====> mflop=5272.800000
+   pre=c, loopO=JIK, ta=N tb=N, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=4 ====> mflop=5310.734000
+   pre=c, loopO=JIK, ta=N tb=N, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=6 ====> mflop=5310.734000
+   pre=c, loopO=JIK, ta=N tb=N, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=8 ====> mflop=5272.800000
+BEST for NN_0x0x52: mflop=5349.22
+pre=c ta=N tb=N nb=0 mu=3 nu=2 ku=4 muladd=1 lat=2
+   pre=c, loopO=JIK, ta=N tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=1, lat=8 ====> mflop=5368.669000
+   pre=c, loopO=JIK, ta=N tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=1, muladd=1, lat=8 ====> mflop=4987.784000
+   pre=c, loopO=JIK, ta=N tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=8 ====> mflop=5291.699000
+   pre=c, loopO=JIK, ta=N tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=8, muladd=1, lat=8 ====> mflop=5180.295000
+   pre=c, loopO=JIK, ta=N tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=12, muladd=1, lat=8 ====> mflop=5198.535000
+   pre=c, loopO=JIK, ta=N tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=1, lat=2 ====> mflop=5216.905000
+   pre=c, loopO=JIK, ta=N tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=1, lat=3 ====> mflop=5254.036000
+   pre=c, loopO=JIK, ta=N tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=1, lat=6 ====> mflop=5254.036000
+BEST for NN_0x0x0: mflop=5368.67
+pre=c ta=N tb=N nb=0 mu=3 nu=2 ku=16 muladd=1 lat=8
+   pre=c, loopO=JIK, ta=N tb=T, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5329.906000
+   pre=c, loopO=JIK, ta=N tb=T, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=1, muladd=1, lat=8 ====> mflop=5021.714000
+   pre=c, loopO=JIK, ta=N tb=T, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=8 ====> mflop=5090.979000
+   pre=c, loopO=JIK, ta=N tb=T, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5329.906000
+   pre=c, loopO=JIK, ta=N tb=T, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=2 ====> mflop=5310.734000
+   pre=c, loopO=JIK, ta=N tb=T, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=3 ====> mflop=5272.800000
+   pre=c, loopO=JIK, ta=N tb=T, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=4 ====> mflop=5368.669000
+   pre=c, loopO=JIK, ta=N tb=T, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=6 ====> mflop=5427.882000
+   pre=c, loopO=JIK, ta=N tb=T, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5329.906000
+BEST for NT_52x52x52: mflop=5427.88
+pre=c ta=N tb=T nb=52 mu=3 nu=2 ku=52 muladd=1 lat=6
+   pre=c, loopO=JIK, ta=N tb=T, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5272.800000
+   pre=c, loopO=JIK, ta=N tb=T, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=1, muladd=1, lat=8 ====> mflop=4987.784000
+   pre=c, loopO=JIK, ta=N tb=T, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=8 ====> mflop=5180.295000
+   pre=c, loopO=JIK, ta=N tb=T, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5272.800000
+   pre=c, loopO=JIK, ta=N tb=T, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=2 ====> mflop=5408.000000
+   pre=c, loopO=JIK, ta=N tb=T, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=3 ====> mflop=5291.699000
+   pre=c, loopO=JIK, ta=N tb=T, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=4 ====> mflop=5329.906000
+   pre=c, loopO=JIK, ta=N tb=T, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=6 ====> mflop=5329.906000
+   pre=c, loopO=JIK, ta=N tb=T, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5272.800000
+BEST for NT_0x0x52: mflop=5408.00
+pre=c ta=N tb=T nb=0 mu=3 nu=2 ku=52 muladd=1 lat=2
+   pre=c, loopO=JIK, ta=N tb=T, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=1, lat=8 ====> mflop=5329.906000
+   pre=c, loopO=JIK, ta=N tb=T, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=1, muladd=1, lat=8 ====> mflop=5090.979000
+   pre=c, loopO=JIK, ta=N tb=T, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=8 ====> mflop=5198.535000
+   pre=c, loopO=JIK, ta=N tb=T, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=8, muladd=1, lat=8 ====> mflop=5021.714000
+   pre=c, loopO=JIK, ta=N tb=T, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=12, muladd=1, lat=8 ====> mflop=5310.734000
+   pre=c, loopO=JIK, ta=N tb=T, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=1, lat=2 ====> mflop=5349.217000
+   pre=c, loopO=JIK, ta=N tb=T, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=1, lat=3 ====> mflop=5272.800000
+   pre=c, loopO=JIK, ta=N tb=T, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=1, lat=6 ====> mflop=5329.906000
+BEST for NT_0x0x0: mflop=5349.22
+pre=c ta=N tb=T nb=0 mu=3 nu=2 ku=16 muladd=1 lat=2
+   pre=c, loopO=JIK, ta=T tb=N, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5310.734000
+   pre=c, loopO=JIK, ta=T tb=N, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=1, muladd=1, lat=8 ====> mflop=5090.979000
+   pre=c, loopO=JIK, ta=T tb=N, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=8 ====> mflop=5291.699000
+   pre=c, loopO=JIK, ta=T tb=N, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5310.734000
+   pre=c, loopO=JIK, ta=T tb=N, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=2 ====> mflop=5235.404000
+   pre=c, loopO=JIK, ta=T tb=N, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=3 ====> mflop=5162.182000
+   pre=c, loopO=JIK, ta=T tb=N, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=4 ====> mflop=5272.800000
+   pre=c, loopO=JIK, ta=T tb=N, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=6 ====> mflop=5272.800000
+   pre=c, loopO=JIK, ta=T tb=N, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5310.734000
+BEST for TN_52x52x52: mflop=5310.73
+pre=c ta=T tb=N nb=52 mu=3 nu=2 ku=52 muladd=1 lat=8
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5090.979000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=1, muladd=1, lat=8 ====> mflop=5216.905000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=8 ====> mflop=5329.906000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5090.979000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=2 ====> mflop=5368.669000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=3 ====> mflop=5272.800000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=4 ====> mflop=5388.263000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=6 ====> mflop=5291.699000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=8 ====> mflop=5329.906000
+BEST for TN_0x0x52: mflop=5388.26
+pre=c ta=T tb=N nb=0 mu=3 nu=2 ku=4 muladd=1 lat=4
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=1, lat=8 ====> mflop=5310.734000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=1, muladd=1, lat=8 ====> mflop=4872.554000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=8 ====> mflop=5310.734000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=8, muladd=1, lat=8 ====> mflop=5291.699000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=12, muladd=1, lat=8 ====> mflop=5368.669000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=12, muladd=1, lat=2 ====> mflop=5368.669000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=12, muladd=1, lat=3 ====> mflop=5368.669000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=12, muladd=1, lat=6 ====> mflop=5368.669000
+BEST for TN_0x0x0: mflop=5368.67
+pre=c ta=T tb=N nb=0 mu=3 nu=2 ku=12 muladd=1 lat=8
+   pre=c, loopO=JIK, ta=T tb=T, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5180.295000
+   pre=c, loopO=JIK, ta=T tb=T, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=1, muladd=1, lat=8 ====> mflop=5038.853000
+   pre=c, loopO=JIK, ta=T tb=T, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=8 ====> mflop=5254.036000
+   pre=c, loopO=JIK, ta=T tb=T, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5180.295000
+   pre=c, loopO=JIK, ta=T tb=T, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=2 ====> mflop=5235.404000
+   pre=c, loopO=JIK, ta=T tb=T, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=3 ====> mflop=5235.404000
+   pre=c, loopO=JIK, ta=T tb=T, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=4 ====> mflop=5349.217000
+   pre=c, loopO=JIK, ta=T tb=T, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=6 ====> mflop=5235.404000
+   pre=c, loopO=JIK, ta=T tb=T, mb=52, nb=52, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=8 ====> mflop=5254.036000
+BEST for TT_52x52x52: mflop=5349.22
+pre=c ta=T tb=T nb=52 mu=3 nu=2 ku=4 muladd=1 lat=4
+   pre=c, loopO=JIK, ta=T tb=T, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5349.217000
+   pre=c, loopO=JIK, ta=T tb=T, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=1, muladd=1, lat=8 ====> mflop=4937.739000
+   pre=c, loopO=JIK, ta=T tb=T, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=8 ====> mflop=5272.800000
+   pre=c, loopO=JIK, ta=T tb=T, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5349.217000
+   pre=c, loopO=JIK, ta=T tb=T, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=2 ====> mflop=5235.404000
+   pre=c, loopO=JIK, ta=T tb=T, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=3 ====> mflop=5254.036000
+   pre=c, loopO=JIK, ta=T tb=T, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=4 ====> mflop=5329.906000
+   pre=c, loopO=JIK, ta=T tb=T, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=6 ====> mflop=5254.036000
+   pre=c, loopO=JIK, ta=T tb=T, mb=0, nb=0, kb=52, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=52, muladd=1, lat=8 ====> mflop=5349.217000
+BEST for TT_0x0x52: mflop=5349.22
+pre=c ta=T tb=T nb=0 mu=3 nu=2 ku=52 muladd=1 lat=8
+   pre=c, loopO=JIK, ta=T tb=T, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=1, lat=8 ====> mflop=5272.800000
+   pre=c, loopO3098 of /home/aposta/sc17/ATLAS//tune/blas/gemm/mmcuncpsearch.c
+=JIK, ta=T tb=T, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=1, muladd=1, lat=8 ====> mflop=4954.309000
+   pre=c, loopO=JIK, ta=T tb=T, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=4, muladd=1, lat=8 ====> mflop=5272.800000
+   pre=c, loopO=JIK, ta=T tb=T, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=8, muladd=1, lat=8 ====> mflop=5291.699000
+   pre=c, loopO=JIK, ta=T tb=T, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=12, muladd=1, lat=8 ====> mflop=5216.905000
+   pre=c, loopO=JIK, ta=T tb=T, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=8, muladd=1, lat=2 ====> mflop=5216.905000
+   pre=c, loopO=JIK, ta=T tb=T, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=8, muladd=1, lat=3 ====> mflop=5216.905000
+   pre=c, loopO=JIK, ta=T tb=T, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=8, muladd=1, lat=6 ====> mflop=5254.036000
+BEST for TT_0x0x0: mflop=5291.70
+pre=c ta=T tb=T nb=0 mu=3 nu=2 ku=8 muladd=1 lat=8
+3061 of /home/aposta/sc17/ATLAS//tune/blas/gemm/mmcuncpsearch.c
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+./xummsearch -p c -n 80 -C m
+SUCCESSFUL FINISH FOR ./xummsearch
+
+
+BEST OF USER CASES AND EXTERNAL SEARCHES:
+ID=8 ROUT='CASES/ATL_amm4x2xVL_simd.c' AUTH='R. Clint Whaley' TA='T' TB='N' \
+   MULADD=1 PREF=0 LAT=8 NFTCH=0 IFTCH=0 FFTCH=0 KBMAX=0 KBMIN=0 KU=8 NU=2  \
+   MU=4 MB=80 NB=80 KB=80 L14NB=0 PFBCOLS=0 PFABLK=0 PFACOLS=0 STFLOAT=0  \
+   LDFLOAT=0 AOUTER=0 LDAB=1 BETAN1=0 LDISKB=1 KUISKB=0 KRUNTIME=1 NRUNTIME=1  \
+   MRUNTIME=1 LDCTOP=0 X87=0  \
+   MFLOP=4.611200e+04,4.918613e+04
+  1: 326:0, -8.0 311:0, -8.0 309:0, -8.0 201:0, -8.0 
+  2: 226:0, -8.0 223:0, -8.0 
+  4: 329:0, -8.0 324:0, -8.0 308:0, -8.0 307:0, -8.0 306:0, -8.0 225:0, -8.0 224:0, -8.0 222:0, -8.0 215:1, -8.0 211:1, -8.0  15:0, -8.0  14:0, -8.0   8:0, -8.0   5:0, -8.0   3:0, -8.0   1:0, -8.0 
+  6: 319:1, -8.0 220:0, -8.0 
+  8: 332:0, -8.0 328:0, -8.0 321:0, -8.0  11:0, -8.0  10:0, -8.0   9:0, -8.0 
+ 10: 221:0, -8.0 
+ 14: 218:0, -8.0 
+
+  1: 326:0,3992.7 311:0,4102.3 309:0, -1.0 201:0, -1.0 
+  2: 226:0, -1.0 223:0,8202.5 
+  4: 329:0, -1.0 324:0, -1.0 308:0, -1.0 307:0, -1.0 306:0,4799.6 225:0,37900.6 224:0,34070.9 222:0,5613.4 215:1, -1.0 211:1, -1.0  15:0,39660.6  14:0,38250.6   8:0,45723.6   5:0,4899.0   3:0,4575.1   1:0,4333.6 
+  6: 319:1, -1.0 220:0,4899.5 
+  8: 332:0, -1.0 328:0,3666.5 321:0,4082.3  11:0, -1.0  10:0, -1.0   9:0, -1.0 
+ 10: 221:0,5044.4 
+ 14: 218:0,4753.9 
+
+  1: 311:0,4102.3 
+  2: 223:0,8202.5 
+  4:   8:0,45723.6 
+
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+
+
+STARTING CLEANUP SEARCH
+
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=80, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5327.018000
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=0, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5385.343000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5405.070000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=0, lat=6 ====> mflop=5327.018000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=1, muladd=0, lat=6 ====> mflop=5195.718000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=79, lda=79, ldb=79, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5467.970000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=0, lat=6 ====> mflop=5327.018000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=1, muladd=0, lat=6 ====> mflop=5195.718000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=78, lda=78, ldb=78, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5385.530000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=0, lat=6 ====> mflop=5327.018000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=1, muladd=0, lat=6 ====> mflop=5195.718000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=77, lda=77, ldb=77, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5408.164000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=0, lat=6 ====> mflop=5327.018000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=1, muladd=0, lat=6 ====> mflop=5195.718000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=76, lda=76, ldb=76, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5425.506000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=0, lat=6 ====> mflop=5327.018000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=1, muladd=0, lat=6 ====> mflop=5195.718000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=75, lda=75, ldb=75, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5311.079000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=0, lat=6 ====> mflop=5327.018000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=0, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=1, muladd=0, lat=6 ====> mflop=5195.718000
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=80, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5366.225000
+   CleanM: 70x80x80 : 5366.23
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=80, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5234.383000
+   CleanM: 40x80x80 : 5234.38
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=80, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5144.262000
+   CleanM: 16x80x80 : 5144.26
+   pMBmm_1: user=4102.30  generated=5248.29
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=80, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5366.225000
+   CleanM: 70x80x80 : 5366.23
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=80, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5234.383000
+   CleanM: 40x80x80 : 5234.38
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=80, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5144.262000
+   CleanM: 16x80x80 : 5144.26
+   pMBmm_2: user=8202.54  generated=5248.29
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=80, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5272.137000
+   CleanM: 68x80x80 : 5272.14
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=80, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5234.383000
+   CleanM: 40x80x80 : 5make[4]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+./xummsearch -p c -n 80 -C n
+SUCCESSFUL FINISH FOR ./xummsearch
+
+
+BEST OF USER CASES AND EXTERNAL SEARCHES:
+ID=8 ROUT='CASES/ATL_amm4x2xVL_simd.c' AUTH='R. Clint Whaley' TA='T' TB='N' \
+   MULADD=1 PREF=0 LAT=8 NFTCH=0 IFTCH=0 FFTCH=0 KBMAX=0 KBMIN=0 KU=8 NU=2  \
+   MU=4 MB=80 NB=80 KB=80 L14NB=0 PFBCOLS=0 PFABLK=0 PFACOLS=0 STFLOAT=0  \
+   LDFLOAT=0 AOUTER=0 LDAB=1 BETAN1=0 LDISKB=1 KUISKB=0 KRUNTIME=1 NRUNTIME=1  \
+   MRUNTIME=1 LDCTOP=0 X87=0  \
+   MFLOP=4.611200e+04,4.918613e+04
+  1: 326:0, -8.0 311:0, -8.0 309:0, -8.0 222:0, -8.0 221:0, -8.0 215:1, -8.0 211:1, -8.0 201:0, -8.0 
+  2: 332:0, -8.0 225:0, -8.0 224:0, -8.0 223:0, -8.0   9:0, -8.0   8:0, -8.0 
+  3:  13:0, -8.0   6:0, -8.0 
+  4: 329:0, -8.0 324:0, -8.0 308:0, -8.0 307:0, -8.0 306:0, -8.0 226:0, -8.0  14:0, -8.0  10:0, -8.0   5:0, -8.0   3:0, -8.0   1:0, -8.0 
+  5:  15:0, -8.0  11:0, -8.0 
+  6:  16:0, -8.0  12:0, -8.0 
+  8: 328:0, -8.0 321:0, -8.0 
+
+  1: 326:0, -1.0 311:0, -1.0 309:0, -1.0 222:0,5542.4 221:0,4943.3 215:1, -1.0 211:1, -1.0 201:0, -1.0 
+  2: 332:0, -1.0 225:0,36690.6 224:0,33093.2 223:0,8127.8   9:0, -1.0   8:0,44544.8 
+  3:  13:0,41414.8   6:0,4882.6 
+  4: 329:0, -1.0 324:0, -1.0 308:0, -1.0 307:0, -1.0 306:0,4834.9 226:0, -1.0  14:0,37614.8  10:0, -1.0   5:0,4819.1   3:0,4523.8   1:0,4330.9 
+  5:  15:0,40024.9  11:0, -1.0 
+  6:  16:0,37964.5  12:0, -1.0 
+  8: 328:0,3663.7 321:0,4037.4 
+
+  1: 222:0,5542.4 
+  2:   8:0,44544.8 
+  3:  13:0,41414.8 
+  5:  15:0,40024.9 
+
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+./xummsearch -p c -n 80 -C k
+SUCCESSFUL FINISH FOR ./xummsearch
+
+
+BEST OF USER CASES AND EXTERNAL SEARCHES:
+ID=8 ROUT='CASES/ATL_amm4x2xVL_simd.c' AUTH='R. Clint Whaley' TA='T' TB='N' \
+   MULADD=1 PREF=0 LAT=8 NFTCH=0 IFTCH=0 FFTCH=0 KBMAX=0 KBMIN=0 KU=8 NU=2  \
+   MU=4 MB=80 NB=80 KB=80 L14NB=0 PFBCOLS=0 PFABLK=0 PFACOLS=0 STFLOAT=0  \
+   LDFLOAT=0 AOUTER=0 LDAB=1 BETAN1=0 LDISKB=1 KUISKB=0 KRUNTIME=1 NRUNTIME=1  \
+   MRUNTIME=1 LDCTOP=0 X87=0  \
+   MFLOP=4.611200e+04,4.918613e+04
+  1: 326:0, -8.0 311:0, -8.0   3:1, -8.0   1:0, -8.0 
+  2: 328:0, -8.0 321:0, -8.0 
+  4: 332:1, -8.0 329:1, -8.0 309:1, -8.0 308:1, -8.0 226:1, -8.0 223:1, -8.0 222:1, -8.0 221:1, -8.0 215:1, -8.0 211:1, -8.0 201:1, -8.0 
+  8: 306:1, -8.0 225:1, -8.0 224:1, -8.0   5:1, -8.0 
+ 16: 324:1, -8.0 307:1, -8.0  15:1, -8.0  14:1, -8.0  11:1, -8.0  10:1, -8.0   9:1, -8.0   8:1, -8.0 
+ 56: 206:2, -8.0 205:2, -8.0 
+ 60: 208:2, -8.0 207:2, -8.0 
+ 64: 210:2, -8.0 209:2, -8.0 
+
+  1: 326:0, -1.0 311:0, -1.0   3:1,4512.5   1:0,4190.2 
+  2: 328:0,3617.1 321:0,3980.8 
+  4: 332:1, -1.0 329:1, -1.0 309:1, -1.0 308:1, -1.0 226:1, -1.0 223:1,8247.8 222:1,5218.8 221:1,5344.2 215:1, -1.0 211:1, -1.0 201:1, -1.0 
+  8: 306:1,4758.7 225:1,31003.0 224:1,26504.2   5:1,4773.1 
+ 16: 324:1, -1.0 307:1, -1.0  15:1,33965.4  14:1,32141.7  11:1, -1.0  10:1, -1.0   9:1, -1.0   8:1,32733.8 
+ 56: 206:2,8338.4 205:2,7416.5 
+ 60: 208:2,8483.3 207:2,7235.8 
+ 64: 210:2,8683.5 209:2,7344.3 
+
+  1:   3:1,4512.5 
+  4: 223:1,8247.8 
+  8: 225:1,31003.0 
+ 16:  15:1,33965.4 
+ 60: 208:2,8483.3 
+
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+234.38
+   pre=c, loopO=JIK, ta=T tb=N, mb=0, nb=80, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5144.262000
+   CleanM: 16x80x80 : 5144.26
+   pMBmm_4: user=45723.64  generated=5216.93
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=0, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5327.480000
+   CleanN: 80x70x80 : 5327.48
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=0, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5309.698000
+   CleanN: 80x40x80 : 5309.70
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=0, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5329.975000
+   CleanN: 80x16x80 : 5329.98
+   pNBmm_1: user=5542.41  generated=5322.38
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=0, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5327.480000
+   CleanN: 80x70x80 : 5327.48
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=0, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5309.698000
+   CleanN: 80x40x80 : 5309.70
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=0, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5329.975000
+   CleanN: 80x16x80 : 5329.98
+   pNBmm_2: user=44544.80  generated=5322.38
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=0, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5425.835000
+   CleanN: 80x69x80 : 5425.84
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=0, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5549.377000
+   CleanN: 80x39x80 : 5549.38
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=0, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5291.768000
+   CleanN: 80x18x80 : 5291.77
+   pNBmm_3: user=41414.85  generated=5422.33
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=0, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5327.480000
+   CleanN: 80x70x80 : 5327.48
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=0, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5309.698000
+   CleanN: 80x40x80 : 5309.70
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=0, kb=80, lda=80, ldb=80, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=8 ====> mflop=5388.146000
+   CleanN: 80x20x80 : 5388.15
+   pNBmm_5: user=40024.89  generated=5341.77
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=80, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=6 ====> mflop=5385.810000
+   CleanK: 80x80x70 : 5385.81
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=80, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=6 ====> mflop=5387.212000
+   CleanK: 80x80x40 : 5387.21
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=80, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=0, lat=6 ====> mflop=5291.768000
+   CleanK: 80x80x16 : 5291.77
+   pKBmm_1: user=4512.54  generated=5354.93
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=80, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=6 ====> mflop=5487.726000
+   CleanK: 80x80x68 : 5487.73
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=80, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=6 ====> mflop=5387.212000
+   CleanK: 80x80x40 : 5387.21
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=80, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=0, lat=6 ====> mflop=5291.768000
+   CleanK: 80x80x16 : 5291.77
+   pKBmm_4: user=8247.80  generated=5388.90
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=80, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=6 ====> mflop=5467.401000
+   CleanK: 80x80x64 : 5467.40
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=80, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=6 ====> mflop=5387.212000
+   CleanK: 80x80x40 : 5387.21
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=80, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=0, lat=6 ====> mflop=5291.768000
+   CleanK: 80x80x16 : 5291.77
+   pKBmm_8: user=31003.03  generated=5382.13
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=80, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=24, mula3065 of /home/aposta/sc17/ATLAS//tune/blas/gemm/mmcuncpsearch.c
+dd=0, lat=6 ====> mflop=5467.401000
+   CleanK: 80x80x64 : 5467.40
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=80, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=6 ====> mflop=5310.066000
+   CleanK: 80x80x32 : 5310.07
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=80, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=16, muladd=0, lat=6 ====> mflop=5291.768000
+   CleanK: 80x80x16 : 5291.77
+   pKBmm_16: user=33965.42  generated=5356.41
+   pre=c, loopO=JIK, ta=T tb=N, mb=80, nb=80, kb=0, lda=0, ldb=0, ldc=0
+   mu=3, nu=2, ku=24, muladd=0, lat=6 ====> mflop=5328.866000
+   CleanK: 80x80x60 : 5328.87
+   pKBmm_60: user=8483.31  generated=5328.87
+
+
+DONE CLEANUP SEARCH
+
+
+INVOKING GMMSEARCH.C, PRE='c'
+
+DONE GMMSEARCH.C, PRE='c'
+
+
+RUNNING EXTERNAL SEARCHES, PRE='c', NB=76:
+
+FORCING NB=80 GMMSEARCH.C, PRE='c'
+
+
+For this run, the best case found was NB=80 user case 8
+written by R. Clint Whaley, filename='CASES/ATL_amm4x2xVL_simd.c'.
+This gave a performance = 46112.000000 MFLOP.
+The necessary files have been created.  If you are happy with
+the above mflops for your system, type 'make cinstall'.
+
+make[3]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+cp /home/aposta/sc17/atlasBuild/tune/blas/gemm/res/cMMRES.sum INSTALL_LOG/.
+make[2]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+*      FINISHED ATLAS3.10.3 INSTALL OF SECTION 2-4-1 ON 08/11/2017 AT 02:56   *
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+
+
+
+make[2]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cp /home/aposta/sc17/atlasBuild/tune/blas/gemm/res/cNCNB INSTALL_LOG/.
+make[2]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+make[2]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cp /home/aposta/sc17/atlasBuild/tune/blas/gemm/res/cbestNN_52x52x52 INSTALL_LOG/.
+make[2]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+make[2]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cp /home/aposta/sc17/atlasBuild/tune/blas/gemm/res/cbestNT_52x52x52 INSTALL_LOG/.
+make[2]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+make[2]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cp /home/aposta/sc17/atlasBuild/tune/blas/gemm/res/cbestTN_52x52x52 INSTALL_LOG/.
+make[2]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+make[2]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cp /home/aposta/sc17/atlasBuild/tune/blas/gemm/res/cbestTT_52x52x52 INSTALL_LOG/.
+make[2]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+make[2]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/tune/blas/gemm ; make cinstall
+make[3]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+./xemit_mm  -p c -R -2
+pre=c, CU=0, ma=0, ff=0, if=-1, nf=-1, lo=1, ta=112, tb=111, lat=4, mu=4, nu=4, ku=1, m=0, n=0, k=0, lda=0, ldb=0, ldc=0, csA=1, csB=1, csC=1, alpha=1, beta=1
+
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+make[4]: 'xummsearch' is up to date.
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+4099 of /home/aposta/sc17/ATLAS//tune/blas/gemm/emit_mm.c
+4021 of /home/aposta/sc17/ATLAS//tune/blas/gemm/emit_mm.c
+3979 of /home/aposta/sc17/ATLAS//tune/blas/gemm/emit_mm.c
+4000 of /home/aposta/sc17/ATLAS//tune/blas/gemm/emit_mm.c
+4070 of /home/aposta/sc17/ATLAS//tune/blas/gemm/emit_mm.c
+4086 of /home/aposta/sc17/ATLAS//tune/blas/gemm/emit_mm.c
+4103 of /home/aposta/sc17/ATLAS//tune/blas/gemm/emit_mm.c
+4107 of /home/aposta/sc17/ATLAS//tune/blas/gemm/emit_mm.c
+4110 of /home/aposta/sc17/ATLAS//tune/blas/gemm/emit_mm.c
+line 3810 of /home/aposta/sc17/ATLAS//tune/blas/gemm/emit_mm.c
+line 3812 of /home/aposta/sc17/ATLAS//tune/blas/gemm/emit_mm.c
+line 3814 of /home/aposta/sc17/ATLAS//tune/blas/gemm/emit_mm.c
+4114 of /home/aposta/sc17/ATLAS//tune/blas/gemm/emit_mm.c
+mv -f cmm.h /home/aposta/sc17/atlasBuild/include/.
+mv -f atlas_cNCmm.h /home/aposta/sc17/atlasBuild/include/.
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL ; rm -f ATL_c*.o
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL ; rm -f ATL_c*
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL ; rm -f cMakefile xccobj
+cd KERNEL ; mv -f ATL_c*.c /home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL/.
+mv -f KERNEL/cMakefile /home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL/.
+if [ -s "xccobj.exe" ] ; then \
+   cp -f xccobj.exe /home/aposta/sc17/atlasBuild/src/blas/gemm/. ; \
+elif [ -s "xccobj" ]; then \
+           cp -f xccobj /home/aposta/sc17/atlasBuild/src/blas/gemm/. ; \
+        fi
+make cmmlib
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make clib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make auxillib ccleanuplib cusergemm
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd /home/aposta/sc17/atlasBuild/src/auxil ; make lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/auxil'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/auxil'
+cd KERNEL ; make -f cMakefile clib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL'
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNBmm_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNBmm_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNBmm_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCCUmmNN.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCCUmmNN_K.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmNN_a1_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmNN_aX_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmNN_a1_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmNN_aX_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmNN_a1_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmNN_aX_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCCUmmNT.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCCUmmNT_K.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmNT_a1_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmNT_aX_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmNT_a1_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmNT_aX_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmNT_a1_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmNT_aX_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCCUmmTN.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCCUmmTN_K.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmTN_a1_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmTN_aX_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmTN_a1_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmTN_aX_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmTN_a1_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmTN_aX_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCCUmmTT.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCCUmmTT_K.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmTT_a1_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmTT_aX_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmTT_a1_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmTT_aX_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmTT_a1_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cNCmmTT_aX_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupMBmm_b0.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=0 -c -x assembler-with-cpp ATL_cupMBmm0_2_0_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupMBmm0_4_0_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupMBmm_b1.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=1 -c -x assembler-with-cpp ATL_cupMBmm0_2_0_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupMBmm0_4_0_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupMBmm_bX.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=X -c -x assembler-with-cpp ATL_cupMBmm0_2_0_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupMBmm0_4_0_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupNBmm_b0.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=0 -c -x assembler-with-cpp ATL_cupNBmm0_1_0_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupNBmm0_2_0_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupNBmm0_3_0_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupNBmm0_5_0_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupNBmm_b1.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=1 -c -x assembler-with-cpp ATL_cupNBmm0_1_0_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupNBmm0_2_0_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupNBmm0_3_0_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupNBmm0_5_0_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupNBmm_bX.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=X -c -x assembler-with-cpp ATL_cupNBmm0_1_0_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupNBmm0_2_0_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupNBmm0_3_0_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupNBmm0_5_0_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupKBmm_b0.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=0 -c -x assembler-with-cpp ATL_cupKBmm4_4_1_b0.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=0 -c -x assembler-with-cpp ATL_cupKBmm12_4_1_b0.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=0 -c -x assembler-with-cpp ATL_cupKBmm20_4_1_b0.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=0 -c -x assembler-with-cpp ATL_cupKBmm28_4_1_b0.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=0 -c -x assembler-with-cpp ATL_cupKBmm36_4_1_b0.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=0 -c -x assembler-with-cpp ATL_cupKBmm44_4_1_b0.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=0 -c -x assembler-with-cpp ATL_cupKBmm52_4_1_b0.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=0 -c -x assembler-with-cpp ATL_cupKBmm68_4_1_b0.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=0 -c -x assembler-with-cpp ATL_cupKBmm76_4_1_b0.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=0 -c -x assembler-with-cpp -mavx ATL_cupKBmm8_8_1_b0.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=0 -c -x assembler-with-cpp -mavx ATL_cupKBmm24_8_1_b0.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=0 -c -x assembler-with-cpp -mavx ATL_cupKBmm40_8_1_b0.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=0 -c -x assembler-with-cpp -mavx ATL_cupKBmm56_8_1_b0.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=0 -c -x assembler-with-cpp -mavx ATL_cupKBmm72_8_1_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupKBmm16_16_1_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupKBmm32_16_1_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupKBmm48_16_1_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupKBmm64_16_1_b0.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_cupKBmm60_60_2_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupKBmm_b1.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=1 -c -x assembler-with-cpp ATL_cupKBmm4_4_1_b1.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=1 -c -x assembler-with-cpp ATL_cupKBmm12_4_1_b1.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=1 -c -x assembler-with-cpp ATL_cupKBmm20_4_1_b1.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=1 -c -x assembler-with-cpp ATL_cupKBmm28_4_1_b1.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=1 -c -x assembler-with-cpp ATL_cupKBmm36_4_1_b1.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=1 -c -x assembler-with-cpp ATL_cupKBmm44_4_1_b1.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=1 -c -x assembler-with-cpp ATL_cupKBmm52_4_1_b1.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=1 -c -x assembler-with-cpp ATL_cupKBmm68_4_1_b1.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=1 -c -x assembler-with-cpp ATL_cupKBmm76_4_1_b1.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=1 -c -x assembler-with-cpp -mavx ATL_cupKBmm8_8_1_b1.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=1 -c -x assembler-with-cpp -mavx ATL_cupKBmm24_8_1_b1.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=1 -c -x assembler-with-cpp -mavx ATL_cupKBmm40_8_1_b1.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=1 -c -x assembler-with-cpp -mavx ATL_cupKBmm56_8_1_b1.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=1 -c -x assembler-with-cpp -mavx ATL_cupKBmm72_8_1_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupKBmm16_16_1_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupKBmm32_16_1_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupKBmm48_16_1_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupKBmm64_16_1_b1.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_cupKBmm60_60_2_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupKBmm_bX.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=X -c -x assembler-with-cpp ATL_cupKBmm4_4_1_bX.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=X -c -x assembler-with-cpp ATL_cupKBmm12_4_1_bX.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=X -c -x assembler-with-cpp ATL_cupKBmm20_4_1_bX.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=X -c -x assembler-with-cpp ATL_cupKBmm28_4_1_bX.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=X -c -x assembler-with-cpp ATL_cupKBmm36_4_1_bX.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=X -c -x assembler-with-cpp ATL_cupKBmm44_4_1_bX.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=X -c -x assembler-with-cpp ATL_cupKBmm52_4_1_bX.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=X -c -x assembler-with-cpp ATL_cupKBmm68_4_1_bX.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=X -c -x assembler-with-cpp ATL_cupKBmm76_4_1_bX.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=X -c -x assembler-with-cpp -mavx ATL_cupKBmm8_8_1_bX.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=X -c -x assembler-with-cpp -mavx ATL_cupKBmm24_8_1_bX.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=X -c -x assembler-with-cpp -mavx ATL_cupKBmm40_8_1_bX.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=X -c -x assembler-with-cpp -mavx ATL_cupKBmm56_8_1_bX.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=X -c -x assembler-with-cpp -mavx ATL_cupKBmm72_8_1_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupKBmm16_16_1_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupKBmm32_16_1_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupKBmm48_16_1_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cupKBmm64_16_1_bX.c
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -DATL_BETA=X -c -fomit-frame-pointer -O ATL_cupKBmm60_60_2_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cgpMBmm_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cgpNBmm_b0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cgpMBmm_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cgpNBmm_b1.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cgpMBmm_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cgpNBmm_bX.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cgpKBmm0.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cgpKBmm76.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cgpKBmm77.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cgpKBmm78.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cgpKBmm79.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cgpKBmm80.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c ATL_cgpKBmm.c
+ar r /home/aposta/sc17/atlasBuild/lib/libatlas.a ATL_cNBmm_b0.o ATL_cNBmm_b1.o ATL_cNBmm_bX.o ATL_cNCCUmmNN.o ATL_cNCCUmmNN_K.o ATL_cNCmmNN_a1_b0.o ATL_cNCmmNN_aX_b0.o ATL_cNCmmNN_a1_b1.o ATL_cNCmmNN_aX_b1.o ATL_cNCmmNN_a1_bX.o ATL_cNCmmNN_aX_bX.o ATL_cNCCUmmNT.o ATL_cNCCUmmNT_K.o ATL_cNCmmNT_a1_b0.o ATL_cNCmmNT_aX_b0.o ATL_cNCmmNT_a1_b1.o ATL_cNCmmNT_aX_b1.o ATL_cNCmmNT_a1_bX.o ATL_cNCmmNT_aX_bX.o ATL_cNCCUmmTN.o ATL_cNCCUmmTN_K.o ATL_cNCmmTN_a1_b0.o ATL_cNCmmTN_aX_b0.o ATL_cNCmmTN_a1_b1.o ATL_cNCmmTN_aX_b1.o ATL_cNCmmTN_a1_bX.o ATL_cNCmmTN_aX_bX.o ATL_cNCCUmmTT.o ATL_cNCCUmmTT_K.o ATL_cNCmmTT_a1_b0.o ATL_cNCmmTT_aX_b0.o ATL_cNCmmTT_a1_b1.o ATL_cNCmmTT_aX_b1.o ATL_cNCmmTT_a1_bX.o ATL_cNCmmTT_aX_bX.o ATL_cupMBmm_b0.o ATL_cupMBmm0_2_0_b0.o ATL_cupMBmm0_4_0_b0.o ATL_cupMBmm_b1.o ATL_cupMBmm0_2_0_b1.o ATL_cupMBmm0_4_0_b1.o ATL_cupMBmm_bX.o ATL_cupMBmm0_2_0_bX.o ATL_cupMBmm0_4_0_bX.o ATL_cupNBmm_b0.o ATL_cupNBmm0_1_0_b0.o ATL_cupNBmm0_2_0_b0.o ATL_cupNBmm0_3_0_b0.o ATL_cupNBmm0_5_0_b0.o ATL_cupNBmm_b1.o ATL_cupNBmm0_1_0_b1.o ATL_cupNBmm0_2_0_b1.o ATL_cupNBmm0_3_0_b1.o ATL_cupNBmm0_5_0_b1.o ATL_cupNBmm_bX.o ATL_cupNBmm0_1_0_bX.o ATL_cupNBmm0_2_0_bX.o ATL_cupNBmm0_3_0_bX.o ATL_cupNBmm0_5_0_bX.o ATL_cupKBmm_b0.o ATL_cupKBmm4_4_1_b0.o ATL_cupKBmm12_4_1_b0.o ATL_cupKBmm20_4_1_b0.o ATL_cupKBmm28_4_1_b0.o ATL_cupKBmm36_4_1_b0.o ATL_cupKBmm44_4_1_b0.o ATL_cupKBmm52_4_1_b0.o ATL_cupKBmm68_4_1_b0.o ATL_cupKBmm76_4_1_b0.o ATL_cupKBmm8_8_1_b0.o ATL_cupKBmm24_8_1_b0.o ATL_cupKBmm40_8_1_b0.o ATL_cupKBmm56_8_1_b0.o ATL_cupKBmm72_8_1_b0.o ATL_cupKBmm16_16_1_b0.o ATL_cupKBmm32_16_1_b0.o ATL_cupKBmm48_16_1_b0.o ATL_cupKBmm64_16_1_b0.o ATL_cupKBmm60_60_2_b0.o ATL_cupKBmm_b1.o ATL_cupKBmm4_4_1_b1.o ATL_cupKBmm12_4_1_b1.o ATL_cupKBmm20_4_1_b1.o ATL_cupKBmm28_4_1_b1.o ATL_cupKBmm36_4_1_b1.o ATL_cupKBmm44_4_1_b1.o ATL_cupKBmm52_4_1_b1.o ATL_cupKBmm68_4_1_b1.o ATL_cupKBmm76_4_1_b1.o ATL_cupKBmm8_8_1_b1.o ATL_cupKBmm24_8_1_b1.o ATL_cupKBmm40_8_1_b1.o ATL_cupKBmm56_8_1_b1.o ATL_cupKBmm72_8_1_b1.o ATL_cupKBmm16_16_1_b1.o ATL_cupKBmm32_16_1_b1.o ATL_cupKBmm48_16_1_b1.o ATL_cupKBmm64_16_1_b1.o ATL_cupKBmm60_60_2_b1.o ATL_cupKBmm_bX.o ATL_cupKBmm4_4_1_bX.o ATL_cupKBmm12_4_1_bX.o ATL_cupKBmm20_4_1_bX.o ATL_cupKBmm28_4_1_bX.o ATL_cupKBmm36_4_1_bX.o ATL_cupKBmm44_4_1_bX.o ATL_cupKBmm52_4_1_bX.o ATL_cupKBmm68_4_1_bX.o ATL_cupKBmm76_4_1_bX.o ATL_cupKBmm8_8_1_bX.o ATL_cupKBmm24_8_1_bX.o ATL_cupKBmm40_8_1_bX.o ATL_cupKBmm56_8_1_bX.o ATL_cupKBmm72_8_1_bX.o ATL_cupKBmm16_16_1_bX.o ATL_cupKBmm32_16_1_bX.o ATL_cupKBmm48_16_1_bX.o ATL_cupKBmm64_16_1_bX.o ATL_cupKBmm60_60_2_bX.o ATL_cgpMBmm_b0.o ATL_cgpNBmm_b0.o ATL_cgpMBmm_b1.o ATL_cgpNBmm_b1.o ATL_cgpMBmm_bX.o ATL_cgpNBmm_bX.o ATL_cgpKBmm0.o ATL_cgpKBmm76.o ATL_cgpKBmm77.o ATL_cgpKBmm78.o ATL_cgpKBmm79.o ATL_cgpKBmm80.o ATL_cgpKBmm.o 
+echo /home/aposta/sc17/atlasBuild/lib/libatlas.a
+/home/aposta/sc17/atlasBuild/lib/libatlas.a
+touch clib.grd
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL'
+make[6]: Nothing to be done for 'cusergemm'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make -j 2 clib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+/usr/bin/c99-gcc -o ATL_cMBJBmm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_MBJBmm.c
+/usr/bin/c99-gcc -o ATL_cIBNBmm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_IBNBmm.c
+/usr/bin/c99-gcc -o ATL_cIBJBmm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_IBJBmm.c
+/usr/bin/c99-gcc -o ATL_cgemm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DATLGEMM -I./ \
+              /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+/usr/bin/c99-gcc -o ATL_cGetNB.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_GetNB.c
+/usr/bin/c99-gcc -o ATL_cGetNCNB.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_GetNCNB.c
+/usr/bin/c99-gcc -o ATL_cgemmNN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX \
+              -DNoTransA_ -DNoTransB_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemmXX.c
+/usr/bin/c99-gcc -o ATL_cgemmNT.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX \
+              -DNoTransA_ -DTransB_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemmXX.c
+/usr/bin/c99-gcc -o ATL_cgemmTN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX \
+              -DTransA_ -DNoTransB_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemmXX.c
+/usr/bin/c99-gcc -o ATL_cgemmTT.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX \
+              -DTransA_ -DTransB_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemmXX.c
+/usr/bin/c99-gcc -o ATL_cNCmmIJK.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX   /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_cNCmmIJK.c
+/usr/bin/c99-gcc -o ATL_cNCmmJIK.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX   /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_cNCmmJIK.c
+/usr/bin/c99-gcc -o ATL_cNCmmIJK_c.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX   /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_cNCmmIJK_c.c
+/usr/bin/c99-gcc -o ATL_cNCmmJIK_c.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX   /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_cNCmmJIK_c.c
+/usr/bin/c99-gcc -o ATL_caliased_gemm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DALIASED_GEMM -I./ \
+              /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+/usr/bin/c99-gcc -o ATL_cAgemmNN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DNoTransA_ -DNoTransB_ \
+              -DALIASED_GEMM /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_AgemmXX.c
+/usr/bin/c99-gcc -o ATL_cAgemmNT.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DNoTransA_ -DTransB_ \
+              -DALIASED_GEMM /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_AgemmXX.c
+/usr/bin/c99-gcc -o ATL_cAgemmTN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DTransA_ -DNoTransB_ \
+              -DALIASED_GEMM /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_AgemmXX.c
+/usr/bin/c99-gcc -o ATL_cAgemmTT.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DTransA_ -DTransB_ \
+              -DALIASED_GEMM /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_AgemmXX.c
+/usr/bin/c99-gcc -o ATL_cmmJIK.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_cmmJIK.c
+/usr/bin/c99-gcc -o ATL_cmmIJK.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_cmmIJK.c
+/usr/bin/c99-gcc -o ATL_cmmJKI.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_cmmJKI.c
+/usr/bin/c99-gcc -o ATL_cgereal2cplx.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gereal2cplx.c
+/usr/bin/c99-gcc -o ATL_cmmJITcp.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_cmmJITcp.c
+/usr/bin/c99-gcc -o ATL_cAgemmNC.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DNoTransA_ -DConjTransB_ \
+              -DALIASED_GEMM /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_AgemmXX.c
+/usr/bin/c99-gcc -o ATL_cAgemmTC.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DTransA_ -DConjTransB_ \
+              -DALIASED_GEMM /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_AgemmXX.c
+/usr/bin/c99-gcc -o ATL_cAgemmCN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DConjTransA_ -DNoTransB_ \
+              -DALIASED_GEMM /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_AgemmXX.c
+/usr/bin/c99-gcc -o ATL_cAgemmCT.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DConjTransA_ -DTransB_ \
+              -DALIASED_GEMM /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_AgemmXX.c
+/usr/bin/c99-gcc -o ATL_cAgemmCC.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DConjTransA_ -DConjTransB_ \
+              -DALIASED_GEMM /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_AgemmXX.c
+/usr/bin/c99-gcc -o ATL_cCNBmm_b0.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_CNBmm_b0.c
+/usr/bin/c99-gcc -o ATL_cCNBmm_b1.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_CNBmm_b1.c
+/usr/bin/c99-gcc -o ATL_cCNBmm_bX.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_CNBmm_bX.c
+/usr/bin/c99-gcc -o ATL_cgemmNC.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX \
+              -DNoTransA_ -DConjTransB_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemmXX.c
+/usr/bin/c99-gcc -o ATL_cgemmCN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX \
+              -DConjTransA_ -DNoTransB_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemmXX.c
+/usr/bin/c99-gcc -o ATL_cgemmTC.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX \
+              -DTransA_ -DConjTransB_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemmXX.c
+/usr/bin/c99-gcc -o ATL_cgemmCT.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX \
+              -DConjTransA_ -DTransB_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemmXX.c
+/usr/bin/c99-gcc -o ATL_cgemmCC.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX \
+              -DConjTransA_ -DConjTransB_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemmXX.c
+/usr/bin/c99-gcc -o ATL_ccol2blk_aXi0.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DALPHAXI0 /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_ccol2blk.c
+/usr/bin/c99-gcc -o ATL_crow2blkT_aXi0.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DALPHAXI0 /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_crow2blkT.c
+/usr/bin/c99-gcc -o ATL_ccol2blkConj_aXi0.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DALPHAXI0 \
+              -DConj_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_ccol2blk.c
+/usr/bin/c99-gcc -o ATL_crow2blkC_aXi0.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DALPHAXI0 \
+              -DConj_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_crow2blkT.c
+/usr/bin/c99-gcc -o ATL_ccol2blk_aX.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DALPHAX /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_ccol2blk.c
+/usr/bin/c99-gcc -o ATL_crow2blkT_aX.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DALPHAX /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_crow2blkT.c
+/usr/bin/c99-gcc -o ATL_ccol2blkConj_aX.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DALPHAX \
+              -DConj_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_ccol2blk.c
+/usr/bin/c99-gcc -o ATL_crow2blkC_aX.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DALPHAX \
+              -DConj_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_crow2blkT.c
+/usr/bin/c99-gcc -o ATL_ccol2blk_a1.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DALPHA1 /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_ccol2blk.c
+/usr/bin/c99-gcc -o ATL_crow2blkT_a1.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DALPHA1 /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_crow2blkT.c
+/usr/bin/c99-gcc -o ATL_ccol2blkConj_a1.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DALPHA1 \
+              -DConj_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_ccol2blk.c
+/usr/bin/c99-gcc -o ATL_crow2blkC_a1.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DALPHA1 \
+              -DConj_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_crow2blkT.c
+/usr/bin/c99-gcc -o ATL_cputblk_bXi0.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DBETAXI0 /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_putblk.c
+/usr/bin/c99-gcc -o ATL_cputblk_bX.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DBETAX /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_putblk.c
+/usr/bin/c99-gcc -o ATL_cputblk_b1.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DBETA1 /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_putblk.c
+/usr/bin/c99-gcc -o ATL_cputblk_bn1.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DBETAN1 /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_putblk.c
+/usr/bin/c99-gcc -o ATL_cputblk_b0.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DBETA0 /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_putblk.c
+/usr/bin/c99-gcc -o ATL_csmallK_mm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DSMALLK_MM -I./ \
+              /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+/usr/bin/c99-gcc -o ATL_csmall_mm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DSMALL_MM -I./ \
+              /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+/usr/bin/c99-gcc -o ATL_cbig_mm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSCPLX -DBIG_MM -I./ \
+              /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+ar r /home/aposta/sc17/atlasBuild/lib/libatlas.a ATL_cMBJBmm.o ATL_cIBNBmm.o ATL_cIBJBmm.o ATL_cgemm.o ATL_cGetNB.o ATL_cGetNCNB.o ATL_cgemmNN.o ATL_cgemmNT.o ATL_cgemmTN.o ATL_cgemmTT.o ATL_cNCmmIJK.o ATL_cNCmmJIK.o ATL_cNCmmIJK_c.o ATL_cNCmmJIK_c.o ATL_caliased_gemm.o ATL_cAgemmNN.o ATL_cAgemmNT.o ATL_cAgemmTN.o ATL_cAgemmTT.o ATL_cmmJIK.o ATL_cmmIJK.o ATL_cmmJKI.o ATL_cgereal2cplx.o ATL_cmmJITcp.o ATL_cAgemmNC.o ATL_cAgemmTC.o ATL_cAgemmCN.o ATL_cAgemmCT.o ATL_cAgemmCC.o ATL_cCNBmm_b0.o ATL_cCNBmm_b1.o ATL_cCNBmm_bX.o ATL_cgemmNC.o ATL_cgemmCN.o ATL_cgemmTC.o ATL_cgemmCT.o ATL_cgemmCC.o ATL_ccol2blk_aXi0.o ATL_crow2blkT_aXi0.o ATL_ccol2blkConj_aXi0.o ATL_crow2blkC_aXi0.o ATL_ccol2blk_aX.o ATL_crow2blkT_aX.o ATL_ccol2blkConj_aX.o ATL_crow2blkC_aX.o ATL_ccol2blk_a1.o ATL_crow2blkT_a1.o ATL_ccol2blkConj_a1.o ATL_crow2blkC_a1.o ATL_cputblk_bXi0.o ATL_cputblk_bX.o ATL_cputblk_b1.o ATL_cputblk_bn1.o ATL_cputblk_b0.o
+echo /home/aposta/sc17/atlasBuild/lib/libatlas.a
+/home/aposta/sc17/atlasBuild/lib/libatlas.a
+touch clib.grd
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+touch cinstall
+make[3]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+make[2]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'

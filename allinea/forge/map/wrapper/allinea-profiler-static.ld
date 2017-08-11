@@ -1,0 +1,34 @@
+-L${LIBDIR}
+-lmap-sampler-pmpi
+--undefined allinea_init_sampler_now
+-l${SAMPLER_LIBRARY}
+--wrap GOMP_parallel_loop_static_start
+--wrap GOMP_parallel_loop_dynamic_start
+--wrap GOMP_parallel_loop_guided_start
+--wrap GOMP_parallel_loop_runtime_start
+--wrap GOMP_parallel_loop_static
+--wrap GOMP_parallel_loop_dynamic
+--wrap GOMP_parallel_loop_guided
+--wrap GOMP_parallel_loop_runtime
+--wrap GOMP_parallel_start
+--wrap GOMP_parallel
+--wrap GOMP_parallel_end
+--wrap GOMP_parallel_sections_start
+--wrap GOMP_parallel_sections
+--wrap __kmpc_fork_call
+--wrap __kmpc_begin
+--wrap _mp_penter
+--wrap _mp_penter_set
+--wrap _mp_pexit
+--wrap _cray$mt_execute_parallel
+--wrap dlopen
+--wrap dlclose
+-lstdc++
+-lgcc_eh
+--whole-archive
+-lpthread
+--no-whole-archive
+--eh-frame-hdr
+-ldl
+-lm
+-lrt

@@ -1,0 +1,32 @@
+#
+#  This file generated at line 634 of /home/aposta/sc17/ATLAS//tune/blas/ger/r1hgen.c
+#
+include Make.inc
+
+R1CC = $(SKC)
+R1FLAGS = $(CDEFS) $(SKCFLAGS) -DSCPLX
+
+obj = ATL_cgerk__1.o ATL_cgerk__900004.o ATL_cgerk__900001.o
+lib : clib
+clib : cr1k.grd
+cr1k.grd : $(obj)
+	$(ARCHIVER) $(ARFLAGS) $(ATLASlib) $(obj)
+	$(RANLIB) $(ATLASlib)
+	touch cr1k.grd
+cclean : clean
+clean :
+	- rm -f $(obj) cr1k.grd
+
+ckilllib : killlib
+killlib : 
+	- $(ARCHIVER) d $(ATLASlib) $(obj)
+	$(RANLIB) $(ATLASlib)
+killall : killlib clean
+	 rm -f ATL_cgerk__1.c ATL_cgerk__900004.c ATL_cgerk__900001.c
+
+ATL_cgerk__1.o : ATL_cgerk__1.c
+	 $(R1CC) -o ATL_cgerk__1.o -c -DATL_UGERK=ATL_cgerk__1 $(R1FLAGS) ATL_cgerk__1.c
+ATL_cgerk__900004.o : ATL_cgerk__900004.c
+	 $(R1CC) -o ATL_cgerk__900004.o -c -DATL_UGERK=ATL_cgerk__900004 $(R1FLAGS) -DSCPLX -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DPFIX=prefetcht2 -DPFIY=prefetcht2 -DPFXDIST=128 -DPFYDIST=256 ATL_cgerk__900004.c
+ATL_cgerk__900001.o : ATL_cgerk__900001.c
+	 $(R1CC) -o ATL_cgerk__900001.o -c -DATL_UGERK=ATL_cgerk__900001 $(R1FLAGS) -DSCPLX -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 ATL_cgerk__900001.c

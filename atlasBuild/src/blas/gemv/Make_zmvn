@@ -1,0 +1,34 @@
+#
+#  This file generated at line 270 of /home/aposta/sc17/ATLAS//tune/blas/gemv/mvnhgen.c
+#
+include Make.inc
+
+MVNCC = $(DKC)
+MVNFLAGS = $(CDEFS) $(DKCFLAGS) -DDCPLX
+
+obj = ATL_zmvnk__900002.o ATL_zmvnk__900002_b0.o ATL_zmvnk__1.o ATL_zmvnk__1_b0.o
+lib : zlib
+zlib : zmvnk.grd
+zmvnk.grd : $(obj)
+	$(ARCHIVER) $(ARFLAGS) $(ATLASlib) $(obj)
+	$(RANLIB) $(ATLASlib)
+	touch zmvnk.grd
+zclean : clean
+clean :
+	- rm -f $(obj) zmvnk.grd
+
+zkilllib : killlib
+killlib : 
+	- $(ARCHIVER) d $(ATLASlib) $(obj)
+	$(RANLIB) $(ATLASlib)
+killall : killlib clean
+	 rm -f ATL_zmvnk__900002.c ATL_zmvnk__1.c
+
+ATL_zmvnk__900002.o : ATL_zmvnk__900002.c
+	 $(GOODGCC) -o ATL_zmvnk__900002.o -c -DATL_UGEMV=ATL_zmvnk__900002 -x assembler-with-cpp -DDCPLX $(CDEFS) ATL_zmvnk__900002.c
+ATL_zmvnk__900002_b0.o : ATL_zmvnk__900002.c
+	 $(GOODGCC) -o ATL_zmvnk__900002_b0.o -c -DATL_UGEMV=ATL_zmvnk__900002_b0 -DBETA0 -x assembler-with-cpp -DDCPLX $(CDEFS) ATL_zmvnk__900002.c
+ATL_zmvnk__1.o : ATL_zmvnk__1.c
+	 $(MVNCC) -o ATL_zmvnk__1.o -c -DATL_UGEMV=ATL_zmvnk__1 $(MVNFLAGS) ATL_zmvnk__1.c
+ATL_zmvnk__1_b0.o : ATL_zmvnk__1.c
+	 $(MVNCC) -o ATL_zmvnk__1_b0.o -c -DATL_UGEMV=ATL_zmvnk__1_b0 -DBETA0 $(MVNFLAGS) ATL_zmvnk__1.c

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE suppressions [
+  <!ELEMENT suppressions (suppression*)>
+  <!ELEMENT suppression  (frame,position)>
+  <!ELEMENT position     (function,(file,line)?)>
+  <!ELEMENT frame        (#PCDATA)>
+  <!ELEMENT function     (#PCDATA)>
+  <!ELEMENT file         (#PCDATA)>
+  <!ELEMENT line         (#PCDATA)>
+]>
+<suppressions>
+  <!-- Default memory debugging suppressions for Allinea Distributed Debugging Tool
+       (C) Copyright Allinea Software Ltd. 2010
+
+       Example:
+       <suppression>
+         <frame>1</frame>
+         <position>
+           <function>func3</function>
+           <file>hello.c</file>
+           <line>51</line>
+         </position>
+       </suppression>
+
+       File and line may be omitted:
+       <suppression>
+         <frame>0</frame>
+         <position>
+           <function>unaligned_bigint</function>
+         </position>
+       </suppression>
+  -->
+
+  <!-- Intel 9.x -->
+  <suppression>
+    <frame>0</frame>
+    <position>
+      <function>unaligned_bigint</function>
+    </position>
+  </suppression>
+</suppressions>

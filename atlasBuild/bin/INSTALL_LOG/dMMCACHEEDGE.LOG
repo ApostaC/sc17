@@ -1,0 +1,80 @@
+
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+*       BEGAN ATLAS3.10.3 INSTALL OF SECTION 2-1-2 ON 08/09/2017 AT 13:05     *
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+
+
+
+make[2]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/tune/blas/gemm ; make res/atlas_cacheedge.h pre=d
+make[3]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+make dRunFindCE
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make dlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make auxillib dcleanuplib dusergemm
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd /home/aposta/sc17/atlasBuild/src/auxil ; make lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/auxil'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/auxil'
+cd KERNEL ; make -f dMakefile dlib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL'
+make[7]: Nothing to be done for 'dlib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL'
+make[6]: Nothing to be done for 'dusergemm'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make -j 2 dlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[6]: 'dlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c -DDREAL -o dfindCE.o /home/aposta/sc17/ATLAS//tune/blas/gemm/findCE.c
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make ATL_dFindCE_mm.o pre=d typ=DREAL
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+/usr/bin/c99-gcc -o ATL_dFindCE_mm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL -DFindingCE -I./ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -o xdfindCE dfindCE.o \
+                   /home/aposta/sc17/atlasBuild/src/blas/gemm/ATL_dFindCE_mm.o /home/aposta/sc17/atlasBuild/lib/libatlas.a -lpthread -lm
+/home/aposta/sc17/atlasBuild/bin/ATLrun.sh /home/aposta/sc17/atlasBuild/tune/blas/gemm xdfindCE -f res/atlas_cacheedge.h
+TA  TB       M       N       K   alpha    beta  CacheEdge       TIME    MFLOPS
+==  ==  ======  ======  ======  ======  ======  =========  =========  ========
+
+ T   N     112    5488    9362    1.00    1.00          0      0.496  23203.26
+ T   N     112    5488    9362    1.00    1.00         32     -2.000      0.00
+ T   N     112    5488    9362    1.00    1.00         64     -2.000      0.00
+ T   N     112    5488    9362    1.00    1.00        128      0.528  21797.01
+ T   N     112    5488    9362    1.00    1.00        256      0.480  23976.71
+ T   N     112    5488    9362    1.00    1.00        512      0.440  26156.41
+ T   N     112    5488    9362    1.00    1.00       1024      0.444  25920.76
+ T   N     112    5488    9362    1.00    1.00       2048      0.448  25689.33
+ T   N     112    5488    9362    1.00    1.00       4096      0.484  23778.55
+ T   N     112    5488    9362    1.00    1.00       8192      0.488  23583.65
+
+Initial CE=512KB, mflop=26156.41
+
+ T   N     112    5488    9362    1.00    1.00        384      0.464  24803.49
+ T   N     112    5488    9362    1.00    1.00        768      0.468  24591.49
+
+Best CE=512KB, mflop=26156.41
+cp -f res/atlas_cacheedge.h /home/aposta/sc17/atlasBuild/include/atlas_cacheedge.h
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+make[3]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+cp /home/aposta/sc17/atlasBuild/tune/blas/gemm/res/atlas_cacheedge.h /home/aposta/sc17/atlasBuild/include/.
+cp /home/aposta/sc17/atlasBuild/tune/blas/gemm/res/atlas_cacheedge.h INSTALL_LOG/.
+make[2]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+*      FINISHED ATLAS3.10.3 INSTALL OF SECTION 2-1-2 ON 08/09/2017 AT 13:05   *
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+
+
+

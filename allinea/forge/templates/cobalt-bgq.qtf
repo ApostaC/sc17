@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# WARNING: If you install a new version of Allinea Forge to the same
+#          directory as this installation, then this file will be overwritten.
+#          If you customize this script at all, please rename it.
+#
+#
+# submit: qsub -n NUM_NODES_TAG -t WALL_CLOCK_LIMIT_TAG --mode script -A PROJECT_TAG
+# display: qstat
+# job regexp: (\d+)
+# cancel: qdel JOB_ID_TAG
+
+# PROJECT_TAG: {type=text,label="Project",global}
+# WALL_CLOCK_LIMIT_TAG: {type=integer,label="Wall Clock Limit",default="30",suffix=" min"}
+
+ulimit -c unlimited
+
+DDT_MPIRUN_TAG DDT_DEBUGGER_ARGUMENTS_TAG --verbose INFO --block $COBALT_PARTNAME ${COBALT_CORNER:+--corner} $COBALT_CORNER ${COBALT_SHAPE:+--shape} $COBALT_SHAPE --envs OMP_NUM_THREADS=NUM_THREADS_TAG --exp-env COBALT_JOBID MPI_ARGUMENTS_TAG : PROGRAM_TAG PROGRAM_ARGUMENTS_TAG

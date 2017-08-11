@@ -1,0 +1,527 @@
+include ../Make.inc
+
+CDEFS2 = $(CDEFS) -DATL_UCLEANM -DATL_UCLEANN -DATL_UCLEANK
+obj = \
+      ATL_sNBmm_b0.o \
+      ATL_sNBmm_b1.o \
+      ATL_sNBmm_bX.o \
+      ATL_sNCCUmmNN.o \
+      ATL_sNCCUmmNN_K.o \
+      ATL_sNCmmNN_a1_b0.o \
+      ATL_sNCmmNN_aX_b0.o \
+      ATL_sNCmmNN_a1_b1.o \
+      ATL_sNCmmNN_aX_b1.o \
+      ATL_sNCmmNN_a1_bX.o \
+      ATL_sNCmmNN_aX_bX.o \
+      ATL_sNCCUmmNT.o \
+      ATL_sNCCUmmNT_K.o \
+      ATL_sNCmmNT_a1_b0.o \
+      ATL_sNCmmNT_aX_b0.o \
+      ATL_sNCmmNT_a1_b1.o \
+      ATL_sNCmmNT_aX_b1.o \
+      ATL_sNCmmNT_a1_bX.o \
+      ATL_sNCmmNT_aX_bX.o \
+      ATL_sNCCUmmTN.o \
+      ATL_sNCCUmmTN_K.o \
+      ATL_sNCmmTN_a1_b0.o \
+      ATL_sNCmmTN_aX_b0.o \
+      ATL_sNCmmTN_a1_b1.o \
+      ATL_sNCmmTN_aX_b1.o \
+      ATL_sNCmmTN_a1_bX.o \
+      ATL_sNCmmTN_aX_bX.o \
+      ATL_sNCCUmmTT.o \
+      ATL_sNCCUmmTT_K.o \
+      ATL_sNCmmTT_a1_b0.o \
+      ATL_sNCmmTT_aX_b0.o \
+      ATL_sNCmmTT_a1_b1.o \
+      ATL_sNCmmTT_aX_b1.o \
+      ATL_sNCmmTT_a1_bX.o \
+      ATL_sNCmmTT_aX_bX.o \
+      ATL_supMBmm_b0.o \
+      ATL_supMBmm0_1_0_b0.o \
+      ATL_supMBmm2_2_1_b0.o \
+      ATL_supMBmm6_2_1_b0.o \
+      ATL_supMBmm10_2_1_b0.o \
+      ATL_supMBmm14_2_1_b0.o \
+      ATL_supMBmm18_2_1_b0.o \
+      ATL_supMBmm22_2_1_b0.o \
+      ATL_supMBmm26_2_1_b0.o \
+      ATL_supMBmm30_2_1_b0.o \
+      ATL_supMBmm34_2_1_b0.o \
+      ATL_supMBmm38_2_1_b0.o \
+      ATL_supMBmm42_2_1_b0.o \
+      ATL_supMBmm46_2_1_b0.o \
+      ATL_supMBmm50_2_1_b0.o \
+      ATL_supMBmm54_2_1_b0.o \
+      ATL_supMBmm58_2_1_b0.o \
+      ATL_supMBmm62_2_1_b0.o \
+      ATL_supMBmm0_4_0_b0.o \
+      ATL_supMBmm_b1.o \
+      ATL_supMBmm0_1_0_b1.o \
+      ATL_supMBmm2_2_1_b1.o \
+      ATL_supMBmm6_2_1_b1.o \
+      ATL_supMBmm10_2_1_b1.o \
+      ATL_supMBmm14_2_1_b1.o \
+      ATL_supMBmm18_2_1_b1.o \
+      ATL_supMBmm22_2_1_b1.o \
+      ATL_supMBmm26_2_1_b1.o \
+      ATL_supMBmm30_2_1_b1.o \
+      ATL_supMBmm34_2_1_b1.o \
+      ATL_supMBmm38_2_1_b1.o \
+      ATL_supMBmm42_2_1_b1.o \
+      ATL_supMBmm46_2_1_b1.o \
+      ATL_supMBmm50_2_1_b1.o \
+      ATL_supMBmm54_2_1_b1.o \
+      ATL_supMBmm58_2_1_b1.o \
+      ATL_supMBmm62_2_1_b1.o \
+      ATL_supMBmm0_4_0_b1.o \
+      ATL_supMBmm_bX.o \
+      ATL_supMBmm0_1_0_bX.o \
+      ATL_supMBmm2_2_1_bX.o \
+      ATL_supMBmm6_2_1_bX.o \
+      ATL_supMBmm10_2_1_bX.o \
+      ATL_supMBmm14_2_1_bX.o \
+      ATL_supMBmm18_2_1_bX.o \
+      ATL_supMBmm22_2_1_bX.o \
+      ATL_supMBmm26_2_1_bX.o \
+      ATL_supMBmm30_2_1_bX.o \
+      ATL_supMBmm34_2_1_bX.o \
+      ATL_supMBmm38_2_1_bX.o \
+      ATL_supMBmm42_2_1_bX.o \
+      ATL_supMBmm46_2_1_bX.o \
+      ATL_supMBmm50_2_1_bX.o \
+      ATL_supMBmm54_2_1_bX.o \
+      ATL_supMBmm58_2_1_bX.o \
+      ATL_supMBmm62_2_1_bX.o \
+      ATL_supMBmm0_4_0_bX.o \
+      ATL_supNBmm_b0.o \
+      ATL_supNBmm0_1_0_b0.o \
+      ATL_supNBmm0_2_0_b0.o \
+      ATL_supNBmm0_3_0_b0.o \
+      ATL_supNBmm0_4_0_b0.o \
+      ATL_supNBmm0_5_0_b0.o \
+      ATL_supNBmm_b1.o \
+      ATL_supNBmm0_1_0_b1.o \
+      ATL_supNBmm0_2_0_b1.o \
+      ATL_supNBmm0_3_0_b1.o \
+      ATL_supNBmm0_4_0_b1.o \
+      ATL_supNBmm0_5_0_b1.o \
+      ATL_supNBmm_bX.o \
+      ATL_supNBmm0_1_0_bX.o \
+      ATL_supNBmm0_2_0_bX.o \
+      ATL_supNBmm0_3_0_bX.o \
+      ATL_supNBmm0_4_0_bX.o \
+      ATL_supNBmm0_5_0_bX.o \
+      ATL_supKBmm_b0.o \
+      ATL_supKBmm1_1_1_b0.o \
+      ATL_supKBmm2_1_1_b0.o \
+      ATL_supKBmm3_1_1_b0.o \
+      ATL_supKBmm5_1_1_b0.o \
+      ATL_supKBmm6_1_1_b0.o \
+      ATL_supKBmm7_1_1_b0.o \
+      ATL_supKBmm9_1_1_b0.o \
+      ATL_supKBmm10_1_1_b0.o \
+      ATL_supKBmm11_1_1_b0.o \
+      ATL_supKBmm13_1_1_b0.o \
+      ATL_supKBmm14_1_1_b0.o \
+      ATL_supKBmm15_1_1_b0.o \
+      ATL_supKBmm17_1_1_b0.o \
+      ATL_supKBmm18_1_1_b0.o \
+      ATL_supKBmm19_1_1_b0.o \
+      ATL_supKBmm21_1_1_b0.o \
+      ATL_supKBmm22_1_1_b0.o \
+      ATL_supKBmm23_1_1_b0.o \
+      ATL_supKBmm25_1_1_b0.o \
+      ATL_supKBmm26_1_1_b0.o \
+      ATL_supKBmm27_1_1_b0.o \
+      ATL_supKBmm29_1_1_b0.o \
+      ATL_supKBmm30_1_1_b0.o \
+      ATL_supKBmm31_1_1_b0.o \
+      ATL_supKBmm33_1_1_b0.o \
+      ATL_supKBmm34_1_1_b0.o \
+      ATL_supKBmm35_1_1_b0.o \
+      ATL_supKBmm37_1_1_b0.o \
+      ATL_supKBmm38_1_1_b0.o \
+      ATL_supKBmm39_1_1_b0.o \
+      ATL_supKBmm41_1_1_b0.o \
+      ATL_supKBmm42_1_1_b0.o \
+      ATL_supKBmm43_1_1_b0.o \
+      ATL_supKBmm45_1_1_b0.o \
+      ATL_supKBmm46_1_1_b0.o \
+      ATL_supKBmm47_1_1_b0.o \
+      ATL_supKBmm49_1_1_b0.o \
+      ATL_supKBmm50_1_1_b0.o \
+      ATL_supKBmm51_1_1_b0.o \
+      ATL_supKBmm53_1_1_b0.o \
+      ATL_supKBmm54_1_1_b0.o \
+      ATL_supKBmm55_1_1_b0.o \
+      ATL_supKBmm57_1_1_b0.o \
+      ATL_supKBmm58_1_1_b0.o \
+      ATL_supKBmm59_1_1_b0.o \
+      ATL_supKBmm61_1_1_b0.o \
+      ATL_supKBmm62_1_1_b0.o \
+      ATL_supKBmm63_1_1_b0.o \
+      ATL_supKBmm4_4_1_b0.o \
+      ATL_supKBmm12_4_1_b0.o \
+      ATL_supKBmm20_4_1_b0.o \
+      ATL_supKBmm28_4_1_b0.o \
+      ATL_supKBmm36_4_1_b0.o \
+      ATL_supKBmm44_4_1_b0.o \
+      ATL_supKBmm52_4_1_b0.o \
+      ATL_supKBmm60_4_1_b0.o \
+      ATL_supKBmm8_8_1_b0.o \
+      ATL_supKBmm16_8_1_b0.o \
+      ATL_supKBmm24_8_1_b0.o \
+      ATL_supKBmm32_8_1_b0.o \
+      ATL_supKBmm40_8_1_b0.o \
+      ATL_supKBmm48_8_1_b0.o \
+      ATL_supKBmm56_8_1_b0.o \
+      ATL_supKBmm_b1.o \
+      ATL_supKBmm1_1_1_b1.o \
+      ATL_supKBmm2_1_1_b1.o \
+      ATL_supKBmm3_1_1_b1.o \
+      ATL_supKBmm5_1_1_b1.o \
+      ATL_supKBmm6_1_1_b1.o \
+      ATL_supKBmm7_1_1_b1.o \
+      ATL_supKBmm9_1_1_b1.o \
+      ATL_supKBmm10_1_1_b1.o \
+      ATL_supKBmm11_1_1_b1.o \
+      ATL_supKBmm13_1_1_b1.o \
+      ATL_supKBmm14_1_1_b1.o \
+      ATL_supKBmm15_1_1_b1.o \
+      ATL_supKBmm17_1_1_b1.o \
+      ATL_supKBmm18_1_1_b1.o \
+      ATL_supKBmm19_1_1_b1.o \
+      ATL_supKBmm21_1_1_b1.o \
+      ATL_supKBmm22_1_1_b1.o \
+      ATL_supKBmm23_1_1_b1.o \
+      ATL_supKBmm25_1_1_b1.o \
+      ATL_supKBmm26_1_1_b1.o \
+      ATL_supKBmm27_1_1_b1.o \
+      ATL_supKBmm29_1_1_b1.o \
+      ATL_supKBmm30_1_1_b1.o \
+      ATL_supKBmm31_1_1_b1.o \
+      ATL_supKBmm33_1_1_b1.o \
+      ATL_supKBmm34_1_1_b1.o \
+      ATL_supKBmm35_1_1_b1.o \
+      ATL_supKBmm37_1_1_b1.o \
+      ATL_supKBmm38_1_1_b1.o \
+      ATL_supKBmm39_1_1_b1.o \
+      ATL_supKBmm41_1_1_b1.o \
+      ATL_supKBmm42_1_1_b1.o \
+      ATL_supKBmm43_1_1_b1.o \
+      ATL_supKBmm45_1_1_b1.o \
+      ATL_supKBmm46_1_1_b1.o \
+      ATL_supKBmm47_1_1_b1.o \
+      ATL_supKBmm49_1_1_b1.o \
+      ATL_supKBmm50_1_1_b1.o \
+      ATL_supKBmm51_1_1_b1.o \
+      ATL_supKBmm53_1_1_b1.o \
+      ATL_supKBmm54_1_1_b1.o \
+      ATL_supKBmm55_1_1_b1.o \
+      ATL_supKBmm57_1_1_b1.o \
+      ATL_supKBmm58_1_1_b1.o \
+      ATL_supKBmm59_1_1_b1.o \
+      ATL_supKBmm61_1_1_b1.o \
+      ATL_supKBmm62_1_1_b1.o \
+      ATL_supKBmm63_1_1_b1.o \
+      ATL_supKBmm4_4_1_b1.o \
+      ATL_supKBmm12_4_1_b1.o \
+      ATL_supKBmm20_4_1_b1.o \
+      ATL_supKBmm28_4_1_b1.o \
+      ATL_supKBmm36_4_1_b1.o \
+      ATL_supKBmm44_4_1_b1.o \
+      ATL_supKBmm52_4_1_b1.o \
+      ATL_supKBmm60_4_1_b1.o \
+      ATL_supKBmm8_8_1_b1.o \
+      ATL_supKBmm16_8_1_b1.o \
+      ATL_supKBmm24_8_1_b1.o \
+      ATL_supKBmm32_8_1_b1.o \
+      ATL_supKBmm40_8_1_b1.o \
+      ATL_supKBmm48_8_1_b1.o \
+      ATL_supKBmm56_8_1_b1.o \
+      ATL_supKBmm_bX.o \
+      ATL_supKBmm1_1_1_bX.o \
+      ATL_supKBmm2_1_1_bX.o \
+      ATL_supKBmm3_1_1_bX.o \
+      ATL_supKBmm5_1_1_bX.o \
+      ATL_supKBmm6_1_1_bX.o \
+      ATL_supKBmm7_1_1_bX.o \
+      ATL_supKBmm9_1_1_bX.o \
+      ATL_supKBmm10_1_1_bX.o \
+      ATL_supKBmm11_1_1_bX.o \
+      ATL_supKBmm13_1_1_bX.o \
+      ATL_supKBmm14_1_1_bX.o \
+      ATL_supKBmm15_1_1_bX.o \
+      ATL_supKBmm17_1_1_bX.o \
+      ATL_supKBmm18_1_1_bX.o \
+      ATL_supKBmm19_1_1_bX.o \
+      ATL_supKBmm21_1_1_bX.o \
+      ATL_supKBmm22_1_1_bX.o \
+      ATL_supKBmm23_1_1_bX.o \
+      ATL_supKBmm25_1_1_bX.o \
+      ATL_supKBmm26_1_1_bX.o \
+      ATL_supKBmm27_1_1_bX.o \
+      ATL_supKBmm29_1_1_bX.o \
+      ATL_supKBmm30_1_1_bX.o \
+      ATL_supKBmm31_1_1_bX.o \
+      ATL_supKBmm33_1_1_bX.o \
+      ATL_supKBmm34_1_1_bX.o \
+      ATL_supKBmm35_1_1_bX.o \
+      ATL_supKBmm37_1_1_bX.o \
+      ATL_supKBmm38_1_1_bX.o \
+      ATL_supKBmm39_1_1_bX.o \
+      ATL_supKBmm41_1_1_bX.o \
+      ATL_supKBmm42_1_1_bX.o \
+      ATL_supKBmm43_1_1_bX.o \
+      ATL_supKBmm45_1_1_bX.o \
+      ATL_supKBmm46_1_1_bX.o \
+      ATL_supKBmm47_1_1_bX.o \
+      ATL_supKBmm49_1_1_bX.o \
+      ATL_supKBmm50_1_1_bX.o \
+      ATL_supKBmm51_1_1_bX.o \
+      ATL_supKBmm53_1_1_bX.o \
+      ATL_supKBmm54_1_1_bX.o \
+      ATL_supKBmm55_1_1_bX.o \
+      ATL_supKBmm57_1_1_bX.o \
+      ATL_supKBmm58_1_1_bX.o \
+      ATL_supKBmm59_1_1_bX.o \
+      ATL_supKBmm61_1_1_bX.o \
+      ATL_supKBmm62_1_1_bX.o \
+      ATL_supKBmm63_1_1_bX.o \
+      ATL_supKBmm4_4_1_bX.o \
+      ATL_supKBmm12_4_1_bX.o \
+      ATL_supKBmm20_4_1_bX.o \
+      ATL_supKBmm28_4_1_bX.o \
+      ATL_supKBmm36_4_1_bX.o \
+      ATL_supKBmm44_4_1_bX.o \
+      ATL_supKBmm52_4_1_bX.o \
+      ATL_supKBmm60_4_1_bX.o \
+      ATL_supKBmm8_8_1_bX.o \
+      ATL_supKBmm16_8_1_bX.o \
+      ATL_supKBmm24_8_1_bX.o \
+      ATL_supKBmm32_8_1_bX.o \
+      ATL_supKBmm40_8_1_bX.o \
+      ATL_supKBmm48_8_1_bX.o \
+      ATL_supKBmm56_8_1_bX.o \
+      ATL_sgpMBmm_b0.o \
+      ATL_sgpNBmm_b0.o \
+      ATL_sgpMBmm_b1.o \
+      ATL_sgpNBmm_b1.o \
+      ATL_sgpMBmm_bX.o \
+      ATL_sgpNBmm_bX.o \
+      ATL_sgpKBmm0.o \
+      ATL_sgpKBmm.o 
+
+sclean : clean
+clean : 
+	rm -f $(obj) slib.grd
+
+all : lib
+lib : slib
+slib : slib.grd
+slib.grd : $(obj)
+	 $(ARCHIVER) $(ARFLAGS) $(ATLASlib) $(obj)
+	 $(RANLIB) $(ATLASlib)
+	 touch slib.grd
+ATL_supMBmm0_1_0_b0.o : ATL_supMBmm0_1_0_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_supMBmm0_1_0_b0.c
+ATL_supMBmm0_1_0_b1.o : ATL_supMBmm0_1_0_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_supMBmm0_1_0_b1.c
+ATL_supMBmm0_1_0_bX.o : ATL_supMBmm0_1_0_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -fomit-frame-pointer -O ATL_supMBmm0_1_0_bX.c
+ATL_supMBmm2_2_1_b0.o : ATL_supMBmm2_2_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_supMBmm2_2_1_b0.c
+ATL_supMBmm6_2_1_b0.o : ATL_supMBmm6_2_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_supMBmm6_2_1_b0.c
+ATL_supMBmm10_2_1_b0.o : ATL_supMBmm10_2_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_supMBmm10_2_1_b0.c
+ATL_supMBmm14_2_1_b0.o : ATL_supMBmm14_2_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_supMBmm14_2_1_b0.c
+ATL_supMBmm18_2_1_b0.o : ATL_supMBmm18_2_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_supMBmm18_2_1_b0.c
+ATL_supMBmm22_2_1_b0.o : ATL_supMBmm22_2_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_supMBmm22_2_1_b0.c
+ATL_supMBmm26_2_1_b0.o : ATL_supMBmm26_2_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_supMBmm26_2_1_b0.c
+ATL_supMBmm30_2_1_b0.o : ATL_supMBmm30_2_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_supMBmm30_2_1_b0.c
+ATL_supMBmm34_2_1_b0.o : ATL_supMBmm34_2_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_supMBmm34_2_1_b0.c
+ATL_supMBmm38_2_1_b0.o : ATL_supMBmm38_2_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_supMBmm38_2_1_b0.c
+ATL_supMBmm42_2_1_b0.o : ATL_supMBmm42_2_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_supMBmm42_2_1_b0.c
+ATL_supMBmm46_2_1_b0.o : ATL_supMBmm46_2_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_supMBmm46_2_1_b0.c
+ATL_supMBmm50_2_1_b0.o : ATL_supMBmm50_2_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_supMBmm50_2_1_b0.c
+ATL_supMBmm54_2_1_b0.o : ATL_supMBmm54_2_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_supMBmm54_2_1_b0.c
+ATL_supMBmm58_2_1_b0.o : ATL_supMBmm58_2_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_supMBmm58_2_1_b0.c
+ATL_supMBmm62_2_1_b0.o : ATL_supMBmm62_2_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_supMBmm62_2_1_b0.c
+ATL_supMBmm2_2_1_b1.o : ATL_supMBmm2_2_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_supMBmm2_2_1_b1.c
+ATL_supMBmm6_2_1_b1.o : ATL_supMBmm6_2_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_supMBmm6_2_1_b1.c
+ATL_supMBmm10_2_1_b1.o : ATL_supMBmm10_2_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_supMBmm10_2_1_b1.c
+ATL_supMBmm14_2_1_b1.o : ATL_supMBmm14_2_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_supMBmm14_2_1_b1.c
+ATL_supMBmm18_2_1_b1.o : ATL_supMBmm18_2_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_supMBmm18_2_1_b1.c
+ATL_supMBmm22_2_1_b1.o : ATL_supMBmm22_2_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_supMBmm22_2_1_b1.c
+ATL_supMBmm26_2_1_b1.o : ATL_supMBmm26_2_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_supMBmm26_2_1_b1.c
+ATL_supMBmm30_2_1_b1.o : ATL_supMBmm30_2_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_supMBmm30_2_1_b1.c
+ATL_supMBmm34_2_1_b1.o : ATL_supMBmm34_2_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_supMBmm34_2_1_b1.c
+ATL_supMBmm38_2_1_b1.o : ATL_supMBmm38_2_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_supMBmm38_2_1_b1.c
+ATL_supMBmm42_2_1_b1.o : ATL_supMBmm42_2_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_supMBmm42_2_1_b1.c
+ATL_supMBmm46_2_1_b1.o : ATL_supMBmm46_2_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_supMBmm46_2_1_b1.c
+ATL_supMBmm50_2_1_b1.o : ATL_supMBmm50_2_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_supMBmm50_2_1_b1.c
+ATL_supMBmm54_2_1_b1.o : ATL_supMBmm54_2_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_supMBmm54_2_1_b1.c
+ATL_supMBmm58_2_1_b1.o : ATL_supMBmm58_2_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_supMBmm58_2_1_b1.c
+ATL_supMBmm62_2_1_b1.o : ATL_supMBmm62_2_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_supMBmm62_2_1_b1.c
+ATL_supMBmm2_2_1_bX.o : ATL_supMBmm2_2_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -fomit-frame-pointer -O ATL_supMBmm2_2_1_bX.c
+ATL_supMBmm6_2_1_bX.o : ATL_supMBmm6_2_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -fomit-frame-pointer -O ATL_supMBmm6_2_1_bX.c
+ATL_supMBmm10_2_1_bX.o : ATL_supMBmm10_2_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -fomit-frame-pointer -O ATL_supMBmm10_2_1_bX.c
+ATL_supMBmm14_2_1_bX.o : ATL_supMBmm14_2_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -fomit-frame-pointer -O ATL_supMBmm14_2_1_bX.c
+ATL_supMBmm18_2_1_bX.o : ATL_supMBmm18_2_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -fomit-frame-pointer -O ATL_supMBmm18_2_1_bX.c
+ATL_supMBmm22_2_1_bX.o : ATL_supMBmm22_2_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -fomit-frame-pointer -O ATL_supMBmm22_2_1_bX.c
+ATL_supMBmm26_2_1_bX.o : ATL_supMBmm26_2_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -fomit-frame-pointer -O ATL_supMBmm26_2_1_bX.c
+ATL_supMBmm30_2_1_bX.o : ATL_supMBmm30_2_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -fomit-frame-pointer -O ATL_supMBmm30_2_1_bX.c
+ATL_supMBmm34_2_1_bX.o : ATL_supMBmm34_2_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -fomit-frame-pointer -O ATL_supMBmm34_2_1_bX.c
+ATL_supMBmm38_2_1_bX.o : ATL_supMBmm38_2_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -fomit-frame-pointer -O ATL_supMBmm38_2_1_bX.c
+ATL_supMBmm42_2_1_bX.o : ATL_supMBmm42_2_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -fomit-frame-pointer -O ATL_supMBmm42_2_1_bX.c
+ATL_supMBmm46_2_1_bX.o : ATL_supMBmm46_2_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -fomit-frame-pointer -O ATL_supMBmm46_2_1_bX.c
+ATL_supMBmm50_2_1_bX.o : ATL_supMBmm50_2_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -fomit-frame-pointer -O ATL_supMBmm50_2_1_bX.c
+ATL_supMBmm54_2_1_bX.o : ATL_supMBmm54_2_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -fomit-frame-pointer -O ATL_supMBmm54_2_1_bX.c
+ATL_supMBmm58_2_1_bX.o : ATL_supMBmm58_2_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -fomit-frame-pointer -O ATL_supMBmm58_2_1_bX.c
+ATL_supMBmm62_2_1_bX.o : ATL_supMBmm62_2_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -fomit-frame-pointer -O ATL_supMBmm62_2_1_bX.c
+ATL_supNBmm0_1_0_b0.o : ATL_supNBmm0_1_0_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -fomit-frame-pointer -O ATL_supNBmm0_1_0_b0.c
+ATL_supNBmm0_1_0_b1.o : ATL_supNBmm0_1_0_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -fomit-frame-pointer -O ATL_supNBmm0_1_0_b1.c
+ATL_supNBmm0_1_0_bX.o : ATL_supNBmm0_1_0_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -fomit-frame-pointer -O ATL_supNBmm0_1_0_bX.c
+ATL_supKBmm4_4_1_b0.o : ATL_supKBmm4_4_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -x assembler-with-cpp ATL_supKBmm4_4_1_b0.c
+ATL_supKBmm12_4_1_b0.o : ATL_supKBmm12_4_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -x assembler-with-cpp ATL_supKBmm12_4_1_b0.c
+ATL_supKBmm20_4_1_b0.o : ATL_supKBmm20_4_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -x assembler-with-cpp ATL_supKBmm20_4_1_b0.c
+ATL_supKBmm28_4_1_b0.o : ATL_supKBmm28_4_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -x assembler-with-cpp ATL_supKBmm28_4_1_b0.c
+ATL_supKBmm36_4_1_b0.o : ATL_supKBmm36_4_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -x assembler-with-cpp ATL_supKBmm36_4_1_b0.c
+ATL_supKBmm44_4_1_b0.o : ATL_supKBmm44_4_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -x assembler-with-cpp ATL_supKBmm44_4_1_b0.c
+ATL_supKBmm52_4_1_b0.o : ATL_supKBmm52_4_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -x assembler-with-cpp ATL_supKBmm52_4_1_b0.c
+ATL_supKBmm60_4_1_b0.o : ATL_supKBmm60_4_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -x assembler-with-cpp ATL_supKBmm60_4_1_b0.c
+ATL_supKBmm4_4_1_b1.o : ATL_supKBmm4_4_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -x assembler-with-cpp ATL_supKBmm4_4_1_b1.c
+ATL_supKBmm12_4_1_b1.o : ATL_supKBmm12_4_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -x assembler-with-cpp ATL_supKBmm12_4_1_b1.c
+ATL_supKBmm20_4_1_b1.o : ATL_supKBmm20_4_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -x assembler-with-cpp ATL_supKBmm20_4_1_b1.c
+ATL_supKBmm28_4_1_b1.o : ATL_supKBmm28_4_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -x assembler-with-cpp ATL_supKBmm28_4_1_b1.c
+ATL_supKBmm36_4_1_b1.o : ATL_supKBmm36_4_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -x assembler-with-cpp ATL_supKBmm36_4_1_b1.c
+ATL_supKBmm44_4_1_b1.o : ATL_supKBmm44_4_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -x assembler-with-cpp ATL_supKBmm44_4_1_b1.c
+ATL_supKBmm52_4_1_b1.o : ATL_supKBmm52_4_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -x assembler-with-cpp ATL_supKBmm52_4_1_b1.c
+ATL_supKBmm60_4_1_b1.o : ATL_supKBmm60_4_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -x assembler-with-cpp ATL_supKBmm60_4_1_b1.c
+ATL_supKBmm4_4_1_bX.o : ATL_supKBmm4_4_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -x assembler-with-cpp ATL_supKBmm4_4_1_bX.c
+ATL_supKBmm12_4_1_bX.o : ATL_supKBmm12_4_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -x assembler-with-cpp ATL_supKBmm12_4_1_bX.c
+ATL_supKBmm20_4_1_bX.o : ATL_supKBmm20_4_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -x assembler-with-cpp ATL_supKBmm20_4_1_bX.c
+ATL_supKBmm28_4_1_bX.o : ATL_supKBmm28_4_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -x assembler-with-cpp ATL_supKBmm28_4_1_bX.c
+ATL_supKBmm36_4_1_bX.o : ATL_supKBmm36_4_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -x assembler-with-cpp ATL_supKBmm36_4_1_bX.c
+ATL_supKBmm44_4_1_bX.o : ATL_supKBmm44_4_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -x assembler-with-cpp ATL_supKBmm44_4_1_bX.c
+ATL_supKBmm52_4_1_bX.o : ATL_supKBmm52_4_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -x assembler-with-cpp ATL_supKBmm52_4_1_bX.c
+ATL_supKBmm60_4_1_bX.o : ATL_supKBmm60_4_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -x assembler-with-cpp ATL_supKBmm60_4_1_bX.c
+ATL_supKBmm8_8_1_b0.o : ATL_supKBmm8_8_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -x assembler-with-cpp -mavx ATL_supKBmm8_8_1_b0.c
+ATL_supKBmm16_8_1_b0.o : ATL_supKBmm16_8_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -x assembler-with-cpp -mavx ATL_supKBmm16_8_1_b0.c
+ATL_supKBmm24_8_1_b0.o : ATL_supKBmm24_8_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -x assembler-with-cpp -mavx ATL_supKBmm24_8_1_b0.c
+ATL_supKBmm32_8_1_b0.o : ATL_supKBmm32_8_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -x assembler-with-cpp -mavx ATL_supKBmm32_8_1_b0.c
+ATL_supKBmm40_8_1_b0.o : ATL_supKBmm40_8_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -x assembler-with-cpp -mavx ATL_supKBmm40_8_1_b0.c
+ATL_supKBmm48_8_1_b0.o : ATL_supKBmm48_8_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -x assembler-with-cpp -mavx ATL_supKBmm48_8_1_b0.c
+ATL_supKBmm56_8_1_b0.o : ATL_supKBmm56_8_1_b0.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=0 -c -x assembler-with-cpp -mavx ATL_supKBmm56_8_1_b0.c
+ATL_supKBmm8_8_1_b1.o : ATL_supKBmm8_8_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -x assembler-with-cpp -mavx ATL_supKBmm8_8_1_b1.c
+ATL_supKBmm16_8_1_b1.o : ATL_supKBmm16_8_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -x assembler-with-cpp -mavx ATL_supKBmm16_8_1_b1.c
+ATL_supKBmm24_8_1_b1.o : ATL_supKBmm24_8_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -x assembler-with-cpp -mavx ATL_supKBmm24_8_1_b1.c
+ATL_supKBmm32_8_1_b1.o : ATL_supKBmm32_8_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -x assembler-with-cpp -mavx ATL_supKBmm32_8_1_b1.c
+ATL_supKBmm40_8_1_b1.o : ATL_supKBmm40_8_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -x assembler-with-cpp -mavx ATL_supKBmm40_8_1_b1.c
+ATL_supKBmm48_8_1_b1.o : ATL_supKBmm48_8_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -x assembler-with-cpp -mavx ATL_supKBmm48_8_1_b1.c
+ATL_supKBmm56_8_1_b1.o : ATL_supKBmm56_8_1_b1.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=1 -c -x assembler-with-cpp -mavx ATL_supKBmm56_8_1_b1.c
+ATL_supKBmm8_8_1_bX.o : ATL_supKBmm8_8_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -x assembler-with-cpp -mavx ATL_supKBmm8_8_1_bX.c
+ATL_supKBmm16_8_1_bX.o : ATL_supKBmm16_8_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -x assembler-with-cpp -mavx ATL_supKBmm16_8_1_bX.c
+ATL_supKBmm24_8_1_bX.o : ATL_supKBmm24_8_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -x assembler-with-cpp -mavx ATL_supKBmm24_8_1_bX.c
+ATL_supKBmm32_8_1_bX.o : ATL_supKBmm32_8_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -x assembler-with-cpp -mavx ATL_supKBmm32_8_1_bX.c
+ATL_supKBmm40_8_1_bX.o : ATL_supKBmm40_8_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -x assembler-with-cpp -mavx ATL_supKBmm40_8_1_bX.c
+ATL_supKBmm48_8_1_bX.o : ATL_supKBmm48_8_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -x assembler-with-cpp -mavx ATL_supKBmm48_8_1_bX.c
+ATL_supKBmm56_8_1_bX.o : ATL_supKBmm56_8_1_bX.c 
+	/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 $(CDEFS2) -DATL_BETA=X -c -x assembler-with-cpp -mavx ATL_supKBmm56_8_1_bX.c
+
+.c.o:
+	$(SMC) $(CDEFS2) $(SMCFLAGS) -c $<

@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Name: Parallelnavi (FX10)
+#
+# WARNING: If you install a new version of Allinea Forge to the same
+#          directory as this installation, then this file will be overwritten.
+#          If you customize this script at all, please rename it.
+#
+# submit: pjsub
+# display: pjstat
+# job regexp: Job (\d+)
+# cancel: pjdel JOB_ID_TAG
+#
+# WALL_CLOCK_LIMIT_TAG: {type=text,label="Wall Clock Limit",default="00:30:00",mask="09:09:09"}
+# RSCGRP_TAG: {type=text,label="Resource Group"}
+
+## Allinea Forge will generate a submission script from this by
+## replacing these tags:
+##        TAG NAME         |         DESCRIPTION           |        EXAMPLE
+## ---------------------------------------------------------------------------
+## PROGRAM_TAG             | target path and filename      | /users/ned/a.out
+## PROGRAM_ARGUMENTS_TAG   | arguments to target program   | -myarg myval
+## NUM_PROCS_TAG           | total number of processes     | 16
+## NUM_NODES_TAG           | number of compute nodes       | 8
+## PROCS_PER_NODE_TAG      | processes per node            | 2
+## NUM_THREADS_TAG         | OpenMP threads per proc       | 4
+## DDT_DEBUGGER_ARGUMENTS_TAG | arguments to be passed to ddt-debugger
+## MPIRUN_TAG              | name of mpirun executable     | mpirun
+## AUTO_MPI_ARGUMENTS_TAG  | mpirun arguments              | -np 4
+## EXTRA_MPI_ARGUMENTS_TAG | extra mpirun arguments        | -x FAST=1
+
+#PJM -L "node=NUM_NODES_TAG"
+#PJM -L "elapse=WALL_CLOCK_LIMIT_TAG"
+#PJM -L "rscgrp=RSCGRP_TAG"
+#PJM --mpi "proc=NUM_PROCS_TAG"
+#PJM -X
+#PJM --no-stging
+#PJM -o PROGRAM_TAG-ddt.output
+#PJM -e PROGRAM_TAG-ddt.error
+
+XOSPA_HOME=/opt/FJSVXosPA
+export LANG_HOME=/opt/FJSVfxlang/1.2.1
+export PATH=${LANG_HOME}/bin:${PATH}
+export LD_LIBRARY_PATH=${LANG_HOME}/lib64:${XOSPA_HOME}/lib64:${LD_LIBRARY_PATH}
+
+## The following line will use exactly the same default settings that
+## Allinea Forge uses to launch without the queue.
+
+MPIRUN_TAG AUTO_MPI_ARGUMENTS_TAG EXTRA_MPI_ARGUMENTS_TAG PROGRAM_TAG PROGRAM_ARGUMENTS_TAG
+

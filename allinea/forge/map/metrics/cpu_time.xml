@@ -1,0 +1,102 @@
+<metricdefinitions version="1">
+    <metric id="cpu_time_percentage">
+        <units>%</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="CPU_time_src" functionName="allinea_totalCPU" divideBySampleTime="true"/>
+        <display>
+            <description>The percentage of time spent executing instructions</description>
+            <displayName>CPU time</displayName>
+            <type>cpu_time</type>
+            <colour>SpecialLine6</colour>
+            <normalizePercentagesToCoresPerProcess>true</normalizePercentagesToCoresPerProcess>
+        </display>
+    </metric>
+
+    <metric id="user_time_percentage">
+        <units>%</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="CPU_time_src" functionName="allinea_userCPU" divideBySampleTime="true"/>
+        <display>
+            <description>The percentage of time spent executing instructions in user mode</description>
+            <displayName>User-mode CPU time</displayName>
+            <type>cpu_time</type>
+            <colour>SpecialLine6</colour>
+            <normalizePercentagesToCoresPerProcess>true</normalizePercentagesToCoresPerProcess>
+        </display>
+    </metric>
+
+    <metric id="system_time_percentage">
+        <units>%</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="CPU_time_src" functionName="allinea_systemCPU" divideBySampleTime="true"/>
+        <display>
+            <description>The percentage of time spent executing instructions in kernel mode</description>
+            <displayName>Kernel-mode CPU time</displayName>
+            <type>cpu_time</type>
+            <colour>SpecialLine6</colour>
+            <normalizePercentagesToCoresPerProcess>true</normalizePercentagesToCoresPerProcess>
+        </display>
+    </metric>
+
+    <metric id="voluntary_context_switches">
+        <units>/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="CPU_time_src" functionName="allinea_voluntaryContextSwitches" divideBySampleTime="true"/>
+        <display>
+            <description>The rate of voluntary context switches on a core, e.g. switching threads because one is waiting on an I/O device</description>
+            <displayName>Voluntary context switches</displayName>
+            <type>cpu_time</type>
+            <colour>SpecialLine6</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+        </display>
+    </metric>
+
+    <metric id="involuntary_context_switches">
+        <units>/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="CPU_time_src" functionName="allinea_involuntaryContextSwitches" divideBySampleTime="true"/>
+        <display>
+            <description>The rate of involuntary context switches on a core, e.g. switching due to CPU contention</description>
+            <displayName>Involuntary context switches</displayName>
+            <type>cpu_time</type>
+            <colour>SpecialLine6</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+        </display>
+    </metric>
+
+    <metric id="loadavg">
+        <units>%</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="CPU_time_src" functionName="allinea_loadAvg"/>
+        <display>
+            <description>The number of threads currently running on a compute node as a percentage of physical cores</description>
+            <displayName>System load</displayName>
+            <type>cpu_time</type>
+            <colour>SpecialLine6</colour>
+            <clampPercentages>false</clampPercentages>
+        </display>
+    </metric>
+
+    <metricGroup id="CPU_time">
+        <displayName>CPU Time</displayName>
+        <description>CPU time metrics</description>
+        <metric ref="cpu_time_percentage"/>
+        <metric ref="user_time_percentage"/>
+        <metric ref="system_time_percentage"/>
+        <metric ref="voluntary_context_switches"/>
+        <metric ref="involuntary_context_switches"/>
+        <metric ref="loadavg"/>
+    </metricGroup>
+
+    <source id="CPU_time_src">
+        <sharedLibrary>lib-cpu_time.so</sharedLibrary>
+    </source>
+
+</metricdefinitions>
+

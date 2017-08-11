@@ -1,0 +1,34 @@
+#
+#  This file generated at line 274 of /home/aposta/sc17/ATLAS//tune/blas/gemv/mvthgen.c
+#
+include Make.inc
+
+MVTCC = $(DKC)
+MVTFLAGS = $(CDEFS) $(DKCFLAGS) -DDCPLX
+
+obj = ATL_zmvtk__900002.o ATL_zmvtk__900002_b0.o ATL_zmvtk__900004.o ATL_zmvtk__900004_b0.o
+lib : zlib
+zlib : zmvtk.grd
+zmvtk.grd : $(obj)
+	$(ARCHIVER) $(ARFLAGS) $(ATLASlib) $(obj)
+	$(RANLIB) $(ATLASlib)
+	touch zmvtk.grd
+zclean : clean
+clean :
+	- rm -f $(obj) zmvtk.grd
+
+zkilllib : killlib
+killlib : 
+	- $(ARCHIVER) d $(ATLASlib) $(obj)
+	$(RANLIB) $(ATLASlib)
+killall : killlib clean
+	 rm -f ATL_zmvtk__900002.c ATL_zmvtk__900004.c
+
+ATL_zmvtk__900002.o : ATL_zmvtk__900002.c
+	 $(GOODGCC) -o ATL_zmvtk__900002.o -c -DATL_UGEMV=ATL_zmvtk__900002 -x assembler-with-cpp -DPFADIST=128 -DDCPLX $(CDEFS) ATL_zmvtk__900002.c
+ATL_zmvtk__900002_b0.o : ATL_zmvtk__900002.c
+	 $(GOODGCC) -o ATL_zmvtk__900002_b0.o -c -DATL_UGEMV=ATL_zmvtk__900002_b0 -DBETA0 -x assembler-with-cpp -DPFADIST=128 -DDCPLX $(CDEFS) ATL_zmvtk__900002.c
+ATL_zmvtk__900004.o : ATL_zmvtk__900004.c
+	 $(MVTCC) -o ATL_zmvtk__900004.o -c -DATL_UGEMV=ATL_zmvtk__900004 $(MVTFLAGS) -DDCPLX -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DPFYDIST=128 ATL_zmvtk__900004.c
+ATL_zmvtk__900004_b0.o : ATL_zmvtk__900004.c
+	 $(MVTCC) -o ATL_zmvtk__900004_b0.o -c -DATL_UGEMV=ATL_zmvtk__900004_b0 -DBETA0 $(MVTFLAGS) -DDCPLX -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DPFYDIST=128 ATL_zmvtk__900004.c

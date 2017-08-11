@@ -1,0 +1,59 @@
+<metricdefinitions version="1">
+
+    <metric id="rss">
+        <units>B</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="memory_src" functionName="allinea_memoryUsage"/>
+        <display>
+            <description>Total physical memory used by each process (RSS)</description>
+            <displayName>Memory usage</displayName>
+            <type>memory</type>
+            <colour>SpecialLine7</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+        </display>
+    </metric>
+
+    <metric id="node_mem_percent">
+        <units>%</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="memory_src" functionName="allinea_nodeMemoryUsage"/>
+        <display>
+            <description>Total physical memory used by node</description>
+            <displayName>Node memory usage</displayName>
+            <type>memory</type>
+            <colour>SpecialLine7</colour>
+            <autoDisplayFactor>false</autoDisplayFactor>
+            <decimalPlaces>1</decimalPlaces>
+        </display>
+    </metric>
+
+    <metric id="memory_per_node">
+        <units>B</units>
+        <dataType>uint64_t</dataType>
+        <domain>single_value</domain>
+        <onePerNode>true</onePerNode>
+        <source ref="memory_src" functionName="allinea_totalNodeMemory"/>
+        <display>
+            <description>The RAM installed in the node</description>
+            <displayName>Memory per node</displayName>
+            <type>other</type>
+            <colour>green</colour>
+            <autoDisplayFactor>false</autoDisplayFactor>
+        </display>
+    </metric>
+
+    <metricGroup id="Memory">
+        <displayName>Memory</displayName>
+        <description>Memory metrics</description>
+        <metric ref="rss"/>
+        <metric ref="node_mem_percent"/>
+    </metricGroup>
+
+    <source id="memory_src">
+        <sharedLibrary>lib-memory.so</sharedLibrary>
+    </source>
+
+</metricdefinitions>
+

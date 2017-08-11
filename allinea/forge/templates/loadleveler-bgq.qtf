@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Name: LoadLeveler (Blue Gene/Q)
+#
+# WARNING: If you install a new version of Allinea Forge to the same
+#          directory as this installation, then this file will be overwritten.
+#          If you customize this script at all, please rename it.
+#
+# submit: llsubmit
+# display: llq
+# job regexp: "([^"]+)" .*has been submitted
+# cancel: llcancel JOB_ID_TAG
+# 
+# WALL_CLOCK_LIMIT_TAG: {type=text,label="Wall Clock Limit",default="00:30:00",mask="09:09:09"}
+# NODE_USAGE_TAG: {type=select,options=not_shared|shared,label="Node Usage",default=not_shared}
+# ACCOUNT_TAG: {type=text,label="Account",global}
+
+## Allinea Forge will generate a submission script by
+## replacing these tags:
+##        TAG NAME         |         DESCRIPTION           |        EXAMPLE
+## ---------------------------------------------------------------------------
+## PROGRAM_TAG             | target path and filename      | /users/ned/a.out
+## PROGRAM_ARGUMENTS_TAG   | arguments to target program   | -myarg myval
+## NUM_PROCS_TAG           | total number of processes     | 16
+## NUM_NODES_TAG           | number of compute nodes       | 8
+## PROCS_PER_NODE_TAG      | processes per node            | 2
+## NUM_THREADS_TAG         | OpenMP threads per process    | 4
+## DDT_DEBUGGER_ARGUMENTS_TAG | arguments to be passed to ddt-debugger
+## MPIRUN_TAG              | name of mpirun executable     | mpiexec
+## AUTO_MPI_ARGUMENTS_TAG  | mpirun arguments              | -np 4
+## EXTRA_MPI_ARGUMENTS_TAG | extra mpirun arguments        | -x FAST=1
+
+#@ job_type = bluegene
+#@ wall_clock_limit = WALL_CLOCK_LIMIT_TAG
+#@ account_no = ACCOUNT_TAG
+#@ job_name = PROGRAM_TAG.job.in
+#@ output = PROGRAM_TAG.job.out
+#@ error  = PROGRAM_TAG.job.err
+#@ notification = never
+#@ environment = COPY_ALL
+#@ bg_size = NUM_NODES_TAG
+#
+#@ queue
+AUTO_LAUNCH_TAG

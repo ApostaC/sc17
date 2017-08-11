@@ -1,0 +1,257 @@
+#!/bin/bash
+
+THIS_SCRIPT=$(basename "$0")
+LOGFILENAME="${THIS_SCRIPT}.log"
+
+PLATFORM='default'
+if [ -e /etc/opt/cray -o -e /proc/cray_xt/nid ]; then
+    PLATFORM='cray'
+fi
+LIB_TYPE='shared'
+DESTDIR=
+SHOW_HELP=no
+BUILD_WRAPPER_ARGS=
+OUTPUT_SUFFIX=
+PKG_CONFIG_FILE=
+
+for i in "$@"
+do
+case $i in
+    --pkg-config-file=*)
+    PKG_CONFIG_FILE="${i#*=}"
+    shift
+    ;;
+    --platform=*)
+    PLATFORM="${i#*=}"
+    shift
+    ;;
+    --lib-type=*)
+    LIB_TYPE="${i#*=}"
+    shift
+    ;;
+    --suffix=*)
+    OUTPUT_SUFFIX="-${i#*=}"
+    shift
+    ;;
+    -h|--help)
+    SHOW_HELP='yes'
+    shift
+    ;;
+    -*)
+    # forward unrecognised switches to the build wrapper script
+    BUILD_WRAPPER_ARGS+=" ${i}"
+    shift
+    ;;
+    *)
+    DESTDIR="${i}"
+    ;;
+esac
+done
+
+# Replace relative paths like "." with the actual path to avoid suggesting people
+# add relative paths to their LD_LIBRARY_PATH
+DESTDIR=`readlink -f "${DESTDIR}"`
+
+function show_help {
+        echo "
+ Usage: ${THIS_SCRIPT} [--platform=PLATFORM] [--lib-type=LIB_TYPE] DEST
+
+ Compile the Allinea sampler and MPI wrapper libs for your system and copy
+ them to DEST. For shared libraries this is the NFS / Lustre / GPFS directory
+ that your program will be run from.
+
+ --platform=PLATFORM
+         Specifies the target platform for the libraries. PLATFORM may be one of
+         'default', 'cray', and 'xeon-phi'. If this is not specified then
+         ${THIS_SCRIPT} will attempt to detect the most appropriate
+         value.
+
+ --lib-type=LIB_TYPE
+         Specifies the type of library to be built. LIB_TYPE may be one of 'shared',
+         and 'static'. The default value is 'shared'.
+
+ --suffix=SUFFIX
+         Specify a suffix for generated shared libraries. The default is no
+         suffix.
+
+ --without-shmem
+         Disable wrapping of SHMEM functions.
+         
+ --pkg-config-file=FILE
+         Generates a pkg-config file.
+         
+"
+        exit 1
+}
+
+if [ "${SHOW_HELP}" = 'yes' ]; then
+    show_help
+fi
+
+if [ -n "${DESTDIR}" ]; then
+    if [ ! -d "${DESTDIR}" ]; then
+        show_help
+    fi
+else
+    DESTDIR="$(pwd)"
+fi
+
+case $PLATFORM in
+    default|cray|xeon-phi) ;;
+    *) echo "Unknown platform: \"$PLATFORM\""; exit 1 ;;
+esac
+
+case $LIB_TYPE in
+    shared|static) ;;
+    *) echo "Unknown lib-type: \"$LIB_TYPE\""; exit 1 ;;
+esac
+
+mpirun=mpirun
+SUFFIX=
+if [ "${PLATFORM}" = 'cray' ]; then
+    BUILD_WRAPPER_ARGS+=' --cray'
+    mpirun=aprun
+elif [ "${PLATFORM}" = 'xeon-phi' ]; then
+    BUILD_WRAPPER_ARGS+=' --mic'
+    SUFFIX='-mic'
+fi
+if [ "${LIB_TYPE}" = 'static' ]; then
+    BUILD_WRAPPER_ARGS+=' --static'
+fi
+if [ "x$ALLINEA_CONFIG_DIR" = "x" ]; then
+  # if empty, try ALLINEA_TOOLS_CONFIG_DIR
+  ALLINEA_CONFIG_DIR="$ALLINEA_TOOLS_CONFIG_DIR"
+fi
+if [ "x$ALLINEA_CONFIG_DIR" = "x" ]; then
+  # if still empty, set to default
+  ALLINEA_CONFIG_DIR="$HOME/."allinea
+fi
+
+ALLINEA_TOOLS_PATH="$(cd "$(dirname "$0")/.." ; pwd)"
+if [ "${PLATFORM}" = 'xeon-phi' ]; then
+    # If running from the host installation try to find the Xeon Phi one.
+    if [ -d "${ALLINEA_TOOLS_PATH}/mic" ]; then
+        ALLINEA_TOOLS_PATH="${ALLINEA_TOOLS_PATH}/mic"
+    elif [ -h "${ALLINEA_TOOLS_PATH}/bin/ddt-debugger.k1om" ]; then
+        ALLINEA_TOOLS_PATH="$(dirname "$(dirname "$(readlink --canonicalize "${ALLINEA_TOOLS_PATH}/bin/ddt-debugger.k1om")")")"
+    fi
+fi
+cd "$DESTDIR"
+
+DISPLAY_PLATFORM=
+[ "$PLATFORM" != "default" ] && DISPLAY_PLATFORM="$(echo $PLATFORM | sed -e 's/.*/\L&/' -e 's/[a-z]*/\u&/g') "
+echo "Creating ${DISPLAY_PLATFORM}${LIB_TYPE} libraries in ${DESTDIR}"
+
+if ! "$ALLINEA_TOOLS_PATH"/map/wrapper/build_wrapper $BUILD_WRAPPER_ARGS >"$LOGFILENAME" 2>&1; then
+    cat "$LOGFILENAME"
+    rm -f "$LOGFILENAME"
+    exit 1
+fi
+# build_wrapper may have output a note that we want to display.
+grep -B 100 '\---' "$LOGFILENAME"
+rm -f "$LOGFILENAME"
+
+if [ "${LIB_TYPE}" = 'shared' ]; then
+    cp "$ALLINEA_CONFIG_DIR"/wrapper/libmap-sampler-pmpi-$(hostname)${SUFFIX}.so.1.0.0 libmap-sampler-pmpi${OUTPUT_SUFFIX}.so.1.0.0
+    ln -fs libmap-sampler-pmpi${OUTPUT_SUFFIX}.so.1.0.0 libmap-sampler-pmpi${OUTPUT_SUFFIX}.so
+    ln -fs libmap-sampler-pmpi${OUTPUT_SUFFIX}.so.1.0.0 libmap-sampler-pmpi${OUTPUT_SUFFIX}.so.1
+    ln -fs libmap-sampler-pmpi${OUTPUT_SUFFIX}.so.1.0.0 libmap-sampler-pmpi${OUTPUT_SUFFIX}.so.1.0
+    cp -d "$ALLINEA_TOOLS_PATH"/lib/64/libmap-sampler.so* .
+else # static
+    STATIC_SAMPLER_FILENAME=libmap-sampler.a
+
+    # Consider using the binutils-2.25 compatible version of the static sampler library, if available.
+    if [ -e "${ALLINEA_TOOLS_PATH}"/lib/64/libmap-sampler-binutils-2.25.a ] ; then
+        # Determine the version of the ld (binutils)
+        LD_VERSION_STRING=$(ld -v)                      # e.g. "GNU ld (GNU Binutils) 2.23.1"
+        LD_VERSION_NUMBER=${LD_VERSION_STRING##* }      # Take the last field e.g. "2.23.1"
+        LD_VERSION_MAJOR=${LD_VERSION_NUMBER%%.*}       # Take the first component ("2")
+        LD_VERSION_REST=${LD_VERSION_NUMBER#*.}         # Trim the first component ("23.1")
+        LD_VERSION_MINOR=${LD_VERSION_REST%%.*}         # Take the first component ("23")
+
+        if ([ "$LD_VERSION_MAJOR" -eq 2 ] && [ "$LD_VERSION_MINOR" -ge 25 ]) || [ "$LD_VERSION_MAJOR" -gt 2 ] ; then
+            echo "Detected ld version >= 2.25 ($LD_VERSION_NUMBER)"
+            STATIC_SAMPLER_FILENAME=libmap-sampler-binutils-2.25.a
+        fi
+    fi
+
+    # Convert STATIC_SAMPLER_FILENAME into a library name suitable for a link command
+    STATIC_SAMPLER_LIBRARY=${STATIC_SAMPLER_FILENAME##*lib}     # Remove 'lib' prefix
+    STATIC_SAMPLER_LIBRARY=${STATIC_SAMPLER_LIBRARY%%.a*}       # Remove '.a' suffix
+
+    cp "${ALLINEA_CONFIG_DIR}"/wrapper/libmap-sampler-pmpi-$(hostname)${SUFFIX}.a libmap-sampler-pmpi.a
+    cp "${ALLINEA_TOOLS_PATH}"/lib/64/${STATIC_SAMPLER_FILENAME} .
+    sed -e "s#\${LIBDIR}#${DESTDIR}#g;s#\${SAMPLER_LIBRARY}#${STATIC_SAMPLER_LIBRARY}#g" "${ALLINEA_TOOLS_PATH}"/map/wrapper/allinea-profiler-static.ld >allinea-profiler.ld
+fi
+
+# Generate pkg-config file
+BASE_DYNAMIC_LINE="-L${DESTDIR} -lmap-sampler-pmpi${OUTPUT_SUFFIX} -lmap-sampler -Wl,--eh-frame-hdr -Wl,-rpath=${DESTDIR}"
+BASE_STATIC_LINE="-Wl,@${DESTDIR}/allinea-profiler.ld"
+
+if [ -n "${PKG_CONFIG_FILE}" ]; then
+    link_flags=${BASE_STATIC_LINE}
+    link_type="static"
+    if [ "${LIB_TYPE}" = 'shared' ]; then
+        link_flags=${BASE_DYNAMIC_LINE}
+        link_type="dynamic"
+    fi
+    PKG_CONTENT="Name: MAP Sampler Libraries
+Description: MAP Sampler Libraries for ${link_type} linking
+Version: 1.0
+Libs: $link_flags"
+echo "${PKG_CONTENT}" > ${PKG_CONFIG_FILE}
+fi
+
+# The rest shows a prologue detailing what was created and how to use it.
+
+LIBS_CREATED=
+if [ "${LIB_TYPE}" = 'shared' ]; then
+    LIBS_CREATED="   libmap-sampler.so       (and .so.1, .so.1.0, .so.1.0.0)
+   libmap-sampler-pmpi.so  (and .so.1, .so.1.0, .so.1.0.0)"
+else # static
+    LIBS_CREATED="   ${STATIC_SAMPLER_FILENAME}
+   libmap-sampler-pmpi.a"
+fi
+COMPILATION_NOTE=' for use with MAP - not required for Performance Reports'
+LINKING_NOTE=' (both MAP and Performance Reports)'
+CRAY_COMPILATION_INSTRUCTION=
+if [ "${PLATFORM}" = 'cray' ]; then
+    CRAY_COMPILATION_INSTRUCTION=" (or '-G2' for native Cray Fortran)"
+fi
+DYNAMIC_ARG=
+if [ "${PLATFORM}" = 'cray' -a "${LIB_TYPE}" = 'shared' ]; then
+    DYNAMIC_ARG='-dynamic '
+fi
+LINK_LINE=
+FINAL_NOTES=
+if [ "${LIB_TYPE}" = 'shared' ]; then
+    LINK_LINE="      ${DYNAMIC_ARG}${BASE_DYNAMIC_LINE}"
+    FINAL_NOTES="
+Note: These libraries must be on the same NFS/Lustre/GPFS filesystem as your
+program.
+
+Before running your program (interactively or from a queue), set
+LD_LIBRARY_PATH:
+   export LD_LIBRARY_PATH=${DESTDIR}:\$LD_LIBRARY_PATH
+   map  ...
+or add -Wl,-rpath=${DESTDIR} when linking your program."
+else # static
+    LINK_LINE="      ${BASE_STATIC_LINE} ... EXISTING_MPI_LIBRARIES"
+    FINAL_NOTES="   If your link line specifies EXISTING_MPI_LIBRARIES (e.g. -lmpi), then
+   these must appear *after* the Allinea sampler and MPI wrapper libraries in
+   the link line.  There's a comprehensive description of the link ordering
+   requirements in the 'Preparing a Program for Profiling' section of either
+   userguide-forge.pdf or userguide-reports.pdf, located in
+   ${ALLINEA_TOOLS_PATH}/doc/."
+fi
+
+echo "Created the libraries:
+${LIBS_CREATED}
+
+To instrument a program, add these compiler options:
+   compilation${COMPILATION_NOTE}:
+      -g${CRAY_COMPILATION_INSTRUCTION} (and -O3 etc.)
+   linking${LINKING_NOTE}:
+${LINK_LINE}
+${FINAL_NOTES}
+"

@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# WARNING: If you install a new version of Allinea Forge to the same
+#          directory as this installation, then this file will be overwritten.
+#          If you customize this script at all, please rename it.
+#
+# Name: SGI MPT SLURM
+#
+# submit: sbatch
+# display: squeue
+# job regexp: (\d+)
+# cancel: scancel JOB_ID_TAG
+#
+# WALL_CLOCK_LIMIT_TAG: {type=text,label="Wall Clock Limit",default="00:30:00",mask="09:09:09"}
+# QUEUE_TAG: {type=text,label="Queue",default=normal}
+
+#SBATCH --nodes=NUM_NODES_TAG
+#SBATCH --time=WALL_CLOCK_LIMIT_TAG
+#SBATCH --job-name="ddt"
+#SBATCH --output=allinea.stdout
+#SBATCH --error=allinea.stdout
+#SBATCH --partition=QUEUE_TAG
+# -V
+ulimit -c unlimited
+DEBUGGER_OPTIONS="DDT_DEBUGGER_ARGUMENTS_TAG" mpiexec_mpt -ddt AUTO_MPI_ARGUMENTS_TAG PROGRAM_TAG PROGRAM_ARGUMENTS_TAG
+

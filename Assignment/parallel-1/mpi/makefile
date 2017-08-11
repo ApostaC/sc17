@@ -1,4 +1,4 @@
-EXECS=send_recv MatrixVectorMul
+EXECS=send_recv MatrixVectorMul MatrixVectorMul2
 MPICC=mpicc
 MPICPP=mpic++
 
@@ -12,6 +12,10 @@ send_recv: send_recv.c
 #for MatrixVectorMul
 MatrixVectorMul: MatrixVectorMul.cpp
 	${MPICPP} MatrixVectorMul.cpp -o MatrixVectorMul
+
+#for MatrixVectorMul2
+MatrixVectorMul2: MatrixVectorMul2.cpp
+	${MPICPP} MatrixVectorMul2.cpp -o MatrixVectorMul2 
 
 #clean here
 clean:

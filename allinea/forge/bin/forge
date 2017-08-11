@@ -1,0 +1,103 @@
+#!/bin/sh
+
+TOOLS_RUN_ARCH=`uname -m`
+
+TOOLS_BUILD_ARCH=$TOOLS_RUN_ARCH
+
+if [ $TOOLS_RUN_ARCH != $TOOLS_BUILD_ARCH ] ; then
+    echo "$0: Your machine uses the $TOOLS_RUN_ARCH architecture but this Allinea Forge installation is for the $TOOLS_BUILD_ARCH architecture."
+    exit 1
+fi
+
+OLD_LD_PRELOAD="$LD_PRELOAD"
+LD_PRELOAD=
+
+# First find ALLINEA_FORGE_PATH. Don't set this is in your environment - this script will
+# find it.
+_CWD="`pwd`"
+
+# Follow symlinks to get the canonical path of the DDT executable.
+CANONICAL_EXE=
+
+# Mac OSX readlink doesn't work with -f option.
+if [ `uname` = "Darwin" ]; then
+	TARGET_FILE=$0
+
+	cd `dirname $TARGET_FILE`
+	TARGET_FILE=`basename $TARGET_FILE`
+
+	# Iterate down a (possible) chain of symlinks
+	while [ -L "$TARGET_FILE" ]
+	do
+	    TARGET_FILE=`readlink $TARGET_FILE`
+	    cd `dirname $TARGET_FILE`
+	    TARGET_FILE=`basename $TARGET_FILE`
+	done
+
+	# Compute the canonicalized name by finding the physical path 
+	# for the directory we're in and appending the target file.
+	PHYS_DIR=`pwd -P`
+	CANONICAL_EXE=$PHYS_DIR/$TARGET_FILE
+	cd $_CWD
+elif type readlink >/dev/null 2>&1; then
+	CANONICAL_EXE="`readlink -f "$0"`"
+fi
+if [ -z "$CANONICAL_EXE" ]; then
+	CANONICAL_EXE="$0"
+fi
+
+# Set ALLINEA_FORGE_PATH to the parent of the DDT executable's directory.
+cd "`dirname "$CANONICAL_EXE"`/.."
+ALLINEA_FORGE_PATH="`pwd`"
+cd "$_CWD"
+
+. $ALLINEA_FORGE_PATH/libexec/common
+
+for var in "$@"; do
+    if [ ! "${var##--offline=}" = "$var" ]
+    then
+        DDT_OFFLINE_LAUNCHER_USE=on
+        continue
+    fi
+    if [ ! "${var##-offline=}" = "$var" ]
+    then
+        DDT_OFFLINE_LAUNCHER_USE=on
+        continue
+    fi
+    if [ ! "${var##--profile=}" = "$var" ]
+    then
+        DDT_OFFLINE_LAUNCHER_USE=on
+        continue
+    fi
+    if [ ! "${var##-profile=}" = "$var" ]
+    then
+        DDT_OFFLINE_LAUNCHER_USE=on
+        continue
+    fi
+    case "$var" in
+        "-offline" | "--offline")
+            DDT_OFFLINE_LAUNCHER_USE=on
+            ;;
+        "-profile" | "--profile")
+            DDT_OFFLINE_LAUNCHER_USE=on
+            ;;
+        "--" | "---") #19544
+            break
+            ;;
+    esac
+done
+
+. $ALLINEA_FORGE_PATH/libexec/rc-common
+
+if [ "$DDT_OFFLINE_LAUNCHER_USE" = "on" ]; then
+    echo "To debug or profile a program from the command line use the ddt or map commands." >&2 
+    exit 1
+elif [ `uname` = "Darwin" ]; then
+    export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$ALLINEA_FORGE_PATH/lib;
+    export DYLD_FRAMEWORK_PATH=$DYLD_FRAMEWORK_PATH:$ALLINEA_FORGE_PATH/lib;
+    exec $SSH_AGENT "$ALLINEA_FORGE_PATH/libexec/ddt.bin" "$@"
+elif [ "$DDT_NO_SPLASH" = "" ] &&  [ "$ALLINEA_NO_SPLASH" = "" ] ; then
+    exec $SSH_AGENT "$ALLINEA_FORGE_PATH/libexec/allinea-splash" "$ALLINEA_FORGE_PATH/libexec/ddt.bin" "$@"
+else
+    exec $SSH_AGENT "$ALLINEA_FORGE_PATH/libexec/ddt.bin" "$@"
+fi

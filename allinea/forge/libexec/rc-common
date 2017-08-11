@@ -1,0 +1,13 @@
+#!/bin/sh
+
+SITE_RC=$ALLINEA_TOOLS_PATH/allinearc
+
+if [ -r "$SITE_RC" ]; then
+    . $SITE_RC
+fi
+
+USER_RC=${ALLINEA_CONFIG_DIR:-$HOME/.allinea}/allinearc
+
+if [ -r "$USER_RC" ]; then
+    . $USER_RC
+fi

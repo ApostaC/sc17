@@ -1,0 +1,11 @@
+Clock_rate=2592 Mhz
+% clock      MFLOP  ROUTINE/PROBLEM
+=======  =========  ===============
+ 1779.0    46112.0  Chosen kgemm
+  211.6     5485.4  Generated kgemm
+  209.4     5427.9  kgemmNT
+  204.9     5310.7  kgemmTN
+  355.1     9203.5  kgemvN
+  355.1     9203.5  kgemvT
+  355.0     9200.5  kger
+ 1816.4    47080.5  N=1600 GEMM

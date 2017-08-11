@@ -1,0 +1,768 @@
+RELEASE NOTES 2017-07-26
+
+Current issues for latest release:
+
+    MAP:
+      I/O metrics are not available on some systems, including Cray systems.
+      CPU instruction metrics are only available on x86_64 systems.
+      Thread activity is not sampled whilst a process is inside an MPI call
+      with a duration spanning multiple samples.
+
+    MPICH 3:
+      MPICH 3.0.3 and 3.0.4 do not work with the Allinea Forge due to an MPICH
+      defect. MPICH 3.1 is fully supported.
+
+    Open MPI:
+      Message queue debugging does not work in Open MPI 1.8.1 to 1.8.5. This
+      issue is fixed in Open MPI 1.8.6.
+
+    CUDA:
+      To debug CUDA programs the version of the CUDA driver must match the
+      version of the CUDA toolkit used to compile your program. For example
+      if the CUDA 6.5 driver is installed then you must use the CUDA 6.5
+      toolkit to compile your program. You may the ALLINEA_FORCE_CUDA_VERSION to
+      force DDT to use a particular version of CUDA debugger, e.g. by
+      setting ALLINEA_FORCE_CUDA_VERSION=6.5 for CUDA 6.5, but this is unlikely
+      to work.
+
+      Cray CCE 8.1.2 OpenACC and previous releases will fail to
+      generate local variables in accelerated regions. Please install
+      CCE 8.1.3.
+
+    SLURM:
+      On Cray X-series systems only 'native' SLURM is suported - 'hybrid' mode
+      is not supported.
+
+    PGI compilers:
+      Version 14.9 or later of the PGI compilers is required to compile the
+      Allinea MAP MPI wrappers as a static library.
+
+    64-bit ARM/POWER platforms:
+      For best operation, DDT and MAP require debug symbols for the runtime
+      libraries to be installed in addition to debug symbols for the program
+      itself.
+
+    Invisible user guide (F1 - User Guide) - some stale files appear to be able
+    to corrupt the Qt document browser. If "F1" leads to invisible documents,
+    please remove these cached files by typing:
+      rm -r ~/.local/share/data/Allinea
+
+Changes for Allinea Forge 7.0.6:
+
+    Add pretty-printers for debugging Qt 5 strings.
+
+    Updated recommended Intel compiler flags (user guide section E6).
+
+    Fixed a bug affecting --stop-after on some SLES 11 systems.
+
+Changes for Allinea Forge 7.0.5:
+
+    Fix OS/X application signing.
+
+    Fix missing identifiers in Fortran derived data types.
+
+    Improve support for breakpoints in functions without debug info on little-endian PowerPC systems.
+
+    Fix a conflict with the Cray C++ STL library when using static linking.
+
+Changes for Allinea Forge 7.0.4:
+
+    Fix an issue with dlsym under IBM Spectrum MPI that affected profiling of hybrid MPI+OpenMP codes.
+
+Changes for Allinea Forge 7.0.3:
+
+    Add support for shmem_init_thread() to DDT.
+
+    Fix issue related to Intel KNL high bandwidth memory debugging.
+    
+Changes for Allinea Forge 7.0.2:
+
+    Allow attaching to SLURM jobs when srun is wrapped in a script.
+
+    New I/O functions tracked: pread_nocancel and pwrite_nocancel.
+
+    Add auto-detection support for PlatformMPI 9.1.4.2.
+    
+    Include cumulative memory statistics for hbw_memalign and hbw_realloc.
+
+    Add MP_IN_PLACE and MPI_BOTTOM support to SGI MPT wrappers.
+
+    Fix a rare crash in offline mode.
+
+    Include metrics SDK documentation in map/metrics/doc/.
+
+Changes for Allinea Forge 7.0.1:
+
+    Call allinea_plugin_cleanup in custom metrics at the end of a profiling job.
+
+    Make a "onePerNode" attribute available for custom metrics that should only collect
+    one process of each node.
+
+    Fix a bug that prevented high-bandwidth memory allocations being tracked correctly.
+
+    Fix an issue that caused incorrect summation values in some tooltips.
+
+Changes for Allinea Forge 7.0:
+
+    Add metrics to MAP based on PAPI counters, including rates of cache misses,
+    FLOPS and cycles per instruction.
+    
+    Add Lustre metadata metrics to the Advanced Metrics Pack add-on.
+
+    Allow profiling of programs that use MPI_THREAD_MULTIPLE and MPI_THREAD_SERIALIZED (MPI calls
+    tracked on main thread only).
+    
+    DDT and MAP now support Spectrum MPI (mpirun mode) for IBM Power (PPC64le
+    little-endian, POWER8).
+
+    MAP profiler data can now be exported as JSON for use with continuous integration and
+    regression testing systems.
+
+    Totals across all processes / nodes now appear in the metric graph tooltips in MAP.
+
+    Provide module files to simplify static and dynamic linking of the Allinea profiler libraries
+    on the Cray (in share/modules/cray).
+
+    DDT now decorates the memory allocations displayed in both the Memory Usage and
+    Memory Statistics dialogs with memory kind data.
+
+    Enhance display of Fortran multi-dimensional arrays.
+
+    Add support for preloading custom metrics libraries to MAP.
+
+    Fix issue with reverse connect feature being blocked by some firewalls.
+
+    Fix the pointer details dialog not working for some class, struct and union types.
+
+    Fix reported location for function breakpoints when restoring a debugging session in DDT.
+
+    Fix CUDA_VISIBLE_DEVICES value for srun launch.
+
+    Fix an issue in which Job Submission Settings were not saved in session files.
+
+    Fix a linker error on some Cray systems that occured when explicitly linking Allinea libraries.
+
+    Categorise OpenACC-CUDA functions as GPU functions.
+
+Changes for Allinea Forge 6.1.2:
+
+    Fix missing metrics when using MAP via remote launch or reverse connect.
+
+    Fix crash when another profile is loaded after zooming in the metrics view.
+
+    Fix the current line(s) view not working when a file is closed and reopened
+    in DDT.
+
+    Fix detection of overwrites of reserved memory in the memory debugger.
+
+    Fix CUDA thread selection when stepping through warp.
+
+Changes for Allinea Forge 6.1.1:
+
+    Fix a case where standard input would not be forwarded during
+    non-interactive sessions when the source was a file on a Lustre filesystem.
+
+    Add support for profiling programs where all MPI communication takes place
+    on a single non-main thread.
+
+    Fix an issue where CUDA runtime and driver version mismatches were sometimes
+    silently ignored.
+
+    Fix an issue with the memory debugger deadlocking on some platforms when one
+    thread frees memory from dlclose while another thread is allocating or
+    freeing memory.
+
+    Fix an issue where a deallocation trace would sometimes be shown for a
+    newly allocated object when freed memory was reused.
+
+    Fix an issue which prevented expressions from being used in the MDA viewer
+    if a language had been set.
+
+    Fix an issue with the Ctrl+K stopping working when switching tools.
+
+    Fix an issue that prevented the graphical installer working on Suse 12.
+
+    Remove the temporary .build directories for the precompiled MPI wrappers.
+
+    Address a debugger start up problem affecting Intel MPI, MPICH, MVAPICH and generic
+    MPI users.
+
+    Fix crash on startup for Cray systems with an old version of wlm_detect.
+
+    Fix multiple compilers being used to compile MPI wrappers.
+
+Changes for Allinea Forge 6.1:
+
+    Debugging and profiling support for Knights Landing (KNL) Xeon Phi product family.
+
+    Support for CUDA 8.0.
+
+    Enable CUDA support on POWER.
+
+    Lustre I/O metrics added to MAP.
+
+    Preloading the Allinea profiler libraries is now supported for dynamically
+    linked programs on Cray X-Series / Cray MPT systems.
+
+    Preloading the Allinea profiler libraries and DDT memory debugging library
+    when using Slurm versions older than 14.11 is now supported.
+
+    Precompiled Allinea MPI wrappers now provided for OpenMPI (1.6 and up),
+    Intel MPI (5.0 and up), MPICH2, MPICH3, Bullx MPI, MVAPICH2 and Cray MPI.
+
+    In DDT's offline log, display the local variables and stack arguments for a configurable
+    number of stack frames under every stack.
+
+    For dangling pointers, display the stack at the point of deallocation in the Pointer Details
+    window.
+
+    Highlight dangling pointers in the Cross-Process Comparison and Cross-Thread Comparison
+    windows.
+
+    The command-line arguments for DDT offline logs are now consistent
+    with those for creating MAP profile files. To start DDT in offline
+    mode, use the --offline flag. DDT will generate an HTML offline
+    log with an automatically chosen filename. Optionally, you can add
+    "--output=<filename>" to direct the output to a particular text or HTML file.
+    Warning: Existing batch scripts that use the "--offline log.html" syntax must be
+    changed to use the new "--offline --output=log.html" syntax.
+
+    Add support in DDT's disassembly view for 64-bit POWER specific instructions.
+
+    Include stat/lstat/fstat calls in MAP's I/O metrics.
+
+    MAP supports functions export in profiling mode.
+
+    Mac OS X client installer is now signed.
+
+    Licences are now tied to architectures.  x86_64 and i686 are taken as defaults if no
+    architectures are specified in the licence file.
+
+    Fix CUDA 7.5 not working on some Cray systems.
+
+    Fix missing OpenMP thread IDs in Cross-Thread Comparison window.
+
+    Forge will no longer show spurious TopologyFile::readEntry warnings on some
+    systems.
+
+    Programs that dynamically load OpenMP at runtime will no longer crash.
+
+    Fix array viewer modifying lower bounds whilst user is still typing
+    maximum bounds.
+
+    Fix an issue that would cause memory debugging to hang on ARMv8 (aarch64) systems.
+
+    Add support for Platform MPI to Express Launch mode.
+
+    Programs using Platform MPI will now have their working directory set correctly.
+
+    Add support for statically linking the profiler libraries on Cray systems
+    that are using binutils >= 2.25.
+
+    Add automatic SLURM detection on Cray.
+
+    Add support for UPC and CAF programs on Cray systems using native SLURM.
+
+    Memory allocations are aligned correctly for SSE data types when guard
+    pages are set to "after".
+
+    Fix incorrectly reported number of nodes in summary and program details.
+
+    Fix "--nodes" command line argument handling.
+
+    Fix an issue that could cause unnecessary sampling overhead when profiled
+    program makes redundant calls to dlopen or dlclose.
+
+    Prevent spurious "Maximum backtrace size in sampler exceeded, stack too deep."
+    messages appearing when running MAP.
+    
+    Updates to example QTF files.
+
+Changes for Allinea Forge 6.0.6: Rollup of previous bug fixes.
+
+    Fix --check-bounds not working correctly.
+
+    Fix incorrectly reported number of nodes in Express Launch mode.
+
+    Wrap shmem_init() when profiling in MAP.
+
+    Fix the displayed value of Fortran module variables that are used in one
+    shared library but that were defined in another.
+
+    Fix the sorting of numerical columns in the message queue viewer.
+
+    Fix negative timestamps in tracepoint logs.
+
+    Fix CPU instruction metrics being incorrect for codes with large functions.
+
+    Fix pause not working with IBM PE.
+
+    Fix sampler not being able to recover from minor errors due to the debugger
+    intercepting any signals raised.
+
+Changes for Allinea Forge 6.0.5: Rollup of previous bug fixes.
+
+    Fix an issue that could cause Cray OpenMP programs to crash under MAP.
+
+    Add support in MAP for SHMEM programs using shmem_init.
+
+    Fix the stacks view being blank when using "step threads together" with
+    OpenMP programs.
+
+    Fix an issue that caused CPU instruction metrics to be lower than expected
+    for some GPU runs.
+
+    Fix an issue that could cause jobs to time-out early for some SLURM
+    configurations.
+
+    Fix OpenMP control threads appearing in the stack when stepping threads
+    together.
+
+    Cray MPI will now be correctly auto-detected if Intel MPI is also in the
+    path on Cray machines.
+
+    Forge will no longer erroneously detect a Xeon Phi card if the driver is
+    installed but no card or cross-compilation environment is present.
+
+    Fix long MAP analysis times for some SLURM configurations when processes
+    are bound to a single core on a node.
+
+    Fix Fortran string printing when using the GNU compiler.
+
+Changes for Allinea Forge 6.0.6: Rollup of previous bug fixes.
+
+    Fix CPU instruction metrics being incorrect for codes with large functions.
+
+Changes for Allinea Forge 6.0.4: Rollup of previous bug fixes.
+
+    Fix bullx MPI startup.
+
+    Fix express launch for SGI MPT.
+
+    Fix indexing when exporting data as CSV from the multi-dimensional array
+    viewer.
+
+    Fix incorrect values being displayed for Fortran arrays when resizing
+    the multi-dimensional array viewer.
+
+    Fix opening old MAP (4.2) files on Windows and Mac OS X.
+
+    Fix file sorting when using the remote client.
+
+    Fix bug with pointer detection in the cross process/thread comparison.
+
+    Fix memory debugging library detection when using DDT offline. 
+
+    Honour the order of source directories in the session file.
+
+    Improve CUDA version detection.
+
+    Fix a bug for BullxMPI support.
+
+Changes for Allinea Forge 6.0.3: Rollup of previous bug fixes.
+
+    Fix express launch for SGI MPT.
+
+    Fix an issue that caused Allinea Forge to crash when sampling
+    an application that uses pthreads on RHEL 5.
+
+    Reduce the number of queries for user and group information made by the
+    back end start-up on Cray systems.
+
+    Fix assertion failure `a.tv_nsec < 1000000000'.
+
+    Improve SIGPROF signal handler error messages.
+
+    Fix an issue where the user would be informed that their source code was
+    newer than their executable erroneously.
+
+    Fix Python environment variables.
+
+    Add support for setting environment variables in --mpiargs with MVAPICH2
+    and mpirun_rsh.
+
+    Fix NUM_NODES_TAG (and other tags) being incorrectly handled in some QTF
+    files.
+
+Changes for Allinea Forge 6.0.2: Rollup of previous bug fixes.
+
+    Reduce the number of queries for user and group information made by the
+    back end start-up on Cray systems.
+
+    Fix an issue that prevented compilation of static wrapper libraries.
+
+    Fix duplicate entries for MPI call MPI_Bcast error.
+
+Changes for Allinea Forge 6.0.1: Rollup of previous bug fixes.
+
+    Fix remote connect issue when local licence had "remote-mic" option but
+    remote system is not a MIC node.
+
+    Fix conflict between MAP and profiled programs that have a global variable
+    called "data".
+
+    Fix NUM_NODES_TAG which was always replaced with 0.
+
+    Add support for reading compute node power usage via IPMI power sensors.
+    See http://www.allinea.com/ipmi-energy-agent for more details.
+
+Changes for Allinea Forge 6.0:
+
+    Support for CUDA 7.5
+
+    Fix multiple CUDA issues.
+
+    Support for periodically writing snapshots to the offline log in DDT.
+    Support for using a signal to trigger the writing of a snapshot to the offline log.
+
+    Extend memory debugging to display stacks for the deallocation of memory as well as
+    its allocation.
+
+    Allow expressions for DDT's Evaluation window to be specified on the command line.
+
+    Two hop remote connections now work with the Windows remote client when installed
+    in a directory with spaces in.
+
+    Fix source code viewer's handling of source files in libraries.
+
+    Profiling support for 64-bit ARM platforms (aarch64).
+    Profiling support for 64-bit Power platforms (ppc64le).
+    Profiling support for OpenSHMEM.
+
+    Add interface for users to define custom metrics for profiling.
+
+    CPU instruction metrics can be viewed for individual source lines.
+
+    Allow existing MAP files to be viewed without a licence.
+
+    Fix MAP's classification of OpenMP worker threads.
+
+    Fix an issue that could prevent MAP from working when NULL was passed to
+    certain MPI functions.
+
+    Fix an issue that could cause MAP to abort if exit was called from a
+    non-main thread.
+
+    Performance enhancements to retrieving variable data types in DDT.
+
+Changes since Allinea Forge 5.1:
+
+    5.1-45317: Bug fix
+    - Fix bug that caused DDT to forget breakpoints when tracepoints are loaded from a *.dbf file.
+
+    5.1-45173: Bug fix
+
+    - Facilitate stopping at MPI_Init when the call is in a dynamic library that is opened with dlopen()
+      by using the MPI_INIT and MPI_INIT_PENDING environment variables.
+
+    5.1-45057: Bug fix
+
+    - Fix bug that caused MAP to interfere with programs that passed 64 bit
+      file offsets or counts to certain MPI functions.
+
+    5.1-45035: Bug fix
+
+    - Fix bug that prevented restoring breakpoints, expressions etc.
+      from a previous session on CRAY.
+
+    5.1-44970: Bug fix
+
+    - Improve performance of MAP's analysis phase.
+    - Fix bug that caused some MPI methods to fail under MAP when passed a
+      NULL pointer from Fortran.
+    - Fix bug that caused MAP to incorrectly process some functions when they
+      were passed MPI_IN_PLACE.
+    - Fix bug that caused MAP to wrap MPI_Wait incorrectly.
+    - Fix bug that caused MAP to wrap MPI_File_iwrite_shared incorrectly.
+    - Fix bug that caused MPI_Status parameters to be incorrectly handled by the
+      wrapper.
+
+    5.1-44795: Bug fix
+
+    - Fix bug that caused one process per node to run much slower and to increase
+      the job wallclock time in MAP (because pmi_proxy was running at 100%).
+
+    5.1-44403: Bug fix and enhancement
+
+    - Add environment variable (ALLINEA_REVERSE_CONNECT_DIR) for specifying shared directory used by reverse connect feature.
+    - Fix problem debugging single character Fortran variables compiled with ifort.
+
+    5.1-44291: Bug fix.
+
+    - Fix failure on 5.1 remote client compatibility.
+
+    5.1-44229: Bug fix
+
+    - Fix failure to launch CUDA jobs when auto-detection fails.
+
+    5.1-44076: Bug fix
+
+    - Fix failure to launch CUDA jobs when using SLURM(MPMD).
+
+    5.1-44122: GDB Bug fix
+
+    - Fix bug in GDB where VDSO was not correctly read.
+
+    5.1-43967: Bug fix and enhancement
+
+    - Fix logging when using Reverse Connect.
+    - Fix topology file bug that could cause a startup failure.
+    - Fix problems evaluating Fortran modules when memory debugging enabled.
+    - Fix MPI wrapper for Fortran MPI_File_* functions.
+    - Improve thread sparkline performance.
+
+    5.1-43857: Bug fix
+
+    - Fix failure to add a watchpoint on an element of a Fortran allocatable array.
+    - Fix problem with obtaining bounds of Fortran allocable array in debugger for gfortran generated code
+
+    5.1-43812: Bug fix
+
+    - Fix issue launching IntelMPI jobs via Slurm.
+    - Fix back-end debugger selection when the MPI_COMPILER environment variable
+      is set.
+
+    5.1-43629: Bug fix
+
+    - Fix MAP functions view not displaying total time.
+    - Fix logbook only working on first session per launch of Forge.
+    - Fix for source code browse button to show directory based on configuration.
+
+    5.1-43607: Bug fix
+
+    - Give the mpirun specified by the ALLINEA_MPIRUN environment variable precedence
+      over any mpirun in the path.
+    - Fix stack limit bug, causing "Thread creation error: Resource
+      temporarily unavailable" messages.
+
+    5.1-43373: Bug fix
+
+    - Fix timeout on some network configurations, caused by the backend not
+      trying all known addresses when connecting to the frontend.
+
+Changes for Allinea Forge 5.1:
+
+    Debugging and profiling support for RHEL 7 x86_64.
+    Debugging and profiling support for SLES 12 x86_64.
+    Debugging support for 64-bit ARM platforms (aarch64).
+    Debugging support for 64-bit POWER platforms using the PPC64le/ELFv2 ABI
+    (ppc64le).
+    CUDA 5.5 support has been removed.
+    PGI 13.x is no longer a tested combination.
+
+    Reverse Connect allows connecting back to the user interface from a queue
+    script or interactive allocation making Forge easy to use with your existing
+    queue scripts.
+
+    Energy metrics added to Allinea MAP (requires Energy Pack add-on).
+
+    MAP profiling may be restricted to a given portion of the program's run time.
+
+    Horizontal and vertical zoom added to the MAP metric views.
+
+    .map files store the first and last few lines of program output.
+
+    Removed SSH requirement for using Express Launch with MPICH 2 and 3 and
+    Intel MPI.
+
+    Unresponsive remote connections are reaped when a new one is made in order
+    to free up licence tokens used by dropped connections.
+
+Changes since Allinea Forge 5.0.1:
+
+    5.0.1-43279: Bug fix
+
+    - Fix "did not reach MPIR_Breakpoint within 10000 events" bug.
+
+    5.0.1-43242: Bug fix
+
+    - Exclude Python byte code files from backend tarballs as this causes issues
+      with file permissions.
+
+    5.0.1-43160: Bug fix
+
+    - Fix "did not reach MPIR_Breakpoint within 10000 events" bug.
+    - Fix rare crash in GDB (htab_find <- find_subfile ...).
+    - Improve shared symbol file creation handling on BG/Q.
+
+    5.0.1-43113: Bug fix
+
+    - Fix very slow MAP analysis on some systems.
+    - Fix bug in remote daemon which could prevent the licence check from
+      running.
+
+    5.0.1-43066: Bug fix
+
+    - Optimize variable printing speed of deeply nested C++ classes in DDT.
+
+    5.0.1-43050: Bug fix
+
+    - Fix multidimensional array visualization when GUI node and compute node
+      byte-order differs.
+
+    5.0.1-42987: Bug fix
+
+    - Fix persistence of the always look for source files locally option in user
+      configuration.
+
+    5.0.1-42956: Bug fix
+
+    - Fix issue finding runjob when attaching on a Bluegene/Q system.
+
+    5.0.1-42895: Enhancement
+
+    - Add environment variable ALLINEA_DISABLE_THREAD_SPARKLINES to disable
+      thread sparklines in situations when they are making DDT unresponsive.
+
+    5.0.1-42776: Bug fix
+
+    - Fix GDB handling a fork+exec when default breakpoint 'stop on exec' is not
+      set while 'stop on fork' is.
+
+    5.0.1-42708: Bug fix
+
+    - Release floating licences when the remote daemon exits due to the
+      client unexpectedly disconnecting.
+    - Fix function evaluations and Fortran function argument passing.
+
+    5.0.1-42607: Bug fix
+
+    - Faster, more responsive and more stable remote client.
+    - Fix intermittent startup failure on Cray X-series and Bluegene systems.
+
+    5.0.1-42591: Bug fix
+
+    - Fix GDB handling of Fortran array subscription and function calls when
+      short-circuiting the RHS of a logical .AND. or .OR. .
+
+    5.0.1-42365: Bug fix
+
+    - Add workaround for buggy compilers that emit invalid DWARF indirect string
+      offsets.
+
+    5.0.1-42253: Bug fix
+
+    - Fix update of remote client GUI when configuration reloaded.
+    - Add validation to matrix_mult example.
+    - Fix Mac remote client freezing when viewing GPU memory usage in DDT.
+    - Fix failure to obtain I/O metrics.
+    - Fix segfault when rapidly clicking on DDT's process group widget.
+    - Fix sampler stopping on a process in MPI only code.
+    - Fix OpenMP checkbox missing from Run window after tool switching from DDT
+      to MAP.
+    - Fix Cray start up issue due to DDT re-enabling memory debugging preload.
+
+    5.0.1-42095: Bug fix
+
+    - Add write-only watchpoints by default.
+
+    5.0.1-42034: Bug fix
+
+    - Fix GDB-762 segfault on Fedora-19.
+
+    5.0.1-42032: Bug fix
+
+    - Fix segfault when double-clicking empty area in logbook.
+
+    5.0.1-41963: Bug fix
+
+    - Avoid terminating PlatformMPI's mpirun with SIGTERM when ending a session
+      as this may result in the termination of the enclosing queue submission
+      script.
+
+    5.0.1-41883: Bug fix
+
+    - Fix rare crash in GDB when looking up an undefined symbol.
+
+    5.0.1-41707: Bug fix
+
+    - Allow floating licences to specify the ports available for use by Allinea
+      Forge.
+
+Changes for Allinea Forge 5.0.1:
+
+    Support for CUDA 7.0
+
+    CUDA metrics for Allinea MAP and Allinea Performance Reports.
+
+Changes since Allinea Forge 5.0:
+
+    5.0-41664: Bug fix
+
+    - Enable dereferencing of pointers in some STL containers in DDT (e.g.
+      stl::vector and stl::set).
+
+    5.0-41628: Bug fix
+
+    - Fix updating of the 'selected frame' highlighting displayed by DDT's PSV.
+
+    5.0-41541: Bug fixes
+
+    - Fix profiler library 'allinea_type_size' linker error.
+
+    5.0-41402: Bug fix
+
+    - Fix display of std::unique_ptr variables.
+
+    5.0-41375: Bug fix
+
+    - Prevent abort in the MPI wrapper in functions with arguments of type
+      MPI_Datatype when given the value MPI_DATATYPE_NULL.
+
+    5.0-41047: Bug fix
+
+    - Attempt to display a file and approximate line number for the entry point of a
+      profiled program if the exact line number is not specified in the program's
+      DWARF.
+
+    5.0-40983: Bug fix
+
+    - Allow preloading the sampler library for non-MPI programs on Cray
+
+    5.0-40982: Bug fix
+
+    - Prevent GDB getting into an infinite loop when a class has a class-scope member
+      of its own type and the base class also has such a member with the same name.
+
+    5.0-40932: Bug fix
+
+    - Fix detection of when sampler library has been statically linked to target
+      executable.
+
+    5.0-40901: Bug fix
+
+    - Fix missing MAP metrics when profiling native Xeon Phi programs.
+
+    5.0-40881: Bug fix
+
+    - Fix positioning of the 'Overall Memory Statistics' window.
+
+Changes for Allinea Forge 5.0:
+
+    Allinea Forge unified branding.
+
+    Edit and recompile from within DDT and MAP.
+
+    MAP profiles multiple threads and supports OpenMP regions.
+
+    Flat profile Function view in MAP. Time glyphs removed from Project Files
+    view.
+
+    Replaced make-map-*-libraries and make-profiler-*-libraries scripts with a
+    single make-profiler-libraries script.
+
+    Sparklines for OpenMP threads in DDT 'Focus on Process' mode.
+
+    Offline logs now include source code snippets and an optional memory leak
+    report.
+
+    Multi-Dimensional Array Viewer supports staggered arrays.
+
+    Scalable startup for SLURM, including 'native' SLURM support for Cray
+    X-series.
+
+    Window setup executable is signed.
+
+    'Magnified mode' no longer used on Mac OS X for retina displays.
+
+    CAPS HMPP support removed.

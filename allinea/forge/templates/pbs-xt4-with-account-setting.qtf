@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# Name: PBS XT4 with account setting
+#
+# WARNING: If you install a new version of Allinea Forge to the same
+#          directory as this installation, then this file will be overwritten.
+#          If you customize this script at all, please rename it.
+#
+# submit: qsub
+# display: qstat
+# job regexp: (\d+) 
+# cancel: qdel JOB_ID_TAG
+# 
+# WALL_CLOCK_LIMIT_TAG: {type=text,label="Wall Clock Limit",default="00:30:00",mask="09:09:09"}
+# ACCOUNT_TAG: {type=text,label="Account",global}
+# QUEUE_TAG: {type=text,label="Queue",default=debug}
+
+#PBS -V
+#PBS -o allinea.stdout
+#PBS -e allinea.stderr
+#PBS -l size=NUM_PROCS_TAG,walltime=WALL_CLOCK_LIMIT_TAG
+
+# You might need to set these!
+#PBS -q QUEUE_TAG
+#PBS -A ACCOUNT_TAG
+
+cd ${PBS_O_WORKDIR}
+
+AUTO_LAUNCH_TAG
+

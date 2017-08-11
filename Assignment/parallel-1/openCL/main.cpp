@@ -1,3 +1,14 @@
+#define DEBUG
+#define MAIN1D
+
+#ifdef MAIN2D
+	#define KERNEL_NAME "matrixMulVector2D"
+#endif
+
+#ifdef MAIN1D
+	#define KERNEL_NAME "matrixMulVector1D"
+#endif 
+
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
@@ -7,8 +18,16 @@
 #define Memobj  cl_mem
 #define Program cl_program
 #define Kernel cl_kernel
-#define LOCAL_DIM_ROW 1
-#define LOCAL_DIM_COL 2
+
+#ifdef MAIN2D
+	#define LOCAL_DIM_ROW 1
+	#define LOCAL_DIM_COL 2
+#endif
+
+#ifdef MAIN1D
+	#define LOCAL_SIZE 2
+#endif 
+
 using namespace std;
 int rows,cols;
 void readInfo(int ** vector, int *** matrix)
@@ -55,6 +74,7 @@ int main()
 	int * vector=NULL;
 	int ** matrix= NULL;
 	readInfo(&vector,&matrix);
+
 
 	//PRELOAD KERNEL FILE
 	FILE *fp;
@@ -116,7 +136,7 @@ int main()
 	cout<<"program built! "<<errcode <<endl;
 
 	//CREATE KERNEL AND SET ARGS
-	Kernel k=clCreateKernel(p, "matrixMulVector", &errcode);
+	Kernel k=clCreateKernel(p, KERNEL_NAME, &errcode);
 
 	cout<<"kernel loaded!"<<errcode<<" "<<endl;
 
@@ -128,13 +148,22 @@ int main()
 	cout<<"Args set!"<<endl;
 
 	//SET WORK DIMENSIONS AND EXECUTE THE KERNEL
+#ifdef MAIN2D 
 	cout<<"working at CPU local work group dimenson "<<LOCAL_DIM_ROW<<"*"<<LOCAL_DIM_COL<<endl;
 	size_t gs[2],ls[2]={LOCAL_DIM_ROW,LOCAL_DIM_COL};
 	gs[0]=shrRoundUp(ls[0],rows);
 	gs[1]=shrRoundUp(ls[1],cols);
-	errcode = clEnqueueNDRangeKernel(queue, k, 2, NULL,gs,gs,0,NULL,NULL);
+	errcode = clEnqueueNDRangeKernel(queue, k, 2, NULL,gs,ls,0,NULL,NULL);
 	cout<<"exceuted!"<<endl;
-	
+#endif
+
+#ifdef MAIN1D 
+	size_t gs,ls;
+	ls=LOCAL_SIZE;
+	gs=shrRoundUp(ls,rows);
+	errcode =clEnqueueNDRangeKernel(queue, k, 1, NULL,&gs,&ls,0,NULL,NULL);
+	cout<<"exceuted!"<<endl;
+#endif 
 	//LOAD THE ANSWER
 	int * ans=new int[rows];
 	errcode=clEnqueueReadBuffer(queue, ret, CL_TRUE, 0, sizeof(int)*(rows), ans,0,NULL,NULL);
@@ -146,9 +175,17 @@ int main()
 	delete[] ans;
 	delete[] vector;
 	delete[] source_str;
-	for(int i=0;i<rows;i++) delete[] matrix[i];
+#ifdef DEBUG
+	for(int i=0;i<rows;i++) {
+		cout<<matrix[i]<<" : ";
+		for(int j=0;j<cols;j++)
+			cout<<matrix[i][j]<<" ";
+		cout<<endl;
+	}
+#endif 
+	//for(int i=0;i<rows;i++)  
+		//delete[] matrix[i];
 	delete[] matrix;
-	delete fp;
 	clReleaseKernel(k);
 	clReleaseContext(context);
 	clReleaseProgram(p);

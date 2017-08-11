@@ -1,0 +1,89 @@
+#!/bin/sh
+# usage ddt-remoted [-e environment] [-s script]
+# GLOBALS
+LIBEXEC=`dirname $0`
+ALLINEA_TOOLS_PATH=`dirname $LIBEXEC`
+DDTPATH=$ALLINEA_TOOLS_PATH
+export ALLINEA_TOOLS_PATH
+export DDTPATH
+
+PATH="$ALLINEA_TOOLS_PATH/bin${PATH:+:$PATH}"
+PATH="$ALLINEA_TOOLS_PATH/libexec${PATH:+:$PATH}"
+
+export PATH
+
+LD_LIBRARY_PATH="$ALLINEA_TOOLS_PATH/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+SHLIB_PATH="$ALLINEA_TOOLS_PATH/lib${SHLIB_PATH:+:$SHLIB_PATH}"
+LIBPATH="$ALLINEA_TOOLS_PATH/lib${LIBPATH:+:$LIBPATH}"
+LD_LIBRARY_PATH="$ALLINEA_TOOLS_PATH/lib/32${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+SHLIB_PATH="$ALLINEA_TOOLS_PATH/lib/32${SHLIB_PATH:+:$SHLIB_PATH}"
+LIBPATH="$ALLINEA_TOOLS_PATH/lib/32${LIBPATH:+:$LIBPATH}"
+LD_LIBRARY_PATH="$ALLINEA_TOOLS_PATH/lib/64${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+SHLIB_PATH="$ALLINEA_TOOLS_PATH/lib/64${SHLIB_PATH:+:$SHLIB_PATH}"
+LIBPATH="$ALLINEA_TOOLS_PATH/lib/64${LIBPATH:+:$LIBPATH}"
+LD_LIBRARY_PATH="$ALLINEA_TOOLS_PATH/lib/map${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+SHLIB_PATH="$ALLINEA_TOOLS_PATH/lib/map${SHLIB_PATH:+:$SHLIB_PATH}"
+LIBPATH="$ALLINEA_TOOLS_PATH/lib/map${LIBPATH:+:$LIBPATH}"
+
+export LD_LIBRARY_PATH
+export SHLIB_PATH
+export LIBPATH
+
+# ARGUMENTS
+FORWARDED_ENVIRONMENT=
+USER_SCRIPT=
+
+while getopts "e:s:" OPTION
+do
+    case $OPTION in
+        e)
+            FORWARDED_ENVIRONMENT=$OPTARG
+            ;;
+        s)
+            USER_SCRIPT=$OPTARG
+            ;;
+        ?)
+            ;;
+    esac
+done
+
+# getopts above will not modify "$@", but arguments between ddt-remoted and
+# ddt-remoted.bin are separated by --, so only forward arguments to ddt-remoted.bin
+# to the right of --
+while [ $# -gt 0 ]; do
+    if [ "$1" = "--" ]; then
+        shift
+        break
+    fi
+    shift
+done
+
+. $ALLINEA_TOOLS_PATH/libexec/rc-common
+
+SITE_SCRIPT="$ALLINEA_TOOLS_PATH/remote-init" # Sourced by all connections using this installation
+USER_WIDE_SCRIPT="${ALLINEA_CONFIG_DIR:-$HOME/.allinea}/remote-init" # Sourced by all connections for this user
+
+# source a site-wide script
+if [ -r "$SITE_SCRIPT" ]; then
+    . "$SITE_SCRIPT"
+fi
+
+# source user-wide script
+if [ -r "$USER_WIDE_SCRIPT" ]; then
+    . "$USER_WIDE_SCRIPT"
+fi
+
+# source a user script if provided
+if [ -r "$USER_SCRIPT" ]; then
+    . "$USER_SCRIPT"
+fi
+
+SSH_ASKPASS=$LIBEXEC/remote-askpass
+export SSH_ASKPASS
+
+# start daemon
+if [ -n "${FORWARDED_ENVIRONMENT}" ]; then
+    eval "export $FORWARDED_ENVIRONMENT"
+fi
+
+"$LIBEXEC/findarch" libexec/ddt-remoted.bin "$@"

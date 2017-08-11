@@ -1,0 +1,34 @@
+#
+#  This file generated at line 658 of /home/aposta/sc17/ATLAS//tune/blas/ger/r2hgen.c
+#
+include Make.inc
+
+R2CC = $(SKC)
+R2FLAGS = $(CDEFS) $(SKCFLAGS) -DSCPLX
+
+obj = ATL_cger2k__900001.o ATL_cger2k__900003.o ATL_cger2k__900005.o ATL_cger2k__1.o
+lib : clib
+clib : cr2k.grd
+cr2k.grd : $(obj)
+	$(ARCHIVER) $(ARFLAGS) $(ATLASlib) $(obj)
+	$(RANLIB) $(ATLASlib)
+	touch cr2k.grd
+cclean : clean
+clean :
+	- rm -f $(obj) cr2k.grd
+
+ckilllib : killlib
+killlib : 
+	- $(ARCHIVER) d $(ATLASlib) $(obj)
+	$(RANLIB) $(ATLASlib)
+killall : killlib clean
+	 rm -f ATL_cger2k__900001.c ATL_cger2k__900003.c ATL_cger2k__900005.c ATL_cger2k__1.c
+
+ATL_cger2k__900001.o : ATL_cger2k__900001.c
+	 $(R2CC) -o ATL_cger2k__900001.o -c -DATL_UGER2K=ATL_cger2k__900001 $(R2FLAGS) -DSCPLX -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DPFIA=prefetcht2 -DPFIX=prefetcht1 -DPFADIST=128 -DPFYDIST=256 ATL_cger2k__900001.c
+ATL_cger2k__900003.o : ATL_cger2k__900003.c
+	 $(GOODGCC) -o ATL_cger2k__900003.o -c -DATL_UGER2K=ATL_cger2k__900003 -x assembler-with-cpp -DPFIX=prefetchnta -DPFIY=prefetchnta -DPFADIST=192 -DPFXDIST=128 -DPFYDIST=256 -DSCPLX $(CDEFS) ATL_cger2k__900003.c
+ATL_cger2k__900005.o : ATL_cger2k__900005.c
+	 $(R2CC) -o ATL_cger2k__900005.o -c -DATL_UGER2K=ATL_cger2k__900005 $(R2FLAGS) -DSCPLX -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DPFIX=prefetcht1 -DPFYDIST=128 ATL_cger2k__900005.c
+ATL_cger2k__1.o : ATL_cger2k__1.c
+	 $(R2CC) -o ATL_cger2k__1.o -c -DATL_UGER2K=ATL_cger2k__1 $(R2FLAGS) ATL_cger2k__1.c

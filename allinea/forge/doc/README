@@ -1,0 +1,96 @@
+Allinea DDT, Allinea MAP (c) Allinea Software Ltd.
+
+2017-07-26
+
+This is version 7.0.6 of Allinea Forge (DDT and MAP).
+
+Contents
+========
+
+    1.  Installing Allinea Forge
+    2.  Running DDT
+    3.  Running MAP
+    4.  Contacting Us
+
+1.  Installing Allinea Forge
+============================
+
+    Run the graphical "installer" or the text-only "textinstall.sh" from the download
+    tarball.
+
+    You may choose to install just for you or for all users on your system.
+    If you are installing on a cluster, please make sure that it is
+    available at the same path on every machine.
+
+    If you have a job submission system such as PBS or LoadLeveler running
+    then please see the User Guide for additional setup information.
+
+    The Allinea Forge user guide in the doc directory contains further configuration
+    information.
+
+    If you do not have licence files for each product you will need to obtain them
+    from Allinea. Trial licences may be obtained by visiting
+      http://www.allinea.com/products/trials/.
+
+    Full licences may be obtained by emailing sales@allinea.com. The licences
+    should be stored in a directory called licences below the installation 
+    directory. For a default (root) installation, that directory would be:
+      /opt/allinea/forge/licences
+    and for a user-only installation it would be:
+      ${HOME}/allinea/forge/licences
+
+2.  Running DDT
+===============
+
+    If you are using a supported desktop environment (KDE or Gnome) you
+    will find a DDT icon in your Development/Programming menu.
+
+    To run DDT from the command line, type:
+        {allinea-forge-path}/bin/ddt
+
+    or, if {allinea-forge-path}/bin is in your $PATH, just 'ddt' will do.
+
+    You may optionally provide a program name as the first argument.
+
+    Upon startup you will be presented with the Welcome dialog. From here you
+    may choose to run a program, attach to an existing program or open a core
+    file.
+
+    To start debugging a program, click the "Run" button then in the Run window
+    enter the path to your program in the Application field or use the browse
+    button. Click the Run button to start the program.
+
+    Your chosen program will be run using mpirun. If you have problems starting
+    your program under DDT, first ensure it can run without DDT from the
+    command line.
+
+3.  Running MAP
+===============
+
+    If you are using a supported desktop environment (KDE or Gnome) you
+    will find a MAP icon in your Development/Programming menu.
+
+    To run MAP from the command line, type:
+        {allinea-forge-path}/bin/map
+
+    or, if {allinea-forge-path}/bin is in your $PATH, just 'map' will do.
+
+    You may optionally provide a program name as the first argument.
+
+    Upon startup you will be presented with the Welcome dialog. From here you
+    may profile a program, or load a profile from a previous run.
+
+    To start profiling a program, click the "Profile" button
+    then in the Run window enter the path to your program in the Application
+    field or use the browse button. Click the Run button to start the program.
+
+    Your chosen program will be run using mpirun. If you have problems starting
+    your program under MAP, first ensure it can run without MAP from the
+    command line.
+
+4.  Contacting Us
+=================
+
+    If you have problems with any Allinea product, please contact us at
+        support@allinea.com
+    or  +44 (0)1926 623231

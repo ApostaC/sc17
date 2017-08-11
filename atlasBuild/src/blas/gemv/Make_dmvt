@@ -1,0 +1,38 @@
+#
+#  This file generated at line 274 of /home/aposta/sc17/ATLAS//tune/blas/gemv/mvthgen.c
+#
+include Make.inc
+
+MVTCC = $(DKC)
+MVTFLAGS = $(CDEFS) $(DKCFLAGS) -DDREAL
+
+obj = ATL_dmvtk__900002.o ATL_dmvtk__900002_b0.o ATL_dmvtk__900008.o ATL_dmvtk__900008_b0.o ATL_dmvtk__900007.o ATL_dmvtk__900007_b0.o
+lib : dlib
+dlib : dmvtk.grd
+dmvtk.grd : $(obj)
+	$(ARCHIVER) $(ARFLAGS) $(ATLASlib) $(obj)
+	$(RANLIB) $(ATLASlib)
+	touch dmvtk.grd
+dclean : clean
+clean :
+	- rm -f $(obj) dmvtk.grd
+
+dkilllib : killlib
+killlib : 
+	- $(ARCHIVER) d $(ATLASlib) $(obj)
+	$(RANLIB) $(ATLASlib)
+killall : killlib clean
+	 rm -f ATL_dmvtk__900002.c ATL_dmvtk__900008.c ATL_dmvtk__900007.c
+
+ATL_dmvtk__900002.o : ATL_dmvtk__900002.c
+	 $(GOODGCC) -o ATL_dmvtk__900002.o -c -DATL_UGEMV=ATL_dmvtk__900002 -x assembler-with-cpp -DDREAL $(CDEFS) ATL_dmvtk__900002.c
+ATL_dmvtk__900002_b0.o : ATL_dmvtk__900002.c
+	 $(GOODGCC) -o ATL_dmvtk__900002_b0.o -c -DATL_UGEMV=ATL_dmvtk__900002_b0 -DBETA0 -x assembler-with-cpp -DDREAL $(CDEFS) ATL_dmvtk__900002.c
+ATL_dmvtk__900008.o : ATL_dmvtk__900008.c
+	 $(GOODGCC) -o ATL_dmvtk__900008.o -c -DATL_UGEMV=ATL_dmvtk__900008 -x assembler-with-cpp -DPFIX=prefetcht1 -DPFADIST=128 -DPFYDIST=128 -DDREAL $(CDEFS) ATL_dmvtk__900008.c
+ATL_dmvtk__900008_b0.o : ATL_dmvtk__900008.c
+	 $(GOODGCC) -o ATL_dmvtk__900008_b0.o -c -DATL_UGEMV=ATL_dmvtk__900008_b0 -DBETA0 -x assembler-with-cpp -DPFIX=prefetcht1 -DPFADIST=128 -DPFYDIST=128 -DDREAL $(CDEFS) ATL_dmvtk__900008.c
+ATL_dmvtk__900007.o : ATL_dmvtk__900007.c
+	 $(MVTCC) -o ATL_dmvtk__900007.o -c -DATL_UGEMV=ATL_dmvtk__900007 $(MVTFLAGS) -DDREAL -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DPFIA=prefetcht1 -DPFIX=prefetcht2 -DPFADIST=192 -DPFYDIST=256 ATL_dmvtk__900007.c
+ATL_dmvtk__900007_b0.o : ATL_dmvtk__900007.c
+	 $(MVTCC) -o ATL_dmvtk__900007_b0.o -c -DATL_UGEMV=ATL_dmvtk__900007_b0 -DBETA0 $(MVTFLAGS) -DDREAL -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DPFIA=prefetcht1 -DPFIX=prefetcht2 -DPFADIST=192 -DPFYDIST=256 ATL_dmvtk__900007.c

@@ -1,0 +1,99 @@
+                        MPI History Library
+
+Copyright (C) 2011, Allinea Software Ltd
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+USA
+---------------------------------------------------------------------
+
+About this plugin
+=================
+
+This plugin is designed to wrap around many of the core MPI functions
+and seamlessly intercept calls to log information which is then
+displayed in DDT.
+
+It is targetted at MPI implementations which use dynamic linking, as
+this can be supported without relinking the debugged application.
+Static MPI implementations can be made to work also, but this is
+outside the scope of this version.
+
+The plugin is built using two files to generate a library and its 
+configuration: 
+
+    wrapper-source: Used to automatically generate the source code for
+                    the library which will wrap the original MPI
+                    calls.
+        
+    wrapper-config: Used to create the plugin XML config file - used
+                    by DDT to preload the library and set tracepoints.
+
+INSTALLATION
+
+This package must be compiled before first use - in order to be
+compatible with your MPI version.  It will not appear in DDT's GUI
+until this is done.
+
+To install - as a non-root user - in your local ~/.allinea/plugins
+directory.
+
+        make local
+
+To install - as root in the DDT plugins directory
+
+        make
+
+
+USAGE
+
+Once you have run the above, start DDT and to enable the plugin, click
+"Advanced" on the "Run and Debug" dialog.  Select "History v1.0", and
+start your job as normal.
+
+DDT will take care of preloading the library and setting default
+breakpoints.
+
+
+FEATURES
+
+This plugin records call counts, total sent byte counts, and the
+arguments used in MPI function calls.  Function calls and arguments
+are displayed (in blue) in the Input/Output panel.
+
+The function counts are available -- in the form of a variable
+_MPIHistoryCount_{mpifunction}.
+
+The sent bytes counters are accumulated for most functions -
+but specifically they are not added for the vector operations such as
+MPI_Gatherv).
+
+These counters are available for use within DDT - in components such
+as the cross-process comparison window, enabling a check that - say -
+the count of MPI_Barriers is consistent, or primitive MPI bytes sent
+profiling information to be discovered.
+
+
+LIMITATIONS
+
+The library does not record the received bytes - as most MPI receive
+calls in isolation only contain a maximum number of bytes allowed,
+rather than bytes received.  The MPI status is logged, the the SOURCE
+tag therein enables the sending process to be identified.
+
+There is no per-communicator logging in this version.  
+
+This version is for demonstration purposes for the tracepoints
+feature.  It could generate excessive logged information, or cause
+your application to run slowly if it is a heavy communicator.

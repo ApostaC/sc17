@@ -1,0 +1,95 @@
+make[2]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/tune/blas/gemm ; make res/atlas_zdNKB.h
+make[3]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+make zdRunFindCE
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make auxillib zcleanuplib zusergemm
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd /home/aposta/sc17/atlasBuild/src/auxil ; make lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/auxil'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/auxil'
+cd KERNEL ; make -f zMakefile zlib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL'
+make[7]: Nothing to be done for 'zlib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL'
+make[6]: Nothing to be done for 'zusergemm'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make -j 2 zlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[6]: 'zlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make dlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make auxillib dcleanuplib dusergemm
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd /home/aposta/sc17/atlasBuild/src/auxil ; make lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/auxil'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/auxil'
+cd KERNEL ; make -f dMakefile dlib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL'
+make[7]: Nothing to be done for 'dlib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL'
+make[6]: Nothing to be done for 'dusergemm'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make -j 2 dlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+/usr/bin/c99-gcc -o ATL_dgemm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL -DATLGEMM -I./ \
+              /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+/usr/bin/c99-gcc -o ATL_dNCmmIJK.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL   /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_NCmmIJK.c
+/usr/bin/c99-gcc -o ATL_dNCmmJIK.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL   /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_NCmmJIK.c
+/usr/bin/c99-gcc -o ATL_dNCmmIJK_c.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL   /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_NCmmIJK_c.c
+/usr/bin/c99-gcc -o ATL_dNCmmJIK_c.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL   /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_NCmmJIK_c.c
+/usr/bin/c99-gcc -o ATL_daliased_gemm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL -DALIASED_GEMM -I./ \
+              /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+/usr/bin/c99-gcc -o ATL_dsmallK_mm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL -DSMALLK_MM -I./ \
+              /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+/usr/bin/c99-gcc -o ATL_dsmall_mm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL -DSMALL_MM -I./ \
+              /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+/usr/bin/c99-gcc -o ATL_dbig_mm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL -DBIG_MM -I./ \
+              /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+/usr/bin/c99-gcc -o ATL_dbignork_mm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL -DBIGNORK_MM -I./ \
+              /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+ar r /home/aposta/sc17/atlasBuild/lib/libatlas.a ATL_dMBJBmm.o ATL_dIBNBmm.o ATL_dIBJBmm.o ATL_dgemm.o ATL_dGetNB.o ATL_dGetNCNB.o ATL_dgemmNN.o ATL_dgemmNT.o ATL_dgemmTN.o ATL_dgemmTT.o ATL_dNCmmIJK.o ATL_dNCmmJIK.o ATL_dNCmmIJK_c.o ATL_dNCmmJIK_c.o ATL_daliased_gemm.o ATL_dAgemmNN.o ATL_dAgemmNT.o ATL_dAgemmTN.o ATL_dAgemmTT.o ATL_dmmJIK.o ATL_dmmIJK.o ATL_dmmJKI.o ATL_dmmK.o ATL_dmmBPP.o ATL_dmmJITcp.o ATL_dcol2blk_aX.o ATL_drow2blkT_aX.o ATL_dcol2blk_a1.o ATL_drow2blkT_a1.o ATL_dputblk_bX.o ATL_dputblk_b1.o ATL_dputblk_bn1.o ATL_dputblk_b0.o
+echo /home/aposta/sc17/atlasBuild/lib/libatlas.a
+/home/aposta/sc17/atlasBuild/lib/libatlas.a
+touch dlib.grd
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -c -DDCPLX -DATL_JITcp -o zdfindCE.o /home/aposta/sc17/ATLAS//tune/blas/gemm/findCE.c
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make ATL_zdFindCE_mm.o typ=DCPLX
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+/usr/bin/c99-gcc -o ATL_zdFindCE_mm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDCPLX -DFindingJITCPCE -I./ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -o xzdfindCE zdfindCE.o \
+                   /home/aposta/sc17/atlasBuild/src/blas/gemm/ATL_zdFindCE_mm.o /home/aposta/sc17/atlasBuild/lib/libatlas.a -lpthread -lm
+/home/aposta/sc17/atlasBuild/bin/ATLrun.sh /home/aposta/sc17/atlasBuild/tune/blas/gemm xzdfindCE -f res/atlas_zdNKB.h
+TA TB      M      N      K    alpha       beta     CacheEdge      TIME   MFLOPS
+== == ====== ====== ====== ===== ===== ===== ===== ========= ========= ========
+
+ T  N    112  11032   4681   1.0   0.0   1.0   0.0         0     1.828 25311.90
+ T  N    112  11032   4681   1.0   0.0   1.0   0.0        64    -2.000     0.00
+ T  N    112  11032   4681   1.0   0.0   1.0   0.0       128    -2.000     0.00
+ T  N    112  11032   4681   1.0   0.0   1.0   0.0       256     1.812 25535.40
+ T  N    112  11032   4681   1.0   0.0   1.0   0.0       512     1.816 25479.16
+ T  N    112  11032   4681   1.0   0.0   1.0   0.0      1024     1.792 25820.40
+ T  N    112  11032   4681   1.0   0.0   1.0   0.0      2048     1.804 25648.64
+ T  N    112  11032   4681   1.0   0.0   1.0   0.0      4096     1.788 25878.16
+ T  N    112  11032   4681   1.0   0.0   1.0   0.0      8192     1.792 25820.40
+
+Initial CE=4096KB, mflop=25878.16
+
+ T  N    112  11032   4681   1.0   0.0   1.0   0.0      3072     1.836 25201.61
+ T  N    112  11032   4681   1.0   0.0   1.0   0.0      6144     1.812 25535.40
+
+Best CE=4096KB, mflop=25878.16
+cp -f res/atlas_zdNKB.h /home/aposta/sc17/atlasBuild/include/.
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+make[3]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+cp /home/aposta/sc17/atlasBuild/tune/blas/gemm/res/atlas_zdNKB.h /home/aposta/sc17/atlasBuild/include/.
+cp /home/aposta/sc17/atlasBuild/tune/blas/gemm/res/atlas_zdNKB.h INSTALL_LOG/.
+make[2]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'

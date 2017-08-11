@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# Name: LoadLeveler
+#
+# WARNING: If you install a new version of Allinea Forge to the same
+#          directory as this installation, then this file will be overwritten.
+#          If you customize this script at all, please rename it.
+#
+# submit: llsubmit
+# display: llq
+# job regexp: "([^"]+)" .*has been submitted
+# cancel: llcancel JOB_ID_TAG
+# 
+# JOB_TYPE_TAG: {type=select,options=parallel|serial,label="Job Type",default=parallel}
+# WALL_CLOCK_LIMIT_TAG: {type=text,label="Wall Clock Limit",default="00:30:00",mask="09:09:09"}
+# NODE_USAGE_TAG: {type=select,options=not_shared|shared,label="Node Usage",default=not_shared}
+# ACCOUNT_TAG: {type=text,label="Account",global}
+# JOB_CLASS_TAG: {type=select,options=test|general|large,label="Class",default=test}
+
+## Allinea Forge will generate a submission script by
+## replacing these tags:
+##        TAG NAME         |         DESCRIPTION           |        EXAMPLE
+## ---------------------------------------------------------------------------
+## PROGRAM_TAG             | target path and filename      | /users/ned/a.out
+## PROGRAM_ARGUMENTS_TAG   | arguments to target program   | -myarg myval
+## NUM_PROCS_TAG           | total number of processes     | 16
+## NUM_NODES_TAG           | number of compute nodes       | 8
+## PROCS_PER_NODE_TAG      | processes per node            | 2
+## NUM_THREADS_TAG         | OpenMP threads per process    | 4
+## DDT_DEBUGGER_ARGUMENTS_TAG | arguments to be passed to ddt-debugger
+## MPIRUN_TAG              | name of mpirun executable     | mpirun
+## AUTO_MPI_ARGUMENTS_TAG  | mpirun arguments              | -np 4
+## EXTRA_MPI_ARGUMENTS_TAG | extra mpirun arguments        | -x FAST=1
+
+#@ job_type = JOB_TYPE_TAG
+#@ tasks_per_node = PROCS_PER_NODE_TAG
+#@ node = NUM_NODES_TAG
+#@ wall_clock_limit = WALL_CLOCK_LIMIT_TAG
+#@ node_usage = NODE_USAGE_TAG
+#@ network.MPI = NODE_USAGE_TAG,us
+#@ account_no = ACCOUNT_TAG
+#@ job_name = PROGRAM_TAG.job.in
+#@ output = PROGRAM_TAG.job.out
+#@ error  = PROGRAM_TAG.job.err
+#@ notification = never
+#@ env_copy = all
+#@ environment = COPY_ALL
+#@ class= JOB_CLASS_TAG
+#
+#@ queue
+#
+# shell = /usr/bin/bash
+export MP_SHARED_MEMORY=yes
+. ~/.bashrc
+
+
+## The following line will use exactly the same default settings that
+## Allinea Forge uses to launch without the queue.
+
+AUTO_LAUNCH_TAG
+
+##
+## PE users note that "MPIRUN_TAG" is replaced by "poe" automatically.
+## Replace the above for more complex situations - such as for passing unusual
+## parameters to mpirun, like machine files or processes per node -- below is 
+## an example.
+##
+## if test "MPI_TAG" = "mpich 1 standard" ; then
+##    MPIRUN_TAG -tv -np NUM_PROCS_TAG PROGRAM_TAG PROGRAM_ARGUMENTS_TAG
+## else
+##   if test DEBUG_STARTER_TAG -eq 1 ; then
+##     DDT_CLIENT_TAG MPIRUN_TAG -np NUM_PROCS_TAG -machinefile $PBS_NODELIST PROGRAM_TAG PROGRAM_ARGUMENTS_TAG
+##   else
+##     MPIRUN_TAG -np NUM_PROCS_TAG -machinefile $PBS_NODELIST DDT_DEBUGGER_TAG PROGRAM_ARGUMENTS_TAG
+##   fi
+## fi

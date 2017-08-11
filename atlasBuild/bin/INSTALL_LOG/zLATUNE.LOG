@@ -1,0 +1,1762 @@
+
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+*       BEGAN ATLAS3.10.3 INSTALL OF SECTION 4-3-3 ON 08/11/2017 AT 04:53     *
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+
+
+
+make[2]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+if [ -s "/home/aposta/sc17/atlasBuild/include/atlas_zGetNB_geqrf.h" ]; then \
+           echo "Arch Defaults allow us to skip tuning" ; \
+        else \
+    cd /home/aposta/sc17/atlasBuild/tune/lapack ; make res/ATL_zGetNB_geqrf.h ; \
+    cp /home/aposta/sc17/atlasBuild/tune/lapack/res/ATL_zGetNB_geqrf.h \
+               /home/aposta/sc17/atlasBuild/include/atlas_zGetNB_geqrf.h ; \
+        fi
+make[3]: Entering directory '/home/aposta/sc17/atlasBuild/tune/lapack'
+/usr/bin/c99-gcc -o zlanbsrch.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DATLCINT  -DDCPLX /home/aposta/sc17/ATLAS//tune/lapack/lanbsrch.c
+cd /home/aposta/sc17/atlasBuild/bin ; make zlapack
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/src/lapack ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/lapack'
+make -j 2 zlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/lapack'
+ar r /home/aposta/sc17/atlasBuild/lib/liblapack.a ATL_ilaenv.o ATL_zgelq2.o ATL_zgelqf.o ATL_zgelqr.o ATL_zgels.o ATL_zgeql2.o ATL_zgeqlf.o ATL_zgeqlr.o ATL_zgeqr2.o ATL_zgeqrf.o ATL_zgeqrr.o ATL_zgerq2.o ATL_zgerqf.o ATL_zgerqr.o ATL_zgetf2.o ATL_zgetrf.o ATL_zgetrfC.o ATL_zgetrfR.o ATL_zgetri.o ATL_zgetriC.o ATL_zgetriR.o ATL_zgetrs.o ATL_zlacgv.o ATL_zladiv.o ATL_zlapy2.o ATL_zlapy3.o ATL_zlarf.o ATL_zlarfb.o ATL_zlarfg.o ATL_zlarft.o ATL_zlascl.o ATL_zlaswp.o ATL_zlauum.o ATL_zlauumCL.o ATL_zlauumCU.o ATL_zlauumRL.o ATL_zlauumRU.o ATL_zormlq.o ATL_zormql.o ATL_zormqr.o ATL_zormrq.o ATL_zpotrf.o ATL_zpotrfL.o ATL_zpotrfRL.o ATL_zpotrfRU.o ATL_zpotrfU.o ATL_zpotrs.o ATL_ztrtri.o ATL_ztrtriCL.o ATL_ztrtriCU.o ATL_ztrtriRL.o ATL_ztrtriRU.o ATL_ztrtrs.o
+echo /home/aposta/sc17/atlasBuild/lib/liblapack.a
+/home/aposta/sc17/atlasBuild/lib/liblapack.a
+touch zlib.grd
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/lapack'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/lapack'
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/bin ; make ztstlib
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/src/testing ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/testing'
+make -j 2 zlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/testing'
+make[6]: 'zlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/testing'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/testing'
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/bin ; make zl3lib
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/src/auxil ; make lib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/auxil'
+make[5]: Nothing to be done for 'lib'.
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/auxil'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make auxillib zcleanuplib zusergemm
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd /home/aposta/sc17/atlasBuild/src/auxil ; make lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/auxil'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/auxil'
+cd KERNEL ; make -f zMakefile zlib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL'
+make[7]: Nothing to be done for 'zlib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL'
+make[6]: Nothing to be done for 'zusergemm'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make -j 2 zlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[6]: 'zlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd /home/aposta/sc17/atlasBuild/src/blas/level3 ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level3'
+( cd kernel; make zlib )
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level3/kernel'
+make -j 2 zlib.grd
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level3/kernel'
+make[7]: 'zlib.grd' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level3/kernel'
+make zl3ref
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level3/kernel'
+cd /home/aposta/sc17/atlasBuild/src/blas/reference/level3 ; make zlib
+make[8]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/reference/level3'
+make[8]: Nothing to be done for 'zlib'.
+make[8]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/reference/level3'
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level3/kernel'
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level3/kernel'
+( cd rblas;  make zlib )
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level3/rblas'
+make[6]: Nothing to be done for 'zlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level3/rblas'
+cd ../pklevel3 ; make zlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3'
+cd gpmm ; make zlib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3/gpmm'
+make -j 2 zlib.grd
+make[8]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3/gpmm'
+make[8]: 'zlib.grd' is up to date.
+make[8]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3/gpmm'
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3/gpmm'
+cd sprk ; make zlib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3/sprk'
+make -j 2 zlib.grd
+make[8]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3/sprk'
+make[8]: 'zlib.grd' is up to date.
+make[8]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3/sprk'
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3/sprk'
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3'
+make -j 2 zblas3.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level3'
+make[6]: 'zblas3.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level3'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level3'
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/bin ; make zl2lib
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/src/auxil ; make lib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/auxil'
+make[5]: Nothing to be done for 'lib'.
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/auxil'
+cd /home/aposta/sc17/atlasBuild/src/blas/level1 ; make zlvl1
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make dgen
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_drot
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_drot' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_drot lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_daxpby
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_daxpby' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_daxpby lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dcpsc
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dcpsc' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dcpsc lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dset
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dset' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dset lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dnrm2
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dnrm2' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dnrm2 lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dasum
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dasum' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dasum lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_ddot
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_ddot' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_ddot lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dswap
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dswap' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dswap lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dscal
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dscal' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dscal lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dcopy
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dcopy' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dcopy lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_daxpy
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_daxpy' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_daxpy lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_diamax
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_diamax' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_diamax lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -j 2 dlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[6]: 'dlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make zgen
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zrot
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zrot' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zrot lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zaxpby
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zaxpby' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zaxpby lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zcpsc
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zcpsc' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zcpsc lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zset
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zset' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zset lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_znrm2
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_znrm2' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_znrm2 lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zasum
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zasum' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zasum lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zdot
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zdot' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zdot lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zswap
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zswap' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zswap lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zscal
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zscal' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zscal lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zcopy
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zcopy' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zcopy lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zaxpy
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zaxpy' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zaxpy lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_ziamax
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_ziamax' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_ziamax lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zdotc
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zdotc' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zdotc lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -j 2 zlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[6]: 'zlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemv ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemv'
+make -j 2 -f Make_zmvt zlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemv'
+make[6]: Nothing to be done for 'zlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemv'
+make -j 2 -f Make_zmvn zlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemv'
+make[6]: Nothing to be done for 'zlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemv'
+make -j 2 zlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemv'
+make[6]: 'zlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemv'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemv'
+cd /home/aposta/sc17/atlasBuild/src/blas/ger ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make -j 2 zlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make[6]: 'zlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make -j 2 -f Make_zr1 lib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make[6]: Nothing to be done for 'lib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make -j 2 -f Make_zr2 lib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make[6]: Nothing to be done for 'lib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+cd /home/aposta/sc17/atlasBuild/src/blas/level2 ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level2'
+make[5]: Nothing to be done for 'zlib'.
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level2'
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/bin ; make zl1lib
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/src/auxil ; make lib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/auxil'
+make[5]: Nothing to be done for 'lib'.
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/auxil'
+cd /home/aposta/sc17/atlasBuild/src/blas/level1 ; make zlvl1
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make dgen
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_drot
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_drot' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_drot lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_daxpby
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_daxpby' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_daxpby lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dcpsc
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dcpsc' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dcpsc lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dset
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dset' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dset lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dnrm2
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dnrm2' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dnrm2 lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dasum
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dasum' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dasum lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_ddot
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_ddot' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_ddot lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dswap
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dswap' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dswap lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dscal
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dscal' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dscal lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dcopy
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dcopy' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dcopy lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_daxpy
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_daxpy' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_daxpy lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_diamax
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_diamax' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_diamax lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -j 2 dlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[6]: 'dlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make zgen
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zrot
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zrot' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zrot lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zaxpby
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zaxpby' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zaxpby lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zcpsc
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zcpsc' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zcpsc lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zset
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zset' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zset lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_znrm2
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_znrm2' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_znrm2 lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zasum
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zasum' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zasum lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zdot
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zdot' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zdot lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zswap
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zswap' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zswap lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zscal
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zscal' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zscal lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zcopy
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zcopy' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zcopy lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zaxpy
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zaxpy' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zaxpy lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_ziamax
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_ziamax' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_ziamax lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zdotc
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zdotc' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zdotc lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -j 2 zlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[6]: 'zlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/bin ; make zcblas
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/interfaces/blas/C/src ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/interfaces/blas/C/src'
+make -j 2 zlvl3.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/interfaces/blas/C/src'
+make[6]: 'zlvl3.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/interfaces/blas/C/src'
+make -j 2 zlvl2.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/interfaces/blas/C/src'
+make[6]: 'zlvl2.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/interfaces/blas/C/src'
+make -j 2 zlvl1.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/interfaces/blas/C/src'
+make[6]: 'zlvl1.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/interfaces/blas/C/src'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/interfaces/blas/C/src'
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+/usr/bin/x86_64-linux-gnu-gfortran -O -mavx2 -mfma -m64 -o xzlanbsrch zlanbsrch.o \
+                   /home/aposta/sc17/atlasBuild/lib/libtstatlas.a /home/aposta/sc17/atlasBuild/lib/liblapack.a /home/aposta/sc17/atlasBuild/lib/libcblas.a /home/aposta/sc17/atlasBuild/lib/libf77blas.a \
+                   /home/aposta/sc17/atlasBuild/lib/libatlas.a -lpthread -lm
+./xzlanbsrch -oc res/ATL_zGetNB_geqrf
+maxN = 2408
+   FINDING NB FOR M=25, N=25, LDA=25:
+      nb=12: inf inf inf --> inf MFLOP.
+
+      NB refinement search:
+      *** i=1, nbB=12, NB=56, mul1=4, mul2=0 ***
+      nb=1: inf inf inf  --> inf MFLOP.
+      nb=2: inf inf inf  --> inf MFLOP.
+      nb=3: inf inf inf  --> inf MFLOP.
+      nb=4: inf inf inf  --> inf MFLOP.
+      nb=5: inf inf inf  --> inf MFLOP.
+      nb=6: inf inf inf  --> inf MFLOP.
+      nb=7: inf inf inf  --> inf MFLOP.
+      nb=8: inf inf inf  --> inf MFLOP.
+      nb=9: inf inf inf  --> inf MFLOP.
+      nb=10: inf inf inf  --> inf MFLOP.
+      nb=11: inf inf inf  --> inf MFLOP.
+      nb=1: inf inf inf  --> inf MFLOP.
+      nb=12: inf inf inf  --> inf MFLOP.
+   FOR M=25, N=25, LDA=25, BEST NB=12
+
+   FINDING NB FOR M=2408, N=2408, LDA=2408:
+      nb=56: 20587.24 20678.63 --> 20678.63 MFLOP.
+      nb=112: 21244.53 21124.09 --> 21244.53 MFLOP.
+      nb=168: 21589.17 21415.46 --> 21589.17 MFLOP.
+      nb=224: 21220.33 21415.46 --> 21415.46 MFLOP.
+      nb=280: 21244.53 21100.17 --> 21244.53 MFLOP.
+      nb=336: 20817.26 20957.76 --> 20957.76 MFLOP.
+      nb=392: 20587.24 20610.01 --> 20610.01 MFLOP.
+      nb=448: 20055.38 20340.01 --> 20340.01 MFLOP.
+
+      NB refinement search:
+      *** i=128, nbB=168, NB=56, mul1=16, mul2=0 ***
+      nb=128: 20207.65 20229.59  --> 20229.59 MFLOP.
+      nb=144: 19674.18 19653.43  --> 19674.18 MFLOP.
+      nb=160: 19109.18 19327.23  --> 19327.23 MFLOP.
+      nb=176: 20610.01 20632.83  --> 20632.83 MFLOP.
+      nb=192: 19287.22 19969.40  --> 19969.40 MFLOP.
+      nb=208: 19148.46 19367.41  --> 19367.41 MFLOP.
+      nb=12: 11630.12  --> 11630.12 MFLOP.
+      nb=560: 19715.82 19778.61  --> 19778.61 MFLOP.
+   FOR M=2408, N=2408, LDA=2408, BEST NB=168
+
+   FINDING NB FOR M=1176, N=1176, LDA=1176:
+      nb=56: 18406.55 18251.87 18406.55 --> 18406.55 MFLOP.
+      nb=112: 18406.55 17803.06 18563.87 --> 18563.87 MFLOP.
+      nb=168: 18723.90 18406.55 18563.87 --> 18723.90 MFLOP.
+
+      NB refinement search:
+      *** i=128, nbB=168, NB=56, mul1=16, mul2=0 ***
+      nb=128: 16968.54 16579.95 16968.54  --> 16968.54 MFLOP.
+      nb=144: 15970.39 15625.70 16208.75  --> 16208.75 MFLOP.
+      nb=160: 15404.06 15188.62 14979.12  --> 15404.06 MFLOP.
+      nb=176: 17375.78 17515.91 17237.88  --> 17515.91 MFLOP.
+      nb=192: 16579.95 15738.93 16088.69  --> 16579.95 MFLOP.
+      nb=208: 15514.09 15625.70 15295.58  --> 15625.70 MFLOP.
+      nb=12: 10699.37 10699.37 10859.86  --> 10859.86 MFLOP.
+   FOR M=1176, N=1176, LDA=1176, BEST NB=168
+
+   M=1176, N=1176, lda=1176, NB=168
+   FINDING NB FOR M=560, N=560, LDA=560:
+      nb=56: 14683.94 14683.94 13820.17 --> 14683.94 MFLOP.
+      nb=112: 14683.94 14683.94 13820.17 --> 14683.94 MFLOP.
+      nb=168: 13820.17 13820.17 14683.94 --> 14683.94 MFLOP.
+
+      NB refinement search:
+      *** i=4, nbB=56, NB=56, mul1=4, mul2=0 ***
+      nb=4: 6349.81 6182.71 6024.18  --> 6349.81 MFLOP.
+      nb=8: 9036.27 9036.27 9036.27  --> 9036.27 MFLOP.
+      nb=12: 8101.48 9036.27 9789.29  --> 9789.29 MFLOP.
+      nb=16: 9789.29 8701.59 10679.23  --> 10679.23 MFLOP.
+      nb=20: 9789.29 9789.29 9789.29  --> 9789.29 MFLOP.
+      nb=24: 10214.91 10214.91 10214.91  --> 10214.91 MFLOP.
+      nb=28: 9789.29 9397.72 10679.23  --> 10679.23 MFLOP.
+      nb=32: 10214.91 9789.29 9789.29  --> 10214.91 MFLOP.
+      nb=36: 9036.27 9036.27 8701.59  --> 9036.27 MFLOP.
+      nb=40: 9036.27 9036.27 9036.27  --> 9036.27 MFLOP.
+      nb=44: 8701.59 9036.27 9036.27  --> 9036.27 MFLOP.
+      nb=48: 8701.59 8701.59 8701.59  --> 8701.59 MFLOP.
+      nb=52: 8701.59 8701.59 8701.59  --> 8701.59 MFLOP.
+      nb=60: 12365.42 10679.23 12365.42  --> 12365.42 MFLOP.
+      nb=64: 12365.42 13052.39 11747.15  --> 13052.39 MFLOP.
+      nb=68: 11747.15 12365.42 12365.42  --> 12365.42 MFLOP.
+      nb=72: 11747.15 11747.15 11747.15  --> 11747.15 MFLOP.
+      nb=76: 11187.76 11187.76 11747.15  --> 11747.15 MFLOP.
+      nb=80: 11187.76 10214.91 10679.23  --> 11187.76 MFLOP.
+      nb=84: 11187.76 11187.76 11187.76  --> 11187.76 MFLOP.
+      nb=88: 10679.23 10679.23 10214.91  --> 10679.23 MFLOP.
+      nb=92: 10679.23 8701.59 10214.91  --> 10679.23 MFLOP.
+      nb=96: 9789.29 9789.29 9789.29  --> 9789.29 MFLOP.
+      nb=100: 9397.72 9789.29 9789.29  --> 9789.29 MFLOP.
+      nb=104: 9789.29 9789.29 9789.29  --> 9789.29 MFLOP.
+      nb=108: 11187.76 11187.76 11187.76  --> 11187.76 MFLOP.
+   FOR M=560, N=560, LDA=560, BEST NB=56
+
+   M=560, N=560, lda=560, NB=56
+   FINDING NB FOR M=280, N=280, LDA=280:
+      nb=56: 14733.74 14733.74 9822.49 --> 14733.74 MFLOP.
+
+      NB refinement search:
+      *** i=4, nbB=56, NB=56, mul1=4, mul2=0 ***
+      nb=4: 5893.50 5893.50 7366.87  --> 7366.87 MFLOP.
+      nb=8: 5893.50 7366.87 7366.87  --> 7366.87 MFLOP.
+      nb=12: 7366.87 7366.87 7366.87  --> 7366.87 MFLOP.
+      nb=16: 7366.87 9822.49 9822.49  --> 9822.49 MFLOP.
+      nb=20: 7366.87 7366.87 7366.87  --> 7366.87 MFLOP.
+      nb=24: 7366.87 7366.87 7366.87  --> 7366.87 MFLOP.
+      nb=28: 7366.87 7366.87 7366.87  --> 7366.87 MFLOP.
+      nb=32: 7366.87 7366.87 5893.50  --> 7366.87 MFLOP.
+      nb=36: 7366.87 7366.87 5893.50  --> 7366.87 MFLOP.
+      nb=40: 5893.50 7366.87 7366.87  --> 7366.87 MFLOP.
+      nb=44: 7366.87 5893.50 5893.50  --> 7366.87 MFLOP.
+      nb=48: 5893.50 5893.50 5893.50  --> 5893.50 MFLOP.
+      nb=52: 5893.50 7366.87 7366.87  --> 7366.87 MFLOP.
+      nb=60: 7366.87 9822.49 9822.49  --> 9822.49 MFLOP.
+      nb=64: 9822.49 9822.49 9822.49  --> 9822.49 MFLOP.
+      nb=68: 9822.49 7366.87 7366.87  --> 9822.49 MFLOP.
+      nb=72: 7366.87 7366.87 7366.87  --> 7366.87 MFLOP.
+      nb=76: 5893.50 7366.87 7366.87  --> 7366.87 MFLOP.
+      nb=80: 7366.87 7366.87 5893.50  --> 7366.87 MFLOP.
+      nb=84: 7366.87 7366.87 5893.50  --> 7366.87 MFLOP.
+      nb=88: 5893.50 5893.50 4911.25  --> 5893.50 MFLOP.
+      nb=92: 4911.25 5893.50 5893.50  --> 5893.50 MFLOP.
+      nb=96: 5893.50 5893.50 7366.87  --> 7366.87 MFLOP.
+      nb=100: 7366.87 7366.87 5893.50  --> 7366.87 MFLOP.
+      nb=104: 5893.50 7366.87 5893.50  --> 7366.87 MFLOP.
+      nb=108: 7366.87 7366.87 7366.87  --> 7366.87 MFLOP.
+      nb=56: 9822.49 9822.49 14733.74  --> 14733.74 MFLOP.
+   FOR M=280, N=280, LDA=280, BEST NB=56
+
+   M=280, N=280, lda=280, NB=56
+   FINDING NB FOR M=112, N=112, LDA=112:
+      nb=56: inf 1905.46 inf --> inf MFLOP.
+
+      NB refinement search:
+      *** i=4, nbB=56, NB=56, mul1=4, mul2=0 ***
+      nb=4: 1905.46 inf inf  --> inf MFLOP.
+      nb=8: 1905.46 inf 1905.46  --> 1905.46 MFLOP.
+      nb=12: 1905.46 inf inf  --> inf MFLOP.
+      nb=16: 1905.46 1905.46 inf  --> inf MFLOP.
+      nb=20: 1905.46 1905.46 inf  --> inf MFLOP.
+      nb=24: inf 1905.46 inf  --> inf MFLOP.
+      nb=28: inf 1905.46 1905.46  --> 1905.46 MFLOP.
+      nb=32: inf inf 1905.46  --> 1905.46 MFLOP.
+      nb=36: 1905.46 inf inf  --> inf MFLOP.
+      nb=40: 1905.46 1905.46 inf  --> inf MFLOP.
+      nb=44: inf 1905.46 1905.46  --> 1905.46 MFLOP.
+      nb=48: 1905.46 inf inf  --> inf MFLOP.
+      nb=52: inf 1905.46 1905.46  --> 1905.46 MFLOP.
+      nb=12: inf inf 1905.46  --> 1905.46 MFLOP.
+      nb=56: inf inf 1905.46  --> 1905.46 MFLOP.
+   FOR M=112, N=112, LDA=112, BEST NB=56
+
+   M=112, N=112, lda=112, NB=56
+         N     NB
+==========  =====
+        25    12
+       112    56
+       280    56
+       560    56
+      1176   168
+      2408   168
+GEQRF: Side='RIGHT', Uplo='UPPER', M=25, N=25, bestNB=12
+GEQRF: Side='RIGHT', Uplo='UPPER', M=112, N=112, bestNB=56
+GEQRF: Side='RIGHT', Uplo='UPPER', M=280, N=280, bestNB=56
+GEQRF: Side='RIGHT', Uplo='UPPER', M=560, N=560, bestNB=56
+GEQRF: Side='RIGHT', Uplo='UPPER', M=1176, N=1176, bestNB=168
+GEQRF: Side='RIGHT', Uplo='UPPER', M=2408, N=2408, bestNB=168
+make[3]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/lapack'
+if [ -s "/home/aposta/sc17/atlasBuild/include/atlas_ztGetNB_geqrf.h" ]; then \
+           echo "Arch Defaults allow us to skip threaded tuning" ; \
+        elif [ -s "/home/aposta/sc17/atlasBuild/include/atlas_pthreads.h" ]; then \
+    cd /home/aposta/sc17/atlasBuild/tune/lapack ; make res/ATL_ztGetNB_geqrf.h ; \
+    cp /home/aposta/sc17/atlasBuild/tune/lapack/res/ATL_ztGetNB_geqrf.h \
+               /home/aposta/sc17/atlasBuild/include/atlas_ztGetNB_geqrf.h ; \
+        fi
+make[3]: Entering directory '/home/aposta/sc17/atlasBuild/tune/lapack'
+/usr/bin/c99-gcc -o zlanbsrch_pt.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DATLCINT -DATL_USEPTHREADS -DDCPLX /home/aposta/sc17/ATLAS//tune/lapack/lanbsrch.c
+cd /home/aposta/sc17/atlasBuild/bin ; make zlapack
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/src/lapack ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/lapack'
+make -j 2 zlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/lapack'
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -c -o ATL_ilaenv.o  \
+               /home/aposta/sc17/ATLAS//src/lapack/ATL_ilaenv.c
+ar r /home/aposta/sc17/atlasBuild/lib/liblapack.a ATL_ilaenv.o ATL_zgelq2.o ATL_zgelqf.o ATL_zgelqr.o ATL_zgels.o ATL_zgeql2.o ATL_zgeqlf.o ATL_zgeqlr.o ATL_zgeqr2.o ATL_zgeqrf.o ATL_zgeqrr.o ATL_zgerq2.o ATL_zgerqf.o ATL_zgerqr.o ATL_zgetf2.o ATL_zgetrf.o ATL_zgetrfC.o ATL_zgetrfR.o ATL_zgetri.o ATL_zgetriC.o ATL_zgetriR.o ATL_zgetrs.o ATL_zlacgv.o ATL_zladiv.o ATL_zlapy2.o ATL_zlapy3.o ATL_zlarf.o ATL_zlarfb.o ATL_zlarfg.o ATL_zlarft.o ATL_zlascl.o ATL_zlaswp.o ATL_zlauum.o ATL_zlauumCL.o ATL_zlauumCU.o ATL_zlauumRL.o ATL_zlauumRU.o ATL_zormlq.o ATL_zormql.o ATL_zormqr.o ATL_zormrq.o ATL_zpotrf.o ATL_zpotrfL.o ATL_zpotrfRL.o ATL_zpotrfRU.o ATL_zpotrfU.o ATL_zpotrs.o ATL_ztrtri.o ATL_ztrtriCL.o ATL_ztrtriCU.o ATL_ztrtriRL.o ATL_ztrtriRU.o ATL_ztrtrs.o
+echo /home/aposta/sc17/atlasBuild/lib/liblapack.a
+/home/aposta/sc17/atlasBuild/lib/liblapack.a
+touch zlib.grd
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/lapack'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/lapack'
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/bin ; make ztstlib_pt
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/src/testing ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/testing'
+make -j 2 zlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/testing'
+make[6]: 'zlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/testing'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/testing'
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/bin ; make zl3lib_pt
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/src/auxil ; make lib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/auxil'
+make[5]: Nothing to be done for 'lib'.
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/auxil'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make auxillib zcleanuplib zusergemm
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd /home/aposta/sc17/atlasBuild/src/auxil ; make lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/auxil'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/auxil'
+cd KERNEL ; make -f zMakefile zlib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL'
+make[7]: Nothing to be done for 'zlib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL'
+make[6]: Nothing to be done for 'zusergemm'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make -j 2 zlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[6]: 'zlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd /home/aposta/sc17/atlasBuild/src/blas/level3 ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level3'
+( cd kernel; make zlib )
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level3/kernel'
+make -j 2 zlib.grd
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level3/kernel'
+make[7]: 'zlib.grd' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level3/kernel'
+make zl3ref
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level3/kernel'
+cd /home/aposta/sc17/atlasBuild/src/blas/reference/level3 ; make zlib
+make[8]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/reference/level3'
+make[8]: Nothing to be done for 'zlib'.
+make[8]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/reference/level3'
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level3/kernel'
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level3/kernel'
+( cd rblas;  make zlib )
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level3/rblas'
+make[6]: Nothing to be done for 'zlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level3/rblas'
+cd ../pklevel3 ; make zlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3'
+cd gpmm ; make zlib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3/gpmm'
+make -j 2 zlib.grd
+make[8]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3/gpmm'
+make[8]: 'zlib.grd' is up to date.
+make[8]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3/gpmm'
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3/gpmm'
+cd sprk ; make zlib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3/sprk'
+make -j 2 zlib.grd
+make[8]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3/sprk'
+make[8]: 'zlib.grd' is up to date.
+make[8]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3/sprk'
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3/sprk'
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/pklevel3'
+make -j 2 zblas3.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level3'
+make[6]: 'zblas3.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level3'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level3'
+cd /home/aposta/sc17/atlasBuild/src/auxil ; make ptlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/auxil'
+make[5]: Nothing to be done for 'ptlib'.
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/auxil'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make auxillib zcleanuplib zusergemm
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd /home/aposta/sc17/atlasBuild/src/auxil ; make lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/auxil'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/auxil'
+cd KERNEL ; make -f zMakefile zlib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL'
+make[7]: Nothing to be done for 'zlib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL'
+make[6]: Nothing to be done for 'zusergemm'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make -j 2 zlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[6]: 'zlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd /home/aposta/sc17/atlasBuild/src/threads ; make lib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads'
+cd blas/level3 ; make dlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+make[6]: Nothing to be done for 'dlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make dtlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[6]: Nothing to be done for 'dtlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd blas/level3 ; make zlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+make[6]: Nothing to be done for 'zlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make ztlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[6]: Nothing to be done for 'ztlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd blas/level3 ; make clib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+make[6]: Nothing to be done for 'clib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make ctlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[6]: Nothing to be done for 'ctlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd blas/level3 ; make slib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+make[6]: Nothing to be done for 'slib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make stlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[6]: Nothing to be done for 'stlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd blas/level2 ; make dlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level2'
+make[6]: Nothing to be done for 'dlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level2'
+cd blas/level2 ; make zlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level2'
+make[6]: Nothing to be done for 'zlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level2'
+cd blas/level2 ; make clib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level2'
+make[6]: Nothing to be done for 'clib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level2'
+cd blas/level2 ; make slib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level2'
+make[6]: Nothing to be done for 'slib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level2'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads'
+cd /home/aposta/sc17/atlasBuild/src/threads/blas/level3 ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+make[5]: Nothing to be done for 'zlib'.
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+cd /home/aposta/sc17/atlasBuild/src/threads ; make zlib3
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads'
+cd blas/level3 ; make zlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+make[6]: Nothing to be done for 'zlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make ztlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[6]: Nothing to be done for 'ztlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads'
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/bin ; make zl2lib_pt
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/src/auxil ; make lib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/auxil'
+make[5]: Nothing to be done for 'lib'.
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/auxil'
+cd /home/aposta/sc17/atlasBuild/src/blas/level1 ; make zlvl1
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make dgen
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_drot
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_drot' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_drot lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_daxpby
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_daxpby' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_daxpby lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dcpsc
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dcpsc' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dcpsc lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dset
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dset' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dset lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dnrm2
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dnrm2' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dnrm2 lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dasum
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dasum' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dasum lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_ddot
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_ddot' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_ddot lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dswap
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dswap' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dswap lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dscal
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dscal' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dscal lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dcopy
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dcopy' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dcopy lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_daxpy
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_daxpy' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_daxpy lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_diamax
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_diamax' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_diamax lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -j 2 dlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[6]: 'dlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make zgen
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zrot
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zrot' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zrot lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zaxpby
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zaxpby' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zaxpby lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zcpsc
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zcpsc' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zcpsc lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zset
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zset' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zset lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_znrm2
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_znrm2' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_znrm2 lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zasum
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zasum' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zasum lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zdot
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zdot' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zdot lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zswap
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zswap' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zswap lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zscal
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zscal' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zscal lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zcopy
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zcopy' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zcopy lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zaxpy
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zaxpy' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zaxpy lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_ziamax
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_ziamax' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_ziamax lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zdotc
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zdotc' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zdotc lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -j 2 zlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[6]: 'zlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemv ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemv'
+make -j 2 -f Make_zmvt zlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemv'
+make[6]: Nothing to be done for 'zlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemv'
+make -j 2 -f Make_zmvn zlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemv'
+make[6]: Nothing to be done for 'zlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemv'
+make -j 2 zlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemv'
+make[6]: 'zlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemv'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemv'
+cd /home/aposta/sc17/atlasBuild/src/blas/ger ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make -j 2 zlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make[6]: 'zlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make -j 2 -f Make_zr1 lib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make[6]: Nothing to be done for 'lib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make -j 2 -f Make_zr2 lib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make[6]: Nothing to be done for 'lib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+cd /home/aposta/sc17/atlasBuild/src/blas/level2 ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level2'
+make[5]: Nothing to be done for 'zlib'.
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level2'
+cd /home/aposta/sc17/atlasBuild/src/threads/blas/level2 ; make zlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level2'
+make[5]: Nothing to be done for 'zlib'.
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level2'
+cd /home/aposta/sc17/atlasBuild/src/threads ; make lib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads'
+cd blas/level3 ; make dlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+make[6]: Nothing to be done for 'dlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make dtlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[6]: Nothing to be done for 'dtlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd blas/level3 ; make zlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+make[6]: Nothing to be done for 'zlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make ztlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[6]: Nothing to be done for 'ztlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd blas/level3 ; make clib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+make[6]: Nothing to be done for 'clib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make ctlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[6]: Nothing to be done for 'ctlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd blas/level3 ; make slib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+make[6]: Nothing to be done for 'slib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level3'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make stlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[6]: Nothing to be done for 'stlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd blas/level2 ; make dlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level2'
+make[6]: Nothing to be done for 'dlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level2'
+cd blas/level2 ; make zlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level2'
+make[6]: Nothing to be done for 'zlib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level2'
+cd blas/level2 ; make clib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level2'
+make[6]: Nothing to be done for 'clib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level2'
+cd blas/level2 ; make slib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level2'
+make[6]: Nothing to be done for 'slib'.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads/blas/level2'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/threads'
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/bin ; make zl1lib_pt
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/src/auxil ; make ptlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/auxil'
+make[5]: Nothing to be done for 'ptlib'.
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/auxil'
+cd /home/aposta/sc17/atlasBuild/src/auxil ; make lib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/auxil'
+make[5]: Nothing to be done for 'lib'.
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/auxil'
+cd /home/aposta/sc17/atlasBuild/src/blas/level1 ; make zlvl1
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make dgen
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_drot
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_drot' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_drot lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_daxpby
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_daxpby' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_daxpby lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dcpsc
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dcpsc' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dcpsc lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dset
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dset' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dset lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dnrm2
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dnrm2' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dnrm2 lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dasum
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dasum' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dasum lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_ddot
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_ddot' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_ddot lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dswap
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dswap' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dswap lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dscal
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dscal' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dscal lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dcopy
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_dcopy' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dcopy lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_daxpy
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_daxpy' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_daxpy lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_diamax
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_diamax' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_diamax lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -j 2 dlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[6]: 'dlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make zgen
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zrot
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zrot' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zrot lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zaxpby
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zaxpby' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zaxpby lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zcpsc
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zcpsc' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zcpsc lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zset
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zset' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zset lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_znrm2
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_znrm2' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_znrm2 lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zasum
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zasum' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zasum lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zdot
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zdot' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zdot lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zswap
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zswap' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zswap lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zscal
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zscal' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zscal lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zcopy
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zcopy' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zcopy lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zaxpy
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zaxpy' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zaxpy lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_ziamax
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_ziamax' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_ziamax lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zdotc
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: 'Make_zdotc' is up to date.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zdotc lib
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[7]: Nothing to be done for 'lib'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -j 2 zlib.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[6]: 'zlib.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/bin ; make zcblas_pt
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/interfaces/blas/C/src ; make zptlib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/interfaces/blas/C/src'
+make -j 2 zptlvl3.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/interfaces/blas/C/src'
+make[6]: 'zptlvl3.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/interfaces/blas/C/src'
+make -j 2 zptlvl2.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/interfaces/blas/C/src'
+make[6]: 'zptlvl2.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/interfaces/blas/C/src'
+make -j 2 zptlvl1.grd
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/interfaces/blas/C/src'
+make[6]: 'zptlvl1.grd' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/interfaces/blas/C/src'
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/interfaces/blas/C/src'
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+/usr/bin/x86_64-linux-gnu-gfortran -O -mavx2 -mfma -m64 -o xzlanbsrch_pt zlanbsrch_pt.o \
+                   /home/aposta/sc17/atlasBuild/lib/libtstatlas.a /home/aposta/sc17/atlasBuild/lib/libptlapack.a /home/aposta/sc17/atlasBuild/lib/libptcblas.a /home/aposta/sc17/atlasBuild/lib/libptf77blas.a \
+                   /home/aposta/sc17/atlasBuild/lib/libatlas.a -lpthread -lm
+./xzlanbsrch_pt -oc res/ATL_ztGetNB_geqrf
+maxN = 3024
+   FINDING NB FOR M=25, N=25, LDA=25:
+      nb=12: 836.57 1843.88 1328.68 --> 1843.88 MFLOP.
+
+      NB refinement search:
+      *** i=1, nbB=12, NB=56, mul1=4, mul2=0 ***
+      nb=1: 1613.39 1143.67 1737.50  --> 1737.50 MFLOP.
+      nb=2: 1964.13 2053.41 2007.78  --> 2053.41 MFLOP.
+      nb=3: 2053.41 1964.13 2203.66  --> 2203.66 MFLOP.
+      nb=4: 1481.15 2203.66 2151.19  --> 2203.66 MFLOP.
+      nb=5: 1843.88 2007.78 2258.75  --> 2258.75 MFLOP.
+      nb=6: 1964.13 2053.41 1922.34  --> 2053.41 MFLOP.
+      nb=7: 2053.41 1220.95 2203.66  --> 2203.66 MFLOP.
+      nb=8: 1922.34 2101.16 1964.13  --> 2101.16 MFLOP.
+      nb=9: 2101.16 2007.78 2258.75  --> 2258.75 MFLOP.
+      nb=10: 1964.13 1348.51 2101.16  --> 2101.16 MFLOP.
+      nb=11: 2007.78 1237.67 2151.19  --> 2151.19 MFLOP.
+      nb=12: 1882.29 2007.78 1843.88  --> 2007.78 MFLOP.
+   FOR M=25, N=25, LDA=25, BEST NB=5
+
+   FINDING NB FOR M=3024, N=3024, LDA=3024:
+      nb=56: 29524.10 --> 29524.10 MFLOP.
+      nb=112: 29994.46 --> 29994.46 MFLOP.
+      nb=168: 30103.42 --> 30103.42 MFLOP.
+      nb=224: 29313.04 --> 29313.04 MFLOP.
+      nb=280: 30065.65 --> 30065.65 MFLOP.
+      nb=336: 29423.87 --> 29423.87 MFLOP.
+      nb=392: 29379.33 --> 29379.33 MFLOP.
+      nb=448: 28459.63 --> 28459.63 MFLOP.
+
+      NB refinement search:
+      *** i=64, nbB=112, NB=56, mul1=8, mul2=0 ***
+      nb=64: 26734.58  --> 26734.58 MFLOP.
+      nb=72: 27295.45  --> 27295.45 MFLOP.
+      nb=80: 26410.99  --> 26410.99 MFLOP.
+      nb=88: 26889.35  --> 26889.35 MFLOP.
+      nb=96: 24979.45  --> 24979.45 MFLOP.
+      nb=104: 26177.63  --> 26177.63 MFLOP.
+      nb=120: 28555.85  --> 28555.85 MFLOP.
+      nb=128: 27922.58  --> 27922.58 MFLOP.
+      nb=136: 27135.58  --> 27135.58 MFLOP.
+      nb=144: 28103.19  --> 28103.19 MFLOP.
+      nb=152: 26269.25  --> 26269.25 MFLOP.
+      nb=160: 27183.26  --> 27183.26 MFLOP.
+      nb=5: 8050.72  --> 8050.72 MFLOP.
+      nb=560: 26835.11  --> 26835.11 MFLOP.
+   FOR M=3024, N=3024, LDA=3024, BEST NB=112
+
+   FINDING NB FOR M=1512, N=1512, LDA=1512:
+      nb=56: 24774.05 26582.22 27504.57 --> 27504.57 MFLOP.
+      nb=112: 26775.09 26944.17 26523.20 --> 26944.17 MFLOP.
+
+      NB refinement search:
+      *** i=8, nbB=56, NB=56, mul1=8, mul2=0 ***
+      nb=8: 13920.38 14495.19 14382.84  --> 14495.19 MFLOP.
+      nb=16: 18524.67 17741.73 18359.14  --> 18524.67 MFLOP.
+      nb=24: 18567.46 18203.60 18027.62  --> 18567.46 MFLOP.
+      nb=32: 19872.84 19173.67 19880.89  --> 19880.89 MFLOP.
+      nb=40: 17880.06 17601.21 17985.50  --> 17985.50 MFLOP.
+      nb=48: 17626.66 18013.42 17404.30  --> 18013.42 MFLOP.
+      nb=64: 24981.52 24003.62 23037.29  --> 24981.52 MFLOP.
+      nb=72: 23906.50 23139.75 23210.78  --> 23906.50 MFLOP.
+      nb=80: 22780.07 23450.01 22365.71  --> 23450.01 MFLOP.
+      nb=88: 21747.74 23021.86 22874.81  --> 23021.86 MFLOP.
+      nb=96: 21840.89 21221.16 20928.36  --> 21840.89 MFLOP.
+      nb=104: 22405.45 21801.22 22497.81  --> 22497.81 MFLOP.
+      nb=5: 7841.18 7950.62 7778.69  --> 7950.62 MFLOP.
+   FOR M=1512, N=1512, LDA=1512, BEST NB=56
+
+   M=1512, N=1512, lda=1512, NB=56
+   FINDING NB FOR M=728, N=728, LDA=728:
+      nb=56: 19301.80 19532.98 20172.22 --> 20172.22 MFLOP.
+
+      NB refinement search:
+      *** i=4, nbB=56, NB=56, mul1=4, mul2=0 ***
+      nb=4: 7510.11 7809.88 7066.29  --> 7809.88 MFLOP.
+      nb=8: 11077.74 10591.11 11714.29  --> 11714.29 MFLOP.
+      nb=12: 12094.18 13465.83 12908.49  --> 13465.83 MFLOP.
+      nb=16: 13116.70 14477.20 13514.70  --> 14477.20 MFLOP.
+      nb=20: 13408.86 13946.75 13438.99  --> 13946.75 MFLOP.
+      nb=24: 13596.56 14293.25 12100.14  --> 14293.25 MFLOP.
+      nb=28: 14154.59 14692.37 14778.25  --> 14778.25 MFLOP.
+      nb=32: 14015.06 14102.43 13429.81  --> 14102.43 MFLOP.
+      nb=36: 12945.83 12510.75 12828.62  --> 12945.83 MFLOP.
+      nb=40: 12404.02 11826.77 12424.93  --> 12424.93 MFLOP.
+      nb=44: 12222.72 12579.03 12779.43  --> 12779.43 MFLOP.
+      nb=48: 11603.92 11589.19 11994.75  --> 11994.75 MFLOP.
+      nb=52: 12008.37 11980.96 11432.30  --> 12008.37 MFLOP.
+      nb=60: 18044.74 16228.70 17576.02  --> 18044.74 MFLOP.
+      nb=64: 17349.44 16281.21 14270.12  --> 17349.44 MFLOP.
+      nb=68: 15877.49 15782.63 15565.67  --> 15877.49 MFLOP.
+      nb=72: 17090.02 16221.68 15849.56  --> 17090.02 MFLOP.
+      nb=76: 15159.18 15642.26 15589.07  --> 15642.26 MFLOP.
+      nb=80: 15370.95 16244.29 16357.89  --> 16357.89 MFLOP.
+      nb=84: 15536.48 14123.29 15531.21  --> 15536.48 MFLOP.
+      nb=88: 15802.69 13190.58 15573.66  --> 15802.69 MFLOP.
+      nb=92: 13868.00 13666.54 13849.85  --> 13868.00 MFLOP.
+      nb=96: 14670.85 14958.37 12229.39  --> 14958.37 MFLOP.
+      nb=100: 13737.52 13952.51 13908.02  --> 13952.51 MFLOP.
+      nb=104: 13443.20 13966.77 13241.89  --> 13966.77 MFLOP.
+      nb=108: 15703.46 15643.92 16148.04  --> 16148.04 MFLOP.
+      nb=5: 6794.70 6585.23 7219.00  --> 7219.00 MFLOP.
+      nb=56: 19793.47 18137.39 16609.69  --> 19793.47 MFLOP.
+   FOR M=728, N=728, LDA=728, BEST NB=56
+
+   M=728, N=728, lda=728, NB=56
+   FINDING NB FOR M=336, N=336, LDA=336:
+      nb=56: 11111.35 10056.79 9747.46 --> 11111.35 MFLOP.
+
+      NB refinement search:
+      *** i=4, nbB=56, NB=56, mul1=4, mul2=0 ***
+      nb=4: 5740.17 6224.34 4279.17  --> 6224.34 MFLOP.
+      nb=8: 6145.19 7071.56 7959.35  --> 7959.35 MFLOP.
+      nb=12: 6249.20 7579.22 8363.43  --> 8363.43 MFLOP.
+      nb=16: 9129.00 8819.15 9018.92  --> 9129.00 MFLOP.
+      nb=20: 8589.05 8328.51 8672.53  --> 8672.53 MFLOP.
+      nb=24: 9196.26 8925.55 9185.47  --> 9196.26 MFLOP.
+      nb=28: 9472.87 9607.98 9490.11  --> 9607.98 MFLOP.
+      nb=32: 8726.84 8649.67 8013.27  --> 8726.84 MFLOP.
+      nb=36: 7892.65 6810.69 7765.82  --> 7892.65 MFLOP.
+      nb=40: 6816.17 6342.32 6988.01  --> 6988.01 MFLOP.
+      nb=44: 7084.12 7170.26 7191.04  --> 7191.04 MFLOP.
+      nb=48: 7284.76 7113.60 7142.07  --> 7284.76 MFLOP.
+      nb=52: 7010.64 7207.34 7162.68  --> 7207.34 MFLOP.
+      nb=60: 9825.60 9784.49 9872.33  --> 9872.33 MFLOP.
+      nb=64: 6327.52 9286.09 9323.54  --> 9323.54 MFLOP.
+      nb=68: 9294.57 9132.28 9440.78  --> 9440.78 MFLOP.
+      nb=72: 8670.31 8766.33 8611.96  --> 8766.33 MFLOP.
+      nb=76: 8572.77 8488.00 8451.33  --> 8572.77 MFLOP.
+      nb=80: 8339.78 8484.82 8628.76  --> 8628.76 MFLOP.
+      nb=84: 8680.30 6849.44 7736.29  --> 8680.30 MFLOP.
+      nb=88: 7927.71 6638.68 7507.89  --> 7927.71 MFLOP.
+      nb=92: 7488.00 7438.72 7140.31  --> 7488.00 MFLOP.
+      nb=96: 7158.90 7114.34 7327.53  --> 7327.53 MFLOP.
+      nb=100: 7427.85 7475.34 7752.21  --> 7752.21 MFLOP.
+      nb=104: 6705.41 7018.63 7024.93  --> 7024.93 MFLOP.
+      nb=108: 7988.41 8054.19 6589.65  --> 8054.19 MFLOP.
+      nb=5: 5144.61 5591.41 5066.08  --> 5591.41 MFLOP.
+      nb=56: 12216.22 12444.88 12284.08  --> 12444.88 MFLOP.
+   FOR M=336, N=336, LDA=336, BEST NB=56
+
+   M=336, N=336, lda=336, NB=56
+   FINDING NB FOR M=168, N=168, LDA=168:
+      nb=56: 7639.22 7368.51 7456.59 --> 7639.22 MFLOP.
+
+      NB refinement search:
+      *** i=4, nbB=56, NB=56, mul1=4, mul2=0 ***
+      nb=4: 5960.40 5765.58 6115.76  --> 6115.76 MFLOP.
+      nb=8: 5160.63 5173.16 5186.80  --> 5186.80 MFLOP.
+      nb=12: 4895.88 1258.29 5457.98  --> 5457.98 MFLOP.
+      nb=16: 4664.62 4822.04 5117.27  --> 5117.27 MFLOP.
+      nb=20: 5335.02 5133.70 5431.32  --> 5431.32 MFLOP.
+      nb=24: 5667.20 5665.95 5720.44  --> 5720.44 MFLOP.
+      nb=28: 5557.60 5631.02 5541.95  --> 5631.02 MFLOP.
+      nb=32: 4923.21 4799.42 4624.14  --> 4923.21 MFLOP.
+      nb=36: 4894.01 4918.48 4955.65  --> 4955.65 MFLOP.
+      nb=40: 4898.70 4886.53 4853.15  --> 4898.70 MFLOP.
+      nb=44: 4893.07 4878.14 4812.06  --> 4893.07 MFLOP.
+      nb=48: 4881.87 4844.88 4656.97  --> 4881.87 MFLOP.
+      nb=52: 4793.12 4770.77 4730.18  --> 4793.12 MFLOP.
+      nb=60: 5761.68 5491.97 5515.66  --> 5761.68 MFLOP.
+      nb=64: 5466.15 5423.26 5376.52  --> 5466.15 MFLOP.
+      nb=68: 5434.78 5198.39 5396.94  --> 5434.78 MFLOP.
+      nb=72: 5074.62 5125.47 5012.95  --> 5125.47 MFLOP.
+      nb=76: 4948.93 4824.77 5042.61  --> 5042.61 MFLOP.
+      nb=80: 4761.00 4874.42 4791.33  --> 4874.42 MFLOP.
+      nb=84: 5192.06 5028.73 3156.37  --> 5192.06 MFLOP.
+      nb=5: 2069.60 3025.32 3929.95  --> 3929.95 MFLOP.
+      nb=56: 4967.20 7689.75 7726.92  --> 7726.92 MFLOP.
+   FOR M=168, N=168, LDA=168, BEST NB=56
+
+   M=168, N=168, lda=168, NB=56
+   FINDING NB FOR M=2240, N=2240, LDA=2240:
+      nb=56: 26425.00 27698.04 --> 27698.04 MFLOP.
+      nb=112: 28407.72 28126.41 28459.71 --> 28459.71 MFLOP.
+
+      NB refinement search:
+      *** i=64, nbB=112, NB=56, mul1=8, mul2=0 ***
+      nb=64: 25965.62 26029.07  --> 26029.07 MFLOP.
+      nb=72: 25320.35 26077.37  --> 26077.37 MFLOP.
+      nb=80: 25405.91 25640.24  --> 25640.24 MFLOP.
+      nb=88: 24843.15 25210.27  --> 25210.27 MFLOP.
+      nb=96: 23502.09 23822.63  --> 23822.63 MFLOP.
+      nb=104: 24689.86 24081.89  --> 24689.86 MFLOP.
+      nb=120: 27397.20 27274.02  --> 27397.20 MFLOP.
+      nb=128: 27023.12 26178.47  --> 27023.12 MFLOP.
+      nb=136: 22603.10 25952.41  --> 25952.41 MFLOP.
+      nb=144: 25306.80 25921.40  --> 25921.40 MFLOP.
+      nb=152: 25229.08 25623.30  --> 25623.30 MFLOP.
+      nb=160: 25090.16 24875.24  --> 25090.16 MFLOP.
+      nb=56: 28948.13 28790.54 27437.67  --> 28948.13 MFLOP.
+   FOR M=2240, N=2240, LDA=2240, BEST NB=56
+
+   M=2240, N=2240, lda=2240, NB=56
+         N     NB
+==========  =====
+        25     5
+       168    56
+       336    56
+       728    56
+      1512    56
+      2240    56
+      3024   112
+GEQRF: Side='RIGHT', Uplo='UPPER', M=25, N=25, bestNB=5
+GEQRF: Side='RIGHT', Uplo='UPPER', M=168, N=168, bestNB=56
+GEQRF: Side='RIGHT', Uplo='UPPER', M=336, N=336, bestNB=56
+GEQRF: Side='RIGHT', Uplo='UPPER', M=728, N=728, bestNB=56
+GEQRF: Side='RIGHT', Uplo='UPPER', M=1512, N=1512, bestNB=56
+GEQRF: Side='RIGHT', Uplo='UPPER', M=2240, N=2240, bestNB=56
+GEQRF: Side='RIGHT', Uplo='UPPER', M=3024, N=3024, bestNB=112
+make[3]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/lapack'
+make[2]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+*      FINISHED ATLAS3.10.3 INSTALL OF SECTION 4-3-3 ON 08/11/2017 AT 05:01   *
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+
+
+

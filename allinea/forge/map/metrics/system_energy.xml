@@ -1,0 +1,43 @@
+<metricdefinitions version="1">
+    <metric id="system_power">
+        <units>W/node</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <onePerNode>true</onePerNode>
+        <source ref="system_energy_metrics" functionName="allinea_power"/>
+        <display>
+            <description>Nodes power usage</description>
+            <displayName>System power usage</displayName>
+            <type>energy</type>
+            <colour>red</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+            <rel type="integral" name="system_energy"/>
+        </display>
+    </metric>
+
+    <metric id="system_energy">
+        <units>J</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <onePerNode>true</onePerNode>
+        <source ref="system_energy_metrics" functionName="allinea_energy"/>
+        <display>
+            <description>Whole system energy usage</description>
+            <displayName>System energy usage</displayName>
+            <type>energy</type>
+            <colour>red</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+            <accumulate>true</accumulate>
+        </display>
+    </metric>
+
+    <metricGroup id="power">
+        <displayName>Energy</displayName>
+        <description>Energy usage metrics</description>
+        <metric ref="system_power"/>
+    </metricGroup>
+
+    <source id="system_energy_metrics">
+        <sharedLibrary>lib-system-energy.so</sharedLibrary>
+    </source>
+</metricdefinitions>

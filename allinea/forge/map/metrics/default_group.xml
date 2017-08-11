@@ -1,0 +1,15 @@
+<metricdefinitions version="1">
+    <metricGroup id="defaultGroup">
+        <displayName>Default</displayName>
+        <description></description>
+        <metric ref="rss"/>
+        <metric ref="instr_fp"/>
+    </metricGroup>
+    <metricGroup id="activityGroup">
+        <displayName>Activity Timelines</displayName>
+        <description></description>
+        <metric ref="bigglyph_core_usage"/>
+        <metric ref="bigglyph_main_thread"/>
+    </metricGroup>
+</metricdefinitions>
+

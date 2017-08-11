@@ -1,0 +1,13 @@
+Linux aposta-VirtualBox 4.7.0.intel.r5.0 #1 SMP Tue Jul 11 19:50:00 CST 2017 x86_64 x86_64 x86_64 GNU/Linux
+gcc (Ubuntu 5.4.0-6ubuntu1~16.04.4) 5.4.0 20160609
+Copyright (C) 2015 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Linux aposta-VirtualBox 4.7.0.intel.r5.0 #1 SMP Tue Jul 11 19:50:00 CST 2017 x86_64 x86_64 x86_64 GNU/Linux
+gcc (Ubuntu 5.4.0-6ubuntu1~16.04.4) 5.4.0 20160609
+Copyright (C) 2015 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+ERROR 793 DURING BUILDING BLOCK MATMUL TUNE!!.  CHECK INSTALL_LOG/zMMSEARCH.LOG FOR DETAILS.

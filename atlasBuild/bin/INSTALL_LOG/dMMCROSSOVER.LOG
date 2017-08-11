@@ -1,0 +1,756 @@
+
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+*       BEGAN ATLAS3.10.3 INSTALL OF SECTION 2-1-3 ON 08/09/2017 AT 13:05     *
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+
+
+
+make[2]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/tune/blas/gemm ; make res/dXover.h pre=d nb=88
+make[3]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+make dRun_tfc pre=d
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+make xdtfc pre=d typ=DREAL
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+/usr/bin/c99-gcc -o dtfc.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL /home/aposta/sc17/ATLAS//tune/blas/gemm/tfc.c \
+                 -DSM_FOUT=/home/aposta/sc17/atlasBuild/include/dXover.h
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make dlib
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make auxillib dcleanuplib dusergemm
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd /home/aposta/sc17/atlasBuild/src/auxil ; make lib
+make[8]: Entering directory '/home/aposta/sc17/atlasBuild/src/auxil'
+/usr/bin/c99-gcc -o ATL_buildinfo.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/auxil/ATL_buildinfo.c
+ar r /home/aposta/sc17/atlasBuild/lib/libatlas.a ATL_flushcache.o ATL_flushCacheByAddr.o ATL_cputime.o ATL_walltime.o ATL_xerbla.o ATL_lcm.o ATL_buildinfo.o ATL_ssyreflect.o ATL_sgemoveT.o ATL_sgemove.o ATL_sgecopy.o ATL_sgezero.o ATL_sgeadd.o ATL_sgescal.o ATL_strscal.o ATL_stradd.o ATL_sgecollapse.o ATL_strcollapse.o ATL_saxpby.o ATL_sgeswapT.o ATL_ssqtrans.o ATL_sgeApBt_NB.o ATL_ssyApAt_NB.o ATL_ssyApAt.o ATL_sgemaxnrm.o ATL_sgeset.o ATL_strsetL.o ATL_strsetU.o ATL_dsyreflect.o ATL_dgemoveT.o ATL_dgemove.o ATL_dgecopy.o ATL_dgezero.o ATL_dgeadd.o ATL_dgescal.o ATL_dtrscal.o ATL_dtradd.o ATL_dgecollapse.o ATL_dtrcollapse.o ATL_daxpby.o ATL_dgeswapT.o ATL_dsqtrans.o ATL_dgeApBt_NB.o ATL_dsyApAt_NB.o ATL_dsyApAt.o ATL_dgemaxnrm.o ATL_dgeset.o ATL_dtrsetL.o ATL_dtrsetU.o ATL_csyreflect.o ATL_cgemoveT.o ATL_cgemove.o ATL_cgecopy.o ATL_cgezero.o ATL_cgeadd.o ATL_cgescal.o ATL_ctrscal.o ATL_ctradd.o ATL_cgecollapse.o ATL_ctrcollapse.o ATL_caxpby.o ATL_cgeswapT.o ATL_csqtrans.o ATL_cgeApBt_NB.o ATL_csyApAt_NB.o ATL_csyApAt.o ATL_cgemaxnrm.o ATL_cgeset.o ATL_ctrsetL.o ATL_ctrsetU.o ATL_zsyreflect.o ATL_zgemoveT.o ATL_zgemove.o ATL_zgecopy.o ATL_zgezero.o ATL_zgeadd.o ATL_zgescal.o ATL_ztrscal.o ATL_ztradd.o ATL_zgecollapse.o ATL_ztrcollapse.o ATL_zaxpby.o ATL_zgeswapT.o ATL_zsqtrans.o ATL_zgeApBt_NB.o ATL_zsyApAt_NB.o ATL_zsyApAt.o ATL_zgemaxnrm.o ATL_zgeset.o ATL_ztrsetL.o ATL_ztrsetU.o ATL_cgemoveC.o ATL_caxpbyConj.o ATL_caxpyConj.o ATL_cmoveConj.o ATL_ccopyConj.o ATL_cscalConj.o ATL_chereflect.o ATL_ccplxdivide.o ATL_ccplxinvert.o ATL_caxpyConj_x1_y1.o ATL_chescal.o ATL_cgeApBc_NB.o ATL_cheApAc_NB.o ATL_cheApAc.o ATL_cgemove_aXi0.o ATL_cgemove_aX.o ATL_cgemove_a1.o ATL_cgemove_a0.o ATL_caxpbyConj_aXi0_bXi0.o ATL_caxpby_aXi0_bXi0.o ATL_cgeadd_aXi0_bXi0.o ATL_caxpbyConj_aX_bXi0.o ATL_caxpby_aX_bXi0.o ATL_cgeadd_aX_bXi0.o ATL_caxpbyConj_a1_bXi0.o ATL_caxpby_a1_bXi0.o ATL_cgeadd_a1_bXi0.o ATL_caxpbyConj_a0_bXi0.o ATL_caxpby_a0_bXi0.o ATL_cgeadd_a0_bXi0.o ATL_cgescal_bXi0.o ATL_caxpbyConj_aXi0_bX.o ATL_caxpby_aXi0_bX.o ATL_cgeadd_aXi0_bX.o ATL_caxpbyConj_aX_bX.o ATL_caxpby_aX_bX.o ATL_cgeadd_aX_bX.o ATL_caxpbyConj_a1_bX.o ATL_caxpby_a1_bX.o ATL_cgeadd_a1_bX.o ATL_caxpbyConj_a0_bX.o ATL_caxpby_a0_bX.o ATL_cgeadd_a0_bX.o ATL_cgescal_bX.o ATL_caxpbyConj_aXi0_b1.o ATL_caxpby_aXi0_b1.o ATL_cgeadd_aXi0_b1.o ATL_caxpbyConj_aX_b1.o ATL_caxpby_aX_b1.o ATL_cgeadd_aX_b1.o ATL_caxpbyConj_a1_b1.o ATL_caxpby_a1_b1.o ATL_cgeadd_a1_b1.o ATL_caxpbyConj_a0_b1.o ATL_caxpby_a0_b1.o ATL_cgeadd_a0_b1.o ATL_cgescal_b1.o ATL_caxpbyConj_aXi0_b0.o ATL_caxpby_aXi0_b0.o ATL_cgeadd_aXi0_b0.o ATL_caxpbyConj_aX_b0.o ATL_caxpby_aX_b0.o ATL_cgeadd_aX_b0.o ATL_caxpbyConj_a1_b0.o ATL_caxpby_a1_b0.o ATL_cgeadd_a1_b0.o ATL_caxpbyConj_a0_b0.o ATL_caxpby_a0_b0.o ATL_cgeadd_a0_b0.o ATL_cgescal_b0.o ATL_zgemoveC.o ATL_zaxpbyConj.o ATL_zaxpyConj.o ATL_zmoveConj.o ATL_zcopyConj.o ATL_zscalConj.o ATL_zhereflect.o ATL_zcplxdivide.o ATL_zcplxinvert.o ATL_zaxpyConj_x1_y1.o ATL_zhescal.o ATL_zgeApBc_NB.o ATL_zheApAc_NB.o ATL_zheApAc.o ATL_zgemove_aXi0.o ATL_zgemove_aX.o ATL_zgemove_a1.o ATL_zgemove_a0.o ATL_zaxpbyConj_aXi0_bXi0.o ATL_zaxpby_aXi0_bXi0.o ATL_zgeadd_aXi0_bXi0.o ATL_zaxpbyConj_aX_bXi0.o ATL_zaxpby_aX_bXi0.o ATL_zgeadd_aX_bXi0.o ATL_zaxpbyConj_a1_bXi0.o ATL_zaxpby_a1_bXi0.o ATL_zgeadd_a1_bXi0.o ATL_zaxpbyConj_a0_bXi0.o ATL_zaxpby_a0_bXi0.o ATL_zgeadd_a0_bXi0.o ATL_zgescal_bXi0.o ATL_zaxpbyConj_aXi0_bX.o ATL_zaxpby_aXi0_bX.o ATL_zgeadd_aXi0_bX.o ATL_zaxpbyConj_aX_bX.o ATL_zaxpby_aX_bX.o ATL_zgeadd_aX_bX.o ATL_zaxpbyConj_a1_bX.o ATL_zaxpby_a1_bX.o ATL_zgeadd_a1_bX.o ATL_zaxpbyConj_a0_bX.o ATL_zaxpby_a0_bX.o ATL_zgeadd_a0_bX.o ATL_zgescal_bX.o ATL_zaxpbyConj_aXi0_b1.o ATL_zaxpby_aXi0_b1.o ATL_zgeadd_aXi0_b1.o ATL_zaxpbyConj_aX_b1.o ATL_zaxpby_aX_b1.o ATL_zgeadd_aX_b1.o ATL_zaxpbyConj_a1_b1.o ATL_zaxpby_a1_b1.o ATL_zgeadd_a1_b1.o ATL_zaxpbyConj_a0_b1.o ATL_zaxpby_a0_b1.o ATL_zgeadd_a0_b1.o ATL_zgescal_b1.o ATL_zaxpbyConj_aXi0_b0.o ATL_zaxpby_aXi0_b0.o ATL_zgeadd_aXi0_b0.o ATL_zaxpbyConj_aX_b0.o ATL_zaxpby_aX_b0.o ATL_zgeadd_aX_b0.o ATL_zaxpbyConj_a1_b0.o ATL_zaxpby_a1_b0.o ATL_zgeadd_a1_b0.o ATL_zaxpbyConj_a0_b0.o ATL_zaxpby_a0_b0.o ATL_zgeadd_a0_b0.o ATL_zgescal_b0.o ATL_sgemove_aX.o ATL_sgemove_a1.o ATL_sgemove_a0.o ATL_saxpby_aX_bX.o ATL_sgeadd_aX_bX.o ATL_saxpby_a1_bX.o ATL_sgeadd_a1_bX.o ATL_saxpby_a0_bX.o ATL_sgeadd_a0_bX.o ATL_sgescal_bX.o ATL_saxpby_aX_b1.o ATL_sgeadd_aX_b1.o ATL_saxpby_a1_b1.o ATL_sgeadd_a1_b1.o ATL_saxpby_a0_b1.o ATL_sgeadd_a0_b1.o ATL_sgescal_b1.o ATL_saxpby_aX_b0.o ATL_sgeadd_aX_b0.o ATL_saxpby_a1_b0.o ATL_sgeadd_a1_b0.o ATL_saxpby_a0_b0.o ATL_sgeadd_a0_b0.o ATL_sgescal_b0.o ATL_dgemove_aX.o ATL_dgemove_a1.o ATL_dgemove_a0.o ATL_daxpby_aX_bX.o ATL_dgeadd_aX_bX.o ATL_daxpby_a1_bX.o ATL_dgeadd_a1_bX.o ATL_daxpby_a0_bX.o ATL_dgeadd_a0_bX.o ATL_dgescal_bX.o ATL_daxpby_aX_b1.o ATL_dgeadd_aX_b1.o ATL_daxpby_a1_b1.o ATL_dgeadd_a1_b1.o ATL_daxpby_a0_b1.o ATL_dgeadd_a0_b1.o ATL_dgescal_b1.o ATL_daxpby_aX_b0.o ATL_dgeadd_aX_b0.o ATL_daxpby_a1_b0.o ATL_dgeadd_a1_b0.o ATL_daxpby_a0_b0.o ATL_dgeadd_a0_b0.o ATL_dgescal_b0.o
+echo /home/aposta/sc17/atlasBuild/lib/libatlas.a
+/home/aposta/sc17/atlasBuild/lib/libatlas.a
+touch lib.grd0
+cd /home/aposta/sc17/atlasBuild/src/blas/level1 ; make lib
+make[9]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make dgen
+make[10]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_drot
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_drot' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_drot lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_daxpby
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_daxpby' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_daxpby lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dcpsc
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_dcpsc' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dcpsc lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dset
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_dset' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dset lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dnrm2
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_dnrm2' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dnrm2 lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dasum
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_dasum' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dasum lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_ddot
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_ddot' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_ddot lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dswap
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_dswap' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dswap lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dscal
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_dscal' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dscal lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_dcopy
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_dcopy' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_dcopy lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_daxpy
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_daxpy' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_daxpy lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_diamax
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_diamax' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_diamax lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[10]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -j 2 dlib.grd
+make[10]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[10]: 'dlib.grd' is up to date.
+make[10]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make sgen
+make[10]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_srot
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_srot' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_srot lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_saxpby
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_saxpby' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_saxpby lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_scpsc
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_scpsc' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_scpsc lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_sset
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_sset' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_sset lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_snrm2
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_snrm2' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_snrm2 lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_sasum
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_sasum' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_sasum lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_sdot
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_sdot' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_sdot lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_sswap
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_sswap' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_sswap lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_sscal
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_sscal' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_sscal lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_scopy
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_scopy' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_scopy lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_saxpy
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_saxpy' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_saxpy lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_siamax
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_siamax' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_siamax lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[10]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -j 2 slib.grd
+make[10]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[10]: 'slib.grd' is up to date.
+make[10]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make zgen
+make[10]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zrot
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_zrot' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zrot lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zaxpby
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_zaxpby' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zaxpby lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zcpsc
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_zcpsc' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zcpsc lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zset
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_zset' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zset lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_znrm2
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_znrm2' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_znrm2 lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zasum
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_zasum' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zasum lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zdot
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_zdot' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zdot lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zswap
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_zswap' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zswap lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zscal
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_zscal' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zscal lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zcopy
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_zcopy' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zcopy lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zaxpy
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_zaxpy' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zaxpy lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_ziamax
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_ziamax' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_ziamax lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_zdotc
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_zdotc' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_zdotc lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[10]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -j 2 zlib.grd
+make[10]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[10]: 'zlib.grd' is up to date.
+make[10]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make cgen
+make[10]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_crot
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_crot' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_crot lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_caxpby
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_caxpby' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_caxpby lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_ccpsc
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_ccpsc' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_ccpsc lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_cset
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_cset' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_cset lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_cnrm2
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_cnrm2' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_cnrm2 lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_casum
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_casum' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_casum lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_cdot
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_cdot' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_cdot lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_cswap
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_cswap' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_cswap lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_cscal
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_cscal' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_cscal lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_ccopy
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_ccopy' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_ccopy lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_caxpy
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_caxpy' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_caxpy lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_ciamax
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_ciamax' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_ciamax lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make Make_cdotc
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: 'Make_cdotc' is up to date.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -f Make_cdotc lib
+make[11]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[11]: Nothing to be done for 'lib'.
+make[11]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[10]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make -j 2 clib.grd
+make[10]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[10]: 'clib.grd' is up to date.
+make[10]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+make[9]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level1'
+touch lib.grd
+make[8]: Leaving directory '/home/aposta/sc17/atlasBuild/src/auxil'
+cd KERNEL ; make -f dMakefile dlib
+make[8]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL'
+make[8]: Nothing to be done for 'dlib'.
+make[8]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm/KERNEL'
+make[7]: Nothing to be done for 'dusergemm'.
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make -j 2 dlib.grd
+make[7]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+/usr/bin/c99-gcc -o ATL_dgemm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL -DATLGEMM -I./ \
+              /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+/usr/bin/c99-gcc -o ATL_dgemmNN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL \
+              -DNoTransA_ -DNoTransB_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemmXX.c
+/usr/bin/c99-gcc -o ATL_dgemmNT.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL \
+              -DNoTransA_ -DTransB_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemmXX.c
+/usr/bin/c99-gcc -o ATL_dgemmTN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL \
+              -DTransA_ -DNoTransB_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemmXX.c
+/usr/bin/c99-gcc -o ATL_dgemmTT.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL \
+              -DTransA_ -DTransB_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemmXX.c
+/usr/bin/c99-gcc -o ATL_dNCmmIJK.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL   /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_NCmmIJK.c
+/usr/bin/c99-gcc -o ATL_dNCmmJIK.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL   /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_NCmmJIK.c
+/usr/bin/c99-gcc -o ATL_dNCmmIJK_c.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL   /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_NCmmIJK_c.c
+/usr/bin/c99-gcc -o ATL_dNCmmJIK_c.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL   /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_NCmmJIK_c.c
+/usr/bin/c99-gcc -o ATL_daliased_gemm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL -DALIASED_GEMM -I./ \
+              /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+/usr/bin/c99-gcc -o ATL_dAgemmNN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL \
+              -DNoTransA_ -DNoTransB_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_AgemmXX.c
+/usr/bin/c99-gcc -o ATL_dAgemmNT.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL \
+              -DNoTransA_ -DTransB_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_AgemmXX.c
+/usr/bin/c99-gcc -o ATL_dAgemmTN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL \
+              -DTransA_ -DNoTransB_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_AgemmXX.c
+/usr/bin/c99-gcc -o ATL_dAgemmTT.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL \
+              -DTransA_ -DTransB_ /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_AgemmXX.c
+/usr/bin/c99-gcc -o ATL_dsmallK_mm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL -DSMALLK_MM -I./ \
+              /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+/usr/bin/c99-gcc -o ATL_dsmall_mm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL -DSMALL_MM -I./ \
+              /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+/usr/bin/c99-gcc -o ATL_dbig_mm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL -DBIG_MM -I./ \
+              /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+/usr/bin/c99-gcc -o ATL_dbignork_mm.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DDREAL -DBIGNORK_MM -I./ \
+              /home/aposta/sc17/ATLAS//src/blas/gemm/ATL_gemm.c
+ar r /home/aposta/sc17/atlasBuild/lib/libatlas.a ATL_dMBJBmm.o ATL_dIBNBmm.o ATL_dIBJBmm.o ATL_dgemm.o ATL_dGetNB.o ATL_dGetNCNB.o ATL_dgemmNN.o ATL_dgemmNT.o ATL_dgemmTN.o ATL_dgemmTT.o ATL_dNCmmIJK.o ATL_dNCmmJIK.o ATL_dNCmmIJK_c.o ATL_dNCmmJIK_c.o ATL_daliased_gemm.o ATL_dAgemmNN.o ATL_dAgemmNT.o ATL_dAgemmTN.o ATL_dAgemmTT.o ATL_dmmJIK.o ATL_dmmIJK.o ATL_dmmJKI.o ATL_dmmK.o ATL_dmmBPP.o ATL_dmmJITcp.o ATL_dcol2blk_aX.o ATL_drow2blkT_aX.o ATL_dcol2blk_a1.o ATL_drow2blkT_a1.o ATL_dputblk_bX.o ATL_dputblk_b1.o ATL_dputblk_bn1.o ATL_dputblk_b0.o
+echo /home/aposta/sc17/atlasBuild/lib/libatlas.a
+/home/aposta/sc17/atlasBuild/lib/libatlas.a
+touch dlib.grd
+make[7]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+cd /home/aposta/sc17/atlasBuild/src/blas/gemm ; make ATL_dbig_mm.o ATL_dsmall_mm.o \
+           pre=d typ=DREAL
+make[6]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+make[6]: 'ATL_dbig_mm.o' is up to date.
+make[6]: 'ATL_dsmall_mm.o' is up to date.
+make[6]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/gemm'
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -o xdtfc dtfc.o \
+              /home/aposta/sc17/atlasBuild/src/blas/gemm/ATL_dbig_mm.o /home/aposta/sc17/atlasBuild/src/blas/gemm/ATL_dsmall_mm.o \
+              /home/aposta/sc17/atlasBuild/lib/libatlas.a -lpthread -lm
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+/home/aposta/sc17/atlasBuild/bin/ATLrun.sh /home/aposta/sc17/atlasBuild/tune/blas/gemm xdtfc
+
+
+Finding crossover point for small case algorithms:
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+   1   N   N   56   10   10    1.0    1.0    1.94 2995.4  1.00
+   1   N   N   56   10   10    1.0    1.0    2.10 2772.4  0.93
+   2   N   N   56  750  750    1.0    1.0    1.18 4965.3  1.00
+   2   N   N   56  750  750    1.0    1.0    0.27 21861.9  4.40
+   3   N   N   56  380  380    1.0    1.0    1.17 4984.8  1.00
+   3   N   N   56  380  380    1.0    1.0    0.30 19152.0  3.84
+   4   N   N   56  195  195    1.0    1.0    1.18 4909.8  1.00
+   4   N   N   56  195  195    1.0    1.0    0.42 13841.1  2.82
+   5   N   N   56  102  102    1.0    1.0    1.21 4810.5  1.00
+   5   N   N   56  102  102    1.0    1.0    0.59 9882.8  2.05
+   6   N   N   56   56   56    1.0    1.0    1.30 4483.9  1.00
+   6   N   N   56   56   56    1.0    1.0    0.37 15791.1  3.52
+   7   N   N   56   33   33    1.0    1.0    1.43 4058.0  1.00
+   7   N   N   56   33   33    1.0    1.0    1.60 3622.8  0.89
+   8   N   N   56   44   44    1.0    1.0    1.39 4174.6  1.00
+   8   N   N   56   44   44    1.0    1.0    1.52 3823.1  0.92
+   9   N   N   56   50   50    1.0    1.0    1.29 4511.7  1.00
+   9   N   N   56   50   50    1.0    1.0    1.42 4080.8  0.90
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  10   N   N   10   56   10    1.0    1.0    3.34 1737.7  1.00
+  10   N   N   10   56   10    1.0    1.0    3.34 1741.9  1.00
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  11   N   N   56   56   10    1.0    1.0    1.67 3483.8  1.00
+  11   N   N   56   56   10    1.0    1.0    1.06 5502.8  1.58
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  12   N   N   10   10   56    1.0    1.0    2.60 2238.4  1.00
+  12   N   N   10   10   56    1.0    1.0    2.54 2287.8  1.02
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  13   N   N   10   10   10    1.0    1.0    4.68 1241.7  1.00
+  13   N   N   10   10   10    1.0    1.0    4.48 1295.9  1.04
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  14   N   T   56   10   10    1.0    1.0    1.82 3199.9  1.00
+  14   N   T   56   10   10    1.0    1.0    2.14 2720.5  0.85
+  15   N   T   56  750  750    1.0    1.0    1.20 4866.3  1.00
+  15   N   T   56  750  750    1.0    1.0    0.27 21540.4  4.43
+  16   N   T   56  380  380    1.0    1.0    1.17 4967.8  1.00
+  16   N   T   56  380  380    1.0    1.0    0.29 19939.1  4.01
+  17   N   T   56  195  195    1.0    1.0    1.17 4960.1  1.00
+  17   N   T   56  195  195    1.0    1.0    0.43 13456.6  2.71
+  18   N   T   56  102  102    1.0    1.0    1.29 4511.7  1.00
+  18   N   T   56  102  102    1.0    1.0    0.60 9621.0  2.13
+  19   N   T   56   56   56    1.0    1.0    1.27 4582.9  1.00
+  19   N   T   56   56   56    1.0    1.0    0.36 15964.7  3.48
+  20   N   T   56   33   33    1.0    1.0    1.34 4323.7  1.00
+  20   N   T   56   33   33    1.0    1.0    1.59 3659.3  0.85
+  21   N   T   56   44   44    1.0    1.0    1.33 4362.7  1.00
+  21   N   T   56   44   44    1.0    1.0    1.49 3905.3  0.90
+  22   N   T   56   50   50    1.0    1.0    1.29 4511.7  1.00
+  22   N   T   56   50   50    1.0    1.0    1.42 4080.8  0.90
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  23   N   T   10   56   10    1.0    1.0    2.69 2161.8  1.00
+  23   N   T   10   56   10    1.0    1.0    2.80 2078.3  0.96
+  24   N   T  750   56  750    1.0    1.0    1.24 4725.0  1.00
+  24   N   T  750   56  750    1.0    1.0    0.31 19022.7  4.03
+  25   N   T  380   56  380    1.0    1.0    1.23 4725.8  1.00
+  25   N   T  380   56  380    1.0    1.0    0.32 18194.4  3.85
+  26   N   T  195   56  195    1.0    1.0    1.20 4860.6  1.00
+  26   N   T  195   56  195    1.0    1.0    0.56 10455.5  2.15
+  27   N   T  102   56  102    1.0    1.0    1.24 4671.3  1.00
+  27   N   T  102   56  102    1.0    1.0    0.84 6918.0  1.48
+  28   N   T   56   56   56    1.0    1.0    1.23 4716.8  1.00
+  28   N   T   56   56   56    1.0    1.0    0.38 15292.5  3.24
+  29   N   T   33   56   33    1.0    1.0    1.42 4080.8  1.00
+  29   N   T   33   56   33    1.0    1.0    1.64 3552.0  0.87
+  30   N   T   44   56   44    1.0    1.0    1.29 4511.7  1.00
+  30   N   T   44   56   44    1.0    1.0    1.49 3894.8  0.86
+  31   N   T   50   56   50    1.0    1.0    1.27 4568.5  1.00
+  31   N   T   50   56   50    1.0    1.0    1.42 4092.3  0.90
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  32   N   T   56   56   10    1.0    1.0    1.53 3803.0  1.00
+  32   N   T   56   56   10    1.0    1.0    0.92 6316.3  1.66
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  33   N   T   10   10   56    1.0    1.0    2.93 1981.9  1.00
+  33   N   T   10   10   56    1.0    1.0    2.91 1998.3  1.01
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  34   N   T   10   10   10    1.0    1.0    4.67 1244.9  1.00
+  34   N   T   10   10   10    1.0    1.0    4.45 1306.4  1.05
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  35   T   N   56   10   10    1.0    1.0    2.78 2090.3  1.00
+  35   T   N   56   10   10    1.0    1.0    2.62 2214.6  1.06
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  36   T   N   10   56   10    1.0    1.0    3.19 1822.8  1.00
+  36   T   N   10   56   10    1.0    1.0    3.30 1763.0  0.97
+  37   T   N  750   56  750    1.0    1.0    1.16 5068.3  1.00
+  37   T   N  750   56  750    1.0    1.0    0.29 20065.1  3.96
+  38   T   N  380   56  380    1.0    1.0    1.13 5143.3  1.00
+  38   T   N  380   56  380    1.0    1.0    0.27 21405.2  4.16
+  39   T   N  195   56  195    1.0    1.0    1.15 5063.8  1.00
+  39   T   N  195   56  195    1.0    1.0    0.52 11179.3  2.21
+  40   T   N  102   56  102    1.0    1.0    1.21 4794.6  1.00
+  40   T   N  102   56  102    1.0    1.0    0.84 6951.1  1.45
+  41   T   N   56   56   56    1.0    1.0    1.24 4686.4  1.00
+  41   T   N   56   56   56    1.0    1.0    0.41 14243.0  3.04
+  42   T   N   33   56   33    1.0    1.0    1.52 3823.1  1.00
+  42   T   N   33   56   33    1.0    1.0    1.67 3483.8  0.91
+  43   T   N   44   56   44    1.0    1.0    1.34 4349.6  1.00
+  43   T   N   44   56   44    1.0    1.0    1.51 3853.5  0.89
+  44   T   N   50   56   50    1.0    1.0    1.31 4442.8  1.00
+  44   T   N   50   56   50    1.0    1.0    1.45 4013.2  0.90
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  45   T   N   56   56   10    1.0    1.0    1.79 3242.7  1.00
+  45   T   N   56   56   10    1.0    1.0    1.13 5151.6  1.59
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  46   T   N   10   10   56    1.0    1.0    1.95 2976.9  1.00
+  46   T   N   10   10   56    1.0    1.0    2.18 2660.7  0.89
+  47   T   N  750  750   56    1.0    1.0    1.19 4915.3  1.00
+  47   T   N  750  750   56    1.0    1.0    0.26 22193.2  4.52
+  48   T   N  380  380   56    1.0    1.0    1.17 4984.8  1.00
+  48   T   N  380  380   56    1.0    1.0    0.26 22053.8  4.42
+  49   T   N  195  195   56    1.0    1.0    1.18 4926.5  1.00
+  49   T   N  195  195   56    1.0    1.0    0.46 12748.4  2.59
+  50   T   N  102  102   56    1.0    1.0    1.20 4858.8  1.00
+  50   T   N  102  102   56    1.0    1.0    0.73 7938.6  1.63
+  51   T   N   56   56   56    1.0    1.0    1.26 4612.0  1.00
+  51   T   N   56   56   56    1.0    1.0    0.37 15791.1  3.42
+  52   T   N   33   33   56    1.0    1.0    1.40 4162.6  1.00
+  52   T   N   33   33   56    1.0    1.0    1.54 3783.2  0.91
+  53   T   N   44   44   56    1.0    1.0    1.31 4429.2  1.00
+  53   T   N   44   44   56    1.0    1.0    1.47 3958.5  0.89
+  54   T   N   50   50   56    1.0    1.0    1.28 4554.2  1.00
+  54   T   N   50   50   56    1.0    1.0    1.46 3969.3  0.87
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  55   T   N   10   10   10    1.0    1.0    4.98 1166.9  1.00
+  55   T   N   10   10   10    1.0    1.0    4.51 1287.9  1.10
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  56   T   T   56   10   10    1.0    1.0    2.77 2096.3  1.00
+  56   T   T   56   10   10    1.0    1.0    2.56 2273.5  1.08
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  57   T   T   10   56   10    1.0    1.0    2.58 2255.8  1.00
+  57   T   T   10   56   10    1.0    1.0    2.79 2084.3  0.92
+  58   T   T  750   56  750    1.0    1.0    1.18 4948.5  1.00
+  58   T   T  750   56  750    1.0    1.0    0.28 20630.3  4.17
+  59   T   T  380   56  380    1.0    1.0    1.15 5054.0  1.00
+  59   T   T  380   56  380    1.0    1.0    0.28 20500.7  4.06
+  60   T   T  195   56  195    1.0    1.0    1.18 4909.8  1.00
+  60   T   T  195   56  195    1.0    1.0    0.54 10845.6  2.21
+  61   T   T  102   56  102    1.0    1.0    1.21 4794.6  1.00
+  61   T   T  102   56  102    1.0    1.0    0.82 7052.3  1.47
+  62   T   T   56   56   56    1.0    1.0    1.24 4686.4  1.00
+  62   T   T   56   56   56    1.0    1.0    0.39 14977.1  3.20
+  63   T   T   33   56   33    1.0    1.0    1.55 3744.2  1.00
+  63   T   T   33   56   33    1.0    1.0    1.58 3668.6  0.98
+  64   T   T   44   56   44    1.0    1.0    1.36 4272.9  1.00
+  64   T   T   44   56   44    1.0    1.0    1.49 3905.3  0.91
+  65   T   T   50   56   50    1.0    1.0    1.27 4568.5  1.00
+  65   T   T   50   56   50    1.0    1.0    1.45 4002.1  0.88
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  66   T   T   56   56   10    1.0    1.0    1.72 3370.7  1.00
+  66   T   T   56   56   10    1.0    1.0    1.05 5523.8  1.64
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  67   T   T   10   10   56    1.0    1.0    2.53 2295.0  1.00
+  67   T   T   10   10   56    1.0    1.0    2.49 2335.6  1.02
+
+TEST  TA  TB    M    N    K  alpha   beta    Time  Mflop  SpUp
+====  ==  ==  ===  ===  ===  =====  =====  ======  =====  ==== 
+
+  68   T   T   10   10   10    1.0    1.0    4.95 1173.5  1.00
+  68   T   T   10   10   10    1.0    1.0    4.51 1289.0  1.10
+cp -f /home/aposta/sc17/atlasBuild/include/dXover.h res/.
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+make[3]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/gemm'
+cp /home/aposta/sc17/atlasBuild/tune/blas/gemm/res/dXover.h INSTALL_LOG/.
+make[2]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+*      FINISHED ATLAS3.10.3 INSTALL OF SECTION 2-1-3 ON 08/09/2017 AT 13:09   *
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+
+
+

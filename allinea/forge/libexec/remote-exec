@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# This script is used by Allinea tools to start remote processes.
+# It should accept the arguments HOSTNAME PROGRAM_NAME ARG1 ARG2 ARGN
+# Before using attach in DDT you should test this script manually
+# e.g. remote-exec comp01 hostname
+# The command must run without prompting for a password.
+
+# if the user has a remote-exec script, use that one
+if [ -x ${HOME}/.allinea/remote-exec ]; then
+   exec ${HOME}/.allinea/remote-exec "$@"
+   # exec replaces the process image so this is only executed if exec fails
+   exit 127
+else
+   if type printf >/dev/null && [ "$(printf '%q' 'test' 2>/dev/null)" = test ]; then
+      case "$1" in
+      -*)
+         ;;
+      *)
+         host="$1"
+         shift
+         args=""
+         for arg in "$@"; do
+            quotedArg="$(printf '%q' "${arg}")"
+            if [ -z "${args}" ]; then
+               args="${quotedArg}"
+            else
+               args="${args} ${quotedArg}"
+            fi
+         done
+         exec ssh "${host}" "${args}"
+      esac
+   fi
+   exec ssh "$@"
+   exit 127
+fi

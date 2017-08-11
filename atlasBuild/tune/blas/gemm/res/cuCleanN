@@ -1,0 +1,6 @@
+MULT  ICASE  FIXED  NB  NB0  NB1  NB2     MFLOP  ROUT
+4
+   1    222      0  80   70   40   16   5542.41  ATL_smm4x1x256_sse.c
+   2      8      0  80   70   40   16  44544.80  ATL_amm4x2xVL_simd.c
+   3     13      0  80   69   39   18  41414.85  ATL_amm4x3xVL_simd.c
+   5     15      0  80   70   40   20  40024.89  ATL_amm4x5xVL_simd.c

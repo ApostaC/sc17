@@ -1,0 +1,4 @@
+~/sc17/ATLAS/configure --prefix=/home/aposta/sc17/atlas  \
+	--incdir=/home/aposta/sc17/atlas/include \
+	--libdir=/home/aposta/sc17/atlas/lib
+

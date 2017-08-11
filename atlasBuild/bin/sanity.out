@@ -1,0 +1,188 @@
+ORD  UPLO       N    NRHS     lda     ldb       TIME     MFLOP        RESID
+===  ====  ======  ======  ======  ======  =========  ========  ===========
+
+  C     G     167      83     167     167     -1.000     -1.00  1.622851e-01
+  R     G     167      83     167     167      0.004   1358.43  1.140224e-01
+
+2 TESTS RUN, ALL PASSED.
+
+ORD  UPLO       N    NRHS     lda     ldb       TIME     MFLOP        RESID
+===  ====  ======  ======  ======  ======  =========  ========  ===========
+
+  C     U     167      83     167     167     -1.000     -1.00  3.978444e-03
+  C     L     167      83     167     167      0.004    966.82  5.079406e-03
+  R     U     167      83     167     167     -1.000     -1.00  5.079406e-03
+  R     L     167      83     167     167      0.004    966.82  3.978444e-03
+
+4 TESTS RUN, ALL PASSED.
+
+Rt  Maj      M      N    lda        TIME       MFLOP   RESIDUAL
+==  ===  =====  =====  =====  ==========  ==========  =========
+QR  Col     83    167     83  4.0000e-03      488.70   5.88e-02
+QL  Col     83    167     83  4.0000e-03      488.70   7.41e-02
+RQ  Col     83    167     83  0.0000e+00         inf   4.95e-02
+LQ  Col     83    167     83  0.0000e+00         inf   6.00e-02
+
+4 cases ran, 4 cases passed
+
+NREPS   Ord. UPLO DIAG       N    lda          TIME        MFLOPS         RESID
+=====  ==== =====  ===== =====  =====  ============  ============  ============
+    1  Col  Upper NonUn    167    167       0.00000         0.000  6.173828e-03
+    1  Col  Upper Unit     167    167       0.00000         0.000  1.069281e-02
+    1  Col  Lower NonUn    167    167       0.00000         0.000  6.157841e-03
+    1  Col  Lower Unit     167    167       0.00000         0.000  1.012134e-02
+    1  Row  Upper NonUn    167    167       0.00000         0.000  6.277836e-03
+    1  Row  Upper Unit     167    167       0.00000         0.000  9.769713e-03
+    1  Row  Lower NonUn    167    167       0.00000         0.000  6.296856e-03
+    1  Row  Lower Unit     167    167       0.00400       388.122  9.818196e-03
+
+8 cases: 8 passed, 0 skipped, 0 failed
+NREPS  ORD   UPLO      N    lda          TIME        MFLOPS         RESID
+=====  ===  =====  =====  =====  ============  ============  ============
+    1  Col  Upper    167    167       0.00000         0.000  7.230574e-01
+    1  Col  Lower    167    167       0.00000         0.000  9.768605e-01
+    1  Row  Upper    167    167       0.00000         0.000  9.768605e-01
+    1  Row  Lower    167    167       0.00400       291.091  7.230574e-01
+
+4 cases: 4 passed, 0 skipped, 0 failed
+ORD  UPLO       N    NRHS     lda     ldb       TIME     MFLOP        RESID
+===  ====  ======  ======  ======  ======  =========  ========  ===========
+
+  C     G     167      83     167     167     -1.000     -1.00  1.699948e-01
+  R     G     167      83     167     167     -1.000     -1.00  9.708497e-02
+
+2 TESTS RUN, ALL PASSED.
+
+ORD  UPLO       N    NRHS     lda     ldb       TIME     MFLOP        RESID
+===  ====  ======  ======  ======  ======  =========  ========  ===========
+
+  C     U     167      83     167     167     -1.000     -1.00  4.602045e-03
+  C     L     167      83     167     167     -1.000     -1.00  5.512920e-03
+  R     U     167      83     167     167      0.004    966.82  5.512920e-03
+  R     L     167      83     167     167      0.004    966.82  4.602045e-03
+
+4 TESTS RUN, ALL PASSED.
+
+Rt  Maj      M      N    lda        TIME       MFLOP   RESIDUAL
+==  ===  =====  =====  =====  ==========  ==========  =========
+QR  Col     83    167     83  4.0000e-03      488.70   5.77e-02
+QL  Col     83    167     83  0.0000e+00         inf   6.25e-02
+RQ  Col     83    167     83  0.0000e+00         inf   4.93e-02
+LQ  Col     83    167     83  0.0000e+00         inf   5.47e-02
+
+4 cases ran, 4 cases passed
+
+NREPS   Ord. UPLO DIAG       N    lda          TIME        MFLOPS         RESID
+=====  ==== =====  ===== =====  =====  ============  ============  ============
+    1  Col  Upper NonUn    167    167       0.00000         0.000  6.124877e-03
+    1  Col  Upper Unit     167    167       0.00000         0.000  1.162832e-02
+    1  Col  Lower NonUn    167    167       0.00000         0.000  6.120200e-03
+    1  Col  Lower Unit     167    167       0.00000         0.000  1.064439e-02
+    1  Row  Upper NonUn    167    167       0.00000         0.000  6.210625e-03
+    1  Row  Upper Unit     167    167       0.00000         0.000  1.213399e-02
+    1  Row  Lower NonUn    167    167       0.00000         0.000  6.173801e-03
+    1  Row  Lower Unit     167    167       0.00000         0.000  1.060792e-02
+
+8 cases: 8 passed, 0 skipped, 0 failed
+NREPS  ORD   UPLO      N    lda          TIME        MFLOPS         RESID
+=====  ===  =====  =====  =====  ============  ============  ============
+    1  Col  Upper    167    167       0.00000         0.000  7.013135e-01
+    1  Col  Lower    167    167       0.00000         0.000  5.811163e-01
+    1  Row  Upper    167    167       0.00000         0.000  5.811163e-01
+    1  Row  Lower    167    167       0.00000         0.000  7.013135e-01
+
+4 cases: 4 passed, 0 skipped, 0 failed
+ORD  UPLO       N    NRHS     lda     ldb       TIME     MFLOP        RESID
+===  ====  ======  ======  ======  ======  =========  ========  ===========
+
+  C     G     167      83     167     167      0.004   5419.72  3.110669e-02
+  R     G     167      83     167     167      0.004   5419.72  2.779155e-02
+
+2 TESTS RUN, ALL PASSED.
+
+ORD  UPLO       N    NRHS     lda     ldb       TIME     MFLOP        RESID
+===  ====  ======  ======  ======  ======  =========  ========  ===========
+
+  C     U     167      83     167     167      0.004   3895.12  3.528285e-03
+  C     L     167      83     167     167     -1.000     -1.00  3.168941e-03
+  R     U     167      83     167     167     -1.000     -1.00  5.024955e-03
+  R     L     167      83     167     167     -1.000     -1.00  3.939344e-03
+
+4 TESTS RUN, ALL PASSED.
+
+Rt  Maj      M      N    lda        TIME       MFLOP   RESIDUAL
+==  ===  =====  =====  =====  ==========  ==========  =========
+QR  Col     83    167     83  4.0000e-03     1961.87   6.35e-02
+QL  Col     83    167     83  4.0000e-03     1961.87   6.58e-02
+RQ  Col     83    167     83  0.0000e+00         inf   7.41e-02
+LQ  Col     83    167     83  4.0000e-03     1958.51   7.04e-02
+
+4 cases ran, 4 cases passed
+
+NREPS   Ord. UPLO DIAG       N    lda          TIME        MFLOPS         RESID
+=====  ==== =====  ===== =====  =====  ============  ============  ============
+    1  Col  Upper NonUn    167    167       0.00000         0.000  7.628036e-03
+    1  Col  Upper Unit     167    167       0.00400      1538.543  1.355562e-02
+    1  Col  Lower NonUn    167    167       0.00400      1538.543  7.622081e-03
+    1  Col  Lower Unit     167    167       0.00400      1538.543  1.377882e-02
+    1  Row  Upper NonUn    167    167       0.00400      1538.543  7.633906e-03
+    1  Row  Upper Unit     167    167       0.00000         0.000  1.290053e-02
+    1  Row  Lower NonUn    167    167       0.00400      1538.543  7.634001e-03
+    1  Row  Lower Unit     167    167       0.00000         0.000  1.770584e-02
+
+8 cases: 8 passed, 0 skipped, 0 failed
+NREPS  ORD   UPLO      N    lda          TIME        MFLOPS         RESID
+=====  ===  =====  =====  =====  ============  ============  ============
+    1  Col  Upper    167    167       0.00400      1164.366  1.646770e+00
+    1  Col  Lower    167    167       0.00000         0.000  1.558396e+00
+    1  Row  Upper    167    167       0.00000         0.000  1.558396e+00
+    1  Row  Lower    167    167       0.00000         0.000  1.646770e+00
+
+4 cases: 4 passed, 0 skipped, 0 failed
+ORD  UPLO       N    NRHS     lda     ldb       TIME     MFLOP        RESID
+===  ====  ======  ======  ======  ======  =========  ========  ===========
+
+  C     G     167      83     167     167      0.008   2709.86  3.670365e-02
+  R     G     167      83     167     167      0.004   5419.72  3.419637e-02
+
+2 TESTS RUN, ALL PASSED.
+
+ORD  UPLO       N    NRHS     lda     ldb       TIME     MFLOP        RESID
+===  ====  ======  ======  ======  ======  =========  ========  ===========
+
+  C     U     167      83     167     167      0.004   3895.12  3.391994e-03
+  C     L     167      83     167     167      0.004   3895.12  3.662255e-03
+  R     U     167      83     167     167     -1.000     -1.00  3.700962e-03
+  R     L     167      83     167     167      0.008   1947.56  3.804494e-03
+
+4 TESTS RUN, ALL PASSED.
+
+Rt  Maj      M      N    lda        TIME       MFLOP   RESIDUAL
+==  ===  =====  =====  =====  ==========  ==========  =========
+QR  Col     83    167     83  4.0000e-03     1961.87   7.18e-02
+QL  Col     83    167     83  4.0000e-03     1961.87   8.61e-02
+RQ  Col     83    167     83  4.0000e-03     1958.51   6.92e-02
+LQ  Col     83    167     83  0.0000e+00         inf   7.86e-02
+
+4 cases ran, 4 cases passed
+
+NREPS   Ord. UPLO DIAG       N    lda          TIME        MFLOPS         RESID
+=====  ==== =====  ===== =====  =====  ============  ============  ============
+    1  Col  Upper NonUn    167    167       0.00000         0.000  7.622710e-03
+    1  Col  Upper Unit     167    167       0.00000         0.000  1.522101e-02
+    1  Col  Lower NonUn    167    167       0.00000         0.000  7.630826e-03
+    1  Col  Lower Unit     167    167       0.00000         0.000  1.530725e-02
+    1  Row  Upper NonUn    167    167       0.00000         0.000  7.634655e-03
+    1  Row  Upper Unit     167    167       0.00000         0.000  1.665046e-02
+    1  Row  Lower NonUn    167    167       0.00400      1538.543  7.638619e-03
+    1  Row  Lower Unit     167    167       0.00000         0.000  1.432221e-02
+
+8 cases: 8 passed, 0 skipped, 0 failed
+NREPS  ORD   UPLO      N    lda          TIME        MFLOPS         RESID
+=====  ===  =====  =====  =====  ============  ============  ============
+    1  Col  Upper    167    167       0.00000         0.000  1.615375e+00
+    1  Col  Lower    167    167       0.00400      1164.366  1.130746e+00
+    1  Row  Upper    167    167       0.00400      1164.366  1.130746e+00
+    1  Row  Lower    167    167       0.00400      1164.366  1.615375e+00
+
+4 cases: 4 passed, 0 skipped, 0 failed

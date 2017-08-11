@@ -1,0 +1,31 @@
+#ifndef ATL_INSTINFO_H
+   #define ATL_INSTINFO_H
+
+#define ATL_ARCH "Corei164AVXMAC"
+#define ATL_INSTFLAGS "-1 0 -a 1 -l 1"
+#define ATL_F2CDEFS "-DAdd_ -DF77_INTEGER=int -DStringSunStyle"
+#define ATL_ARCHDEFS "-DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664"
+#define ATL_DKCFLAGS "-fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64"
+#define ATL_DKC "/usr/bin/c99-gcc"
+#define ATL_SKCFLAGS "-fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64"
+#define ATL_SKC "/usr/bin/c99-gcc"
+#define ATL_DMCFLAGS "-fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64"
+#define ATL_DMC "/usr/bin/c99-gcc"
+#define ATL_SMCFLAGS "-fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64"
+#define ATL_SMC "/usr/bin/c99-gcc"
+#define ATL_ICCFLAGS "-DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64 -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64"
+#define ATL_ICC "/usr/bin/c99-gcc"
+#define ATL_F77FLAGS "-O -mavx2 -mfma -m64"
+#define ATL_F77 "/usr/bin/x86_64-linux-gnu-gfortran"
+#define ATL_DKCVERS "gcc (Ubuntu 5.4.0-6ubuntu1 16.04.4) 5.4.0 20160609"
+#define ATL_SKCVERS "gcc (Ubuntu 5.4.0-6ubuntu1 16.04.4) 5.4.0 20160609"
+#define ATL_DMCVERS "gcc (Ubuntu 5.4.0-6ubuntu1 16.04.4) 5.4.0 20160609"
+#define ATL_SMCVERS "gcc (Ubuntu 5.4.0-6ubuntu1 16.04.4) 5.4.0 20160609"
+#define ATL_ICCVERS "gcc (Ubuntu 5.4.0-6ubuntu1 16.04.4) 5.4.0 20160609"
+#define ATL_F77VERS "GNU Fortran (Ubuntu 5.4.0-6ubuntu1 16.04.4) 5.4.0 20160609"
+#define ATL_SYSINFO "Linux aposta-VirtualBox 4.7.0.intel.r5.0 #1 SMP Tue Jul 11 19:50:00 CST 2017 x86_64 x86_64 x86_64 GNU/Linux"
+#define ATL_DATE    "2017    08    09              11:58:28 CST"
+#define ATL_UNAM    "aposta"
+#define ATL_VERS    "3.10.3"
+
+#endif

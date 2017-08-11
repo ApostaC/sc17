@@ -1,0 +1,143 @@
+<metricdefinitions version="1">
+
+    <metric id="lustre_bytes_read">
+        <units>B/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <onePerNode>true</onePerNode>
+        <source ref="lustre_src" functionName="allinea_lustreBytesRead" divideBySampleTime="true"/>
+        <display>
+            <description>The number of bytes read per second from Lustre</description>			
+            <displayName>Lustre read rate</displayName>
+            <type>io</type>	
+            <colour>SpecialLine8</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+            <rel type="integral" name="lustre_rchar_total"/>
+        </display>
+    </metric>
+
+    <metric id="lustre_bytes_written">
+        <units>B/s</units>
+        <dataType>uint64_t</dataType>	
+        <domain>time</domain>
+        <onePerNode>true</onePerNode>
+        <source ref="lustre_src" functionName="allinea_lustreBytesWritten" divideBySampleTime="true"/>
+        <display>
+            <description>The number of bytes written per second to Lustre</description>			
+            <displayName>Lustre write rate</displayName>
+            <type>io</type>	
+            <colour>SpecialLine8</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+            <rel type="integral" name="lustre_wchar_total"/>
+        </display>	
+    </metric>
+
+    <metric id="lustre_rchar_total">
+            <units>B</units>
+            <dataType>uint64_t</dataType>
+            <domain>time</domain>
+            <onePerNode>true</onePerNode>
+            <source ref="lustre_src" functionName="allinea_lustreCharsRead" />
+            <display>
+                    <description>The number of bytes read in total from Lustre</description>
+                    <displayName>Lustre bytes read</displayName>
+                    <type>io</type>
+                    <colour>SpecialLine8</colour>
+                    <autoDisplayFactor>true</autoDisplayFactor>
+                    <accumulate>true</accumulate>
+            </display>
+    </metric>
+
+    <metric id="lustre_wchar_total">
+            <units>B</units>
+            <dataType>uint64_t</dataType>
+            <domain>time</domain>
+            <onePerNode>true</onePerNode>
+            <source ref="lustre_src" functionName="allinea_lustreCharsWritten" />
+            <display>
+                    <description>The number of bytes written in total from Lustre</description>
+                    <displayName>Lustre bytes written</displayName>
+                    <type>io</type>
+                    <colour>SpecialLine8</colour>
+                    <autoDisplayFactor>true</autoDisplayFactor>
+                    <accumulate>true</accumulate>
+            </display>
+    </metric>
+
+    <metric id="lustre_metadata_operations">
+            <units>/s</units>
+            <dataType>uint64_t</dataType>
+            <domain>time</domain>
+            <onePerNode>true</onePerNode>
+            <source ref="lustre_src" functionName="allinea_lustreMetadataOperations" divideBySampleTime="true"/>
+            <display>
+                    <description>The number of Lustre metadata operations per second</description>
+                    <displayName>Lustre metadata operations</displayName>
+                    <type>io</type>
+                    <colour>SpecialLine8</colour>
+                    <autoDisplayFactor>true</autoDisplayFactor>
+                    <rel type="integral" name="lustre_metadata_operations_total"/>
+            </display>
+    </metric>
+
+    <metric id="lustre_metadata_operations_total">
+            <dataType>uint64_t</dataType>
+            <domain>time</domain>
+            <onePerNode>true</onePerNode>
+            <source ref="lustre_src" functionName="allinea_lustreMetadataOperationsTotal"/>
+            <display>
+                    <description>The total number of Lustre metadata operations</description>
+                    <displayName>Lustre metadata operations</displayName>
+                    <type>io</type>
+                    <colour>SpecialLine8</colour>
+                    <accumulate>true</accumulate>
+                    <autoDisplayFactor>true</autoDisplayFactor>
+            </display>
+    </metric>    
+
+    <metric id="lustre_opens">
+            <units>/s</units>
+            <dataType>uint64_t</dataType>
+            <domain>time</domain>
+            <onePerNode>true</onePerNode>
+            <source ref="lustre_src" functionName="allinea_lustreOpens" divideBySampleTime="true"/>
+            <display>
+                    <description>The number of Lustre file open operations per second</description>
+                    <displayName>Lustre file opens</displayName>
+                    <type>io</type>
+                    <colour>SpecialLine8</colour>
+                    <autoDisplayFactor>true</autoDisplayFactor>
+                    <rel type="integral" name="lustre_opens_total"/>
+            </display>
+    </metric>
+    
+    <metric id="lustre_opens_total">
+            <dataType>uint64_t</dataType>
+            <domain>time</domain>
+            <onePerNode>true</onePerNode>
+            <source ref="lustre_src" functionName="allinea_lustreOpensTotal"/>
+            <display>
+                    <description>The total number of Lustre file open operations</description>
+                    <displayName>Lustre file opens</displayName>
+                    <type>io</type>
+                    <colour>SpecialLine8</colour>
+                    <autoDisplayFactor>true</autoDisplayFactor>
+                    <accumulate>true</accumulate>
+            </display>
+    </metric>
+
+    <metricGroup id="lustre">
+        <displayName>Lustre</displayName>
+        <description>Lustre I/O metrics</description>
+        <metric ref="lustre_bytes_read"/>
+        <metric ref="lustre_bytes_written"/>
+        <metric ref="lustre_metadata_operations"/>
+        <metric ref="lustre_opens"/>
+    </metricGroup>
+
+	<source id="lustre_src">
+		<sharedLibrary>lib-lustre.so</sharedLibrary>
+	</source>
+	
+</metricdefinitions>
+

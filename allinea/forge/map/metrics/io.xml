@@ -1,0 +1,137 @@
+<metricdefinitions version="1">
+
+    <metric id="bytes_read">
+        <units>B/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="io_src" functionName="allinea_diskReadRate" divideBySampleTime="true"/>
+        <display>
+            <description>The number of bytes read per second from the storage layer</description>
+            <displayName>Disk read transfer</displayName>
+            <type>io</type>
+            <colour>SpecialLine8</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+            <rel type="integral" name="bytes_read_total"/>
+        </display>
+    </metric>
+
+    <metric id="bytes_written">
+        <units>B/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="io_src" functionName="allinea_diskWriteRate" divideBySampleTime="true"/>
+        <display>
+            <description>The number of bytes written per second to the storage layer</description>
+            <displayName>Disk write transfer</displayName>
+            <type>io</type>
+            <colour>SpecialLine8</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+            <rel type="integral" name="bytes_written_total"/>
+        </display>
+    </metric>
+    
+    <metric id="bytes_read_total">
+        <units>B</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="io_src" functionName="allinea_diskReadTotal"/>
+        <display>
+            <description>The number of bytes read in total from the storage layer</description>
+            <displayName>Disk bytes read</displayName>
+            <type>io</type>
+            <colour>SpecialLine8</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+            <accumulate>true</accumulate>
+        </display>
+    </metric>
+
+    <metric id="bytes_written_total">
+        <units>B</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="io_src" functionName="allinea_diskWriteTotal"/>
+        <display>
+            <description>The number of bytes written in total to the storage layer</description>
+            <displayName>Disk bytes written</displayName>
+            <type>io</type>
+            <colour>SpecialLine8</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+            <accumulate>true</accumulate>
+        </display>
+    </metric>
+
+    <metric id="rchar_rate">
+        <units>B/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="io_src" functionName="allinea_charsReadRate" divideBySampleTime="true" />
+        <display>
+            <description>The number of bytes read per second by I/O operation system calls</description>
+            <displayName>POSIX I/O read rate</displayName>
+            <type>io</type>
+            <colour>SpecialLine8</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+            <rel type="integral" name="rchar_total"/>
+        </display>
+    </metric>
+
+    <metric id="wchar_rate">
+        <units>B/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="io_src" functionName="allinea_charsWrittenRate" divideBySampleTime="true" />
+        <display>
+            <description>The number of bytes written per second by I/O operation system calls</description>
+            <displayName>POSIX I/O write rate</displayName>
+            <type>io</type>
+            <colour>SpecialLine8</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+            <rel type="integral" name="wchar_total"/>
+        </display>
+    </metric>
+
+    <metric id="rchar_total">
+        <units>B</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="io_src" functionName="allinea_charsReadTotal" />
+        <display>
+            <description>The number of bytes read in total by I/O operation system calls</description>
+            <displayName>POSIX I/O bytes read</displayName>
+            <type>io</type>
+            <colour>SpecialLine8</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+            <accumulate>true</accumulate>
+        </display>
+    </metric>
+
+    <metric id="wchar_total">
+        <units>B</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="io_src" functionName="allinea_charsWrittenTotal" />
+        <display>
+            <description>The number of bytes written in total by I/O operation system calls</description>
+            <displayName>POSIX I/O bytes written</displayName>
+            <type>io</type>
+            <colour>SpecialLine8</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+            <accumulate>true</accumulate>
+        </display>
+    </metric>
+
+    <metricGroup id="DiskIO">
+        <displayName>IO</displayName>
+        <description>IO operations</description>
+        <metric ref="rchar_rate"/>
+        <metric ref="wchar_rate"/>
+        <metric ref="bytes_read"/>
+        <metric ref="bytes_written"/>
+    </metricGroup>
+
+    <source id="io_src">
+        <sharedLibrary>lib-io.so</sharedLibrary>
+    </source>
+
+</metricdefinitions>
+

@@ -1,0 +1,76 @@
+#!/bin/sh
+
+TOOLS_RUN_ARCH=`uname -m`
+
+TOOLS_BUILD_ARCH=x86_64
+
+if [ $TOOLS_RUN_ARCH != $TOOLS_BUILD_ARCH ] ; then
+    echo "$0: Your machine uses the $TOOLS_RUN_ARCH architecture but this Allinea Forge installation is for the $TOOLS_BUILD_ARCH architecture."
+    exit 1
+fi
+
+LD_PRELOAD=
+
+# First find ALLINEA_FORGE_PATH. Don't set this is in your environment - this script will
+# find it.
+_CWD="`pwd`"
+
+# Follow symlinks to get the canonical path of the DDT executable.
+if type readlink >/dev/null 2>&1; then
+	CANONICAL_EXE="`readlink -f "$0"`"
+else
+	CANONICAL_EXE="$0"
+fi
+
+# Set ALLINEA_FORGE_PATH to the parent of the DDT executable's directory.
+cd "`dirname "$CANONICAL_EXE"`/.."
+ALLINEA_FORGE_PATH="`pwd`"
+cd "$_CWD"
+
+. $ALLINEA_FORGE_PATH/libexec/common
+
+ALLINEA_INTERNAL_ARGS_ACCUMULATOR=""
+for var in "$@"; do
+    ALLINEA_INTERNAL_ARGS_ACCUMULATOR="$ALLINEA_INTERNAL_ARGS_ACCUMULATOR$var"
+
+    case "$var" in
+        "-offline" | "--offline" | "-profile" | "--profile") 
+            ALLINEA_OFFLINE_LAUNCHER_USE=on
+            ;;
+        "-show-the-gui" | "--show-the-gui")
+            ALLINEA_GUI=on
+            ;;
+        "--" | "---") #19544
+            break
+            ;;
+    esac
+done
+
+# --export option in offline mode: make sure not to catch any arguments for mpirun
+case $ALLINEA_INTERNAL_ARGS_ACCUMULATOR in
+    --export*.json*.map | -export*.json*.map)
+        ALLINEA_OFFLINE_LAUNCHER_USE=on
+        ;;
+esac
+
+. $ALLINEA_FORGE_PATH/libexec/rc-common
+
+MAP_ARGS="--tool=profiler"
+if [ -n "${FLUENT_MPI_PRE}" ]; then
+    echo "MAP: Running in ANSYS Fluent compatibility mode."
+    if [ -w /dev/tty -a -z "${ALLINEA_NO_DEV_TTY_FOR_FLUENT}" ]; then
+        log=/dev/tty
+    else
+        log="map$(date +'%Y%m%d%H%M%S').log"
+        echo "MAP: Logging to ${log}."
+    fi
+    exec >${log} 2>&1
+fi
+if [ "$ALLINEA_OFFLINE_LAUNCHER_USE" = "on" ] && [ "$ALLINEA_GUI" != "on" ]; then
+    exec $SSH_AGENT "$ALLINEA_FORGE_PATH/libexec/ddt-offline" "$ALLINEA_FORGE_PATH/libexec/ddt.bin" $MAP_ARGS "$@"
+elif [ "$ALLINEA_NO_SPLASH" = "" ] &&  [ "$ALLINEA_NO_SPLASH" = "" ] ; then
+    exec $SSH_AGENT "$ALLINEA_FORGE_PATH/libexec/allinea-splash" "$ALLINEA_FORGE_PATH/libexec/ddt.bin" $MAP_ARGS "$@"
+else
+    exec $SSH_AGENT "$ALLINEA_FORGE_PATH/libexec/ddt.bin" $MAP_ARGS "$@"
+fi
+

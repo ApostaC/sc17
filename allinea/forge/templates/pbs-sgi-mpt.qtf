@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Name: PBS SGI MPT
+# Use with SGI MPT (Batch)
+#
+# WARNING: If you install a new version of Allinea Forge to the same
+#          directory as this installation, then this file will be overwritten.
+#          If you customize this script at all, please rename it.
+#
+# submit: qsub
+# display: qstat
+# job regexp: (\d+)
+# cancel: qdel JOB_ID_TAG
+# 
+# WALL_CLOCK_LIMIT_TAG: {type=text,label="Wall Clock Limit",default="00:30:00",mask="09:09:09"}
+# QUEUE_TAG: {type=text,label="Queue",default=debug}
+
+## Allinea Forge will generate a submission script by
+## replacing these tags:
+##        TAG NAME         |         DESCRIPTION           |        EXAMPLE
+## ---------------------------------------------------------------------------
+## PROGRAM_TAG             | target path and filename      | /users/ned/a.out
+## PROGRAM_ARGUMENTS_TAG   | arguments to target program   | -myarg myval
+## NUM_PROCS_TAG           | total number of processes     | 16
+## NUM_NODES_TAG           | number of compute nodes       | 8
+## PROCS_PER_NODE_TAG      | processes per node            | 2
+## NUM_THREADS_TAG         | OpenMP threads per process    | 4
+## DDT_DEBUGGER_ARGUMENTS_TAG | arguments to be passed to ddt-debugger
+## MPIRUN_TAG              | name of mpirun executable     | mpirun
+## AUTO_MPI_ARGUMENTS_TAG  | mpirun arguments              | -np 4
+## EXTRA_MPI_ARGUMENTS_TAG | extra mpirun arguments        | -x FAST=1
+
+#PBS -l walltime=WALL_CLOCK_LIMIT_TAG,nodes=NUM_NODES_TAG:ppn=PROCS_PER_NODE_TAG
+#PBS -q QUEUE_TAG
+#PBS -V
+#PBS -o PROGRAM_TAG-allinea.stdout
+#PBS -e PROGRAM_TAG-allinea.stderr
+
+cd $PBS_O_WORKDIR
+
+DEBUGGER_OPTIONS="DDT_DEBUGGER_ARGUMENTS_TAG" mpiexec_mpt AUTO_MPI_ARGUMENTS_TAG PROGRAM_TAG PROGRAM_ARGUMENTS_TAG

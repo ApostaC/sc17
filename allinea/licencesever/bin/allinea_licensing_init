@@ -1,0 +1,188 @@
+#!/bin/sh
+# allinea_licensing_init: Starts the Allinea licence server
+#
+# chkconfig:   345 80 05
+# description: The Allinea licence server serves floating licences to Allinea
+#              products. This startup script assumes a working installation of
+#              the Allinea Licence Server.
+# processname: licenceserver
+# pidfile:     /var/run/allinea-licenceserver.pid
+
+### BEGIN INIT INFO
+# Provides:          allinea_licensing_init
+# Required-Start:    
+# Required-Stop:     
+# Should-Start:      $syslog $network $local_fs
+# Should-Stop:       $syslog $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Starts the Allinea licence server.
+# Description:       The Allinea licence server serves floating licences to
+#                    Allinea products. This startup script assumes a working
+#                    installation of the Allinea Licence Server.
+### END INIT INFO
+
+# The licence files should be stored in either
+# ${ALLINEA_TOOLS_PATH}/licences or ${ALLINEA_TOOLS_PATH}/licenses
+
+# You may change the install location by editing the ALLINEA_TOOLS_PATH
+# variable below.
+ALLINEA_TOOLS_PATH=/opt/allinea/licenceserver
+
+# This is the user to run the licenceserver as.
+ALLINEA_LICENCE_USER=allinea
+
+# If it is not serving licences - go to
+# http://hostname:port/status.html - where port is listed in the
+# licence file as "serverport".
+
+# You can also  get more debug info into logfile
+#ALLINEA_LICENCE_LOGLEVEL=5
+#export ALLINEA_LICENCE_LOGLEVEL
+
+ALLINEA_LICENCE_LOGFILE=/var/log/allinea/allinea.log
+export ALLINEA_LICENCE_LOGFILE
+
+ALLINEA_LICENCE_BIN="${ALLINEA_TOOLS_PATH}/bin/licenceserver"
+ALLINEA_LICENCE_WRAPPER="${ALLINEA_TOOLS_PATH}/libexec/daemonize-licenceserver"
+
+# You may optionally set configuration options in /etc/sysconfig/allinea.
+[ -f /etc/sysconfig/allinea ] && . /etc/sysconfig/allinea
+
+# Source function library.
+if [ -f /etc/rc.d/init.d/functions ]; then  # RHEL
+    INIT_TYPE=rhel
+    . /etc/rc.d/init.d/functions
+elif [ -f /etc/rc.status ]; then  # SUSE
+    INIT_TYPE=suse
+    . /etc/rc.status
+elif [ -f /lib/lsb/init-functions ]; then  # Debian/Ubuntu
+    INIT_TYPE=debian
+    . /lib/lsb/init-functions
+else
+    echo 'Unsupported init system.' >&2
+    exit 1
+fi
+
+# How to report starting the daemon?
+if [ "${INIT_TYPE}" = debian ]; then
+    ECHO="log_begin_msg"
+else
+    ECHO="echo -n"
+fi
+
+allinea_daemon() {
+    case "${INIT_TYPE}" in
+    rhel)
+        daemon --user=${ALLINEA_LICENCE_USER} "${ALLINEA_LICENCE_WRAPPER} $*"
+        RETVAL=$?
+        echo
+        return $RETVAL
+        ;;
+    suse)
+        startproc -s -q -u ${ALLINEA_LICENCE_USER} "${ALLINEA_LICENCE_BIN}" "$@"
+        rc_status -v
+        ;;
+    debian)
+        start-stop-daemon --start --background --chuid ${ALLINEA_LICENCE_USER} --exec "${ALLINEA_LICENCE_BIN}" "$@"
+        log_end_msg $?
+        ;;
+    esac
+}
+
+allinea_killproc() {
+    case "${INIT_TYPE}" in
+    rhel)
+        killproc "$@"
+        RETVAL=$?
+        echo
+        return $RETVAL
+        ;;
+    suse)
+        killproc "$@"
+        rc_status -v
+        ;;
+    debian)
+        start-stop-daemon --stop --exec "${ALLINEA_LICENCE_BIN}"
+        log_end_msg $?
+        ;;
+    esac
+}
+
+allinea_not_installed() {
+    case "${INIT_TYPE}" in
+    rhel)
+        echo_failure
+        echo
+        return 1
+        ;;
+    suse)
+        rc_failed 5
+        rc_status -v
+        ;;
+    debian)
+        log_end_msg 5
+        ;;
+    esac
+}
+
+allinea_status() {
+    case "${INIT_TYPE}" in
+    rhel)
+        status "$@"
+        ;;
+    suse)
+        checkproc "$@"
+        rc_status -v
+        ;;
+    debian)
+        status_of_proc "${ALLINEA_LICENCE_BIN}" "${ALLINEA_LICENCE_BIN}"
+        ;;
+    esac
+}
+
+start() {
+    ${ECHO} "Starting Allinea Licence Server:"
+    if [ -x "${ALLINEA_TOOLS_PATH}/bin/licenceserver" ]; then
+        allinea_daemon "${ALLINEA_TOOLS_PATH}/licen[cs]es"
+        RETVAL=$?
+    else
+        allinea_not_installed
+        echo "Cannot find ${ALLINEA_TOOLS_PATH}/bin/licenceserver. Edit ALLINEA_TOOLS_PATH in $0." >&2
+        RETVAL=1
+    fi
+    return $RETVAL
+}
+
+stop() {
+    ${ECHO} "Stopping Allinea Licence Server:"
+    allinea_killproc "${ALLINEA_LICENCE_BIN}"
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    reload)
+        stop
+        start
+        ;;
+    force-reload)
+        stop
+        start
+        ;;
+    status)
+        allinea_status "${ALLINEA_LICENCE_BIN}"
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|reload|force-reload|status}"
+        ;;
+esac
+

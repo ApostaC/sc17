@@ -1,0 +1,2615 @@
+
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+*       BEGAN ATLAS3.10.3 INSTALL OF SECTION 2-2-7 ON 08/09/2017 AT 16:38     *
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+
+
+
+make[2]: Entering directory '/home/aposta/sc17/atlasBuild/bin'
+cd /home/aposta/sc17/atlasBuild/tune/blas/ger ; make res/sR1K.sum pre=s
+make[3]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+./xr1ksearch -p s
+
+      Read in L1 Cache size as = 128KB.
+
+Cases read in:
+ID=1 ROUT='ATL_gerk_axpy.c' AUTH='R. Clint Whaley' \
+   rankR=0 CacheElts=0 SSE=0 alignA=0 alignY=0 alignX=0 minM=0 minN=0 NU=1  \
+   MU=16 LDAMUL=0 PFTUNABLE=0 ALIGNX2A=0 ADDCFLAGS=0 FNU=0 INCYISONE=0  \
+   X87=0 
+ID=2 ROUT='ATL_gerk_4x4_1.c' AUTH='R. Clint Whaley' \
+   rankR=0 CacheElts=0 SSE=0 alignA=0 alignY=0 alignX=0 minM=0 minN=0 NU=4  \
+   MU=4 LDAMUL=0 PFTUNABLE=0 ALIGNX2A=0 ADDCFLAGS=0 FNU=0 INCYISONE=0 X87=0 
+ID=3 ROUT='ATL_gerk_1x4_0.c' AUTH='R. Clint Whaley' \
+   rankR=0 CacheElts=0 SSE=0 alignA=0 alignY=0 alignX=0 minM=0 minN=0 NU=4  \
+   MU=1 LDAMUL=0 PFTUNABLE=0 ALIGNX2A=0 ADDCFLAGS=0 FNU=0 INCYISONE=0 X87=0 
+ID=4 ROUT='ATL_gerk_8x4_0.c' AUTH='R. Clint Whaley' \
+   rankR=0 CacheElts=0 SSE=0 alignA=0 alignY=0 alignX=0 minM=0 minN=0 NU=4  \
+   MU=8 LDAMUL=0 PFTUNABLE=0 ALIGNX2A=0 ADDCFLAGS=0 FNU=0 INCYISONE=0 X87=0 
+ID=6 ROUT='ATL_sgerk_8x4_sse.c' AUTH='R. Clint Whaley' \
+   rankR=0 CacheElts=0 SSE=3 alignA=0 alignY=0 alignX=0 minM=0 minN=0 NU=4  \
+   MU=8 LDAMUL=16 PFTUNABLE=0 ALIGNX2A=1 ADDCFLAGS=0 FNU=0 INCYISONE=0  \
+   X87=0 
+ID=7 ROUT='ATL_gerk_vx4_vsx.c' AUTH='IBM' \
+   rankR=0 CacheElts=0 SSE=0 alignA=0 alignY=0 alignX=0 minM=0 minN=0 NU=4  \
+   MU=4 LDAMUL=0 PFTUNABLE=0 ALIGNX2A=0 ADDCFLAGS=0 FNU=0 INCYISONE=0 X87=0 
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel ATL_gerk_axpy.c(1) passes basic test
+   Kernel ATL_gerk_4x4_1.c(2) passes basic test
+   Kernel ATL_gerk_1x4_0.c(3) passes basic test
+   Kernel ATL_gerk_8x4_0.c(4) passes basic test
+   Kernel ATL_sgerk_8x4_sse.c(6) passes basic test
+   NUKING bad kernel ATL_gerk_vx4_vsx.c(7), MU=4, NU=4
+DONE BASIC KERNEL TESTS:
+
+
+Surviving cases:
+ID=1 ROUT='ATL_gerk_axpy.c' AUTH='R. Clint Whaley' \
+   rankR=0 CacheElts=0 SSE=0 alignA=0 alignY=0 alignX=0 minM=0 minN=0 NU=1  \
+   MU=16 LDAMUL=0 PFTUNABLE=0 ALIGNX2A=0 ADDCFLAGS=0 FNU=0 INCYISONE=0  \
+   X87=0 
+ID=2 ROUT='ATL_gerk_4x4_1.c' AUTH='R. Clint Whaley' \
+   rankR=0 CacheElts=0 SSE=0 alignA=0 alignY=0 alignX=0 minM=0 minN=0 NU=4  \
+   MU=4 LDAMUL=0 PFTUNABLE=0 ALIGNX2A=0 ADDCFLAGS=0 FNU=0 INCYISONE=0 X87=0 
+ID=3 ROUT='ATL_gerk_1x4_0.c' AUTH='R. Clint Whaley' \
+   rankR=0 CacheElts=0 SSE=0 alignA=0 alignY=0 alignX=0 minM=0 minN=0 NU=4  \
+   MU=1 LDAMUL=0 PFTUNABLE=0 ALIGNX2A=0 ADDCFLAGS=0 FNU=0 INCYISONE=0 X87=0 
+ID=4 ROUT='ATL_gerk_8x4_0.c' AUTH='R. Clint Whaley' \
+   rankR=0 CacheElts=0 SSE=0 alignA=0 alignY=0 alignX=0 minM=0 minN=0 NU=4  \
+   MU=8 LDAMUL=0 PFTUNABLE=0 ALIGNX2A=0 ADDCFLAGS=0 FNU=0 INCYISONE=0 X87=0 
+ID=6 ROUT='ATL_sgerk_8x4_sse.c' AUTH='R. Clint Whaley' \
+   rankR=0 CacheElts=0 SSE=3 alignA=0 alignY=0 alignX=0 minM=0 minN=0 NU=4  \
+   MU=8 LDAMUL=16 PFTUNABLE=0 ALIGNX2A=1 ADDCFLAGS=0 FNU=0 INCYISONE=0  \
+   X87=0 
+BEGIN NU/MU EXTRACT SEARCH, imf=1:
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+   900000:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_C.c (M=3000, N=1992, lda=3003) gets 2988.50 MFLOPS
+   900000:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_C.c (M=3000, N=1992, lda=3003) gets 2988.50 MFLOPS
+   900000:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_C.c (M=3000, N=1992, lda=3003) gets 2988.50 MFLOPS
+   900000:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_C.c (M=3000, N=1992, lda=3003) gets 2988.50 MFLOPS
+   mu=16, nu=1, mflop[1]=3000.50
+   mu=16, nu=2, mflop[1]=3000.50
+   mu=16, nu=4, mflop[1]=3000.50
+   mu=16, nu=8, mflop[1]=3000.50
+   mu=16, nu=12, mflop[1]=2988.50
+   mu=16, nu=16, mflop[1]=3000.50
+   mu=16, nu=20, mflop[1]=3000.50
+   mu=16, nu=24, mflop[1]=2988.50
+   mu=128, nu=1, mflop[1]=3000.50
+   mu=112, nu=2, mflop[1]=3000.50
+   mu=96, nu=4, mflop[1]=3000.50
+   mu=80, nu=8, mflop[1]=3000.50
+   mu=64, nu=12, mflop[1]=2988.50
+   mu=48, nu=16, mflop[1]=3000.50
+   mu=32, nu=20, mflop[1]=3000.50
+   mu=32, nu=24, mflop[1]=2988.50
+BEST GENERATED NU-TUNED KERNEL FOR imf=1: MU=16, NU=1, MF=3000.50
+
+BEGIN MU EXTRACT SEARCH, imf=1
+   NU=1, MU=16, mflop[1]=3000.50
+   900000:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   NU=1, MU=32, mflop[1]=3000.50
+   900000:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   NU=1, MU=1, mflop[1]=3000.50
+   900000:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   NU=1, MU=2, mflop[1]=3000.50
+   900000:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   NU=1, MU=4, mflop[1]=3000.50
+   900000:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   NU=1, MU=8, mflop[1]=3000.50
+   900000:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   NU=1, MU=12, mflop[1]=3000.50
+BEST MU-TUNED GENERATED KERNEL FOR imf=1: NU=1, MU=16, MF=3000.50
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr1_C.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+BEGIN NU/MU EXTRACT SEARCH, imf=1:
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+   900000:sr1_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_sse.c (M=3000, N=1992, lda=3003) gets 2988.50 MFLOPS
+   900000:sr1_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr1_sse.c (M=3000, N=1992, lda=3003) gets 2988.50 MFLOPS
+   mu=16, nu=1, mflop[1]=3000.50
+   mu=16, nu=2, mflop[1]=3000.50
+   mu=16, nu=4, mflop[1]=3000.50
+   mu=16, nu=8, mflop[1]=3000.50
+   mu=16, nu=12, mflop[1]=2988.50
+   mu=96, nu=1, mflop[1]=3000.50
+   mu=80, nu=2, mflop[1]=3000.50
+   mu=64, nu=4, mflop[1]=3000.50
+   mu=48, nu=8, mflop[1]=3000.50
+   mu=32, nu=12, mflop[1]=2988.50
+BEST GENERATED NU-TUNED KERNEL FOR imf=1: MU=16, NU=1, MF=3000.50
+
+BEGIN MU EXTRACT SEARCH, imf=1
+   NU=1, MU=16, mflop[1]=3000.50
+   900000:sr1_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   NU=1, MU=32, mflop[1]=3000.50
+BEST MU-TUNED GENERATED KERNEL FOR imf=1: NU=1, MU=16, MF=3000.50
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr1_sse.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+
+BEGIN L1-BLOCKED TUNING
+   900002:sr1_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900001:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   1:ATL_gerk_axpy.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   2:ATL_gerk_4x4_1.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   3:ATL_gerk_1x4_0.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   4:ATL_gerk_8x4_0.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+
+TUNING PREFETCH INST, imf=0, BASELINE MFLOP=3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3000.50
+    A   nta    16     1       3000.50
+    A    t0    16     1       3000.50
+    A    t1    16     1       3000.50
+    A    t2    16     1       3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3000.50
+    X   nta    16     1       3000.50
+    X    t0    16     1       3000.50
+    X    t1    16     1       3000.50
+    X    t2    16     1       3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3000.50
+    Y   nta    16     1       3000.50
+    Y    t0    16     1       3000.50
+    Y    t1    16     1       3000.50
+    Y    t2    16     1       3000.50
+
+BEST MFLOP[0]=3000.50 (0.00 percent improvement)
+   cflags='-x assembler-with-cpp'
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'A', imf=0:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3000.50
+    A    64    16     1       3000.50
+    A   256    16     1       3000.50
+    A   192    16     1       3000.50
+    A     0    16     1       3000.50
+DEFAULT imf=0 ADISTANCE IS BEST (3000.50)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'X', imf=0:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3000.50
+    X    64    16     1       3000.50
+    X   256    16     1       3000.50
+    X   192    16     1       3000.50
+    X     0    16     1       3000.50
+DEFAULT imf=0 XDISTANCE IS BEST (3000.50)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'Y', imf=0:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3000.50
+    Y    64    16     1       3000.50
+    Y   256    16     1       3000.50
+    Y   192    16     1       3000.50
+    Y     0    16     1       3000.50
+DEFAULT imf=0 YDISTANCE IS BEST (3000.50)
+
+PREFETCH DISTANCE TUNING imf=0 improved from 3000.50 to 3000.50 (0.00 percent)
+DONE L1-BLOCKED TUNING, CHOSE 'sr1_sse.c' (3000.50)
+
+
+CACHE TUNING FOR 900002:'sr1_sse.c', MU=16 NU=1
+------------------------------------------
+     M       N     lda  percL1       mflop
+======  ======  ======  ======  ==========
+  3000    2000    3003      50    3000.50
+  3000    2000    3003     100    3000.50
+  3000    2000    3003      74    3000.50
+  3000    2000    3003      62    3000.50
+  3000    2000    3003      56    3000.50
+  3000    2000    3003      52    3000.50
+  3000    2000    3003      54    3000.50
+  3000    2000    3003      58    3000.50
+  3000    2000    3003      60    3000.50
+  3000    2000    3003      68    3000.50
+  3000    2000    3003      64    3000.50
+  3000    2000    3003      66    3000.50
+  3000    2000    3003      70    3000.50
+  3000    2000    3003      72    3000.50
+  3000    2000    3003      86    3000.50
+  3000    2000    3003      80    3000.50
+  3000    2000    3003      76    3000.50
+  3000    2000    3003      78    3000.50
+  3000    2000    3003      82    3000.50
+  3000    2000    3003      84    3000.50
+  3000    2000    3003      92    3000.50
+  3000    2000    3003      88    3000.50
+  3000    2000    3003      90    3000.50
+  3000    2000    3003      96    3000.50
+  3000    2000    3003      94    3000.50
+  3000    2000    3003      98    3000.50
+
+BEST CASE 50 percent of L1, MFLOP=3000.50
+
+
+BEGIN L2-BLOCKED TUNING
+   900002:sr1_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900001:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   1:ATL_gerk_axpy.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   2:ATL_gerk_4x4_1.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   3:ATL_gerk_1x4_0.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   4:ATL_gerk_8x4_0.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+
+TUNING PREFETCH INST, imf=1, BASELINE MFLOP=3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3000.50
+    A   nta    16     1       3000.50
+    A    t0    16     1       3000.50
+    A    t1    16     1       3000.50
+    A    t2    16     1       3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3000.50
+    X   nta    16     1       3000.50
+    X    t0    16     1       3000.50
+    X    t1    16     1       3000.50
+    X    t2    16     1       3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3000.50
+    Y   nta    16     1       3000.50
+    Y    t0    16     1       3000.50
+    Y    t1    16     1       3000.50
+    Y    t2    16     1       3000.50
+
+BEST MFLOP[1]=3000.50 (0.00 percent improvement)
+   cflags='-x assembler-with-cpp'
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'A', imf=1:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3000.50
+    A    64    16     1       3000.50
+    A   256    16     1       3000.50
+    A   192    16     1       3000.50
+    A     0    16     1       3000.50
+DEFAULT imf=1 ADISTANCE IS BEST (3000.50)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'X', imf=1:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3000.50
+    X    64    16     1       3000.50
+    X   256    16     1       3000.50
+    X   192    16     1       3000.50
+    X     0    16     1       3000.50
+DEFAULT imf=1 XDISTANCE IS BEST (3000.50)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'Y', imf=1:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3000.50
+    Y    64    16     1       3000.50
+    Y   256    16     1       3000.50
+    Y   192    16     1       3000.50
+    Y     0    16     1       3000.50
+DEFAULT imf=1 YDISTANCE IS BEST (3000.50)
+
+PREFETCH DISTANCE TUNING imf=1 improved from 3000.50 to 3000.50 (0.00 percent)
+DONE L2-BLOCKED TUNING, CHOSE 'sr1_sse.c' (3000.50)
+
+
+CACHE TUNING FOR 900002:'sr1_sse.c', MU=16 NU=1
+------------------------------------------
+     M       N     lda  percL1       mflop
+======  ======  ======  ======  ==========
+  3000    2000    3003     150    3000.50
+  3000    2000    3003     800    3000.50
+  3000    2000    3003     450    3000.50
+  3000    2000    3003     300    3000.50
+  3000    2000    3003     200    3000.50
+  3000    2000    3003     250    3000.50
+  3000    2000    3003     350    3000.50
+  3000    2000    3003     400    3000.50
+  3000    2000    3003     600    3000.50
+  3000    2000    3003     500    3000.50
+  3000    2000    3003     550    3000.50
+  3000    2000    3003     700    3000.50
+  3000    2000    3003     650    3000.50
+  3000    2000    3003     750    3000.50
+
+BEST CASE 150 percent of L1, MFLOP=3000.50
+
+BEST L1-blocked kernel:
+ID=900002 ROUT='sr1_sse.c' AUTH='R. Clint Whaley' \
+   rankR=0 CacheElts=16384 SSE=3 alignA=0 alignY=16 alignX=16 minM=16 minN=1  \
+   NU=1 MU=16 LDAMUL=0 PFTUNABLE=1 ALIGNX2A=0 ADDCFLAGS=0 FNU=1 INCYISONE=1  \
+   X87=0  \
+   MFLOP=3.000500e+03,3.000500e+03  ASM=GAS_x8664  CFLAGS='-x assembler-with-cpp' \
+     COMP='/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64'
+BEST L2-blocked kernel:
+ID=900002 ROUT='sr1_sse.c' AUTH='R. Clint Whaley' \
+   rankR=0 CacheElts=49152 SSE=3 alignA=0 alignY=16 alignX=16 minM=16 minN=1  \
+   NU=1 MU=16 LDAMUL=0 PFTUNABLE=1 ALIGNX2A=0 ADDCFLAGS=0 FNU=1 INCYISONE=1  \
+   X87=0  \
+   MFLOP=3.000500e+03,3.000500e+03  ASM=GAS_x8664  CFLAGS='-x assembler-with-cpp' \
+     COMP='/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64'
+BEGIN NU/MU EXTRACT SEARCH, imf=4:
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+   900000:sr1_C.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   900000:sr1_C.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   900000:sr1_C.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   900000:sr1_C.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   900000:sr1_C.c (M=2321, N=12, lda=2324) gets 2952.95 MFLOPS
+   900000:sr1_C.c (M=1740, N=16, lda=1743) gets 2979.74 MFLOPS
+   900000:sr1_C.c (M=1392, N=20, lda=1400) gets 2979.95 MFLOPS
+   900000:sr1_C.c (M=1160, N=24, lda=1169) gets 2980.16 MFLOPS
+   900000:sr1_C.c (M=3481, N=8, lda=3486) gets 1490.08 MFLOPS
+   900000:sr1_C.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   900000:sr1_C.c (M=3481, N=8, lda=3486) gets 1490.08 MFLOPS
+   900000:sr1_C.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   900000:sr1_C.c (M=2321, N=12, lda=2324) gets 2952.95 MFLOPS
+   900000:sr1_C.c (M=1740, N=16, lda=1743) gets 2979.74 MFLOPS
+   900000:sr1_C.c (M=1392, N=20, lda=1400) gets 2979.95 MFLOPS
+   900000:sr1_C.c (M=1160, N=24, lda=1169) gets 2980.16 MFLOPS
+   mu=16, nu=1, mflop[4]=2980.16
+   mu=16, nu=2, mflop[4]=2980.16
+   mu=16, nu=4, mflop[4]=2980.16
+   mu=16, nu=8, mflop[4]=2980.16
+   mu=16, nu=12, mflop[4]=2952.95
+   mu=16, nu=16, mflop[4]=2979.74
+   mu=16, nu=20, mflop[4]=2979.95
+   mu=16, nu=24, mflop[4]=2980.16
+   mu=128, nu=1, mflop[4]=1490.08
+   mu=112, nu=2, mflop[4]=2980.16
+   mu=96, nu=4, mflop[4]=1490.08
+   mu=80, nu=8, mflop[4]=2980.16
+   mu=64, nu=12, mflop[4]=2952.95
+   mu=48, nu=16, mflop[4]=2979.74
+   mu=32, nu=20, mflop[4]=2979.95
+   mu=32, nu=24, mflop[4]=2980.16
+BEST GENERATED NU-TUNED KERNEL FOR imf=4: MU=16, NU=1, MF=2980.16
+
+BEGIN MU EXTRACT SEARCH, imf=4
+   NU=1, MU=16, mflop[4]=2980.16
+   900000:sr1_C.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   NU=1, MU=32, mflop[4]=2980.16
+   900000:sr1_C.c (M=3481, N=8, lda=3486) gets 1490.08 MFLOPS
+   NU=1, MU=1, mflop[4]=1490.08
+   900000:sr1_C.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   NU=1, MU=2, mflop[4]=2980.16
+   900000:sr1_C.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   NU=1, MU=4, mflop[4]=2980.16
+   900000:sr1_C.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   NU=1, MU=8, mflop[4]=2980.16
+   900000:sr1_C.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   NU=1, MU=12, mflop[4]=2980.16
+BEST MU-TUNED GENERATED KERNEL FOR imf=4: NU=1, MU=16, MF=2980.16
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr1_C.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+BEGIN NU/MU EXTRACT SEARCH, imf=4:
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+   900000:sr1_sse.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   900000:sr1_sse.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   900000:sr1_sse.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   900000:sr1_sse.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   900000:sr1_sse.c (M=2321, N=12, lda=2324) gets 2952.95 MFLOPS
+   900000:sr1_sse.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   900000:sr1_sse.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   900000:sr1_sse.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   900000:sr1_sse.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   900000:sr1_sse.c (M=2321, N=12, lda=2324) gets 2952.95 MFLOPS
+   mu=16, nu=1, mflop[4]=2980.16
+   mu=16, nu=2, mflop[4]=2980.16
+   mu=16, nu=4, mflop[4]=2980.16
+   mu=16, nu=8, mflop[4]=2980.16
+   mu=16, nu=12, mflop[4]=2952.95
+   mu=96, nu=1, mflop[4]=2980.16
+   mu=80, nu=2, mflop[4]=2980.16
+   mu=64, nu=4, mflop[4]=2980.16
+   mu=48, nu=8, mflop[4]=2980.16
+   mu=32, nu=12, mflop[4]=2952.95
+BEST GENERATED NU-TUNED KERNEL FOR imf=4: MU=16, NU=1, MF=2980.16
+
+BEGIN MU EXTRACT SEARCH, imf=4
+   NU=1, MU=16, mflop[4]=2980.16
+   900000:sr1_sse.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   NU=1, MU=32, mflop[4]=2980.16
+BEST MU-TUNED GENERATED KERNEL FOR imf=4: NU=1, MU=16, MF=2980.16
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr1_sse.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+BEGIN NU/MU EXTRACT SEARCH, imf=3:
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+   Kernel sr1_C.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+   900000:sr1_C.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   900000:sr1_C.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   900000:sr1_C.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   900000:sr1_C.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   900000:sr1_C.c (M=1365, N=24, lda=1372) gets 2982.25 MFLOPS
+   900000:sr1_C.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   900000:sr1_C.c (M=1638, N=20, lda=1645) gets 2982.07 MFLOPS
+   900000:sr1_C.c (M=1365, N=24, lda=1372) gets 2982.25 MFLOPS
+   900000:sr1_C.c (M=2048, N=16, lda=2051) gets 1491.31 MFLOPS
+   900000:sr1_C.c (M=2048, N=16, lda=2051) gets 1491.31 MFLOPS
+   900000:sr1_C.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   900000:sr1_C.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   900000:sr1_C.c (M=1365, N=24, lda=1372) gets 2982.25 MFLOPS
+   900000:sr1_C.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   900000:sr1_C.c (M=1638, N=20, lda=1645) gets 2982.07 MFLOPS
+   900000:sr1_C.c (M=1365, N=24, lda=1372) gets 2982.25 MFLOPS
+   mu=16, nu=1, mflop[3]=2982.62
+   mu=16, nu=2, mflop[3]=2982.62
+   mu=16, nu=4, mflop[3]=2982.62
+   mu=16, nu=8, mflop[3]=2982.62
+   mu=16, nu=12, mflop[3]=2982.25
+   mu=16, nu=16, mflop[3]=2982.62
+   mu=16, nu=20, mflop[3]=2982.07
+   mu=16, nu=24, mflop[3]=2982.25
+   mu=128, nu=1, mflop[3]=1491.31
+   mu=112, nu=2, mflop[3]=1491.31
+   mu=96, nu=4, mflop[3]=2982.62
+   mu=80, nu=8, mflop[3]=2982.62
+   mu=64, nu=12, mflop[3]=2982.25
+   mu=48, nu=16, mflop[3]=2982.62
+   mu=32, nu=20, mflop[3]=2982.07
+   mu=32, nu=24, mflop[3]=2982.25
+BEST GENERATED NU-TUNED KERNEL FOR imf=3: MU=16, NU=1, MF=2982.62
+
+BEGIN MU EXTRACT SEARCH, imf=3
+   NU=1, MU=16, mflop[3]=2982.62
+   900000:sr1_C.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   NU=1, MU=32, mflop[3]=2982.62
+   900000:sr1_C.c (M=2048, N=16, lda=2051) gets 1491.31 MFLOPS
+   NU=1, MU=1, mflop[3]=1491.31
+   900000:sr1_C.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   NU=1, MU=2, mflop[3]=2982.62
+   900000:sr1_C.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   NU=1, MU=4, mflop[3]=2982.62
+   900000:sr1_C.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   NU=1, MU=8, mflop[3]=2982.62
+   900000:sr1_C.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   NU=1, MU=12, mflop[3]=2982.62
+BEST MU-TUNED GENERATED KERNEL FOR imf=3: NU=1, MU=16, MF=2982.62
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr1_C.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+BEGIN NU/MU EXTRACT SEARCH, imf=3:
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+   Kernel sr1_sse.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+   900000:sr1_sse.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   900000:sr1_sse.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   900000:sr1_sse.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   900000:sr1_sse.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   900000:sr1_sse.c (M=1365, N=24, lda=1372) gets 2982.25 MFLOPS
+   900000:sr1_sse.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   900000:sr1_sse.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   900000:sr1_sse.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   900000:sr1_sse.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   900000:sr1_sse.c (M=1365, N=24, lda=1372) gets 2982.25 MFLOPS
+   mu=16, nu=1, mflop[3]=2982.62
+   mu=16, nu=2, mflop[3]=2982.62
+   mu=16, nu=4, mflop[3]=2982.62
+   mu=16, nu=8, mflop[3]=2982.62
+   mu=16, nu=12, mflop[3]=2982.25
+   mu=96, nu=1, mflop[3]=2982.62
+   mu=80, nu=2, mflop[3]=2982.62
+   mu=64, nu=4, mflop[3]=2982.62
+   mu=48, nu=8, mflop[3]=2982.62
+   mu=32, nu=12, mflop[3]=2982.25
+BEST GENERATED NU-TUNED KERNEL FOR imf=3: MU=16, NU=1, MF=2982.62
+
+BEGIN MU EXTRACT SEARCH, imf=3
+   NU=1, MU=16, mflop[3]=2982.62
+   900000:sr1_sse.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   NU=1, MU=32, mflop[3]=2982.62
+BEST MU-TUNED GENERATED KERNEL FOR imf=3: NU=1, MU=16, MF=2982.62
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr1_sse.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+   900002:sr1_sse.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   900001:sr1_C.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   1:ATL_gerk_axpy.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   2:ATL_gerk_4x4_1.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   3:ATL_gerk_1x4_0.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   4:ATL_gerk_8x4_0.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+
+TUNING PREFETCH INST, imf=4, BASELINE MFLOP=2980.16
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       2980.16
+    A   nta    16     1       3498.99
+    A    t0    16     1       3515.65
+    A    t1    16     1       3524.04
+    A    t2    16     1       3498.99
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3524.04
+    X   nta    16     1       3532.47
+    X    t0    16     1       3549.46
+    X    t1    16     1       3507.30
+    X    t2    16     1       3482.49
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3549.46
+    Y   nta    16     1       3498.99
+    Y    t0    16     1       3507.30
+    Y    t1    16     1       3515.65
+    Y    t2    16     1       3515.65
+
+BEST MFLOP[4]=3515.65 (17.97 percent improvement)
+   cflags='-x assembler-with-cpp -DPFIA=prefetcht1 -DPFIX=prefetcht0 -DPFIY=prefetcht1'
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'A', imf=4:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3507.30
+    A    64    16     1       3498.99
+    A   256    16     1       3507.30
+    A   512    16     1       3524.04
+    A   576    16     1       3490.72
+    A   640    16     1       3540.94
+    A   704    16     1       3524.04
+    A   768    16     1       3498.99
+    A   832    16     1       3498.99
+    A   896    16     1       3490.72
+    A   960    16     1       3532.47
+    A     0    16     1       3490.72
+BEST imf=4 PFADIST=640 (3540.94)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'X', imf=4:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3515.65
+    X    64    16     1       3498.99
+    X   256    16     1       3507.30
+    X   512    16     1       3490.72
+    X   320    16     1       3532.47
+    X   384    16     1       3507.30
+    X   448    16     1       3507.30
+    X     0    16     1       3540.94
+BEST imf=4 PFXDIST=0 (3540.94)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'Y', imf=4:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3490.72
+    Y    64    16     1       3532.47
+    Y   256    16     1       3515.65
+    Y   192    16     1       3515.65
+    Y     0    16     1       3490.72
+BEST imf=4 PFYDIST=128 (3532.47)
+
+PREFETCH DISTANCE TUNING imf=4 improved from 3515.65 to 3549.46 (0.96 percent)
+   900002:sr1_sse.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   900001:sr1_C.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   1:ATL_gerk_axpy.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   2:ATL_gerk_4x4_1.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   3:ATL_gerk_1x4_0.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   4:ATL_gerk_8x4_0.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+
+TUNING PREFETCH INST, imf=3, BASELINE MFLOP=2982.62
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       2982.62
+    A   nta    16     1       3516.01
+    A    t0    16     1       3601.76
+    A    t1    16     1       3516.01
+    A    t2    16     1       3516.01
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3601.76
+    X   nta    16     1       3601.76
+    X    t0    16     1       3516.01
+    X    t1    16     1       3601.76
+    X    t2    16     1       3516.01
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3601.76
+    Y   nta    16     1       3516.01
+    Y    t0    16     1       3601.76
+    Y    t1    16     1       3601.76
+    Y    t2    16     1       3601.76
+
+BEST MFLOP[3]=3601.76 (20.76 percent improvement)
+   cflags='-x assembler-with-cpp -DPFIA=prefetcht0 -DPFIX=prefetchnta'
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'A', imf=3:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3516.01
+    A    64    16     1       3434.24
+    A   256    16     1       3516.01
+    A   512    16     1       3516.01
+    A   320    16     1       3516.01
+    A   384    16     1       3516.01
+    A   448    16     1       3691.81
+    A     0    16     1       3601.76
+BEST imf=3 PFADIST=448 (3691.81)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'X', imf=3:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3516.01
+    X    64    16     1       3601.76
+    X   256    16     1       3516.01
+    X   192    16     1       3601.76
+    X     0    16     1       3516.01
+BEST imf=3 PFXDIST=128 (3601.76)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'Y', imf=3:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3691.81
+    Y    64    16     1       3601.76
+    Y   256    16     1       3516.01
+    Y   192    16     1       3516.01
+    Y     0    16     1       3516.01
+DEFAULT imf=3 YDISTANCE IS BEST (3691.81)
+
+PREFETCH DISTANCE TUNING imf=3 improved from 3601.76 to 3516.01 (-2.38 percent)
+   900002:sr1_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900001:sr1_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   1:ATL_gerk_axpy.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   2:ATL_gerk_4x4_1.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   3:ATL_gerk_1x4_0.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   4:ATL_gerk_8x4_0.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+
+TUNING PREFETCH INST, imf=2, BASELINE MFLOP=3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3000.50
+    A   nta    16     1       3000.50
+    A    t0    16     1       3000.50
+    A    t1    16     1       3000.50
+    A    t2    16     1       3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3000.50
+    X   nta    16     1       3000.50
+    X    t0    16     1       3000.50
+    X    t1    16     1       3000.50
+    X    t2    16     1       3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3000.50
+    Y   nta    16     1       3000.50
+    Y    t0    16     1       3000.50
+    Y    t1    16     1       3000.50
+    Y    t2    16     1       3000.50
+
+BEST MFLOP[2]=3000.50 (0.00 percent improvement)
+   cflags='-x assembler-with-cpp'
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'A', imf=2:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3000.50
+    A    64    16     1       3000.50
+    A   256    16     1       3000.50
+    A   192    16     1       3000.50
+    A     0    16     1       3000.50
+DEFAULT imf=2 ADISTANCE IS BEST (3000.50)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'X', imf=2:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3000.50
+    X    64    16     1       3000.50
+    X   256    16     1       3000.50
+    X   192    16     1       3000.50
+    X     0    16     1       3000.50
+DEFAULT imf=2 XDISTANCE IS BEST (3000.50)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'Y', imf=2:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3000.50
+    Y    64    16     1       3000.50
+    Y   256    16     1       3000.50
+    Y   192    16     1       3000.50
+    Y     0    16     1       3000.50
+DEFAULT imf=2 YDISTANCE IS BEST (3000.50)
+
+PREFETCH DISTANCE TUNING imf=2 improved from 3000.50 to 3000.50 (0.00 percent)
+
+Best out-of-cache kernel:
+ID=900002 ROUT='sr1_sse.c' AUTH='R. Clint Whaley' \
+   rankR=0 CacheElts=16384 SSE=3 alignA=0 alignY=16 alignX=16 minM=16 minN=1  \
+   NU=1 MU=16 LDAMUL=0 PFTUNABLE=1 ALIGNX2A=0 ADDCFLAGS=0 FNU=1 INCYISONE=1  \
+   X87=0  \
+   MFLOP=3.000500e+03,3.000500e+03  ASM=GAS_x8664  CFLAGS='-x assembler-with-cpp' \
+     COMP='/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64'
+
+BEGIN RESTRICTED OUT-OF-CACHE TUNING
+   900003:sr1_sse.c (M=3000, N=2000, lda=3008) gets 1500.25 MFLOPS
+   6:ATL_sgerk_8x4_sse.c (M=3000, N=2000, lda=3008) gets 3000.50 MFLOPS
+
+TUNING PREFETCH INST, imf=0, BASELINE MFLOP=1500.25
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       1500.25
+    A   nta    16     1       1500.25
+    A    t0    16     1       3000.50
+    A    t1    16     1       3000.50
+    A    t2    16     1       3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3000.50
+    X   nta    16     1       3000.50
+    X    t0    16     1       3000.50
+    X    t1    16     1       3000.50
+    X    t2    16     1       3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3000.50
+    Y   nta    16     1       3000.50
+    Y    t0    16     1       3000.50
+    Y    t1    16     1       1500.25
+    Y    t2    16     1       3000.50
+
+BEST MFLOP[0]=3000.50 (100.00 percent improvement)
+   cflags='-x assembler-with-cpp'
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'A', imf=0:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3000.50
+    A    64    16     1       1500.25
+    A   256    16     1       1500.25
+    A   192    16     1       3000.50
+    A     0    16     1       3000.50
+DEFAULT imf=0 ADISTANCE IS BEST (3000.50)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'X', imf=0:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3000.50
+    X    64    16     1       3000.50
+    X   256    16     1       3000.50
+    X   192    16     1       3000.50
+    X     0    16     1       3000.50
+DEFAULT imf=0 XDISTANCE IS BEST (3000.50)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'Y', imf=0:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3000.50
+    Y    64    16     1       3000.50
+    Y   256    16     1       3000.50
+    Y   192    16     1       3000.50
+    Y     0    16     1       3000.50
+DEFAULT imf=0 YDISTANCE IS BEST (3000.50)
+
+PREFETCH DISTANCE TUNING imf=0 improved from 3000.50 to 3000.50 (0.00 percent)
+NO RESTRICTED OUT-OF-CACHE KERNEL USED.
+
+BEGIN RESTRICTED L1-BLOCKED TUNING
+   900003:sr1_sse.c (M=3000, N=2000, lda=3008) gets 3000.50 MFLOPS
+   6:ATL_sgerk_8x4_sse.c (M=3000, N=2000, lda=3008) gets 3000.50 MFLOPS
+
+TUNING PREFETCH INST, imf=0, BASELINE MFLOP=3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3000.50
+    A   nta    16     1       3000.50
+    A    t0    16     1       3000.50
+    A    t1    16     1       3000.50
+    A    t2    16     1       3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3000.50
+    X   nta    16     1       3000.50
+    X    t0    16     1       1500.25
+    X    t1    16     1       3000.50
+    X    t2    16     1       3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3000.50
+    Y   nta    16     1       3000.50
+    Y    t0    16     1       3000.50
+    Y    t1    16     1       3000.50
+    Y    t2    16     1       3000.50
+
+BEST MFLOP[0]=3000.50 (0.00 percent improvement)
+   cflags='-x assembler-with-cpp -DPFIY=prefetchnta'
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'A', imf=0:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3000.50
+    A    64    16     1       3000.50
+    A   256    16     1       3000.50
+    A   192    16     1       3000.50
+    A     0    16     1       1500.25
+DEFAULT imf=0 ADISTANCE IS BEST (3000.50)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'X', imf=0:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3000.50
+    X    64    16     1       3000.50
+    X   256    16     1       1500.25
+    X   192    16     1       3000.50
+    X     0    16     1       3000.50
+DEFAULT imf=0 XDISTANCE IS BEST (3000.50)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'Y', imf=0:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3000.50
+    Y    64    16     1       3000.50
+    Y   256    16     1       3000.50
+    Y   192    16     1       3000.50
+    Y     0    16     1       3000.50
+DEFAULT imf=0 YDISTANCE IS BEST (3000.50)
+
+PREFETCH DISTANCE TUNING imf=0 improved from 3000.50 to 3000.50 (0.00 percent)
+NO RESTRICTED L1-BLOCKED KERNEL USED.
+
+BEGIN RESTRICTED in-L1 TUNING
+   900003:sr1_sse.c (M=3481, N=8, lda=3492) gets 1490.08 MFLOPS
+   6:ATL_sgerk_8x4_sse.c (M=3481, N=8, lda=3492) gets 11920.66 MFLOPS
+
+TUNING PREFETCH INST, imf=4, BASELINE MFLOP=1490.08
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       1490.08
+    A   nta    16     1       2139.96
+    A    t0    16     1       2146.18
+    A    t1    16     1       2155.58
+    A    t2    16     1       2158.73
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       2158.73
+    X   nta    16     1       2139.96
+    X    t0    16     1       2136.86
+    X    t1    16     1       2133.78
+    X    t2    16     1       2149.31
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       2152.44
+    Y   nta    16     1       2143.07
+    Y    t0    16     1       2146.18
+    Y    t1    16     1       2143.07
+    Y    t2    16     1       2127.63
+
+BEST MFLOP[4]=2149.31 (44.24 percent improvement)
+   cflags='-x assembler-with-cpp -DPFIA=prefetcht2'
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'A', imf=4:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       2139.96
+    A    64    16     1       2130.70
+    A   256    16     1       2124.57
+    A   192    16     1       2155.58
+    A     0    16     1       2139.96
+BEST imf=4 PFADIST=192 (2155.58)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'X', imf=4:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       2152.44
+    X    64    16     1       2152.44
+    X   256    16     1       2146.18
+    X   192    16     1       2152.44
+    X     0    16     1       2152.44
+DEFAULT imf=4 XDISTANCE IS BEST (2152.44)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'Y', imf=4:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       2155.58
+    Y    64    16     1       2146.18
+    Y   256    16     1       2139.96
+    Y   192    16     1       2133.78
+    Y     0    16     1       2146.18
+DEFAULT imf=4 YDISTANCE IS BEST (2155.58)
+
+PREFETCH DISTANCE TUNING imf=4 improved from 2149.31 to 2143.07 (-0.29 percent)
+KERNEL CHOSEN:
+ID=6 ROUT='ATL_sgerk_8x4_sse.c' AUTH='R. Clint Whaley' \
+   rankR=1 CacheElts=16384 SSE=3 alignA=0 alignY=0 alignX=0 minM=0 minN=0  \
+   NU=4 MU=8 LDAMUL=16 PFTUNABLE=0 ALIGNX2A=1 ADDCFLAGS=0 FNU=0 INCYISONE=0  \
+   X87=0  \
+   MFLOP=3.000500e+03,0.000000e+00,0.000000e+00,0.000000e+00,1.192066e+04
+DONE RESTRICTED in-L1 TUNING.
+
+BEGIN RESTRICTED in-L2 TUNING
+   900003:sr1_sse.c (M=2048, N=16, lda=2056) gets 1491.31 MFLOPS
+   6:ATL_sgerk_8x4_sse.c (M=2048, N=16, lda=2056) gets 5965.23 MFLOPS
+
+TUNING PREFETCH INST, imf=3, BASELINE MFLOP=1491.31
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       1491.31
+    A   nta    16     1       2237.46
+    A    t0    16     1       2171.65
+    A    t1    16     1       2204.06
+    A    t2    16     1       2204.06
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       2237.46
+    X   nta    16     1       2204.06
+    X    t0    16     1       2204.06
+    X    t1    16     1       2171.65
+    X    t2    16     1       2171.65
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       2204.06
+    Y   nta    16     1       2140.18
+    Y    t0    16     1       2109.60
+    Y    t1    16     1       2140.18
+    Y    t2    16     1       2171.65
+
+BEST MFLOP[3]=2171.65 (45.62 percent improvement)
+   cflags='-x assembler-with-cpp -DPFIA=prefetchnta'
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'A', imf=3:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       2171.65
+    A    64    16     1       2140.18
+    A   256    16     1       2237.46
+    A   512    16     1       2204.06
+    A   320    16     1       2204.06
+    A   384    16     1       2171.65
+    A   448    16     1       2171.65
+    A     0    16     1       2171.65
+BEST imf=3 PFADIST=256 (2237.46)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'X', imf=3:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       2171.65
+    X    64    16     1       2171.65
+    X   256    16     1       2171.65
+    X   192    16     1       2204.06
+    X     0    16     1       2140.18
+BEST imf=3 PFXDIST=192 (2204.06)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'Y', imf=3:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       2171.65
+    Y    64    16     1       2171.65
+    Y   256    16     1       2140.18
+    Y   192    16     1       2171.65
+    Y     0    16     1       2171.65
+DEFAULT imf=3 YDISTANCE IS BEST (2171.65)
+
+PREFETCH DISTANCE TUNING imf=3 improved from 2171.65 to 2140.18 (-1.45 percent)
+KERNEL CHOSEN:
+ID=6 ROUT='ATL_sgerk_8x4_sse.c' AUTH='R. Clint Whaley' \
+   rankR=1 CacheElts=49152 SSE=3 alignA=0 alignY=0 alignX=0 minM=0 minN=0  \
+   NU=4 MU=8 LDAMUL=16 PFTUNABLE=0 ALIGNX2A=1 ADDCFLAGS=0 FNU=0 INCYISONE=0  \
+   X87=0  \
+   MFLOP=3.000500e+03,0.000000e+00,0.000000e+00,5.965232e+03,1.192066e+04
+DONE RESTRICTED in-L2 TUNING.
+make sr1install
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+mkdir sr1outd
+rm -f sr1outd/*
+if [ -s "/home/aposta/sc17/atlasBuild/src/blas/ger/Make_sr1" ]; then \
+           cd  /home/aposta/sc17/atlasBuild/src/blas/ger ; make -f Make_sr1 killall ; \
+           rm -f /home/aposta/sc17/atlasBuild/src/blas/ger/Make_sr1 ; \
+        fi
+./xr1hgen -p s -F res/sR1K.sum -d sr1outd
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+/home/aposta/sc17/atlasBuild/bin/xextract -b /home/aposta/sc17/ATLAS//tune/blas/gemv/atlas-l2g.base \
+                           order=clmajor rout=r1_sse nu=1 type=SREAL \
+                           -def MU 1  -o EXTDIR/sr1_sse.c
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+cp -f sr1outd/Make_sr1 /home/aposta/sc17/atlasBuild/src/blas/ger/.
+cp sr1outd/*.c /home/aposta/sc17/atlasBuild/src/blas/ger/.
+cp -f sr1outd/*.h /home/aposta/sc17/atlasBuild/include/.
+if [ -s "xccobj.exe" ] ; then \
+   cp -f xccobj.exe /home/aposta/sc17/atlasBuild/src/blas/ger/. ; \
+elif [ -s "xccobj" ]; then \
+           cp -f xccobj /home/aposta/sc17/atlasBuild/src/blas/ger/. ; \
+        fi
+touch /home/aposta/sc17/ATLAS//include/atlas_r1.h
+rm -f sr1outd/* ; rmdir sr1outd
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+make[3]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+cp /home/aposta/sc17/atlasBuild/tune/blas/ger/res/sR1K.sum INSTALL_LOG/.
+cd /home/aposta/sc17/atlasBuild/tune/blas/ger ; make res/sR2K.sum pre=s
+make[3]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+./xr1ksearch -p s
+
+      Read in L1 Cache size as = 128KB.
+   900002:sr1_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   6:ATL_sgerk_8x4_sse.c (M=2048, N=16, lda=2056) gets 5965.23 MFLOPS
+   900002:sr1_sse.c (M=2048, N=16, lda=2051) gets 2982.62 MFLOPS
+   6:ATL_sgerk_8x4_sse.c (M=3481, N=8, lda=3492) gets 11920.66 MFLOPS
+   900002:sr1_sse.c (M=3481, N=8, lda=3486) gets 2980.16 MFLOPS
+   900002:sr1_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+ID=900002 ROUT='sr1_sse.c' AUTH='R. Clint Whaley' KNAME='ATL_sgerk__900002' \
+   rankR=0 CacheElts=16384 SSE=3 alignA=0 alignY=16 alignX=16 minM=16 minN=1  \
+   NU=1 MU=16 LDAMUL=0 PFTUNABLE=1 ALIGNX2A=0 ADDCFLAGS=0 FNU=1 INCYISONE=1  \
+   X87=0  \
+   MFLOP=3.000500e+03,3.000500e+03  ASM=GAS_x8664  CFLAGS='-x assembler-with-cpp' \
+     COMP='gcc'
+ID=6 ROUT='ATL_sgerk_8x4_sse.c' AUTH='R. Clint Whaley' KNAME='ATL_sgerk__6' \
+   rankR=1 CacheElts=49152 SSE=3 alignA=0 alignY=0 alignX=0 minM=0 minN=0  \
+   NU=4 MU=8 LDAMUL=16 PFTUNABLE=0 ALIGNX2A=1 ADDCFLAGS=0 FNU=0 INCYISONE=0  \
+   X87=0  \
+   MFLOP=3.000500e+03,0.000000e+00,0.000000e+00,5.965232e+03,1.192066e+04
+ID=900002 ROUT='sr1_sse.c' AUTH='R. Clint Whaley' KNAME='ATL_sgerk__900002' \
+   rankR=0 CacheElts=49152 SSE=3 alignA=0 alignY=16 alignX=16 minM=16 minN=1  \
+   NU=1 MU=16 LDAMUL=0 PFTUNABLE=1 ALIGNX2A=0 ADDCFLAGS=0 FNU=1 INCYISONE=1  \
+   X87=0  \
+   MFLOP=3.000500e+03,3.000500e+03,0.000000e+00,2.982616e+03,2.980164e+03 \
+     ASM=GAS_x8664 \
+     CFLAGS='-x assembler-with-cpp -DPFIA=prefetcht0 -DPFIX=prefetchnta -DPFADIST=448 -DPFXDIST=128' \
+     COMP='gcc'
+ID=6 ROUT='ATL_sgerk_8x4_sse.c' AUTH='R. Clint Whaley' KNAME='ATL_sgerk__6' \
+   rankR=1 CacheElts=16384 SSE=3 alignA=0 alignY=0 alignX=0 minM=0 minN=0  \
+   NU=4 MU=8 LDAMUL=16 PFTUNABLE=0 ALIGNX2A=1 ADDCFLAGS=0 FNU=0 INCYISONE=0  \
+   X87=0  \
+   MFLOP=3.000500e+03,0.000000e+00,0.000000e+00,0.000000e+00,1.192066e+04
+ID=900002 ROUT='sr1_sse.c' AUTH='R. Clint Whaley' KNAME='ATL_sgerk__900002' \
+   rankR=0 CacheElts=16384 SSE=3 alignA=0 alignY=16 alignX=16 minM=16 minN=1  \
+   NU=1 MU=16 LDAMUL=0 PFTUNABLE=1 ALIGNX2A=0 ADDCFLAGS=0 FNU=1 INCYISONE=1  \
+   X87=0  \
+   MFLOP=3.000500e+03,3.000500e+03,0.000000e+00,0.000000e+00,2.980164e+03 \
+     ASM=GAS_x8664 \
+     CFLAGS='-x assembler-with-cpp -DPFIA=prefetcht1 -DPFIX=prefetcht0 -DPFIY=prefetcht1 -DPFADIST=640 -DPFXDIST=0 -DPFYDIST=128' \
+     COMP='gcc'
+ID=900002 ROUT='sr1_sse.c' AUTH='R. Clint Whaley' KNAME='ATL_sgerk__900002' \
+   rankR=0 CacheElts=16384 SSE=3 alignA=0 alignY=16 alignX=16 minM=16 minN=1  \
+   NU=1 MU=16 LDAMUL=0 PFTUNABLE=1 ALIGNX2A=0 ADDCFLAGS=0 FNU=1 INCYISONE=1  \
+   X87=0  \
+   MFLOP=3.000500e+03,3.000500e+03  ASM=GAS_x8664  CFLAGS='-x assembler-with-cpp' \
+     COMP='gcc'
+make sr1install
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+mkdir sr1outd
+rm -f sr1outd/*
+if [ -s "/home/aposta/sc17/atlasBuild/src/blas/ger/Make_sr1" ]; then \
+           cd  /home/aposta/sc17/atlasBuild/src/blas/ger ; make -f Make_sr1 killall ; \
+           rm -f /home/aposta/sc17/atlasBuild/src/blas/ger/Make_sr1 ; \
+        fi
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+ar d /home/aposta/sc17/atlasBuild/lib/libatlas.a ATL_sgerk__900002.o ATL_sgerk__6.o
+echo /home/aposta/sc17/atlasBuild/lib/libatlas.a
+/home/aposta/sc17/atlasBuild/lib/libatlas.a
+rm -f ATL_sgerk__900002.o ATL_sgerk__6.o sr1k.grd
+rm -f ATL_sgerk__900002.c ATL_sgerk__6.c
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+./xr1hgen -p s -F res/sR1K.sum -d sr1outd
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+/home/aposta/sc17/atlasBuild/bin/xextract -b /home/aposta/sc17/ATLAS//tune/blas/gemv/atlas-l2g.base \
+                           order=clmajor rout=r1_sse nu=1 type=SREAL \
+                           -def MU 1  -o EXTDIR/sr1_sse.c
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+cp -f sr1outd/Make_sr1 /home/aposta/sc17/atlasBuild/src/blas/ger/.
+cp sr1outd/*.c /home/aposta/sc17/atlasBuild/src/blas/ger/.
+cp -f sr1outd/*.h /home/aposta/sc17/atlasBuild/include/.
+if [ -s "xccobj.exe" ] ; then \
+   cp -f xccobj.exe /home/aposta/sc17/atlasBuild/src/blas/ger/. ; \
+elif [ -s "xccobj" ]; then \
+           cp -f xccobj /home/aposta/sc17/atlasBuild/src/blas/ger/. ; \
+        fi
+touch /home/aposta/sc17/ATLAS//include/atlas_r1.h
+rm -f sr1outd/* ; rmdir sr1outd
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+mkdir sr1outd
+rm -f sr1outd/*
+if [ -s "/home/aposta/sc17/atlasBuild/src/blas/ger/Make_sr1" ]; then \
+           cd  /home/aposta/sc17/atlasBuild/src/blas/ger ; make -f Make_sr1 killall ; \
+           rm -f /home/aposta/sc17/atlasBuild/src/blas/ger/Make_sr1 ; \
+        fi
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+ar d /home/aposta/sc17/atlasBuild/lib/libatlas.a ATL_sgerk__900002.o ATL_sgerk__6.o
+echo /home/aposta/sc17/atlasBuild/lib/libatlas.a
+/home/aposta/sc17/atlasBuild/lib/libatlas.a
+rm -f ATL_sgerk__900002.o ATL_sgerk__6.o sr1k.grd
+rm -f ATL_sgerk__900002.c ATL_sgerk__6.c
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+./xr1hgen -p s -F res/sR1K.sum -d sr1outd
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+/home/aposta/sc17/atlasBuild/bin/xextract -b /home/aposta/sc17/ATLAS//tune/blas/gemv/atlas-l2g.base \
+                           order=clmajor rout=r1_sse nu=1 type=SREAL \
+                           -def MU 1  -o EXTDIR/sr1_sse.c
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+cp -f sr1outd/Make_sr1 /home/aposta/sc17/atlasBuild/src/blas/ger/.
+cp sr1outd/*.c /home/aposta/sc17/atlasBuild/src/blas/ger/.
+cp -f sr1outd/*.h /home/aposta/sc17/atlasBuild/include/.
+if [ -s "xccobj.exe" ] ; then \
+   cp -f xccobj.exe /home/aposta/sc17/atlasBuild/src/blas/ger/. ; \
+elif [ -s "xccobj" ]; then \
+           cp -f xccobj /home/aposta/sc17/atlasBuild/src/blas/ger/. ; \
+        fi
+touch /home/aposta/sc17/ATLAS//include/atlas_r1.h
+rm -f sr1outd/* ; rmdir sr1outd
+./xr2ksearch -p s
+
+      Read in L1 Cache size as = 128KB.
+
+Cases read in:
+ID=1 ROUT='ATL_ger2k_1x1_1.c' AUTH='R. Clint Whaley' \
+   rankR=0 CacheElts=0 SSE=0 alignA=0 alignY=0 alignX=0 minM=0 minN=0 NU=1  \
+   MU=1 LDAMUL=0 PFTUNABLE=0 ALIGNX2A=0 ADDCFLAGS=0 FNU=0 INCYISONE=0 X87=0 
+ID=2 ROUT='ATL_sger2K_NEON_lda4.S' AUTH='Md. Rakib Hasan' \
+   rankR=0 CacheElts=0 SSE=0 alignA=0 alignY=0 alignX=0 minM=0 minN=0 NU=4  \
+   MU=8 LDAMUL=32 PFTUNABLE=0 ALIGNX2A=1 ADDCFLAGS=0 FNU=0 INCYISONE=0  \
+   X87=0   CFLAGS='-x assembler-with-cpp -mcpu=cortex-a9 -mfpu=neon' \
+     COMP='gcc'
+ID=3 ROUT='ATL_sger2K_NEON.S' AUTH='Md. Rakib Hasan' \
+   rankR=0 CacheElts=0 SSE=0 alignA=0 alignY=0 alignX=0 minM=0 minN=0 NU=4  \
+   MU=8 LDAMUL=0 PFTUNABLE=0 ALIGNX2A=1 ADDCFLAGS=0 FNU=0 INCYISONE=0 X87=0  \
+     CFLAGS='-x assembler-with-cpp -mcpu=cortex-a9 -mfpu=neon'  COMP='gcc'
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel ATL_ger2k_1x1_1.c(1) passes basic test
+   NUKING bad kernel ATL_sger2K_NEON_lda4.S(2), MU=8, NU=4
+   NUKING bad kernel ATL_sger2K_NEON.S(3), MU=8, NU=4
+DONE BASIC KERNEL TESTS:
+
+
+Surviving cases:
+ID=1 ROUT='ATL_ger2k_1x1_1.c' AUTH='R. Clint Whaley' \
+   rankR=0 CacheElts=0 SSE=0 alignA=0 alignY=0 alignX=0 minM=0 minN=0 NU=1  \
+   MU=1 LDAMUL=0 PFTUNABLE=0 ALIGNX2A=0 ADDCFLAGS=0 FNU=0 INCYISONE=0 X87=0 
+BEGIN NU/MU EXTRACT SEARCH, imf=1:
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+   900000:sr2_C.c (M=3000, N=2000, lda=3003) gets 6001.00 MFLOPS
+   900000:sr2_C.c (M=3000, N=2000, lda=3003) gets 6001.00 MFLOPS
+   900000:sr2_C.c (M=3000, N=2000, lda=3003) gets 6001.00 MFLOPS
+   900000:sr2_C.c (M=3000, N=2000, lda=3003) gets 6001.00 MFLOPS
+   900000:sr2_C.c (M=3000, N=1992, lda=3003) gets 5977.00 MFLOPS
+   900000:sr2_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr2_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr2_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr2_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr2_C.c (M=3000, N=2000, lda=3003) gets 6001.00 MFLOPS
+   900000:sr2_C.c (M=3000, N=2000, lda=3003) gets 6001.00 MFLOPS
+   900000:sr2_C.c (M=3000, N=1992, lda=3003) gets 5977.00 MFLOPS
+   900000:sr2_C.c (M=3000, N=2000, lda=3003) gets 6001.00 MFLOPS
+   900000:sr2_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   mu=16, nu=1, mflop[1]=6001.00
+   mu=16, nu=2, mflop[1]=6001.00
+   mu=16, nu=4, mflop[1]=6001.00
+   mu=16, nu=8, mflop[1]=6001.00
+   mu=16, nu=12, mflop[1]=5977.00
+   mu=16, nu=16, mflop[1]=3000.50
+   mu=16, nu=20, mflop[1]=3000.50
+   mu=112, nu=1, mflop[1]=3000.50
+   mu=96, nu=2, mflop[1]=3000.50
+   mu=80, nu=4, mflop[1]=6001.00
+   mu=64, nu=8, mflop[1]=6001.00
+   mu=48, nu=12, mflop[1]=5977.00
+   mu=48, nu=16, mflop[1]=6001.00
+   mu=32, nu=20, mflop[1]=3000.50
+BEST GENERATED NU-TUNED KERNEL FOR imf=1: MU=16, NU=1, MF=6001.00
+
+BEGIN MU EXTRACT SEARCH, imf=1
+   NU=1, MU=16, mflop[1]=6001.00
+   900000:sr2_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   NU=1, MU=32, mflop[1]=3000.50
+   900000:sr2_C.c (M=3000, N=2000, lda=3003) gets 6001.00 MFLOPS
+   NU=1, MU=1, mflop[1]=6001.00
+   900000:sr2_C.c (M=3000, N=2000, lda=3003) gets 6001.00 MFLOPS
+   NU=1, MU=2, mflop[1]=6001.00
+   900000:sr2_C.c (M=3000, N=2000, lda=3003) gets 6001.00 MFLOPS
+   NU=1, MU=4, mflop[1]=6001.00
+   900000:sr2_C.c (M=3000, N=2000, lda=3003) gets 6001.00 MFLOPS
+   NU=1, MU=8, mflop[1]=6001.00
+   900000:sr2_C.c (M=3000, N=2000, lda=3003) gets 6001.00 MFLOPS
+   NU=1, MU=12, mflop[1]=6001.00
+BEST MU-TUNED GENERATED KERNEL FOR imf=1: NU=1, MU=16, MF=6001.00
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr2_C.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+BEGIN NU/MU EXTRACT SEARCH, imf=1:
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+   900000:sr2_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr2_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr2_sse.c (M=3000, N=1998, lda=3003) gets 2997.50 MFLOPS
+   900000:sr2_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr2_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr2_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr2_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr2_sse.c (M=3000, N=1998, lda=3003) gets 2997.50 MFLOPS
+   900000:sr2_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900000:sr2_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   mu=16, nu=1, mflop[1]=3000.50
+   mu=16, nu=2, mflop[1]=3000.50
+   mu=16, nu=3, mflop[1]=2997.50
+   mu=16, nu=4, mflop[1]=3000.50
+   mu=16, nu=5, mflop[1]=3000.50
+   mu=80, nu=1, mflop[1]=3000.50
+   mu=64, nu=2, mflop[1]=3000.50
+   mu=48, nu=3, mflop[1]=2997.50
+   mu=48, nu=4, mflop[1]=3000.50
+   mu=32, nu=5, mflop[1]=3000.50
+BEST GENERATED NU-TUNED KERNEL FOR imf=1: MU=16, NU=1, MF=3000.50
+
+BEGIN MU EXTRACT SEARCH, imf=1
+   NU=1, MU=16, mflop[1]=3000.50
+   900000:sr2_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   NU=1, MU=32, mflop[1]=3000.50
+BEST MU-TUNED GENERATED KERNEL FOR imf=1: NU=1, MU=16, MF=3000.50
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr2_sse.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+
+BEGIN L1-BLOCKED TUNING
+   900002:sr2_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900001:sr2_C.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   1:ATL_ger2k_1x1_1.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+
+TUNING PREFETCH INST, imf=0, BASELINE MFLOP=3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3000.50
+    A   nta    16     1       3000.50
+    A    t0    16     1       3000.50
+    A    t1    16     1       3000.50
+    A    t2    16     1       3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       6001.00
+    X   nta    16     1       3000.50
+    X    t0    16     1       3000.50
+    X    t1    16     1       3000.50
+    X    t2    16     1       3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3000.50
+    Y   nta    16     1       3000.50
+    Y    t0    16     1       3000.50
+    Y    t1    16     1       6001.00
+    Y    t2    16     1       3000.50
+
+BEST MFLOP[0]=6001.00 (100.00 percent improvement)
+   cflags='-x assembler-with-cpp'
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'A', imf=0:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3000.50
+    A    64    16     1       3000.50
+    A   256    16     1       3000.50
+    A   192    16     1       3000.50
+    A     0    16     1       6001.00
+BEST imf=0 PFADIST=0 (6001.00)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'X', imf=0:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       6001.00
+    X    64    16     1       6001.00
+    X   256    16     1       3000.50
+    X   192    16     1       3000.50
+    X     0    16     1       6001.00
+DEFAULT imf=0 XDISTANCE IS BEST (6001.00)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'Y', imf=0:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3000.50
+    Y    64    16     1       3000.50
+    Y   256    16     1       3000.50
+    Y   192    16     1       3000.50
+    Y     0    16     1       6001.00
+BEST imf=0 PFYDIST=0 (6001.00)
+
+PREFETCH DISTANCE TUNING imf=0 improved from 6001.00 to 6001.00 (0.00 percent)
+DONE L1-BLOCKED TUNING, CHOSE 'sr2_sse.c' (6001.00)
+
+
+CACHE TUNING FOR 900002:'sr2_sse.c', MU=16 NU=1
+------------------------------------------
+     M       N     lda  percL1       mflop
+======  ======  ======  ======  ==========
+  3000    2000    3003      50    3000.50
+  3000    2000    3003     100    3000.50
+  3000    2000    3003      74    3000.50
+  3000    2000    3003      62    3000.50
+  3000    2000    3003      56    6001.00
+  3000    2000    3003      52    3000.50
+  3000    2000    3003      54    3000.50
+  3000    2000    3003      58    3000.50
+  3000    2000    3003      60    3000.50
+  3000    2000    3003      68    3000.50
+  3000    2000    3003      64    3000.50
+  3000    2000    3003      66    3000.50
+  3000    2000    3003      70    3000.50
+  3000    2000    3003      72    3000.50
+  3000    2000    3003      86    6001.00
+  3000    2000    3003      80    3000.50
+  3000    2000    3003      76    6001.00
+  3000    2000    3003      78    3000.50
+  3000    2000    3003      82    3000.50
+  3000    2000    3003      84    6001.00
+  3000    2000    3003      92    3000.50
+  3000    2000    3003      88    3000.50
+  3000    2000    3003      90    6001.00
+  3000    2000    3003      96    6001.00
+  3000    2000    3003      94    3000.50
+  3000    2000    3003      98    3000.50
+
+BEST CASE 56 percent of L1, MFLOP=6001.00
+
+
+BEGIN L2-BLOCKED TUNING
+   900002:sr2_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900001:sr2_C.c (M=3000, N=2000, lda=3003) gets 6001.00 MFLOPS
+   1:ATL_ger2k_1x1_1.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+
+TUNING PREFETCH INST, imf=1, BASELINE MFLOP=6001.00
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       6001.00
+    A   nta    16     1       6001.00
+    A    t0    16     1       6001.00
+    A    t1    16     1       6001.00
+    A    t2    16     1       6001.00
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       6001.00
+    X   nta    16     1       6001.00
+    X    t0    16     1       3000.50
+    X    t1    16     1       3000.50
+    X    t2    16     1       3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       6001.00
+    Y   nta    16     1       6001.00
+    Y    t0    16     1       3000.50
+    Y    t1    16     1       6001.00
+    Y    t2    16     1       6001.00
+
+BEST MFLOP[1]=6001.00 (0.00 percent improvement)
+   cflags='-fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DPFIX=prefetchnta -DPFIY=prefetchnta'
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'A', imf=1:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       6001.00
+    A    64    16     1       3000.50
+    A   256    16     1       6001.00
+    A   512    16     1       6001.00
+    A   320    16     1       3000.50
+    A   384    16     1       6001.00
+    A   448    16     1       3000.50
+    A     0    16     1       3000.50
+DEFAULT imf=1 ADISTANCE IS BEST (6001.00)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'X', imf=1:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       6001.00
+    X    64    16     1       3000.50
+    X   256    16     1       6001.00
+    X   512    16     1       3000.50
+    X   320    16     1       6001.00
+    X   384    16     1       3000.50
+    X   448    16     1       6001.00
+    X     0    16     1       6001.00
+DEFAULT imf=1 XDISTANCE IS BEST (6001.00)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'Y', imf=1:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       6001.00
+    Y    64    16     1       6001.00
+    Y   256    16     1       6001.00
+    Y   192    16     1       6001.00
+    Y     0    16     1       6001.00
+DEFAULT imf=1 YDISTANCE IS BEST (6001.00)
+
+PREFETCH DISTANCE TUNING imf=1 improved from 6001.00 to 6001.00 (0.00 percent)
+DONE L2-BLOCKED TUNING, CHOSE 'sr2_C.c' (6001.00)
+
+
+CACHE TUNING FOR 900001:'sr2_C.c', MU=16 NU=1
+------------------------------------------
+     M       N     lda  percL1       mflop
+======  ======  ======  ======  ==========
+  3000    2000    3003     150    3000.50
+  3000    2000    3003     800    3000.50
+  3000    2000    3003     450    6001.00
+  3000    2000    3003     300    3000.50
+  3000    2000    3003     200    3000.50
+  3000    2000    3003     250    3000.50
+  3000    2000    3003     350    3000.50
+  3000    2000    3003     400    6001.00
+  3000    2000    3003     600    3000.50
+  3000    2000    3003     500    3000.50
+  3000    2000    3003     550    3000.50
+  3000    2000    3003     700    3000.50
+  3000    2000    3003     650    6001.00
+  3000    2000    3003     750    3000.50
+
+BEST CASE 400 percent of L1, MFLOP=6001.00
+
+BEST L1-blocked kernel:
+ID=900002 ROUT='sr2_sse.c' AUTH='R. Clint Whaley' \
+   rankR=0 CacheElts=18350 SSE=3 alignA=0 alignY=16 alignX=16 minM=16 minN=1  \
+   NU=1 MU=16 LDAMUL=0 PFTUNABLE=1 ALIGNX2A=0 ADDCFLAGS=0 FNU=1 INCYISONE=1  \
+   X87=0  \
+   MFLOP=6.001000e+03,3.000500e+03  ASM=GAS_x8664 \
+     CFLAGS='-x assembler-with-cpp -DPFADIST=0 -DPFYDIST=0' \
+     COMP='/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64'
+BEST L2-blocked kernel:
+ID=900001 ROUT='sr2_C.c' AUTH='R. Clint Whaley' \
+   rankR=0 CacheElts=131072 SSE=0 alignA=0 alignY=0 alignX=0 minM=16 minN=1  \
+   NU=1 MU=16 LDAMUL=0 PFTUNABLE=1 ALIGNX2A=0 ADDCFLAGS=0 FNU=1 INCYISONE=1  \
+   X87=0  \
+   MFLOP=3.000500e+03,6.001000e+03 \
+     CFLAGS='-fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DPFIX=prefetchnta -DPFIY=prefetchnta'
+BEGIN NU/MU EXTRACT SEARCH, imf=4:
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+   900000:sr2_C.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   900000:sr2_C.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   900000:sr2_C.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   900000:sr2_C.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   900000:sr2_C.c (M=2321, N=12, lda=2324) gets 2952.95 MFLOPS
+   900000:sr2_C.c (M=1740, N=16, lda=1743) gets 3007.58 MFLOPS
+   900000:sr2_C.c (M=1392, N=20, lda=1400) gets 3007.80 MFLOPS
+   900000:sr2_C.c (M=3481, N=8, lda=3486) gets 1504.01 MFLOPS
+   900000:sr2_C.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   900000:sr2_C.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   900000:sr2_C.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   900000:sr2_C.c (M=2321, N=12, lda=2324) gets 2952.95 MFLOPS
+   900000:sr2_C.c (M=1740, N=16, lda=1743) gets 3007.58 MFLOPS
+   900000:sr2_C.c (M=1392, N=20, lda=1400) gets 3007.80 MFLOPS
+   mu=16, nu=1, mflop[4]=3008.02
+   mu=16, nu=2, mflop[4]=3008.02
+   mu=16, nu=4, mflop[4]=3008.02
+   mu=16, nu=8, mflop[4]=3008.02
+   mu=16, nu=12, mflop[4]=2952.95
+   mu=16, nu=16, mflop[4]=3007.58
+   mu=16, nu=20, mflop[4]=3007.80
+   mu=112, nu=1, mflop[4]=1504.01
+   mu=96, nu=2, mflop[4]=3008.02
+   mu=80, nu=4, mflop[4]=3008.02
+   mu=64, nu=8, mflop[4]=3008.02
+   mu=48, nu=12, mflop[4]=2952.95
+   mu=48, nu=16, mflop[4]=3007.58
+   mu=32, nu=20, mflop[4]=3007.80
+BEST GENERATED NU-TUNED KERNEL FOR imf=4: MU=16, NU=1, MF=3008.02
+
+BEGIN MU EXTRACT SEARCH, imf=4
+   NU=1, MU=16, mflop[4]=3008.02
+   900000:sr2_C.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   NU=1, MU=32, mflop[4]=3008.02
+   900000:sr2_C.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   NU=1, MU=1, mflop[4]=3008.02
+   900000:sr2_C.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   NU=1, MU=2, mflop[4]=3008.02
+   900000:sr2_C.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   NU=1, MU=4, mflop[4]=3008.02
+   900000:sr2_C.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   NU=1, MU=8, mflop[4]=3008.02
+   900000:sr2_C.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   NU=1, MU=12, mflop[4]=3008.02
+BEST MU-TUNED GENERATED KERNEL FOR imf=4: NU=1, MU=16, MF=3008.02
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr2_C.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+BEGIN NU/MU EXTRACT SEARCH, imf=4:
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+   900000:sr2_sse.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   900000:sr2_sse.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   900000:sr2_sse.c (M=3094, N=9, lda=3101) gets 3007.85 MFLOPS
+   900000:sr2_sse.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   900000:sr2_sse.c (M=2785, N=10, lda=2793) gets 2952.63 MFLOPS
+   900000:sr2_sse.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   900000:sr2_sse.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   900000:sr2_sse.c (M=3094, N=9, lda=3101) gets 3007.85 MFLOPS
+   900000:sr2_sse.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   900000:sr2_sse.c (M=2785, N=10, lda=2793) gets 2952.63 MFLOPS
+   mu=16, nu=1, mflop[4]=3008.02
+   mu=16, nu=2, mflop[4]=3008.02
+   mu=16, nu=3, mflop[4]=3007.85
+   mu=16, nu=4, mflop[4]=3008.02
+   mu=16, nu=5, mflop[4]=2952.63
+   mu=80, nu=1, mflop[4]=3008.02
+   mu=64, nu=2, mflop[4]=3008.02
+   mu=48, nu=3, mflop[4]=3007.85
+   mu=48, nu=4, mflop[4]=3008.02
+   mu=32, nu=5, mflop[4]=2952.63
+BEST GENERATED NU-TUNED KERNEL FOR imf=4: MU=16, NU=1, MF=3008.02
+
+BEGIN MU EXTRACT SEARCH, imf=4
+   NU=1, MU=16, mflop[4]=3008.02
+   900000:sr2_sse.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   NU=1, MU=32, mflop[4]=3008.02
+BEST MU-TUNED GENERATED KERNEL FOR imf=4: NU=1, MU=16, MF=3008.02
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr2_sse.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+BEGIN NU/MU EXTRACT SEARCH, imf=3:
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+   Kernel sr2_C.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+   900000:sr2_C.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   900000:sr2_C.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   900000:sr2_C.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   900000:sr2_C.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   900000:sr2_C.c (M=1365, N=24, lda=1372) gets 3015.02 MFLOPS
+   900000:sr2_C.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   900000:sr2_C.c (M=1638, N=20, lda=1645) gets 3014.84 MFLOPS
+   900000:sr2_C.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   900000:sr2_C.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   900000:sr2_C.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   900000:sr2_C.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   900000:sr2_C.c (M=1365, N=24, lda=1372) gets 3015.02 MFLOPS
+   900000:sr2_C.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   900000:sr2_C.c (M=1638, N=20, lda=1645) gets 3014.84 MFLOPS
+   mu=16, nu=1, mflop[3]=3015.39
+   mu=16, nu=2, mflop[3]=3015.39
+   mu=16, nu=4, mflop[3]=3015.39
+   mu=16, nu=8, mflop[3]=3015.39
+   mu=16, nu=12, mflop[3]=3015.02
+   mu=16, nu=16, mflop[3]=3015.39
+   mu=16, nu=20, mflop[3]=3014.84
+   mu=112, nu=1, mflop[3]=3015.39
+   mu=96, nu=2, mflop[3]=3015.39
+   mu=80, nu=4, mflop[3]=3015.39
+   mu=64, nu=8, mflop[3]=3015.39
+   mu=48, nu=12, mflop[3]=3015.02
+   mu=48, nu=16, mflop[3]=3015.39
+   mu=32, nu=20, mflop[3]=3014.84
+BEST GENERATED NU-TUNED KERNEL FOR imf=3: MU=16, NU=1, MF=3015.39
+
+BEGIN MU EXTRACT SEARCH, imf=3
+   NU=1, MU=16, mflop[3]=3015.39
+   900000:sr2_C.c (M=2048, N=16, lda=2051) gets 1507.70 MFLOPS
+   NU=1, MU=32, mflop[3]=1507.70
+   900000:sr2_C.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   NU=1, MU=1, mflop[3]=3015.39
+   900000:sr2_C.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   NU=1, MU=2, mflop[3]=3015.39
+   900000:sr2_C.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   NU=1, MU=4, mflop[3]=3015.39
+   900000:sr2_C.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   NU=1, MU=8, mflop[3]=3015.39
+   900000:sr2_C.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   NU=1, MU=12, mflop[3]=3015.39
+BEST MU-TUNED GENERATED KERNEL FOR imf=3: NU=1, MU=16, MF=3015.39
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr2_C.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+BEGIN NU/MU EXTRACT SEARCH, imf=3:
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+   Kernel sr2_sse.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+   900000:sr2_sse.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   900000:sr2_sse.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   900000:sr2_sse.c (M=1820, N=18, lda=1827) gets 3014.75 MFLOPS
+   900000:sr2_sse.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   900000:sr2_sse.c (M=1638, N=20, lda=1645) gets 3014.84 MFLOPS
+   900000:sr2_sse.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   900000:sr2_sse.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   900000:sr2_sse.c (M=1820, N=18, lda=1827) gets 3014.75 MFLOPS
+   900000:sr2_sse.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   900000:sr2_sse.c (M=1638, N=20, lda=1645) gets 3014.84 MFLOPS
+   mu=16, nu=1, mflop[3]=3015.39
+   mu=16, nu=2, mflop[3]=3015.39
+   mu=16, nu=3, mflop[3]=3014.75
+   mu=16, nu=4, mflop[3]=3015.39
+   mu=16, nu=5, mflop[3]=3014.84
+   mu=80, nu=1, mflop[3]=3015.39
+   mu=64, nu=2, mflop[3]=3015.39
+   mu=48, nu=3, mflop[3]=3014.75
+   mu=48, nu=4, mflop[3]=3015.39
+   mu=32, nu=5, mflop[3]=3014.84
+BEST GENERATED NU-TUNED KERNEL FOR imf=3: MU=16, NU=1, MF=3015.39
+
+BEGIN MU EXTRACT SEARCH, imf=3
+   NU=1, MU=16, mflop[3]=3015.39
+   900000:sr2_sse.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   NU=1, MU=32, mflop[3]=3015.39
+BEST MU-TUNED GENERATED KERNEL FOR imf=3: NU=1, MU=16, MF=3015.39
+
+BEGIN BASIC KERNEL TESTS:
+   Kernel sr2_sse.c(900000) passes basic test
+DONE BASIC KERNEL TESTS:
+
+   900002:sr2_sse.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   900001:sr2_C.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+   1:ATL_ger2k_1x1_1.c (M=3481, N=8, lda=3486) gets 3008.02 MFLOPS
+
+TUNING PREFETCH INST, imf=4, BASELINE MFLOP=3008.02
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3008.02
+    A   nta    16     1       3532.47
+    A    t0    16     1       3558.01
+    A    t1    16     1       3549.46
+    A    t2    16     1       3532.47
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3558.01
+    X   nta    16     1       3532.47
+    X    t0    16     1       3549.46
+    X    t1    16     1       3575.24
+    X    t2    16     1       3532.47
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3575.24
+    Y   nta    16     1       3549.46
+    Y    t0    16     1       3532.47
+    Y    t1    16     1       3566.60
+    Y    t2    16     1       3507.30
+
+BEST MFLOP[4]=3566.60 (18.57 percent improvement)
+   cflags='-x assembler-with-cpp -DPFIA=prefetcht0 -DPFIX=prefetcht1 -DPFIY=prefetcht1'
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'A', imf=4:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3532.47
+    A    64    16     1       3524.04
+    A   256    16     1       3549.46
+    A   512    16     1       3540.94
+    A   320    16     1       3540.94
+    A   384    16     1       3583.92
+    A   448    16     1       3549.46
+    A     0    16     1       3524.04
+BEST imf=4 PFADIST=384 (3583.92)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'X', imf=4:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3524.04
+    X    64    16     1       3507.30
+    X   256    16     1       3532.47
+    X   512    16     1       3515.65
+    X   320    16     1       3540.94
+    X   384    16     1       3549.46
+    X   448    16     1       3540.94
+    X     0    16     1       3532.47
+BEST imf=4 PFXDIST=384 (3549.46)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'Y', imf=4:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3558.01
+    Y    64    16     1       3558.01
+    Y   256    16     1       3540.94
+    Y   192    16     1       3583.92
+    Y     0    16     1       3515.65
+BEST imf=4 PFYDIST=192 (3583.92)
+
+PREFETCH DISTANCE TUNING imf=4 improved from 3566.60 to 3532.47 (-0.96 percent)
+   900002:sr2_sse.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   900001:sr2_C.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+   1:ATL_ger2k_1x1_1.c (M=2048, N=16, lda=2051) gets 3015.39 MFLOPS
+
+TUNING PREFETCH INST, imf=3, BASELINE MFLOP=3015.39
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3015.39
+    A   nta    16     1       3602.16
+    A    t0    16     1       3602.16
+    A    t1    16     1       3692.22
+    A    t2    16     1       3692.22
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3692.22
+    X   nta    16     1       3602.16
+    X    t0    16     1       3692.22
+    X    t1    16     1       3516.40
+    X    t2    16     1       3602.16
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3692.22
+    Y   nta    16     1       3692.22
+    Y    t0    16     1       3692.22
+    Y    t1    16     1       3602.16
+    Y    t2    16     1       3516.40
+
+BEST MFLOP[3]=3692.22 (22.45 percent improvement)
+   cflags='-x assembler-with-cpp -DPFIA=prefetcht1 -DPFIX=prefetcht0 -DPFIY=prefetchnta'
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'A', imf=3:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3516.40
+    A    64    16     1       3692.22
+    A   256    16     1       3602.16
+    A   192    16     1       3516.40
+    A     0    16     1       3602.16
+BEST imf=3 PFADIST=128 (3692.22)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'X', imf=3:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3602.16
+    X    64    16     1       3602.16
+    X   256    16     1       3602.16
+    X   192    16     1       3602.16
+    X     0    16     1       3602.16
+DEFAULT imf=3 XDISTANCE IS BEST (3602.16)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'Y', imf=3:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3602.16
+    Y    64    16     1       3602.16
+    Y   256    16     1       3602.16
+    Y   192    16     1       3516.40
+    Y     0    16     1       3516.40
+DEFAULT imf=3 YDISTANCE IS BEST (3602.16)
+
+PREFETCH DISTANCE TUNING imf=3 improved from 3692.22 to 3692.22 (0.00 percent)
+   900002:sr2_sse.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+   900001:sr2_C.c (M=3000, N=2000, lda=3003) gets 6001.00 MFLOPS
+   1:ATL_ger2k_1x1_1.c (M=3000, N=2000, lda=3003) gets 3000.50 MFLOPS
+
+TUNING PREFETCH INST, imf=2, BASELINE MFLOP=6001.00
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       6001.00
+    A   nta    16     1       6001.00
+    A    t0    16     1       3000.50
+    A    t1    16     1       6001.00
+    A    t2    16     1       6001.00
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       6001.00
+    X   nta    16     1       6001.00
+    X    t0    16     1       6001.00
+    X    t1    16     1       3000.50
+    X    t2    16     1       6001.00
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       6001.00
+    Y   nta    16     1       6001.00
+    Y    t0    16     1       3000.50
+    Y    t1    16     1       6001.00
+    Y    t2    16     1       6001.00
+
+BEST MFLOP[2]=6001.00 (0.00 percent improvement)
+   cflags='-fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DPFIA=prefetchnta -DPFIX=prefetchnta -DPFIY=prefetchnta'
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'A', imf=2:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       6001.00
+    A    64    16     1       6001.00
+    A   256    16     1       6001.00
+    A   192    16     1       6001.00
+    A     0    16     1       6001.00
+DEFAULT imf=2 ADISTANCE IS BEST (6001.00)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'X', imf=2:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       6001.00
+    X    64    16     1       3000.50
+    X   256    16     1       6001.00
+    X   512    16     1       6001.00
+    X   320    16     1       3000.50
+    X   384    16     1       6001.00
+    X   448    16     1       3000.50
+    X     0    16     1       6001.00
+DEFAULT imf=2 XDISTANCE IS BEST (6001.00)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'Y', imf=2:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       6001.00
+    Y    64    16     1       6001.00
+    Y   256    16     1       6001.00
+    Y   192    16     1       3000.50
+    Y     0    16     1       6001.00
+DEFAULT imf=2 YDISTANCE IS BEST (6001.00)
+
+PREFETCH DISTANCE TUNING imf=2 improved from 6001.00 to 3000.50 (-50.00 percent)
+
+Best out-of-cache kernel:
+ID=900002 ROUT='sr2_sse.c' AUTH='R. Clint Whaley' \
+   rankR=0 CacheElts=18350 SSE=3 alignA=0 alignY=16 alignX=16 minM=16 minN=1  \
+   NU=1 MU=16 LDAMUL=0 PFTUNABLE=1 ALIGNX2A=0 ADDCFLAGS=0 FNU=1 INCYISONE=1  \
+   X87=0  \
+   MFLOP=6.001000e+03,3.000500e+03  ASM=GAS_x8664 \
+     CFLAGS='-x assembler-with-cpp -DPFADIST=0 -DPFYDIST=0' \
+     COMP='/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64'
+
+BEGIN RESTRICTED OUT-OF-CACHE TUNING
+   900003:sr2_sse.c (M=3000, N=2000, lda=3008) gets 3000.50 MFLOPS
+
+TUNING PREFETCH INST, imf=0, BASELINE MFLOP=3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3000.50
+    A   nta    16     1       3000.50
+    A    t0    16     1       3000.50
+    A    t1    16     1       3000.50
+    A    t2    16     1       3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3000.50
+    X   nta    16     1       3000.50
+    X    t0    16     1       3000.50
+    X    t1    16     1       3000.50
+    X    t2    16     1       3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3000.50
+    Y   nta    16     1       3000.50
+    Y    t0    16     1       3000.50
+    Y    t1    16     1       3000.50
+    Y    t2    16     1       3000.50
+
+BEST MFLOP[0]=3000.50 (0.00 percent improvement)
+   cflags='-x assembler-with-cpp'
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'A', imf=0:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3000.50
+    A    64    16     1       3000.50
+    A   256    16     1       3000.50
+    A   192    16     1       3000.50
+    A     0    16     1       3000.50
+DEFAULT imf=0 ADISTANCE IS BEST (3000.50)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'X', imf=0:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3000.50
+    X    64    16     1       3000.50
+    X   256    16     1       3000.50
+    X   192    16     1       3000.50
+    X     0    16     1       3000.50
+DEFAULT imf=0 XDISTANCE IS BEST (3000.50)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'Y', imf=0:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3000.50
+    Y    64    16     1       3000.50
+    Y   256    16     1       3000.50
+    Y   192    16     1       3000.50
+    Y     0    16     1       3000.50
+DEFAULT imf=0 YDISTANCE IS BEST (3000.50)
+
+PREFETCH DISTANCE TUNING imf=0 improved from 3000.50 to 3000.50 (0.00 percent)
+NO RESTRICTED OUT-OF-CACHE KERNEL USED.
+
+BEGIN RESTRICTED L1-BLOCKED TUNING
+   900003:sr2_sse.c (M=3000, N=2000, lda=3008) gets 3000.50 MFLOPS
+
+TUNING PREFETCH INST, imf=0, BASELINE MFLOP=3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3000.50
+    A   nta    16     1       3000.50
+    A    t0    16     1       3000.50
+    A    t1    16     1       3000.50
+    A    t2    16     1       3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3000.50
+    X   nta    16     1       3000.50
+    X    t0    16     1       3000.50
+    X    t1    16     1       3000.50
+    X    t2    16     1       3000.50
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3000.50
+    Y   nta    16     1       3000.50
+    Y    t0    16     1       3000.50
+    Y    t1    16     1       3000.50
+    Y    t2    16     1       3000.50
+
+BEST MFLOP[0]=3000.50 (0.00 percent improvement)
+   cflags='-x assembler-with-cpp'
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'A', imf=0:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3000.50
+    A    64    16     1       3000.50
+    A   256    16     1       3000.50
+    A   192    16     1       3000.50
+    A     0    16     1       3000.50
+DEFAULT imf=0 ADISTANCE IS BEST (3000.50)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'X', imf=0:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3000.50
+    X    64    16     1       3000.50
+    X   256    16     1       3000.50
+    X   192    16     1       3000.50
+    X     0    16     1       3000.50
+DEFAULT imf=0 XDISTANCE IS BEST (3000.50)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'Y', imf=0:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3000.50
+    Y    64    16     1       3000.50
+    Y   256    16     1       3000.50
+    Y   192    16     1       3000.50
+    Y     0    16     1       3000.50
+DEFAULT imf=0 YDISTANCE IS BEST (3000.50)
+
+PREFETCH DISTANCE TUNING imf=0 improved from 3000.50 to 3000.50 (0.00 percent)
+NO RESTRICTED L1-BLOCKED KERNEL USED.
+
+BEGIN RESTRICTED in-L1 TUNING
+   900003:sr2_sse.c (M=3481, N=8, lda=3492) gets 3008.02 MFLOPS
+
+TUNING PREFETCH INST, imf=4, BASELINE MFLOP=3008.02
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3008.02
+    A   nta    16     1       3082.62
+    A    t0    16     1       3102.05
+    A    t1    16     1       3115.14
+    A    t2    16     1       3082.62
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3155.07
+    X   nta    16     1       3134.98
+    X    t0    16     1       3102.05
+    X    t1    16     1       3063.43
+    X    t2    16     1       3108.58
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3134.98
+    Y   nta    16     1       3102.05
+    Y    t0    16     1       3108.58
+    Y    t1    16     1       3134.98
+    Y    t2    16     1       3108.58
+
+BEST MFLOP[4]=3134.98 (4.22 percent improvement)
+   cflags='-x assembler-with-cpp -DPFIX=prefetchnta -DPFIY=prefetcht1'
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'A', imf=4:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3115.14
+    A    64    16     1       3076.20
+    A   256    16     1       3102.05
+    A   512    16     1       3102.05
+    A   320    16     1       3089.07
+    A   384    16     1       3121.72
+    A   448    16     1       3095.54
+    A     0    16     1       3102.05
+BEST imf=4 PFADIST=384 (3121.72)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'X', imf=4:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3115.14
+    X    64    16     1       3050.77
+    X   256    16     1       3082.62
+    X   512    16     1       3121.72
+    X   576    16     1       3089.07
+    X   640    16     1       3076.20
+    X   704    16     1       3108.58
+    X   768    16     1       3121.72
+    X   832    16     1       3069.80
+    X   896    16     1       3121.72
+    X   960    16     1       3076.20
+    X     0    16     1       3082.62
+BEST imf=4 PFXDIST=512 (3121.72)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'Y', imf=4:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3102.05
+    Y    64    16     1       3089.07
+    Y   256    16     1       3102.05
+    Y   512    16     1       3076.20
+    Y   320    16     1       3089.07
+    Y   384    16     1       3082.62
+    Y   448    16     1       3076.20
+    Y     0    16     1       3089.07
+DEFAULT imf=4 YDISTANCE IS BEST (3102.05)
+
+PREFETCH DISTANCE TUNING imf=4 improved from 3134.98 to 3095.54 (-1.26 percent)
+NO RESTRICTED L1-BLOCKED KERNEL USED.
+
+BEGIN RESTRICTED in-L2 TUNING
+   900003:sr2_sse.c (M=2048, N=16, lda=2056) gets 3015.39 MFLOPS
+
+TUNING PREFETCH INST, imf=3, BASELINE MFLOP=3015.39
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3015.39
+    A   nta    16     1       3142.31
+    A    t0    16     1       3142.31
+    A    t1    16     1       3281.97
+    A    t2    16     1       3210.62
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3281.97
+    X   nta    16     1       3210.62
+    X    t0    16     1       3210.62
+    X    t1    16     1       3142.31
+    X    t2    16     1       3142.31
+
+   OP  PREF    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3210.62
+    Y   nta    16     1       3142.31
+    Y    t0    16     1       3281.97
+    Y    t1    16     1       3281.97
+    Y    t2    16     1       3142.31
+
+BEST MFLOP[3]=3281.97 (8.84 percent improvement)
+   cflags='-x assembler-with-cpp -DPFIA=prefetcht1 -DPFIY=prefetcht0'
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'A', imf=3:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    A   DEF    16     1       3210.62
+    A    64    16     1       3142.31
+    A   256    16     1       3142.31
+    A   192    16     1       3142.31
+    A     0    16     1       3210.62
+DEFAULT imf=3 ADISTANCE IS BEST (3210.62)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'X', imf=3:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    X   DEF    16     1       3142.31
+    X    64    16     1       3210.62
+    X   256    16     1       3142.31
+    X   192    16     1       3142.31
+    X     0    16     1       3142.31
+BEST imf=3 PFXDIST=128 (3210.62)
+
+TUNING PREFETCH DISTANCE FOR OPERAND 'Y', imf=3:
+   OP  DIST    MU    NU         MFLOP
+   ==  ====  ====  ====  ============
+    Y   DEF    16     1       3142.31
+    Y    64    16     1       3142.31
+    Y   256    16     1       3210.62
+    Y   512    16     1       3210.62
+    Y   320    16     1       3210.62
+    Y   384    16     1       3210.62
+    Y   448    16     1       3142.31
+    Y     0    16     1       3210.62
+BEST imf=3 PFYDIST=256 (3210.62)
+
+PREFETCH DISTANCE TUNING imf=3 improved from 3281.97 to 3142.31 (-4.26 percent)
+NO RESTRICTED in-L2 KERNEL USED.
+make sr2install
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+mkdir sr2outd
+rm -f sr2outd/*
+if [ -s "/home/aposta/sc17/atlasBuild/src/blas/ger/Make_sr2" ]; then \
+           cd  /home/aposta/sc17/atlasBuild/src/blas/ger ; make -f Make_sr2 killall ; \
+           rm -f /home/aposta/sc17/atlasBuild/src/blas/ger/Make_sr2 ; \
+        fi
+./xr2hgen -p s -F res/sR2K.sum -d sr2outd
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+/home/aposta/sc17/atlasBuild/bin/xextract -b /home/aposta/sc17/ATLAS//tune/blas/gemv/atlas-l2g.base \
+                           order=clmajor rout=r2_sse nu=1 type=SREAL \
+                           -def MU 1  -o EXTDIR/sr2_sse.c
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+cp -f sr2outd/Make_sr2 /home/aposta/sc17/atlasBuild/src/blas/ger/.
+cp sr2outd/*.c /home/aposta/sc17/atlasBuild/src/blas/ger/.
+cp -f sr2outd/*.h /home/aposta/sc17/atlasBuild/include/.
+if [ -s "xccobj.exe" ] ; then \
+   cp -f xccobj.exe /home/aposta/sc17/atlasBuild/src/blas/ger/. ; \
+elif [ -s "xccobj" ]; then \
+           cp -f xccobj /home/aposta/sc17/atlasBuild/src/blas/ger/. ; \
+        fi
+touch /home/aposta/sc17/ATLAS//include/atlas_r2.h
+rm -f sr2outd/* ; rmdir sr2outd
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+make[3]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+cp /home/aposta/sc17/atlasBuild/tune/blas/ger/res/sR2K.sum INSTALL_LOG/.
+cd /home/aposta/sc17/atlasBuild/tune/blas/ger ; make snxtune
+make[3]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+cd /home/aposta/sc17/atlasBuild/src/blas/reference/level2 ; make slib
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/reference/level2'
+/usr/bin/c99-gcc -o ATL_srefgbmv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefgbmv.c
+/usr/bin/c99-gcc -o ATL_srefgbmvN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefgbmvN.c
+/usr/bin/c99-gcc -o ATL_srefgbmvT.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefgbmvT.c
+/usr/bin/c99-gcc -o ATL_srefgemv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefgemv.c
+/usr/bin/c99-gcc -o ATL_srefgemvN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefgemvN.c
+/usr/bin/c99-gcc -o ATL_srefgemvT.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefgemvT.c
+/usr/bin/c99-gcc -o ATL_srefger.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefger.c
+/usr/bin/c99-gcc -o ATL_srefgpmv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefgpmv.c
+/usr/bin/c99-gcc -o ATL_srefgpmvLN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefgpmvLN.c
+/usr/bin/c99-gcc -o ATL_srefgpmvLT.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefgpmvLT.c
+/usr/bin/c99-gcc -o ATL_srefgpmvUN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefgpmvUN.c
+/usr/bin/c99-gcc -o ATL_srefgpmvUT.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefgpmvUT.c
+/usr/bin/c99-gcc -o ATL_srefgpr.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefgpr.c
+/usr/bin/c99-gcc -o ATL_srefsbmv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefsbmv.c
+/usr/bin/c99-gcc -o ATL_srefsbmvL.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefsbmvL.c
+/usr/bin/c99-gcc -o ATL_srefsbmvU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefsbmvU.c
+/usr/bin/c99-gcc -o ATL_srefspmv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefspmv.c
+/usr/bin/c99-gcc -o ATL_srefspmvL.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefspmvL.c
+/usr/bin/c99-gcc -o ATL_srefspmvU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefspmvU.c
+/usr/bin/c99-gcc -o ATL_srefspr.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefspr.c
+/usr/bin/c99-gcc -o ATL_srefspr2.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefspr2.c
+/usr/bin/c99-gcc -o ATL_srefspr2L.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefspr2L.c
+/usr/bin/c99-gcc -o ATL_srefspr2U.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefspr2U.c
+/usr/bin/c99-gcc -o ATL_srefsprL.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefsprL.c
+/usr/bin/c99-gcc -o ATL_srefsprU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefsprU.c
+/usr/bin/c99-gcc -o ATL_srefsymv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefsymv.c
+/usr/bin/c99-gcc -o ATL_srefsymvL.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefsymvL.c
+/usr/bin/c99-gcc -o ATL_srefsymvU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefsymvU.c
+/usr/bin/c99-gcc -o ATL_srefsyr.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefsyr.c
+/usr/bin/c99-gcc -o ATL_srefsyr2.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefsyr2.c
+/usr/bin/c99-gcc -o ATL_srefsyr2L.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefsyr2L.c
+/usr/bin/c99-gcc -o ATL_srefsyr2U.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefsyr2U.c
+/usr/bin/c99-gcc -o ATL_srefsyrL.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefsyrL.c
+/usr/bin/c99-gcc -o ATL_srefsyrU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_srefsyrU.c
+/usr/bin/c99-gcc -o ATL_sreftbmv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftbmv.c
+/usr/bin/c99-gcc -o ATL_sreftbmvLNN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftbmvLNN.c
+/usr/bin/c99-gcc -o ATL_sreftbmvLNU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftbmvLNU.c
+/usr/bin/c99-gcc -o ATL_sreftbmvLTN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftbmvLTN.c
+/usr/bin/c99-gcc -o ATL_sreftbmvLTU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftbmvLTU.c
+/usr/bin/c99-gcc -o ATL_sreftbmvUNN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftbmvUNN.c
+/usr/bin/c99-gcc -o ATL_sreftbmvUNU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftbmvUNU.c
+/usr/bin/c99-gcc -o ATL_sreftbmvUTN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftbmvUTN.c
+/usr/bin/c99-gcc -o ATL_sreftbmvUTU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftbmvUTU.c
+/usr/bin/c99-gcc -o ATL_sreftbsv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftbsv.c
+/usr/bin/c99-gcc -o ATL_sreftbsvLNN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftbsvLNN.c
+/usr/bin/c99-gcc -o ATL_sreftbsvLNU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftbsvLNU.c
+/usr/bin/c99-gcc -o ATL_sreftbsvLTN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftbsvLTN.c
+/usr/bin/c99-gcc -o ATL_sreftbsvLTU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftbsvLTU.c
+/usr/bin/c99-gcc -o ATL_sreftbsvUNN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftbsvUNN.c
+/usr/bin/c99-gcc -o ATL_sreftbsvUNU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftbsvUNU.c
+/usr/bin/c99-gcc -o ATL_sreftbsvUTN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftbsvUTN.c
+/usr/bin/c99-gcc -o ATL_sreftbsvUTU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftbsvUTU.c
+/usr/bin/c99-gcc -o ATL_sreftpmv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftpmv.c
+/usr/bin/c99-gcc -o ATL_sreftpmvLNN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftpmvLNN.c
+/usr/bin/c99-gcc -o ATL_sreftpmvLNU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftpmvLNU.c
+/usr/bin/c99-gcc -o ATL_sreftpmvLTN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftpmvLTN.c
+/usr/bin/c99-gcc -o ATL_sreftpmvLTU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftpmvLTU.c
+/usr/bin/c99-gcc -o ATL_sreftpmvUNN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftpmvUNN.c
+/usr/bin/c99-gcc -o ATL_sreftpmvUNU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftpmvUNU.c
+/usr/bin/c99-gcc -o ATL_sreftpmvUTN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftpmvUTN.c
+/usr/bin/c99-gcc -o ATL_sreftpmvUTU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftpmvUTU.c
+/usr/bin/c99-gcc -o ATL_sreftpsv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftpsv.c
+/usr/bin/c99-gcc -o ATL_sreftpsvLNN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftpsvLNN.c
+/usr/bin/c99-gcc -o ATL_sreftpsvLNU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftpsvLNU.c
+/usr/bin/c99-gcc -o ATL_sreftpsvLTN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftpsvLTN.c
+/usr/bin/c99-gcc -o ATL_sreftpsvLTU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftpsvLTU.c
+/usr/bin/c99-gcc -o ATL_sreftpsvUNN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftpsvUNN.c
+/usr/bin/c99-gcc -o ATL_sreftpsvUNU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftpsvUNU.c
+/usr/bin/c99-gcc -o ATL_sreftpsvUTN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftpsvUTN.c
+/usr/bin/c99-gcc -o ATL_sreftpsvUTU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftpsvUTU.c
+/usr/bin/c99-gcc -o ATL_sreftrmv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftrmv.c
+/usr/bin/c99-gcc -o ATL_sreftrmvLNN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftrmvLNN.c
+/usr/bin/c99-gcc -o ATL_sreftrmvLNU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftrmvLNU.c
+/usr/bin/c99-gcc -o ATL_sreftrmvLTN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftrmvLTN.c
+/usr/bin/c99-gcc -o ATL_sreftrmvLTU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftrmvLTU.c
+/usr/bin/c99-gcc -o ATL_sreftrmvUNN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftrmvUNN.c
+/usr/bin/c99-gcc -o ATL_sreftrmvUNU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftrmvUNU.c
+/usr/bin/c99-gcc -o ATL_sreftrmvUTN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftrmvUTN.c
+/usr/bin/c99-gcc -o ATL_sreftrmvUTU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftrmvUTU.c
+/usr/bin/c99-gcc -o ATL_sreftrsv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftrsv.c
+/usr/bin/c99-gcc -o ATL_sreftrsvLNN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftrsvLNN.c
+/usr/bin/c99-gcc -o ATL_sreftrsvLNU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftrsvLNU.c
+/usr/bin/c99-gcc -o ATL_sreftrsvLTN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftrsvLTN.c
+/usr/bin/c99-gcc -o ATL_sreftrsvLTU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftrsvLTU.c
+/usr/bin/c99-gcc -o ATL_sreftrsvUNN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftrsvUNN.c
+/usr/bin/c99-gcc -o ATL_sreftrsvUNU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftrsvUNU.c
+/usr/bin/c99-gcc -o ATL_sreftrsvUTN.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftrsvUTN.c
+/usr/bin/c99-gcc -o ATL_sreftrsvUTU.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 /home/aposta/sc17/ATLAS//src/blas/reference/level2/ATL_sreftrsvUTU.c
+ar r /home/aposta/sc17/atlasBuild/lib/libatlas.a ATL_srefgbmv.o ATL_srefgbmvN.o ATL_srefgbmvT.o ATL_srefgemv.o ATL_srefgemvN.o ATL_srefgemvT.o ATL_srefger.o ATL_srefgpmv.o ATL_srefgpmvLN.o ATL_srefgpmvLT.o ATL_srefgpmvUN.o ATL_srefgpmvUT.o ATL_srefgpr.o ATL_srefsbmv.o ATL_srefsbmvL.o ATL_srefsbmvU.o ATL_srefspmv.o ATL_srefspmvL.o ATL_srefspmvU.o ATL_srefspr.o ATL_srefspr2.o ATL_srefspr2L.o ATL_srefspr2U.o ATL_srefsprL.o ATL_srefsprU.o ATL_srefsymv.o ATL_srefsymvL.o ATL_srefsymvU.o ATL_srefsyr.o ATL_srefsyr2.o ATL_srefsyr2L.o ATL_srefsyr2U.o ATL_srefsyrL.o ATL_srefsyrU.o ATL_sreftbmv.o ATL_sreftbmvLNN.o ATL_sreftbmvLNU.o ATL_sreftbmvLTN.o ATL_sreftbmvLTU.o ATL_sreftbmvUNN.o ATL_sreftbmvUNU.o ATL_sreftbmvUTN.o ATL_sreftbmvUTU.o ATL_sreftbsv.o ATL_sreftbsvLNN.o ATL_sreftbsvLNU.o ATL_sreftbsvLTN.o ATL_sreftbsvLTU.o ATL_sreftbsvUNN.o ATL_sreftbsvUNU.o ATL_sreftbsvUTN.o ATL_sreftbsvUTU.o ATL_sreftpmv.o ATL_sreftpmvLNN.o ATL_sreftpmvLNU.o ATL_sreftpmvLTN.o ATL_sreftpmvLTU.o ATL_sreftpmvUNN.o ATL_sreftpmvUNU.o ATL_sreftpmvUTN.o ATL_sreftpmvUTU.o ATL_sreftpsv.o ATL_sreftpsvLNN.o ATL_sreftpsvLNU.o ATL_sreftpsvLTN.o ATL_sreftpsvLTU.o ATL_sreftpsvUNN.o ATL_sreftpsvUNU.o ATL_sreftpsvUTN.o ATL_sreftpsvUTU.o ATL_sreftrmv.o ATL_sreftrmvLNN.o ATL_sreftrmvLNU.o ATL_sreftrmvLTN.o ATL_sreftrmvLTU.o ATL_sreftrmvUNN.o ATL_sreftrmvUNU.o ATL_sreftrmvUTN.o ATL_sreftrmvUTU.o ATL_sreftrsv.o ATL_sreftrsvLNN.o ATL_sreftrsvLNU.o ATL_sreftrsvLTN.o ATL_sreftrsvLTU.o ATL_sreftrsvUNN.o ATL_sreftrsvUNU.o ATL_sreftrsvUTN.o ATL_sreftrsvUTU.o
+echo /home/aposta/sc17/atlasBuild/lib/libatlas.a
+/home/aposta/sc17/atlasBuild/lib/libatlas.a
+touch slib.grd
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/reference/level2'
+cd /home/aposta/sc17/atlasBuild/src/blas/ger ; make slib
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make -j 2 slib.grd
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+/usr/bin/c99-gcc -o ATL_sger.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/ger/ATL_ger.c
+/usr/bin/c99-gcc -o ATL_sger_L1.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL -DATL_INL1 /home/aposta/sc17/ATLAS//src/blas/ger/ATL_ger.c
+/usr/bin/c99-gcc -o ATL_sger_L2.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL -DATL_INL2 /home/aposta/sc17/ATLAS//src/blas/ger/ATL_ger.c
+/usr/bin/c99-gcc -o ATL_sger_OOC.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL -DATL_INOOC /home/aposta/sc17/ATLAS//src/blas/ger/ATL_ger.c
+/usr/bin/c99-gcc -o ATL_sgerk_Mlt16.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/ger/ATL_gerk_Mlt16.c
+/usr/bin/c99-gcc -o ATL_sgerk_axpy.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/ger/ATL_gerk_axpy.c
+/usr/bin/c99-gcc -o ATL_sger2.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/ger/ATL_ger2.c
+/usr/bin/c99-gcc -o ATL_sger2_L1.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL -DATL_INL1 /home/aposta/sc17/ATLAS//src/blas/ger/ATL_ger2.c
+/usr/bin/c99-gcc -o ATL_sger2_L2.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL -DATL_INL2 /home/aposta/sc17/ATLAS//src/blas/ger/ATL_ger2.c
+/usr/bin/c99-gcc -o ATL_sger2_OOC.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL -DATL_INOOC /home/aposta/sc17/ATLAS//src/blas/ger/ATL_ger2.c
+/usr/bin/c99-gcc -o ATL_sger2k_Mlt16.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/ger/ATL_ger2k_Mlt16.c
+/usr/bin/c99-gcc -o ATL_sger2k_Nlt8.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/ger/ATL_ger2k_Nlt8.c
+ar r /home/aposta/sc17/atlasBuild/lib/libatlas.a ATL_sger.o ATL_sger_L1.o ATL_sger_L2.o ATL_sger_OOC.o ATL_sgerk_Mlt16.o ATL_sgerk_axpy.o ATL_sger2.o ATL_sger2_L1.o ATL_sger2_L2.o ATL_sger2_OOC.o ATL_sger2k_Mlt16.o ATL_sger2k_Nlt8.o 
+echo /home/aposta/sc17/atlasBuild/lib/libatlas.a
+/home/aposta/sc17/atlasBuild/lib/libatlas.a
+touch slib.grd
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make -j 2 -f Make_sr1 lib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -o ATL_sgerk__900002.o -c -DATL_UGERK=ATL_sgerk__900002 -x assembler-with-cpp -DSREAL -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 ATL_sgerk__900002.c
+/usr/bin/c99-gcc -o ATL_sgerk__6.o -c -DATL_UGERK=ATL_sgerk__6 -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL ATL_sgerk__6.c
+ar r /home/aposta/sc17/atlasBuild/lib/libatlas.a ATL_sgerk__900002.o ATL_sgerk__6.o
+echo /home/aposta/sc17/atlasBuild/lib/libatlas.a
+/home/aposta/sc17/atlasBuild/lib/libatlas.a
+touch sr1k.grd
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make -j 2 -f Make_sr2 lib
+make[5]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+/usr/bin/c99-gcc -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -m64 -o ATL_sger2k__900002.o -c -DATL_UGER2K=ATL_sger2k__900002 -x assembler-with-cpp -DPFADIST=0 -DPFYDIST=0 -DSREAL -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 ATL_sger2k__900002.c
+ar r /home/aposta/sc17/atlasBuild/lib/libatlas.a ATL_sger2k__900002.o
+echo /home/aposta/sc17/atlasBuild/lib/libatlas.a
+/home/aposta/sc17/atlasBuild/lib/libatlas.a
+touch sr2k.grd
+make[5]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/ger'
+make xss1nxtune
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+/usr/bin/c99-gcc -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -o ss1nxtune.o -DSREAL /home/aposta/sc17/ATLAS//tune/blas/ger/s1nxtune.c
+/usr/bin/c99-gcc -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -o ATL_ssyr_NX.o -DSREAL -DATL_NXTUNE \
+                /home/aposta/sc17/ATLAS//src/blas/level2/ATL_syr.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -o xss1nxtune ss1nxtune.o \
+                   ATL_ssyr_NX.o /home/aposta/sc17/atlasBuild/lib/libtstatlas.a /home/aposta/sc17/atlasBuild/lib/libatlas.a
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+/home/aposta/sc17/atlasBuild/bin/ATLrun.sh /home/aposta/sc17/atlasBuild/tune/blas/ger xss1nxtune -U u -n 2000 -r 1 -s 10 -C 0 \
+                  -o /home/aposta/sc17/atlasBuild/include/atlas_ssyrNX.h
+
+   Time for N=NX=2000 : 4.000000e-03
+     N    NX    % of N=16
+======  ====  ===========
+  2000  1000       100.00
+
+  2000  1496       100.00
+  2000  1744         0.00
+  2000  1872       100.00
+  2000  1808         0.00
+  2000  1776         0.00
+  2000  1760       100.00
+  2000  1752         0.00
+NX selected as 1752 (0.00%)!
+
+NX=1752!
+make xss2nxtune
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+/usr/bin/c99-gcc -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -o ss2nxtune.o -DSREAL /home/aposta/sc17/ATLAS//tune/blas/ger/s2nxtune.c
+/usr/bin/c99-gcc -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -o ATL_ssyr2_NX.o -DSREAL -DATL_NXTUNE \
+                /home/aposta/sc17/ATLAS//src/blas/level2/ATL_syr2.c
+/usr/bin/c99-gcc -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -o xss2nxtune ss2nxtune.o \
+                   ATL_ssyr2_NX.o /home/aposta/sc17/atlasBuild/lib/libtstatlas.a /home/aposta/sc17/atlasBuild/lib/libatlas.a
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+/home/aposta/sc17/atlasBuild/bin/ATLrun.sh /home/aposta/sc17/atlasBuild/tune/blas/ger xss2nxtune -U u -n 2000 -r 1 -s 10 -C 0 \
+                  -o /home/aposta/sc17/atlasBuild/include/atlas_ssyr2NX.h
+
+   Time for N=NX=2000 : 4.000000e-03
+     N    NX    % of N=16
+======  ====  ===========
+  2000  1000       100.00
+
+  2000  1496       100.00
+  2000  1744       100.00
+  2000  1872       100.00
+  2000  1936       100.00
+  2000  1968       100.00
+  2000  1984       100.00
+  2000  1992       100.00
+NX selected as 2000 (100.00%)!
+
+NX=2000!
+cd /home/aposta/sc17/atlasBuild/src/blas/level2 ; make slib
+make[4]: Entering directory '/home/aposta/sc17/atlasBuild/src/blas/level2'
+/usr/bin/c99-gcc -o ATL_sgbmv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/level2//ATL_gbmv.c
+/usr/bin/c99-gcc -o ATL_sgpmv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/level2//ATL_gpmv.c
+/usr/bin/c99-gcc -o ATL_sgpr.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/level2//ATL_gpr.c
+/usr/bin/c99-gcc -o ATL_ssbmv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/level2//ATL_sbmv.c
+/usr/bin/c99-gcc -o ATL_sspmv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/level2//ATL_spmv.c
+/usr/bin/c99-gcc -o ATL_sspr.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/level2//ATL_spr.c
+/usr/bin/c99-gcc -o ATL_sspr2.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/level2//ATL_spr2.c
+/usr/bin/c99-gcc -o ATL_ssymv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/level2//ATL_symv.c
+/usr/bin/c99-gcc -o ATL_ssyr.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/level2//ATL_syr.c
+/usr/bin/c99-gcc -o ATL_ssyr2.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/level2//ATL_syr2.c
+/usr/bin/c99-gcc -o ATL_stbmv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/level2//ATL_tbmv.c
+/usr/bin/c99-gcc -o ATL_stbsv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/level2//ATL_tbsv.c
+/usr/bin/c99-gcc -o ATL_stpmv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/level2//ATL_tpmv.c
+/usr/bin/c99-gcc -o ATL_stpsv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/level2//ATL_tpsv.c
+/usr/bin/c99-gcc -o ATL_strmv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/level2//ATL_trmv.c
+/usr/bin/c99-gcc -o ATL_strsv.o -c -DL2SIZE=33554432 -I/home/aposta/sc17/atlasBuild/include -I/home/aposta/sc17/ATLAS//include -I/home/aposta/sc17/ATLAS//include/contrib -DAdd_ -DF77_INTEGER=int -DStringSunStyle -DATL_OS_Linux -DATL_ARCH_Corei1 -DATL_CPUMHZ=2592 -DATL_AVXMAC -DATL_AVX -DATL_SSE3 -DATL_SSE2 -DATL_SSE1 -DATL_USE64BITS -DATL_GAS_x8664 -m64  -DATL_NCPU=2 -fomit-frame-pointer -mfpmath=sse -O2 -fno-schedule-insns2 -mavx2 -mfma -m64 -DSREAL /home/aposta/sc17/ATLAS//src/blas/level2//ATL_trsv.c
+/home/aposta/sc17/ATLAS//src/blas/level2//ATL_trsv.c: In function ‘ATL_trsvUN_k’:
+/home/aposta/sc17/ATLAS//src/blas/level2//ATL_trsv.c:105:6: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+    a = A + ((size_t)lda2)*(N-nb);
+      ^
+ar r /home/aposta/sc17/atlasBuild/lib/libatlas.a ATL_L2AIsOverlapped.o ATL_sgbmv.o ATL_sgpmv.o ATL_sgpr.o ATL_ssbmv.o ATL_sspmv.o ATL_sspr.o ATL_sspr2.o ATL_ssymv.o ATL_ssyr.o ATL_ssyr2.o ATL_stbmv.o ATL_stbsv.o ATL_stpmv.o ATL_stpsv.o ATL_strmv.o ATL_strsv.o
+echo /home/aposta/sc17/atlasBuild/lib/libatlas.a
+/home/aposta/sc17/atlasBuild/lib/libatlas.a
+touch sblas2.grd
+make[4]: Leaving directory '/home/aposta/sc17/atlasBuild/src/blas/level2'
+make[3]: Leaving directory '/home/aposta/sc17/atlasBuild/tune/blas/ger'
+make[2]: Leaving directory '/home/aposta/sc17/atlasBuild/bin'
+
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+*      FINISHED ATLAS3.10.3 INSTALL OF SECTION 2-2-7 ON 08/09/2017 AT 17:32   *
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+
+
+
