@@ -1,0 +1,15 @@
+<div class="heading">{{eval summaryData.headingHtmlTemplate @root.data self=summaryData}}</div>
+<table class="summary_table">
+    {{#each summaryData.rows}}{{#if (isVisible this)}}<tr id="{{#makeId}}summary-entry-{{heading}}{{/makeId}}">
+        <td><h2 class="{{colorName}}">{{heading}}</h2></td>
+        {{#with (lookupMetric metricId) as |value|}}
+        <td class="percent">{{percent value}}%</td>
+        <td class="bar_graph"><div class="bar"><div class="{{../colorName}}" style="width: {{barWidth value}}%"></div></div></td>
+        {{/with}}
+        <td class="details"><p>{{eval descriptionHtmlTemplate @root.data self=this}}</p><p>{{eval adviceHtmlTemplate @root.data self=this}}</p></td>
+    </tr>{{/if}}{{/each}}
+</table>
+<div class="overview_general_advice">
+    <p>{{eval summaryData.footerHtmlTemplate @root.data self=summaryData}}</p>
+    <p>{{eval summaryData.adviceHtmlTemplate @root.data self=summaryData}}</p>
+</div>

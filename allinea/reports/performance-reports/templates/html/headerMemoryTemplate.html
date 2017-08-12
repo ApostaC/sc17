@@ -1,0 +1,12 @@
+{{#with applicationDetails}}
+    {{#if hostMemory.plain.value}}
+        {{#with (lookupMetric "applicationDetails.hostMemory.plain") as |value|}}
+            {{#with (lookupMetricUnits "applicationDetails.hostMemory.plain") as |units|}}{{toFixed (iecValue value) 0}} {{iecUnits value symbol=units}} per node{{/with ~}}
+        {{/with ~}}
+        {{#if hasGpu ~}}
+            {{#with (lookupMetric "applicationDetails.hostGpuMemory.plain") as |value| ~}}
+                {{#with (lookupMetricUnits "applicationDetails.hostGpuMemory.plain") as |units|}}, {{toFixed (iecValue value) 0}} {{iecUnits value symbol=units}} per GPU{{/with}}
+            {{/with}}
+        {{/if}}
+    {{/if}}
+{{/with}}

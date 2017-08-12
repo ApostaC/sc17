@@ -1,0 +1,12 @@
+<table>
+    {{#each headerData}}
+        {{#if (isVisible this)}}
+            {{#with (trim (eval valueHtmlTemplate @root.data self=this)) as |valueHtml|}}
+                <tr>
+                    <td class="details_key">{{../caption}}:</td>
+                    <td id="{{../id}}">{{{valueHtml}}}</td>
+                </tr>
+            {{/with}}
+        {{/if}}
+    {{/each}}
+</table>

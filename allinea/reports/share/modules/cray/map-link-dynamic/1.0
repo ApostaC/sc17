@@ -1,0 +1,62 @@
+#%Module
+
+module-whatis "Automatically links the dynamic MAP sampler libraries using the Cray compiler wrappers"
+
+# Adjust this path to match a prefix of what is shown in 'module avail'
+conflict map-link-static 
+
+# Set a writable directory accessible from the login and compute nodes
+set MAP_LIBRARIES_DIRECTORY "NONE"
+
+# Manual "prereq" check - allows user to load a Forge or Performance Reports module
+if { [ system which make-profiler-libraries > /dev/null 2> /dev/null ] != 0 } {
+	puts stderr "Please load the forge or perf-reports module first"
+	exit 1
+}
+
+# Generating libraries while mid-swap doesn't work as the module system puts a placeholder in PE_PKGCONFIG_LIBS which
+# upsets the compiler wrappers and prevents compilation.
+if { [ module-info mode switch2 ] } {
+	puts stderr "Sorry, this module can't be swapped. Please remove and then load."
+	exit 1
+}
+
+# Find a writeable location for the generated libraries
+if { [info exists ::env(MEMBERWORK) ] } {
+    foreach dir [glob -directory $::env(MEMBERWORK) *] {
+	    if { [file writable $dir] } {
+		    break
+	    }
+    }
+} else {
+    if {$MAP_LIBRARIES_DIRECTORY == "NONE"} {
+        puts stderr "Sorry, the MAP_LIBRARIES_DIRECTORY hasn't been set. Ask your sys admin to modify this module and set that variable"
+        exit 1
+    }
+    set dir $MAP_LIBRARIES_DIRECTORY
+}
+
+set link_type dynamic
+set libdir "$dir/.map-libs/$link_type"
+set lib_name "map-link-$link_type"
+
+if { [ module-info mode load ] || [ module-info mode switch2 ] } { 
+	file mkdir $libdir
+	if { ! [ info exists ::env(MAP_LINK_SKIP_GENERATION) ] } {
+		puts stderr "Generating MAP sampler libraries for $link_type linking in $libdir. This may take a few minutes..."
+
+		set input_redirect ""
+		if { ! [ info exists ::env(MAP_LINK_VERBOSE) ] } { set input_redirect "> /dev/null" }
+
+		set map_link_type [ expr { $link_type == "dynamic" ? "shared" : $link_type } ]
+		if { [ system cd "$libdir" && make-profiler-libraries --pkg-config-file=$libdir/${lib_name}.pc --lib-type=$map_link_type $input_redirect ] != 0 } {
+			puts stderr "Failed to generate sampler libraries. Try running again with MAP_LINK_VERBOSE=1 for more information."
+			exit 2
+		}
+	}
+}
+prepend-path PE_PKGCONFIG_LIBS "$lib_name"
+prepend-path PKG_CONFIG_PATH "$libdir"
+
+# We don't want to recompile the wrappers
+setenv ALLINEA_MPI_WRAPPER 0

@@ -1,0 +1,90 @@
+[
+    {
+        "caption": "Executable",
+        "metricId": "applicationDetails.exeName",
+        "valueHtmlTemplate": "{{#unless (trim applicationDetails.commandLine)}}{{applicationDetails.exeName}}{{/unless}}"
+    },
+    {
+        "caption": "Command",
+        "metricId": "applicationDetails.commandLine",
+        "valueHtmlTemplate": "{{applicationDetails.commandLine}}"
+    },
+    {
+        "caption": "Resources",
+        "metricId": "applicationDetails.nodes.plain",
+        "valueHtmlTemplate": "{{> headerResourcesTemplate}}",
+        "csvHidden": true
+    },
+    {
+        "caption": "Nodes",
+        "metricId": "applicationDetails.nodes.plain"
+    },
+    {
+        "caption": "Physical cores per node",
+        "metricId": "applicationDetails.physicalCoresPerNode"
+    },
+    {
+        "caption": "Logical cores per node",
+        "metricId": "applicationDetails.logicalCoresPerNode"
+    },
+    {
+        "visible": "data.applicationDetails.hasGpu",
+        "caption": "GPUs per node available",
+        "metricId": "applicationDetails.gpusPerNode.plain"
+    },
+    {
+        "caption": "Memory",
+        "metricId": "applicationDetails.hostMemory.plain",
+        "valueHtmlTemplate": "{{> headerMemoryTemplate}}",
+        "csvHidden": true
+    },
+    {
+        "caption": "Memory per node",
+        "metricId": "applicationDetails.hostMemory.plain"
+    },
+    {
+        "visible": "data.applicationDetails.hasGpu",
+        "caption": "GPU memory",
+        "metricId": "applicationDetails.hostGpuMemory.plain"
+    },
+    {
+        "caption": "Tasks",
+        "metricId": "applicationDetails.processes.plain",
+        "valueHtmlTemplate": "{{> headerTasksTemplate}}"
+    },
+    {
+        "visible": "data.applicationDetails.isOpenMp",
+        "caption": "OpenMP threads",
+        "metricId": "applicationDetails.ompNumThreads"
+    },
+    {
+        "caption": "Machine",
+        "metricId": "applicationDetails.hostname",
+        "valueHtmlTemplate": "{{applicationDetails.hostname}}"
+    },
+    {
+        "caption": "Start time",
+        "metricId": "applicationDetails.startDate",
+        "valueHtmlTemplate": "{{applicationDetails.startDate}}"
+    },
+    {
+        "caption": "Total time",
+        "metricId": "applicationDetails.time.plain",
+        "valueHtmlTemplate": "{{> headerTimeTemplate}}"
+    },
+    {
+        "caption": "Full path",
+        "metricId": "applicationDetails.exePath",
+        "valueHtmlTemplate": "{{wrappablePath applicationDetails.exePath}}"
+    },
+    {
+        "caption": "Input file",
+        "metricId": "applicationDetails.inputFile",
+        "valueHtmlTemplate": "{{wrappablePath applicationDetails.inputFile}}"
+    },
+    {
+        "caption": "Notes",
+        "metricId": "applicationDetails.notes",
+        "valueHtmlTemplate": "{{applicationDetails.notes}}"
+    }
+]

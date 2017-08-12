@@ -1,0 +1,191 @@
+{{#*inline "metricName"}}
+    {{~#if (anyNotNull metric.value.min metric.value.max metric.value.stdev metric.descriptionHtmlTemplate)~}}
+        <a href title="click for more information" class="toggle" onclick="perfReports.toggleMetric(event,'{{metric.def.displayName}} detail')">
+    {{~/if~}}
+    {{#if metric.displayName}}
+        {{metric.displayName}}
+    {{else}}
+        {{metric.def.displayName}}
+    {{/if}}
+    {{~#if (anyNotNull metric.value.min metric.value.max metric.value.stdev metric.descriptionHtmlTemplate)~}}
+        </a>
+    {{~/if~}}
+{{/inline}}
+
+{{#*inline "metricValue"}}
+    {{#if useIEC}}
+    <span class="{{colorName}}">
+        {{number (iecValue value)}}
+    </span>
+    <span>
+        {{iecUnits value symbol=def.units}}
+    </span>
+    {{else}}
+    <span class="{{colorName}}">
+        {{number (siValue value)}}
+    </span>
+    <span>
+        {{siUnits value symbol=def.units}}
+    </span>
+    {{/if}}
+{{/inline}}
+
+{{#*inline "metricBar"}}
+    {{#if (anyNotNull metric.value.min metric.value.max)}}
+    <div class="barBox" style="
+        left: {{barWidth metric.normalisedValue.min}}%;
+        top: 0.5em; margin-top: -2px;
+        height: 9px;
+        width: 1px;
+        min-width: 1px;
+        max-width: 1px;
+    "></div>
+    <div class="barBox" style="
+        left: {{barWidth metric.normalisedValue.max}}%;
+        top: 0.5em; margin-top: -2px;
+        height: 9px;
+        width: 1px;
+        min-width: 1px;
+        max-width: 1px;
+    "></div>
+    <div class="barBox" style="
+        left: {{barWidth metric.normalisedValue.min}}%;
+        width: {{barWidth (sub metric.normalisedValue.max metric.normalisedValue.min)}}%;
+        top: 0.5em; margin-top: 2px;
+        height: 1px;
+    "></div>
+    {{/if}}
+    <div class="{{colorName}}" style="
+        width: {{barWidth metric.normalisedValue.mean}}%;
+        height: 1em"></div>
+    <div style="width:50px; height: 0px"></div>
+{{/inline}}
+
+{{#*inline "percentageDetailSection"}}
+    {{#condenseSpace}}
+        {{#if metric.descriptionHtmlTemplate}}
+        <span class="inlinedDescription">{{{eval metric.descriptionHtmlTemplate @root.data}}}</span>
+        {{/if}}
+
+        {{#if (anyNotNull metric.value.min metric.value.max metric.value.stdev)}}
+        <table class="tip">
+            {{#if (anyNotNull metric.value.min)}}<tr>
+                <th class="right_cell">Min</th>
+                <td class="right_cell"><span class="{{colorName}}">{{percent metric.value.min}}</span>%</td>
+                <td>Rank {{metric.value.minRank}} on {{metric.value.minNode}}</span></td>
+            </tr>{{/if}}
+            {{#if (anyNotNull metric.value.mean)}}<tr>
+                <th class="right_cell">Mean</th>
+                <td class="right_cell"><span class="{{colorName}}">{{percent metric.value.mean}}</span>%</td>
+                <td></td>
+            </tr>{{/if}}
+            {{#if (anyNotNull metric.value.max)}}<tr>
+                <th class="right_cell">Max</th>
+                <td class="right_cell"><span class="{{colorName}}">{{percent metric.value.max}}</span>%</td>
+                <td>Rank {{metric.value.maxRank}} on {{metric.value.maxNode}}</span></td>
+            </tr>{{/if}}
+            {{#if (anyNotNull metric.value.stdev)}}<tr>
+                <th class="right_cell">S.D.</th>
+                <td class="right_cell"><span class="{{colorName}}">{{percent metric.value.stdev}}</span>%</td>
+                <td></td>
+            </tr>{{/if}}
+        </table>
+        {{/if}}
+    {{/condenseSpace}}
+{{/inline}}
+
+{{#*inline "numberDetailSection"}}
+    {{#condenseSpace}}
+        {{!--
+            dirk (malp) Test Min/Max (% and 0) more, investigate style differences.
+            dirk (malp) Min/Max chart color is currently black.
+            See https://github.com/bgrins/TinyColor for shades?
+        --}}
+
+        {{#if metric.descriptionHtmlTemplate}}
+        <span class="inlinedDescription">{{{eval metric.descriptionHtmlTemplate @root.data self=metric}}}</span>
+        {{/if}}
+
+        {{#if (anyNotNull metric.value.min metric.value.max metric.value.stdev)}}
+            <table class="tip">
+                {{#if (anyNotNull metric.value.min)}}<tr>
+                    <th class="right_cell">Min</th>
+                    <td class="right_cell">
+                        {{> metricValue metric value=metric.value.min}}
+                    </td>
+                    <td>Rank {{metric.value.minRank}} on {{metric.value.minNode}}</span></td>
+                </tr>{{/if}}
+                <tr>
+                    <th class="right_cell">Mean</th>
+                    <td class="right_cell">
+                        {{> metricValue metric value=metric.value.mean}}
+                    </td>
+                    <td></td>
+                </tr>
+                {{#if (anyNotNull metric.value.max)}}<tr>
+                    <th class="right_cell">Max</th>
+                    <td class="right_cell">
+                        {{> metricValue metric value=metric.value.max}}
+                    </td>
+                    <td>Rank {{metric.value.maxRank}} on {{metric.value.maxNode}}</span></td>
+                </tr>{{/if}}
+                {{#if (anyNotNull metric.value.stdev)}}<tr>
+                    <th class="right_cell">S.D.</th>
+                    <td class="right_cell">
+                        {{> metricValue metric value=metric.value.stdev}}
+                    </td>
+                    <td></td>
+                </tr>{{/if}}
+            </table>
+        {{/if}}
+    {{/condenseSpace}}
+{{/inline}}
+
+{{#*inline "percentageTemplate"}}
+    <tr id="{{#makeId}}subsection-metric-{{metric.def.displayName}}{{/makeId}}">
+        <td style="white-space: nowrap;">{{>metricName}}</td>
+        <td style="white-space: nowrap;" class="right_cell"><span class="{{colorName}}">{{percent metric.value.mean}}</span>%</td>
+        <td style="white-space: nowrap;" class="bar">{{>metricBar}}</td>
+        <td style="width:100%"></td>
+    </tr>
+    <tr>
+        <td colspan="4" id="{{metric.def.displayName}} detail" class="metricDetail"><div>{{>percentageDetailSection}}</div></td>
+    </tr>
+{{/inline}}
+
+{{#*inline "numberTemplate"}}
+    <tr id="{{#makeId}}subsection-metric-{{metric.def.displayName}}{{/makeId}}">
+        <td style="white-space: nowrap;">{{>metricName}}</td>
+        <td style="white-space: nowrap;" class="right_cell">
+            {{> metricValue metric value=metric.value.mean}}
+        </td>
+        <td style="white-space: nowrap;" class="bar">{{>metricBar}}</td>
+        <td style="width:100%"></td>
+    </tr>
+    <tr>
+        <td colspan="4" id="{{metric.def.displayName}} detail" class="metricDetail"><div>{{>numberDetailSection}}</div></td>
+    </tr>
+{{/inline}}
+
+{{#*inline "spacerTemplate"}}
+    <tr class="spacer"><td></td><td></td><td></td><td></td></tr>
+{{/inline}}
+
+{{#each subsections}}{{#if (isVisible this)}}<div class="subsection" id="{{#makeId}}subsection-{{heading}}{{/makeId}}">
+    {{increment 'subsectionIndex' scope=..}}
+    <h2 class="{{colorName}}">{{heading}}</h2>
+    <div>{{eval descriptionHtmlTemplate @root.data self=this}}</div>
+    <table class="metric_chart_table">
+        {{#each (normaliseMetrics metrics)}}{{#if template}}{{#if (isVisible this)}}
+        {{> (lookup this 'template') metric=this}}
+        {{/if}}{{/if}}{{/each}}
+    </table>
+    <div>
+        {{#each (eval adviceHtmlTemplate @root.data self=this)}}{{#if this}}<div class="explanation">{{this}}</div>{{/if}}{{/each}}
+    </div>
+    {{#with (eval errorHtmlTemplate @root.data self=this)}}{{#if this}}<div class="explanation">{{this}}</div>{{/if}}{{/with}}
+</div>
+<!-- it would be nice to do this with CSS, but IE8... :( -->
+{{#if (isOdd ../subsectionIndex)}}<div class="clear"></div>{{/if}}
+{{/if}}{{/each}}
+<div class="clear"></div>

@@ -1,0 +1,9 @@
+{{#each headerData}}
+    {{#if (isVisible this)}}
+        {{#trimLeft}}
+            {{#with (trim (eval valueHtmlTemplate @root.data self=this)) as |valueHtml|}}
+                {{#padRight 15}}{{{../../caption}}}:{{/padRight}} {{{htmlToText valueHtml}}}
+            {{/with}}
+        {{/trimLeft}}
+    {{/if}}
+{{/each}}

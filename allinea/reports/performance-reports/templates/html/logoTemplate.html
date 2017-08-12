@@ -1,0 +1,7 @@
+{{#each brandingData.logos}}<div>
+    {{#if link}}<a href="{{link}}" target="_blank">{{/if}}
+    <img src="{{image}}" width="130" height="{{height}}"
+        {{#if altData}}onerror="this.onerror=null;this.src='{{altData}}'"{{/if}}
+    />
+    {{#if link}}</a>{{/if}}
+</div>{{/each}}

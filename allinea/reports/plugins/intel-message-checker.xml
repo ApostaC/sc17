@@ -1,0 +1,4 @@
+<plugin name="Intel Message Checker 7.1" description = "Enables MPI message checking when using Intel MPI 3.0 or later">
+    <preload name="libVTmc.so" />
+    <breakpoint location="MessageCheckingBreakpoint" action="message_box" message_variable="error" />
+</plugin>

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# This is a simple wrapper for submitting commands to the bsub command.
+# The job script is passed as the last argument rather than redirecting stdin.
+# All other command line arguments are sent straight to bsub. 
+
+JOB_SCRIPT="${!#}"
+bsub "${@:1:$(($#-1))}" <"${JOB_SCRIPT}"

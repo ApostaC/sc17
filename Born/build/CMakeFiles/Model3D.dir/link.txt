@@ -1,0 +1,1 @@
+/usr/bin/g++     -Ofast -std=c++11   CMakeFiles/Model3D.dir/model.cc.o  -o Model3D -rdynamic base/libbase.a /opt/genericIO/lib/libgenericCpp.a -ltbb 

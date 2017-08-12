@@ -1,0 +1,133 @@
+<metricdefinitions version="1">
+
+    <metric id="mpi_call_time">
+        <units>ns</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="mpi_src" functionName="allinea_getMPICallDuration"/>
+        <display>
+            <description>Duration of sampled MPI calls</description>
+            <displayName>MPI call duration</displayName>
+            <type>mpi</type>
+            <colour>SpecialLine5</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+        </display>
+    </metric>
+
+    <metric id="mpi_sent">
+        <units>B/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="mpi_src" functionName="allinea_getMPISent" divideBySampleTime="true"/>
+        <display>
+            <description>MPI bytes sent per second per process</description>
+            <displayName>MPI sent</displayName>
+            <type>mpi</type>
+            <colour>SpecialLine5</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+        </display>
+    </metric>
+
+    <metric id="mpi_recv">
+        <units>B/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="mpi_src" functionName="allinea_getMPIReceived" divideBySampleTime="true"/>
+        <display>
+            <description>MPI bytes received per second per process</description>
+            <displayName>MPI received</displayName>
+            <type>mpi</type>
+            <colour>SpecialLine5</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+        </display>
+    </metric>
+
+    <metric id="mpi_calls">
+        <units>calls/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="mpi_src" functionName="allinea_getMPICalls" divideBySampleTime="true"/>
+        <display>
+            <description>Number of MPI calls per second per process</description>
+            <displayName>MPI calls</displayName>
+            <type>mpi</type>
+            <colour>SpecialLine5</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+        </display>
+    </metric>
+
+    <metric id="mpi_p2p">
+        <units>calls/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="mpi_src" functionName="allinea_getMPIPointToPoint" divideBySampleTime="true"/>
+        <display>
+            <description>Number of point-to-point MPI calls per second per process</description>
+            <displayName>MPI point-to-point</displayName>
+            <type>mpi</type>
+            <colour>SpecialLine5</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+        </display>
+    </metric>
+
+    <metric id="mpi_collect">
+        <units>calls/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="mpi_src" functionName="allinea_getMPICollectives" divideBySampleTime="true"/>
+        <display>
+            <description>Number of collective MPI calls per second per process</description>
+            <displayName>MPI collectives</displayName>
+            <type>mpi</type>
+            <colour>SpecialLine5</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+        </display>
+    </metric>
+
+    <metric id="mpi_p2p_bytes">
+        <units>B/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="mpi_src" functionName="allinea_getMPIPointToPointBytes" divideBySampleTime="true"/>
+        <display>
+            <description>MPI bytes sent and received per second in a point-to-point MPI call</description>
+            <displayName>MPI point-to-point bytes</displayName>
+            <type>mpi</type>
+            <colour>SpecialLine5</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+        </display>
+    </metric>
+
+    <metric id="mpi_collect_bytes">
+        <units>B/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="mpi_src" functionName="allinea_getMPICollectivesBytes" divideBySampleTime="true"/>
+        <display>
+            <description>MPI bytes sent and received per second in a collective MPI call</description>
+            <displayName>MPI collectives bytes</displayName>
+            <type>mpi</type>
+            <colour>SpecialLine5</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+        </display>
+    </metric>
+
+    <metricGroup id="MPI_group">
+        <displayName>MPI</displayName>
+        <description>MPI metrics</description>
+        <metric ref="mpi_call_time"/>
+        <metric ref="mpi_sent"/>
+        <metric ref="mpi_recv"/>
+        <metric ref="mpi_calls"/>
+        <metric ref="mpi_p2p"/>
+        <metric ref="mpi_collect"/>
+        <metric ref="mpi_p2p_bytes"/>
+        <metric ref="mpi_collect_bytes"/>
+    </metricGroup>
+
+    <source id="mpi_src">
+        <sharedLibrary>lib-mpi.so</sharedLibrary>
+    </source>
+
+</metricdefinitions>
+

@@ -1,0 +1,24 @@
+var NAVTREEINDEX =
+{
+"index.html":[],
+"index.html":[0],
+"pages.html":[1],
+"xml.html":[1,0],
+"partial.html":[1,1],
+"modules.html":[2],
+"group__api.html":[2,0],
+"group__template.html":[2,1],
+"files.html":[3,0],
+"allinea__metric__plugin__api_8h.html":[3,0,0],
+"allinea__metric__plugin__errors_8h.html":[3,0,1],
+"allinea__metric__plugin__template_8h.html":[3,0,2],
+"allinea__metric__plugin__types_8h.html":[3,0,3],
+"allinea__safe__malloc_8h.html":[3,0,4],
+"allinea__safe__syscalls_8h.html":[3,0,5],
+"globals.html":[3,1,0],
+"globals_func.html":[3,1,1],
+"globals_type.html":[3,1,2],
+"examples.html":[4],
+"sample_8c-example.html":[4,0],
+"sample_8xml-example.html":[4,1]
+};

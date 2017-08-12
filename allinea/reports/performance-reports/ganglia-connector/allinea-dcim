@@ -1,0 +1,268 @@
+#!/bin/bash
+
+# Define the record_metric function, then source this script to implement a
+# Performance Reports DCIM connector.
+#
+# record_metric takes five parameters:
+#
+# record_metric (metric-name) (metric-value) [metric-units] [metric-title] [metric-type]
+#
+# and should be used to report the metric to your DCIM system.
+
+THIS_SCRIPT="$(basename "$0")"
+SHOW_HELP=no
+VALUES=()
+UNITS=()
+TITLES=()
+TYPES=()
+GROUP_LISTS=()
+DESCRIPTIONS=()
+
+# Usage: show_help
+# Show help text
+function show_help {
+    echo "
+ Usage: ${THIS_SCRIPT} [OPTIONS]...
+
+ -h, --help                Print help and exit
+ -V{METRIC}={VALUE}        Set the value {VALUE} for the metric {METRIC}
+ -U{METRIC}={UNITS}        Set the units {UNITS} for the metric {METRIC}
+ -T{METRIC}={TITLE}        Set the title {TITLE} for the metric {METRIC}
+ -t{METRIC}={TYPE}         Set the type {TYPE} for the metric {METRIC}
+ -G{METRIC}={GROUP_LIST}   Set the list of group {GROUP_LIST} the metric {METRIC} belongs to (comma-separated)
+ -D{METRIC}={DESCRIPTION}  Set the description {DESCRIPTION} for the metric {METRIC}
+
+ Each option may be specified several times to set information about different metrics.
+
+ This script is called by Allinea Performance Reports to report metric data
+ to a data centre infrastructure management (DCIM) service such as Ganglia.
+"
+    exit 1
+}
+
+# Usage: split_key_value (string)
+# Split the argument into $key and $value using the first equals sign
+function split_key_value()
+{
+    # See https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion
+    # for how this magic works
+    local arg="$1"
+    key="${arg%%=*}"
+    value="${arg#*=}"
+}
+
+# Usage: groups_contains (string, string)
+# Check if the second parameter is included in the first parameter
+# which is a comma-separated list of values.
+function groups_contains()
+{
+    local arg1="$(echo $1 | tr "," "\n")"
+    local arg2="$2"
+    for j in ${arg1}
+    do
+        if [ "${j}" = "allinea" ]
+        then
+            return 1
+        fi
+    done
+
+    return 0
+}
+
+# Usage: get_units (metric-name)
+# Search the command line definitions of UNITS for the units for the specified
+# metric. If the units are defined multiple times the last value will be taken.
+function get_units()
+{
+    local metric="$1"
+    local key
+    local value
+    units=""
+    for i in "${UNITS[@]}"
+    do
+        split_key_value "$i"
+        if [ "$key" = "$metric" ]
+        then
+            # try to convert unit to a good looking one
+            case "${value}" in
+                B)
+                    units="Bytes"
+                ;;
+                B/s)
+                    units="Bytes/sec"
+                ;;
+                core/node|cores/node)
+                    units="Cores/node"
+                ;;
+                GPU|GPUs)
+                    units="GPUs"
+                ;;
+                node|nodes)
+                    units="Nodes"
+                ;;
+                process|processes)
+                    units="Processes"
+                ;;
+                second|seconds)
+                    units="Seconds"
+                ;;
+                W)
+                    units="Watts"
+                ;;
+                Wh)
+                    units="Watt-hours"
+                ;;
+                %)
+                    units="Percent"
+                ;;
+                *) # convertion failed
+                    units="${value}"
+            esac
+        fi
+    done
+}
+
+# Usage: get_title (metric-name)
+# Search the command line definitions of TITLES for the title for the specified
+# metric. If the title is defined multiple times the last value will be taken.
+function get_title()
+{
+    local metric="$1"
+    local key
+    local value
+    title=""
+    for i in "${TITLES[@]}"
+    do
+        split_key_value "$i"
+        if [ "$key" = "$metric" ]
+        then
+            title="${value}"
+        fi
+    done
+}
+
+# Usage: get_type (metric-name)
+# Search the command line definitions of TYPES for the type for the specified
+# metric. If the type is defined multiple times the last value will be taken.
+# If the type is not defined, it will default to 'double'.
+function get_type()
+{
+    local metric="$1"
+    local key
+    local value
+    type=""
+    for i in "${TYPES[@]}"
+    do
+        split_key_value "$i"
+        if [ "$key" = "$metric" ]
+        then
+            type="${value}"
+        fi
+    done
+
+    [ -z "$type" ] && type="double"
+}
+
+# Usage: get_group_list (metric-name)
+# Search the command line definitions of GROUPS for the groups for the specified
+# metric. If the groups are not defined, it will default to 'allinea'. If the
+# groups are defined and do not contains 'allinea', it will be added.
+# If the groups are defined multiple times the last value will be taken.
+function get_group_list()
+{
+    local metric="$1"
+    local key
+    local value
+    group_list=""
+    for i in "${GROUP_LISTS[@]}"
+    do
+        split_key_value "$i"
+        if [ "$key" = "$metric" ]
+        then
+            group_list="${value}"
+        fi
+    done
+
+    if [ -z "$group_list" ]; then
+        group_list="allinea"
+    elif groups_contains "$group_list" "allinea"; then
+        group_list="${group_list},allinea"
+    fi
+}
+
+# Usage: get_description (metric-name)
+# Search the command line definitions of DESCRIPTIONS for the description for
+# the specified metric. If the description is defined multiple times the last
+# value will be taken.
+function get_description()
+{
+    local metric="$1"
+    local key
+    local value
+    description=""
+    for i in "${DESCRIPTIONS[@]}"
+    do
+        split_key_value "$i"
+        if [ "$key" = "$metric" ]
+        then
+            description="${value}"
+        fi
+    done
+}
+
+# Parse command line arguments
+for i in "$@"
+do
+    case "$i" in
+        -V*)
+            VALUES+=("${i:2}")
+        ;;
+        -U*)
+            UNITS+=("${i:2}")
+        ;;
+        -T*)
+            TITLES+=("${i:2}")
+        ;;
+        -t*)
+            TYPES+=("${i:2}")
+        ;;
+        -G*)
+            GROUP_LISTS+=("${i:2}")
+        ;;
+        -D*)
+            DESCRIPTIONS+=("${i:2}")
+        ;;
+        -h|--help)
+            SHOW_HELP='yes'
+        ;;
+    esac
+done
+
+if [ "${SHOW_HELP}" = 'yes' ]
+then
+    show_help
+fi
+
+# Record metrics
+for i in "${VALUES[@]}"
+do
+    split_key_value "$i"
+    get_units "$key"
+    get_title "$key"
+    get_type "$key"
+    get_group_list "$key"
+    get_description "$key"
+
+    # Convert bool to int8 (either 0 or 1)
+    if [ "$type" = "bool" ]; then
+        type="int8"
+        if [ "$value" = "true" ]; then
+            value=1
+        else
+            value=0
+        fi
+    fi
+
+
+    record_metric "$key" "$value" "$units" "$title" "$type" "$group_list" "$description"
+done

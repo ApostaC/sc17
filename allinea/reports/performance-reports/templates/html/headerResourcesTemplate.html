@@ -1,0 +1,21 @@
+{{#with applicationDetails}}
+    {{#if nodes.plain}}
+        {{#with (lookupMetric "applicationDetails.nodes.plain") as |value|}}
+            {{#with (lookupMetricUnits "applicationDetails.nodes.plain") as |units|}}
+                {{value}} {{customUnits value units}}
+            {{/with}}
+        {{/with}}
+        {{#if physicalCoresPerNode}}
+            ({{physicalCoresPerNode}} physical,
+             {{logicalCoresPerNode}} logical cores per node)
+        {{/if}}
+        {{#if hasGpu}}
+            <br />
+            {{#with (lookupMetric "applicationDetails.gpusPerNode.plain") as |value|}}
+                {{#with (lookupMetricUnits "applicationDetails.gpusPerNode.plain") as |units|}}
+                    {{value}} {{customUnits value units}} per node available
+                {{/with}}
+            {{/with}}
+        {{/if}}
+    {{/if}}
+{{/with}}

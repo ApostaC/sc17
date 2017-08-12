@@ -1,0 +1,62 @@
+Allinea Performance Reports (c) Allinea Software Ltd.
+
+2017-07-26
+
+This is version 7.0.6 of Allinea Performance Reports.
+
+Contents
+========
+
+    1.  Installing Performance Reports
+    2.  Running Performance Reports
+    3.  Contacting Us
+
+1.  Installing Performance Reports
+==================================
+
+    Run the graphical "installer" or the text-only "textinstall.sh" from the download
+    tarball.
+
+    You may choose to install just for you or for all users on your system.
+
+    If you are installing on a cluster, please make sure the package is
+    available at the same path on every machine.
+
+    The user guide in the doc/ directory contains further configuration 
+    information.
+
+    If you do not have a licence file you will need to obtain one from Allinea.
+    Trial licences may be obtained by visiting
+      http://www.allinea.com/products/trials/.
+
+    Full licences may be obtained by emailing sales@allinea.com. The licences
+    should be stored in a directory called licences below the installation 
+    directory. For a default (root) installation, that directory would be:
+      /opt/allinea/reports/licences
+    and for a user-only installation it would be:
+      ${HOME}/allinea/reports/licences
+
+2.  Running Performance Reports
+===============================
+
+    To run Performance Reports, add 'perf-report' in front of your existing
+    mpiexec or aprun command-line, e.g.:
+        {allinea-reports-path}/bin/perf-report mpiexec -n 4 examples/wave_c
+
+    If {allinea-reports-path}/bin is in your $PATH, just 'perf-report' will do.
+
+    Your chosen program will be run just as before and two report files, one
+    .txt and one .html will be created in the current directory on completion.
+    If you have problems starting your program under Performance Reports,
+    first ensure it can run without Performance Reports with no errors.
+
+    You can use the --output/-o argument to specify a single output file name.
+    See perf-report --help or the user guide in doc/ for more information.
+
+
+3.  Contacting Us
+=================
+
+    If you have problems with any Allinea product, please contact us at
+        support@allinea.com
+    or  +44 (0)1926 623231

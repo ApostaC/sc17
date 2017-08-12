@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Exec=/home/aposta/sc17/allinea/reports/bin/allinea-forge -gui
+Icon=allinea-forge
+Name=Allinea Forge 7.0.6
+Terminal=false
+Categories=Development;Debugger;Profiling

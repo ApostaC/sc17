@@ -1,0 +1,159 @@
+<metricdefinitions version="1">
+
+    <metric id="instr_fp">
+        <units>%</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="instructions_src" functionName="allinea_instructions"/>
+        <display>
+            <description>The percentage of time spent executing floating-point instructions (both scalar and vector)</description>
+            <displayName>CPU floating-point</displayName>
+            <type>instructions</type>
+            <colour>SpecialLine6</colour>
+            <widgetColour>SpecialLine1</widgetColour>
+        </display>
+    </metric>
+
+    <metric id="instr_int">
+        <units>%</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="instructions_src" functionName="allinea_instructions"/>
+        <display>
+            <description>The percentage of time spent executing integer instructions (both scalar and vector)</description>
+            <displayName>CPU integer</displayName>
+            <type>instructions</type>
+            <colour>SpecialLine6</colour>
+            <widgetColour>SpecialLine1</widgetColour>
+        </display>
+    </metric>
+
+    <metric id="instr_mem">
+        <units>%</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="instructions_src" functionName="allinea_instructions"/>
+        <display>
+            <description>The percentage of time spent executing memory-related instructions (e.g. mov, load, store)</description>
+            <displayName>CPU memory access</displayName>
+            <type>instructions</type>
+            <colour>SpecialLine6</colour>
+            <widgetColour>SpecialLine7</widgetColour>
+        </display>
+    </metric>
+
+    <metric id="instr_implicit_mem">
+        <units>%</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="instructions_src" functionName="allinea_instructions"/>
+        <display>
+            <description>The percentage of time spent executing instructions with implicit memory accesses</description>
+            <displayName>CPU implicit memory access</displayName>
+            <type>instructions</type>
+            <colour>SpecialLine6</colour>
+            <widgetColour>SpecialLine7</widgetColour>
+        </display>
+    </metric>
+
+    <metric id="instr_scalar_fp">
+        <units>%</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="instructions_src" functionName="allinea_instructions"/>
+        <display>
+            <description>The percentage of time spent executing floating-point scalar instructions</description>
+            <displayName>CPU fp scalar</displayName>
+            <type>instructions</type>
+            <colour>SpecialLine6</colour>
+            <widgetColour>SpecialLine1</widgetColour>
+        </display>
+    </metric>
+
+    <metric id="instr_scalar_int">
+        <units>%</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="instructions_src" functionName="allinea_instructions"/>
+        <display>
+            <description>The percentage of time spent executing integer scalar instructions</description>
+            <displayName>CPU integer scalar</displayName>
+            <type>instructions</type>
+            <colour>SpecialLine6</colour>
+            <widgetColour>SpecialLine1</widgetColour>
+        </display>
+    </metric>
+
+    <metric id="instr_vector_fp">
+        <units>%</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="instructions_src" functionName="allinea_instructions"/>
+        <display>
+            <description>The percentage of time spent executing floating-point vector instructions (e.g. SSE)</description>
+            <displayName>CPU fp vector</displayName>
+            <type>instructions</type>
+            <colour>SpecialLine6</colour>
+            <widgetColour>SpecialLine16</widgetColour>
+        </display>
+    </metric>
+
+    <metric id="instr_vector_int">
+        <units>%</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="instructions_src" functionName="allinea_instructions"/>
+        <display>
+            <description>The percentage of time spent executing integer vector instructions (e.g. SSE / MMX)</description>
+            <displayName>CPU integer vector</displayName>
+            <type>instructions</type>
+            <colour>SpecialLine6</colour>
+            <widgetColour>SpecialLine16</widgetColour>
+        </display>
+    </metric>
+
+    <metric id="instr_branch">
+        <units>%</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="instructions_src" functionName="allinea_instructions"/>
+        <display>
+            <description>The percentage of time spent executing branch instructions (high values may indicate branch prediction failure)</description>
+            <displayName>CPU branch</displayName>
+            <type>instructions</type>
+            <colour>SpecialLine6</colour>
+            <widgetColour>#F5ABAB</widgetColour>
+        </display>
+    </metric>
+
+    <metric id="instr_other">
+        <units>%</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="instructions_src" functionName="allinea_instructions"/>
+        <display>
+            <description>The percentage of time spent executing other instructions</description>
+            <displayName>CPU other</displayName>
+            <type>instructions</type>
+            <colour>SpecialLine6</colour>
+            <widgetColour>#A0A0A0</widgetColour>
+        </display>
+    </metric>
+
+    <metricGroup id="CPU Instructions">
+        <displayName>CPU Instructions</displayName>
+        <description>CPU Instruction metrics</description>
+        <metric ref="instr_fp"/>
+        <metric ref="instr_int"/>
+        <metric ref="instr_mem"/>
+        <metric ref="instr_vector_fp"/>
+        <metric ref="instr_vector_int"/>
+        <metric ref="instr_branch"/>
+    </metricGroup>
+
+    <source id="instructions_src">
+        <sharedLibrary>lib-cpu_instructions.so</sharedLibrary>
+    </source>
+
+</metricdefinitions>
+

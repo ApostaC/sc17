@@ -1,0 +1,13 @@
+{{#if useIEC}}
+    {{#if (isEqual (trim (number (iecValue value))) "not supported")}}
+        {{padLeft "not supported" alignmentPoint}}
+    {{else}}
+        {{padLeft (number (iecValue value)) alignmentPoint}} {{iecUnits value symbol=def.units~}}
+    {{/if}}
+{{else}}
+    {{#if (isEqual (trim (number (siValue value))) "not supported")}}
+        {{padLeft "not supported" alignmentPoint}}
+    {{else}}
+        {{padLeft (number (siValue value)) alignmentPoint}} {{siUnits value symbol=def.units~}}
+    {{/if}}
+{{/if}}

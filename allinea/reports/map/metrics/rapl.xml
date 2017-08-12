@@ -1,0 +1,45 @@
+<metricdefinitions version="1">
+    <metric id="rapl_power">
+        <units>W/node</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <sparse>true</sparse>
+        <onePerNode>true</onePerNode>
+        <source ref="rapl" functionName="allinea_rapl_power" divideBySampleTime="true" />
+        <display>
+            <description>Power usage from running Average Power Energy Limit registers</description>
+            <displayName>CPU power usage</displayName>
+            <type>energy</type>
+            <colour>red</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+            <rel type="integral" name="rapl_energy"/>
+        </display>
+    </metric>
+
+    <metric id="rapl_energy">
+        <units>J</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <sparse>true</sparse>
+        <onePerNode>true</onePerNode>
+        <source ref="rapl" functionName="allinea_rapl_energy" />
+        <display>
+            <description>Energy usage from Running Average Power Limit registers</description>
+            <displayName>CPU energy usage</displayName>
+            <type>energy</type>
+            <colour>red</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+            <accumulate>true</accumulate>
+        </display>
+    </metric>
+
+    <metricGroup id="power">
+        <displayName>Energy</displayName>
+        <description>Energy usage metrics</description>
+        <metric ref="rapl_power"/>
+    </metricGroup>
+
+    <source id="rapl">
+        <sharedLibrary>lib-rapl.so</sharedLibrary>
+    </source>
+</metricdefinitions>

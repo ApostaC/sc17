@@ -1,0 +1,377 @@
+RELEASE NOTES 2017-07-26
+
+Changes for Allinea Performance Reports 7.0.6:
+
+    Updated recommended Intel compiler flags (user guide section E6).
+
+    Fixed a bug affecting --stop-after on some SLES 11 systems.
+
+Changes for Allinea Performance Reports 7.0.5:
+
+    Fix a conflict with the Cray C++ STL library when using static linking.
+
+Changes for Allinea Performance Reports 7.0.4:
+
+    Fix an issue with dlsym under IBM Spectrum MPI that affected profiling of hybrid MPI+OpenMP codes.
+
+Changes for Allinea Performance Reports 7.0.3:
+
+    Improve ANSYS Fluent support.
+
+    Fix issue with the custom metrics example.
+    
+Changes for Allinea Performance Reports 7.0.2:
+
+    New I/O functions tracked: pread_nocancel and pwrite_nocancel.
+
+    Add auto-detection support for PlatformMPI 9.1.4.2.
+    
+    Add MP_IN_PLACE and MPI_BOTTOM support to SGI MPT wrappers.
+
+Changes for Allinea Performance Reports 7.0.1:
+
+    Call allinea_plugin_cleanup in custom metrics at the end of a profiling job.
+
+    Make a "onePerNode" attribute available for custom metrics that should only collect
+    one process of each node.
+
+Changes for Allinea Performance Reports 7.0:
+
+    Custom Metrics for Performance Reports - add your own custom site- or application-specific metrics to Performance Reports.
+
+    Add Lustre metadata metrics to the Advanced Metrics Pack add-on.
+
+    Allow profiling of programs that use MPI_THREAD_MULTIPLE and MPI_THREAD_SERIALIZED (MPI calls
+    tracked on main thread only).
+    
+    Provide module files to simplify static and dynamic linking of the Allinea profiler libraries
+    on the Cray (in share/modules/cray).
+
+    Performance Reports can now be generated in JSON format for use with continuous integration and
+    regression testing systems.
+
+    Categorise OpenACC-CUDA functions as GPU functions.
+
+Changes for Allinea Performance Reports 6.1.2:
+
+    Performance Reports:
+      I/O metrics are not available on some systems, including Cray systems.
+      CPU instruction metrics are only available on x86_64 systems.
+      Thread activity is not sampled whilst a process is inside an MPI call
+      with a duration spanning multiple samples.
+
+    MPICH 3:
+      MPICH 3.0.3 and 3.0.4 did not work with the Allinea Performance Reports
+      due to an MPICH defect. MPICH 3.1 addressed this and is fully supported.
+
+    SLURM:
+      On Cray X-series systems only 'native' SLURM is supported - 'hybrid' mode is
+      not supported.
+
+    PGI compilers:
+      Version 14.9 or later of the PGI compilers is required to compile the
+      Allinea MAP MPI wrappers as a static library.
+
+Changes for Allinea Performance Reports 6.1.1:
+
+    Fix a case where standard input would not be forwarded during
+    non-interactive sessions when the source was a file on a Lustre filesystem.
+
+    Add support for profiling programs where all MPI communication takes place
+    on a single non-main thread.
+
+    Fix an issue where CUDA runtime and driver version mismatches were sometimes
+    silently ignored.
+
+    Fix an issue that prevented the graphical installer from working on Suse 12
+
+    Remove the temporary .build directories for the precompiled MPI wrappers.
+
+    Fix crash on startup for Cray systems with an old version of wlm_detect.
+
+    Fix multiple compilers being used to compile MPI wrappers.
+
+Changes for Allinea Performance Reports 6.1:
+
+    Profiling support for Knights Landing (KNL) Xeon Phi product family.
+
+    Support for CUDA 8.0.
+
+    Enable CUDA support on POWER.
+
+    Preloading the Allinea profiler libraries is now supported for dynamically
+    linked programs on Cray X-Series / Cray MPT systems.
+
+    Preloading the Allinea profiler libraries when using Slurm versions older than
+    14.11 is now supported.
+
+    Precompiled Allinea MPI wrappers are now provided for OpenMPI (1.6 and up),
+    Intel MPI (5.0 and up), MPICH2, MPICH3, Bullx MPI, MVAPICH2 and Cray MPI.
+
+    Licences are now tied to architectures.  x86_64 and i686 are taken as defaults if no
+    architectures are specified in the licence file.
+
+    Fixed CUDA 7.5 not working on Cray systems.
+
+    Output CPU and accelerator energy (Wh) in csv reports.
+
+    Output Performance report metrics to DCIM (e.g. Ganglia) through customisable script.
+
+    Performance reports will no longer show spurious TopologyFile::readEntry
+    warnings on some systems.
+
+    Programs that dynamically load OpenMP at runtime will no longer crash.
+    
+    If a system does not have have I/O accounting enabled for all filesystems
+    Performance Reports will fall back to reporting only Lustre I/O.
+
+    Added support for Platform MPI to Express Launch mode.
+
+    Programs using Platform MPI will now have their working directory set correctly.
+
+    Added support for statically linking the profiler libraries on Cray systems
+    that are using binutils >= 2.25.
+
+    Added automatic SLURM detection on Cray.
+
+    Fixed an issue that could cause unnecessary sampling overhead when profiled
+    program makes redundant calls to dlopen or dlclose.
+
+    Include stat/lstat/fstat calls in I/O metrics.
+    
+    Prevent spurious "Maximum backtrace size in sampler exceeded, stack too deep."
+    messages appearing.
+
+Changes for Allinea Performance Reports 6.0.6: Rollup of previous bug fixes.
+
+    Fix incorrectly reported number of nodes in Express Launch mode.
+
+    Fix CPU breakdown being incorrect for codes with large functions.
+
+    Fix sampler not being able to recover from minor errors
+    due to the debugger intercepting any signals raised
+
+Changes for Allinea Performance Reports 6.0.5: Rollup of previous bug fixes.
+
+    Fix failing startup when using SLURM in some configurations because of
+    premature job termination.
+
+   Fixed an issue that could cause Cray OpenMP programs to segfault.
+
+    Added support for SHMEM programs using shmem_init.
+
+    Fixed an issue that caused CPU instruction metrics to be lower than expected
+    for some GPU runs.
+
+    Fix long MAP analysis times for some SLURM configurations when processes
+    are bound to a single core on a node.
+
+    Fixed an issue that could cause jobs to time-out early for some SLURM
+    configurations.
+
+    Cray MPI will now be correctly auto-detected if Intel MPI is also in the
+    path on Cray machines.
+
+    Performance Reports will no longer erroneously detect a Xeon Phi card if the
+    driver is installed but no card or cross-compilation environment is present.
+
+Changes for Allinea Performance Reports 6.0.4: Rollup of previous bug fixes.
+
+    Fix bullx MPI startup.
+
+    Fix express launch for SGI MPT.
+
+Changes for Allinea Performance Reports 6.0.3: Rollup of previous bug fixes.
+
+    Fix an issue that caused performance reports to crash when sampling
+    an application that uses pthreads on RHEL 5.
+
+    Reduce the number of queries for user and group information made by the
+    back end start-up on Cray systems.
+
+    Fix duplicate entries for MPI call MPI_Bcast error.
+
+    Fix assertion failure `a.tv_nsec < 1000000000'.
+    
+    Improve SIGPROF signal handler error messages.
+
+    Fix Python environment variables.
+
+    Add support for setting environment variables in --mpiargs with MVAPICH2
+    and mpirun_rsh.
+
+Changes for Allinea Performance Reports 6.0.2: Rollup of previous bug fixes.
+
+    Reduce the number of queries for user and group information made by the
+    back end start-up on Cray systems.
+
+    Fix an issue that prevented compilation of static wrapper libraries.
+
+Changes for Allinea Performance Reports 6.0.1: Rollup of previous bug fixes.
+
+    Fix conflict between Performance Reports and profiled programs that have
+    a global variable called "data".
+
+    Added support for reading compute node power usage via IPMI power sensors.
+    See http://www.allinea.com/ipmi-energy-agent for more details.
+
+Changes for Allinea Performance Reports 6.0:
+
+    Support for CUDA 7.5
+
+    Profiling support for OpenSHMEM.
+
+    Fix an issue that could prevent Performance Reports from working when NULL
+    was passed to certain MPI functions.
+
+    Fix an issue that could cause Performance Reports to abort if exit was
+    called from a non-main thread.
+
+Changes since Allinea Performance Reports 5.1:
+
+    5.1-45173: Bug fix
+
+    - Facilitate stopping at MPI_Init when the call is in a dynamic library that is opened with dlopen()
+      by using the MPI_INIT and MPI_INIT_PENDING environment variables.
+
+    5.1-45057: Bug fix
+
+    - Fix bug that caused Performance Reports to interfere with programs that
+      passed 64 bit file offsets or counts to certain MPI functions.
+
+    5.1-44970: Bug fix
+
+    - Improve performance of the analysis phase.
+    - Fix bug that caused some MPI methods to fail under Performance Reports
+      when passed a NULL pointer from Fortran.
+    - Fix bug that caused Performance Reports to incorrectly process some
+      functions when they were passed MPI_IN_PLACE.
+    - Fix bug that caused Performance Report to wrap MPI_Wait incorrectly.
+    - Fix bug that caused Performance Report to wrap MPI_File_iwrite_shared
+      incorrectly.
+    - Fix bug that caused MPI_Status parameters to be incorrectly handled by the
+      wrapper.
+
+    5.1-44795: Bug fix
+
+    - Fix bug that caused one process per node to run much slower and to increase
+      the job wallclock time (because pmi_proxy was running at 100%).
+
+    5.1-44229: Bug fix
+
+    - Fix failure to launch CUDA jobs when auto-detection fails.
+
+    5.1-44076: Bug fix
+
+    - Fix failure to launch CUDA jobs when using SLURM(MPMD).
+
+    5.1-43967: Bug fix
+
+    - Fix MPI wrapper for Fortran MPI_File_* functions.
+
+    5.1-43812: Bug fix
+
+    - Fix issue launching IntelMPI jobs via Slurm.
+    - Fix back-end debugger selection when the MPI_COMPILER environment variable
+      is set.
+
+    5.1-43607: Bug fix
+
+    - Give the mpirun specified by the ALLINEA_MPIRUN environment variable precedence
+      over any mpirun in the path.
+    - Fix stack limit bug, causing "Thread creation error: Resource
+      temporarily unavailable" messages.
+
+    5.1-43373: Bug fix
+
+    - Fix timeout on some network configurations, caused by the backend not 
+      trying all known addresses when connecting to the frontend.
+
+Changes for Allinea Performance Reports 5.1:
+
+    Debugging and profiling support for RHEL 7 x86_64.
+    Debugging and profiling support for SLES 12 x86_64.
+    CUDA 5.5 support has been removed.
+    PGI 13.x is no longer a tested combination.
+
+    Energy section added to Performance Reports output (requires Energy Pack
+    add-on).
+
+    Removed SSH requirement for MPICH 2 and 3 and Intel MPI.
+
+Changes since Performance Reports 5.0.1:
+
+    5.0.1-43279: Bug fix
+
+    - Fix "did not reach MPIR_Breakpoint within 10000 events" bug.
+
+    5.0.1-43160: Bug fix
+
+    - Fix rare crash in GDB (htab_find <- find_subfile ...).
+
+    5.0.1-42607: Bug fix
+
+    - Fix intermittent startup failure on Cray X-series and Bluegene systems.
+
+    5.0.1-42253: Bug fix
+
+    - Fix failure to obtain I/O metrics.
+    - Fix sampler stopping on a process in MPI only code.
+    - Fix physical core utilization bar being stuck at 100%.
+
+    5.0.1-42034: Bug fix
+
+    - Fix GDB-762 segfault on Fedora-19.
+
+    5.0.1-41963: Bug fix
+
+    - Avoid terminating PlatformMPI's mpirun with SIGTERM when ending a session
+      as this may result in the termination of the enclosing queue submission
+      script.
+
+    5.0.1-41883: Bug fix
+
+    - Fix rare crash in GDB when looking up an undefined symbol.
+
+    5.0.1-41707: Bug fix
+
+    - Allow floating licences to specify the ports available for use by Allinea
+      Performance Reports.
+
+Changes for Allinea Performance Reports 5.0.1:
+
+    Involuntary Context Switches metric replaced with System Load.
+
+    Platform MPI support.
+
+    CUDA metrics for Allinea MAP and Allinea Performance Reports.
+
+Changes since Performance Reports 5.0:
+
+    5.0-41541: Bug fixes
+
+    - Fix profiler library 'allinea_type_size' linker error.
+
+    5.0-41375: Bug fix
+
+    - Prevent abort in the MPI wrapper in functions with arguments of type
+      MPI_Datatype when given the value MPI_DATATYPE_NULL.
+
+    5.0-40982: Bug fix
+
+    - Prevent GDB getting into an infinite loop when a class has a class-scope member
+      of its own type and the base class also has such a member with the same name.
+
+    5.0-40932: Bug fix
+
+    - Fix detection of when sampler library has been statically linked to target
+      executable.
+
+Changes for Allinea Performance Reports 5.0:
+
+    Support for multiple threads. OpenMP section added to reports.
+
+    Replaced make-map-*-libraries and make-profiler-*-libraries scripts with a
+    single make-profiler-libraries script.
+
+    Support for SGI MPT and SLURM.

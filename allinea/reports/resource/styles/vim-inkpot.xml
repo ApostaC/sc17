@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<style-scheme version="1.0" name="Vim (Inkpot)">
+<!--
+  This color scheme is based on the vim Inkpot color scheme, originally
+  created by Ciaran McCreesh:
+  http://www.vim.org/scripts/script.php?script_id=1143
+-->
+  <style name="AddedLine" foreground="#00aa00"/>
+  <style name="Alert" foreground="#008000" bold="true"/>
+  <style name="Binding" foreground="#ff5555"/>
+  <style name="Comment" foreground="#cd8b00"/>
+  <style name="CurrentLine" foreground="#000000" background="#2d2d32"/>
+  <style name="CurrentLineNumber" foreground="#a7a7f5" bold="true"/>
+  <style name="DiffFile" foreground="#8484f3"/>
+  <style name="DiffLocation" foreground="#0084ff"/>
+  <style name="DisabledCode" foreground="#a0a0a4" italic="true"/>
+  <style name="Doxygen.Comment" foreground="#737dd5"/>
+  <style name="Doxygen.Tag" foreground="#4e5ab3"/>
+  <style name="Error" foreground="#ff0000"/>
+  <style name="Extension" foreground="#0095ff"/>
+  <style name="Field" bold="true"/>
+  <style name="Function" foreground="#aabbff"/> <!-- MPI Functions -->
+  <style name="Keyword" foreground="#808bed"/>
+  <style name="Label" foreground="#e76000"/>
+  <style name="LineNumber" foreground="#8b8bcd" background="#2e2e2e"/>
+  <style name="Link" foreground="#409090"/>
+  <style name="Local"/>
+  <style name="Number" foreground="#f0ad6d"/>
+  <style name="Occurrences" foreground="#000000" background="#616161"/>
+  <style name="Occurrences.Rename" foreground="#000000" background="#ff6464"/>
+  <style name="Occurrences.Unused" foreground="#808000"/>
+  <style name="Operator" foreground="#cfbfad"/>
+  <style name="Others" foreground="#55ff55"/>
+  <style name="Parentheses" foreground="#ffff00"  background="#4e4e8f"/>
+  <style name="Preprocessor" foreground="#409090"/>
+  <style name="RegionMarker" foreground="#0057ae" background="#dfe9f7"/>
+  <style name="RemovedLine" foreground="#ff0000"/>
+  <style name="SearchResult" foreground="#000000" background="#ffef0b"/>
+  <style name="SearchScope" foreground="#000000" background="#f8fafc"/>
+  <style name="Selection" foreground="#ffffff" background="#4e4e8f"/>
+  <style name="Static" foreground="#cb6ecb"/>
+  <style name="String" foreground="#ffcd8b" background="#404040"/>
+  <style name="Text" foreground="#cfbfad" background="#1e1e27"/>
+  <style name="Type" foreground="#ff8bff"/>
+  <style name="VirtualMethod" italic="true"/>
+  <style name="VisualWhitespace" foreground="#646482"/>
+  
+  <!-- Time Glyph colours. Used in the PSV and code-view -->
+  
+  <!-- foreground=Normal-time in TimeGlyphs, background=Rescaled normal-time in TimeGlyphs -->
+  <style name="SpecialLine1" foreground="#bb0000" background="#ffff00"/>
+  <!-- foreground=MPI-time in TimeGlyphs, background=Rescaled MPI-time in TimeGlyphs -->
+  <style name="SpecialLine2" foreground="#aabbff" background="#ffdd00"/>
+  <!-- foreground=OpenMP-time in TimeGlyphs, background=Rescaled MPI-time in TimeGlyphs -->
+  <style name="SpecialLine13" foreground="#ff8000" background="#990000"/>
+  <!-- foreground=Accelerator-time in TimeGlyphs, background=Rescaled MPI-time in TimeGlyphs -->
+  <style name="SpecialLine14" foreground="#ff007f" background="#999900"/>
+  <!-- foreground=Other-time in TimeGlyphs, background=Rescaled MPI-time in TimeGlyphs -->
+  <style name="SpecialLine15" foreground="#ffff00" background="#ffff99"/>
+  <!-- SpecialLine16 reserved for future TimeGlyph colours -->
+  <!-- SpecialLine17 reserved for future TimeGlyph colours -->
+  <!-- SpecialLine18 reserved for future TimeGlyph colours -->
+
+  <!-- foreground=Background in TimeGlyphs, background=Sleeping-time in TimeGlyphs -->
+  <style name="SpecialLine3" foreground="#555555" background="#808080"/>
+
+  <!-- Line highlight colour to use in MAP when 100% of samples hit a line.
+       The background colour gets faded out to the "Text" background colour 
+       for lesser percentages of hits. -->
+  <style name="SpecialLine4" background="#7fbeff"/> 
+
+  <style name="SpecialLine5" foreground="#0000ff" background="#ffffff"/> <!-- MPI -->
+  <style name="SpecialLine6" foreground="#00ff00" background="#ffffff"/> <!-- CPU -->
+  <style name="SpecialLine7" foreground="#ff0000" background="#ffffff"/> <!-- Memory -->
+  <style name="SpecialLine8" foreground="#ff8c14" background="#ffffff"/> <!-- I/O -->
+  
+  <!-- NB: SpecialLines 13-18 (inclusive) used or reserved for TimeGlyph colours -->
+
+  <!-- Metric graph colours -->
+</style-scheme>
+

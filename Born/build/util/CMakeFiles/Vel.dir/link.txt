@@ -1,0 +1,1 @@
+/usr/bin/g++     -Ofast -std=c++11   CMakeFiles/Vel.dir/Vel.cc.o  -o Vel -rdynamic /opt/genericIO/lib/libgenericCpp.a 

@@ -1,0 +1,2 @@
+/home/aposta/sc17/Born/qtcube/bin/Sep_cube
+/home/aposta/sc17/Born/qtcube/bin/qt_cube

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<style-scheme version="1.0" name="Default">
+  <!--
+  Based on QtCreator's default theme
+  -->
+  <style name="AddedLine" foreground="#00aa00"/>
+  <style name="Alert" foreground="#008000" bold="true"/>
+  <style name="Binding" foreground="#800000"/>
+  <style name="Comment" foreground="#008000"/>
+  <style name="CurrentLine" foreground="#000000" background="#000080"/>
+  <style name="CurrentLineNumber" foreground="#808080" bold="true"/>
+  <style name="DiffFile" foreground="#000080"/>
+  <style name="DiffLocation" foreground="#0000ff"/>
+  <style name="DisabledCode" foreground="#000000" background="#efefef"/>
+  <style name="Doxygen.Comment" foreground="#000080"/>
+  <style name="Doxygen.Tag" foreground="#0000ff"/>
+  <style name="Error" foreground="#ff0000"/>
+  <style name="Extension" foreground="#0095ff"/>
+  <style name="Field" foreground="#800000"/>
+  <style name="Function" foreground="#0000ff"/> <!-- MPI Functions -->
+  <style name="Keyword" foreground="#808000"/>
+  <style name="Label" foreground="#800000"/>
+  <style name="LineNumber" foreground="#808080" background="#d6d6d6"/>
+  <style name="Link" foreground="#0000ff"/>
+  <style name="Local" foreground="#000000"/>
+  <style name="Number" foreground="#000080"/>
+  <style name="Occurrences" foreground="#000000" background="#b4b4b4"/>
+  <style name="Occurrences.Rename" foreground="#000000" background="#ff6464"/>
+  <style name="Occurrences.Unused" foreground="#808000"/>
+  <style name="Operator" foreground="#000000"/>
+  <style name="Others" foreground="#000080"/>
+  <style name="Parentheses" foreground="#ff0000" background="#b4eeb4"/>
+  <style name="Preprocessor" foreground="#000080"/>
+  <style name="RegionMarker" foreground="#0057ae" background="#dfe9f7"/>
+  <style name="RemovedLine" foreground="#ff0000"/>
+  <style name="SearchResult" foreground="#000000" background="#ffef0b"/>
+  <style name="SearchScope" foreground="#000000" background="#fbfdfa"/>
+  <style name="Selection" foreground="#ffffff" background="#accd8a"/>
+  <style name="Static" foreground="#800080"/>
+  <style name="String" foreground="#008000"/>
+  <style name="Text" foreground="#000000" background="#ffffff"/>
+  <style name="Type" foreground="#800080"/>
+  <style name="VirtualMethod" foreground="#000000" italic="true"/>
+  <style name="VisualWhitespace" foreground="#c0c0c0"/>
+
+  <!-- foreground=Normal-time in TimeGlyphs, background=Rescaled normal-time in TimeGlyphs -->
+  <style name="SpecialLine1" foreground="#509350" background="#ee0000"/>
+  <!-- foreground=MPI-time (main thread only) in TimeGlyphs,
+       background=Rescaled MPI-time (main thread only) in TimeGlyphs -->
+  <style name="SpecialLine2" foreground="#5050b3" background="#bb0000"/>
+  <!-- foreground=OpenMP-time in TimeGlyphs, background=Rescaled OpenMP-time in TimeGlyphs -->
+  <style name="SpecialLine13" foreground="#70bf70" background="#990000"/>
+  <!-- foreground=OpenMP-overhead time in TimeGlyphs, background=Rescaled OpenMP-overhead time in TimeGlyphs -->
+  <style name="SpecialLine14" foreground="#909090" background="#c0c0c0"/>
+  <!-- foreground=Accelerator-time in TimeGlyphs, background=Rescaled MPI-time in TimeGlyphs -->
+  <style name="SpecialLine15" foreground="#935090" background="#cc0000"/>
+  <!-- foreground=pthread compute time in TimeGlyphs, background=Rescaled pthread compute time in TimeGlyphs -->
+  <style name="SpecialLine16" foreground="#70bf70" background="#990000"/>
+  <!-- foreground=pthread synchronisation time in TimeGlyphs, 
+       background=Rescaled pthread synchronisation time in TimeGlyphs -->
+  <style name="SpecialLine17" foreground="#87ceeb" background="#cc8888"/>
+  <!-- foreground I/O time in TimeGlyphs, background=Rescaled I/O time in TimeGlyphs -->
+  <style name="SpecialLine18" foreground="#bf7c34" background="#ff6414"/>
+  <!-- foreground=MPI-time (pthread or OpenMP) in TimeGlyphs,
+       background=Rescaled MPI-time (pthread or OpenMP) in TimeGlyphs -->
+  <style name="SpecialLine19" foreground="#7171c1" background="#cc0000"/>
+  <!-- foreground=Unused cores in TimeGlyphs, background=unused -->
+  <style name="SpecialLine20" foreground="#b2b2b1" background="#b0b0b0"/>
+
+  <!-- foreground=Background in TimeGlyphs, background=Sleeping-time in TimeGlyphs -->
+  <style name="SpecialLine3" foreground="#eeeeee" background="#b0b0b0"/>
+
+
+  <!-- Line highlight colour to use in MAP when 100% of samples hit a line.
+       The background colour gets faded out to the "Text" background colour 
+       for lesser percentages of hits. -->
+  <style name="SpecialLine4" background="#628cb2"/>
+
+  <!-- Metric graph colours -->
+  <style name="SpecialLine5" foreground="#7373ef" background="#ffffff"/> <!-- MPI -->
+  <style name="SpecialLine6" foreground="#73ef73" background="#ffffff"/> <!-- CPU -->
+  <style name="SpecialLine7" foreground="#ef7373" background="#ffffff"/> <!-- Memory -->
+  <style name="SpecialLine8" foreground="#ef8c14" background="#ffffff"/> <!-- I/O -->
+  <style name="SpecialLine9" foreground="#935090" background="#ffffff"/> <!-- Accelerator -->
+
+  <!-- SpecialLine10 reserved for future metrics -->
+  <!-- SpecialLine11 reserved for future metrics -->
+  <!-- SpecialLine12 reserved for future metrics -->
+  
+  <!-- NB: SpecialLines 13-20 (inclusive) used or reserved for TimeGlyph colours -->
+
+</style-scheme>

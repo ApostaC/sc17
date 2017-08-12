@@ -1,0 +1,48 @@
+#!/bin/bash
+# $1 -np
+# $2 NUM NODES
+# $3 PROGRAM
+# $... PROGRAM ARGS
+
+mkdir /tmp/.$UID
+SCRIPT=/tmp/.$UID/job.$PPID
+MAX_PER_NODE=8
+NUM_NODES=0
+# ACCOUNT=`id -g -n`
+ACCOUNT=z06-ddt
+WALLCLOCK=00:30:00
+
+echo "#!/bin/bash" > $SCRIPT
+echo "#@ job_type = parallel" >> $SCRIPT
+if [[ $2 -lt $MAX_PER_NODE ]]; then
+   echo "#@ tasks_per_node =" $2 >> $SCRIPT;
+   NUM_NODES=1;
+else
+   echo "#@ tasks_per_node =" $MAX_PER_NODE >> $SCRIPT;
+   if [[ $(($2%$MAX_PER_NODE)) -eq 0 ]]; then
+      NUM_NODES=$(($2/$MAX_PER_NODE));
+   else
+      echo "You must select less than" $MAX_PER_NODE "processes, or a multiple of that number."
+      exit 1
+   fi
+fi
+
+echo "#@ node =" $NUM_NODES >> $SCRIPT
+echo "#@ wall_clock_limit =" $WALLCLOCK >> $SCRIPT
+echo "#@ node_usage = not_shared" >> $SCRIPT
+echo "#@ network.MPI = csss,shared,US" >> $SCRIPT
+echo "#@ account_no =" $ACCOUNT >> $SCRIPT
+echo "#@ job_name =" $SCRIPT >> $SCRIPT
+echo "#@ output = ~/.ddt-job.out" >> $SCRIPT
+echo "#@ error  = ~/.ddt-job.err" >> $SCRIPT
+echo "#@ notification = never" >> $SCRIPT
+echo "# " >> $SCRIPT
+echo "#@ queue" >> $SCRIPT
+echo "# " >> $SCRIPT
+echo "# shell = /usr/bin/bash" >> $SCRIPT
+echo "export MP_SHARED_MEMORY=yes" >> $SCRIPT
+echo ". ~/.bashrc" >> $SCRIPT
+shift 3
+echo "poe $ALLINEA_TOOLS_PATH/bin/ddt-debugger" $* >> $SCRIPT
+
+#llsubmit $SCRIPT 1>~/.ddt-job.id.$PPID

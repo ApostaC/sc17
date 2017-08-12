@@ -1,0 +1,142 @@
+<metricdefinitions version="1">
+
+    <metric id="nvidia_power">
+        <units>mW/node</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <onePerNode>true</onePerNode>
+        <source ref="nvidia_src" functionName="allinea_getPower"/>
+        <display>
+            <description>GPU power consumption per node</description>
+            <displayName>GPU power usage</displayName>
+            <type>energy</type>
+            <colour>SpecialLine9</colour>
+        </display>
+    </metric>
+
+    <metric id="nvidia_temp">
+        <units>°C</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <onePerNode>true</onePerNode>
+        <source ref="nvidia_src" functionName="allinea_getTemperature"/>
+        <display>
+            <description>The average temperature of the GPUs per node</description>
+            <displayName>GPU temperature</displayName>
+            <type>energy</type>
+            <colour>SpecialLine9</colour>
+            <autoDisplayFactor>false</autoDisplayFactor>
+        </display>
+    </metric>
+
+    <metric id="nvidia_gpu_usage">
+        <units>%</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <onePerNode>true</onePerNode>
+        <source ref="nvidia_src" functionName="allinea_getGPUusage"/>
+        <display>
+            <description>Percent of GPUs that were being used per node</description>
+            <displayName>GPU utilization</displayName>
+            <type>cpu_time</type>
+            <colour>SpecialLine9</colour>
+            <autoDisplayFactor>false</autoDisplayFactor>
+        </display>
+    </metric>
+
+    <metric id="nvidia_memory_sys_usage">
+        <units>%</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <onePerNode>true</onePerNode>
+        <source ref="nvidia_src" functionName="allinea_getMemoryUsageTime"/>
+        <display>
+            <description>Percent of time over the past sample period during which global (device) memory was being read or written per node</description>
+            <displayName>Time in global memory accesses</displayName>
+            <type>memory</type>
+            <colour>SpecialLine9</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+        </display>
+    </metric>
+
+    <metric id="nvidia_memory_used">
+        <units>B</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <onePerNode>true</onePerNode>
+        <source ref="nvidia_src" functionName="allinea_getMemoryUsage"/>
+        <display>
+            <description>Allocated frame buffer memory used per node</description>
+            <displayName>GPU memory usage</displayName>
+            <type>memory</type>
+            <colour>SpecialLine9</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+        </display>
+    </metric>
+
+    <metric id="nvidia_memory_used_percent">
+        <units>%</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <onePerNode>true</onePerNode>
+        <source ref="nvidia_src" functionName="allinea_getMemoryUsagePercent"/>
+        <display>
+            <description>Allocated frame buffer memory used per node percentage</description>
+            <displayName>GPU memory usage</displayName>
+            <type>memory</type>
+            <colour>SpecialLine9</colour>
+            <decimalPlaces>1</decimalPlaces>
+        </display>
+    </metric>
+
+    <metric id="nvidia_total_memory">
+        <units>B</units>
+        <dataType>uint64_t</dataType>
+        <domain>single_value</domain>
+        <onePerNode>true</onePerNode>
+        <source ref="nvidia_src" functionName="allinea_getTotalMemory"/>
+        <display>
+            <description>Frame buffer memory size per node</description>
+            <displayName>GPU total memory</displayName>
+            <type>memory</type>
+            <colour>SpecialLine9</colour>
+            <autoDisplayFactor>true</autoDisplayFactor>
+        </display>
+    </metric>
+
+    <metric id="nvidia_gpus_count">
+        <units>u</units>
+        <dataType>uint64_t</dataType>
+        <domain>single_value</domain>
+        <onePerNode>true</onePerNode>
+        <source ref="nvidia_src" functionName="allinea_getNumberOfGPUS"/>
+        <display>
+            <description>Number of GPUs per node</description>
+            <displayName>Number of GPUs</displayName>
+            <type>other</type>
+            <colour>SpecialLine9</colour>
+            <autoDisplayFactor>false</autoDisplayFactor>
+        </display>
+    </metric>
+
+    <metricGroup id="nvidia_group">
+        <displayName>Nvidia</displayName>
+        <description>Nvidia metrics</description>
+        <metric ref="nvidia_temp"/>
+        <metric ref="nvidia_gpu_usage"/>
+        <metric ref="nvidia_memory_sys_usage"/>
+        <metric ref="nvidia_memory_used_percent"/>
+    </metricGroup>
+
+    <metricGroup id="power">
+        <displayName>Energy</displayName>
+        <description>Energy usage metrics</description>
+        <metric ref="nvidia_power"/>
+    </metricGroup>
+
+    <source id="nvidia_src">
+            <sharedLibrary>lib-nvidia.so</sharedLibrary>
+    </source>
+
+</metricdefinitions>
+

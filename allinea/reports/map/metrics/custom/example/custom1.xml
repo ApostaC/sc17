@@ -1,0 +1,71 @@
+<!-- version is the file format version -->
+<metricdefinitions version="1">
+
+    <!-- id is the internal name for this metric, as used in the .map XML -->
+    <metric id="com.allinea.metrics.custom1.interrupts">
+        <!-- The units this metric is measured in. -->
+        <units>/s</units>
+        <!-- Data type used to store the sample values, uint64_t or double -->
+        <dataType>uint64_t</dataType>
+        <!-- The domain the metric is to be sampled in, only time is supported. -->
+        <domain>time</domain>
+
+        <!-- Example source
+             Specifies the source of data for this metric, i.e. a function in a
+             shared library.
+
+             The function signature depends on the dataType:
+             - uint64_t:  int function(metric_id_t metricId,
+                                       struct timespec* inCurrentSampleTime,
+                                       uint64_t *outValue);
+             - double:    int function(metric_id_t metricId,
+                                       struct timespec* inCurrentSampleTime,
+                                       double   *outValue);
+
+            If the result is undefined for some reason the function may return
+            the special sentinel value ~0 (unsigned integers) or Nan (floating point)
+
+            Return value is 0 if success, -1 if failure (and set errno)
+
+            If divideBySampleTime is true then the values returned by outValue
+            will be divided by the sample interval to get the final value.  -->
+        <source ref="com.allinea.metrics.custom1_src"
+                functionName="sample_interrupts"
+                divideBySampleTime="true"/>
+
+        <!-- Display attributes used by the GUI -->
+        <display>
+            <!-- Display name for the metric as used in the GUI -->
+            <displayName>Interrupts</displayName>
+
+            <!-- Brief description of the metric.. -->
+            <description>Total number of system interrupts taken</description>
+
+            <!-- The type of metric, used by the GUI to group metrics -->
+            <type>interrupts</type>
+
+            <!-- The colour to use for the metric graphs for this metric -->
+            <colour>green</colour>
+        </display>
+
+    </metric>
+
+    <!-- Metric group for interrupt metrics, used in the GUI -->
+    <metricGroup id="Custom1">
+        <!-- Display name for the group as use din the GUI -->
+        <displayName>Custom1</displayName>
+
+        <!-- Brief description of the group -->
+        <description>Interrupt metrics</description>
+
+        <!-- References to all the metrics included in the group -->
+        <metric ref="com.allinea.metrics.custom1.interrupts"/>
+    </metricGroup>
+
+    <!-- Definition of the example source (metric plugin) used for the custom metric -->
+    <source id="com.allinea.metrics.custom1_src">
+        <!-- File name of the sample metric plugin shared library -->
+        <sharedLibrary>libcustom1.so</sharedLibrary>
+    </source>
+
+</metricdefinitions>

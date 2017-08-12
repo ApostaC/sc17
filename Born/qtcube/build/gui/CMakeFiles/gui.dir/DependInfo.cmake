@@ -1,0 +1,118 @@
+# The set of languages for which implicit dependencies are needed:
+set(CMAKE_DEPENDS_LANGUAGES
+  "CXX"
+  )
+# The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/aposta/sc17/Born/qtcube/src/gui/anno.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/anno.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/ano_panel.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/ano_panel.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/auto_brown.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/auto_brown.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/auto_viteribi.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/auto_viteribi.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/autopick.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/autopick.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/autopick_2d.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/autopick_2d.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/buffer.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/buffer.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/byte_buffer.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/byte_buffer.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/centerwindow.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/centerwindow.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/clip_bar.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/clip_bar.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/color_panel.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/color_panel.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/contour.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/contour.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/created_data.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/created_data.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/cube.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/cube.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/cube_cut.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/cube_cut.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/data_panel.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/data_panel.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/dataset.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/dataset.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/datasets.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/datasets.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/display_panel.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/display_panel.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/draw_other.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/draw_other.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/drawwindow.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/drawwindow.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/fileIO.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/fileIO.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/float_buffer.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/float_buffer.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/build/gui/gui_automoc.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/gui_automoc.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/help_panel.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/help_panel.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/history.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/history.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/incore_data.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/incore_data.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/interval_pick.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/interval_pick.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/io_func.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/io_func.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/maps.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/maps.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/mode.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/mode.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/mouse_anno.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/mouse_anno.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/mouse_func.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/mouse_func.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/mouse_orient.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/mouse_orient.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/mouse_overlay.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/mouse_overlay.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/mouse_pick.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/mouse_pick.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/mouse_region.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/mouse_region.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/mouse_zoom.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/mouse_zoom.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/move_semblance.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/move_semblance.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/moved_out.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/moved_out.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/multiface.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/multiface.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/multiple.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/multiple.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/my_colors.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/my_colors.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/my_fonts.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/my_fonts.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/navigate_panel.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/navigate_panel.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/nmo_semblance.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/nmo_semblance.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/nmoed.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/nmoed.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/orient_cube.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/orient_cube.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/orient_map.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/orient_map.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/orient_panel.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/orient_panel.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/orientation_server.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/orientation_server.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/outcore_data.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/outcore_data.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/pairs_new.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/pairs_new.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/panel.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/panel.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/panel_panel.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/panel_panel.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/panels.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/panels.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/part_semb_data.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/part_semb_data.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/partial_data.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/partial_data.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/path.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/path.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/pick_bucket.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/pick_bucket.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/pick_draw.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/pick_draw.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/pick_new.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/pick_new.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/pick_panel.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/pick_panel.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/pick_plane_new.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/pick_plane_new.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/position.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/position.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/qcube_panel.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/qcube_panel.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/qcubetabbasics.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/qcubetabbasics.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/qcubewidgetbasics.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/qcubewidgetbasics.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/raster.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/raster.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/simple_color.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/simple_color.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/single.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/single.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/slice.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/slice.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/slice_types.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/slice_types.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/surface_data.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/surface_data.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/three_view.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/three_view.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/threeface.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/threeface.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/trace_io.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/trace_io.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/util.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/util.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/view.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/view.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/view_panel.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/view_panel.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/view_types.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/view_types.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/widget_tools.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/widget_tools.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/wiggle.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/wiggle.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/window_panel.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/window_panel.cpp.o"
+  "/home/aposta/sc17/Born/qtcube/src/gui/windows.cpp" "/home/aposta/sc17/Born/qtcube/build/gui/CMakeFiles/gui.dir/windows.cpp.o"
+  )
+set(CMAKE_CXX_COMPILER_ID "GNU")
+
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_CXX
+  "QT_CORE_LIB"
+  "QT_GUI_LIB"
+  "QT_NO_DEBUG"
+  )
+
+# The include file search paths:
+set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "gui"
+  "/home/aposta/sc17/Born/qtcube/src/gui"
+  "/opt/genericIO/include"
+  "/home/aposta/sc17/Born/qtcube/src/gui/../base"
+  "/usr/include/qt4"
+  "/usr/include/qt4/QtGui"
+  "/usr/include/qt4/QtCore"
+  )
+
+# Targets to which this target links.
+set(CMAKE_TARGET_LINKED_INFO_FILES
+  )
+
+# Fortran module output directory.
+set(CMAKE_Fortran_TARGET_MODULE_DIR "")

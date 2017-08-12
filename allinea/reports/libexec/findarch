@@ -1,0 +1,153 @@
+#!/bin/sh
+
+myreadlink()
+{
+    target="$("${READLINK}" "$1" 2>/dev/null)"
+    if [ -z "$target" ]; then
+        echo "$1"
+    else
+        if [ -n "${target##/*}" ]; then
+            echo "$("${DIRNAME}" "$1")/${target}"
+        else
+            echo "${target}"
+        fi
+    fi
+}
+
+findcommand()
+{
+    command=$1
+    path="$(which ${command} 2>/dev/null)"
+    if [ -n "${path}" ]; then
+        echo "${path}"
+    else
+        for path in /bin/${command} /usr/bin/${command} /dsl/bin/${command} /dsl/usr/bin/${command}; do
+            if [ -x "${path}" ]; then
+                echo "${path}"
+                break
+            fi
+        done
+    fi
+}
+
+findcommands()
+{
+    UNAME="$(findcommand uname)"
+    DIRNAME="$(findcommand dirname)"
+    BASENAME="$(findcommand basename)"
+    HEAD="$(findcommand head)"
+    READLINK="$(findcommand readlink)"
+    LDD="$(findcommand ldd)"
+    CUT="$(findcommand cut)"
+}
+
+findcommands
+
+ALLINEA_TOOLS_OS="$(${UNAME})"
+if [ "${ALLINEA_TOOLS_OS}" = Linux -a -n "${MMCS_SERVER_IP}" -o -n "${BG_IS_IO_NODE}" ]; then
+    ALLINEA_TOOLS_ARCH=bgp
+    VERSION=
+elif [ "${ALLINEA_TOOLS_OS}" = Linux -a -n "${BGQDRV}" -o -f /bgsys/drivers/ppcfloor/bin/runjob -o -f "${BG_NODE_TYPE}" ]; then
+    ALLINEA_TOOLS_ARCH=bgq
+    VERSION=
+else
+    if [ "${ALLINEA_TOOLS_OS}" = Linux ] ; then  
+        if [ -f /etc/redhat-release ] ; then
+            SED="$(findcommand sed)"
+            ALLINEA_TOOLS_OS_DISTRIBUTION=Redhat
+            ALLINEA_TOOLS_OS_VERSION="$("${HEAD}" --lines=1 /etc/redhat-release | "${SED}" 's/.*release \([0-9\.]\+\).*/\1/g' | "${CUT}" -d'.' -f1-2)"
+        elif [ -f /etc/SuSE-release ] ; then
+            SED="$(findcommand sed)"
+            GREP="$(findcommand grep)"
+            ALLINEA_TOOLS_OS_DISTRIBUTION=Suse
+            ALLINEA_TOOLS_OS_VERSION="$("${HEAD}" --lines=1 /etc/SuSE-release  | "${SED}" 's/.* \([0-9\.]\+\).*/\1/g')"
+            SUSE_VERSION="$("${GREP}" VERSION /etc/SuSE-release | "${SED}" 's/VERSION = \([0-9]\+\).*/\1/g')"
+            SUSE_PATCHLEVEL="$("${GREP}" PATCHLEVEL /etc/SuSE-release | "${SED}" 's/PATCHLEVEL = \([0-9]\+\).*/\1/g')"
+            if [ "${SUSE_VERSION}" = 11 ]; then
+                if [ "${SUSE_PATCHLEVEL}" = 0 ]; then
+                   ALLINEA_TOOLS_OS_VERSION=11
+                else 
+                    ALLINEA_TOOLS_OS_VERSION="11.${SUSE_PATCHLEVEL}"
+                fi
+            fi
+        elif [ -x /usr/bin/lsb_release ] ; then
+            LSB_RELEASE="$(findcommand lsb_release)"
+            CUT="$(findcommand cut)"
+            ALLINEA_TOOLS_OS_DISTRIBUTION=$("${LSB_RELEASE}" -i | "${CUT}" -f2)
+            ALLINEA_TOOLS_OS_VERSION=$("${LSB_RELEASE}" -r | "${CUT}" -f2)
+        elif [ -e /etc/mic-version ]; then
+            SED="$(findcommand sed)"
+            ALLINEA_TOOLS_OS_DISTRIBUTION=MIC
+            ALLINEA_TOOLS_OS_VERSION=$("${SED}" -n 's/.*release //p' /etc/issue)
+        fi
+        ARCH="$(findcommand arch)"
+        ALLINEA_TOOLS_ARCH="$("${ARCH}" 2>/dev/null || "${UNAME}" -m)"
+    elif [ "${ALLINEA_TOOLS_OS}" = AIX ] ; then
+        ALLINEA_TOOLS_OS_DISTRIBUTION=IBM
+        ALLINEA_TOOLS_OS_VERSION="$("${UNAME}" -v).$("${UNAME}" -r)"
+        ALLINEA_TOOLS_ARCH="$("${UNAME}" -p)"
+    elif [ "${ALLINEA_TOOLS_OS}" = Darwin ] ; then
+        SW_VERS="$(findcommand sw_vers)"
+        ALLINEA_TOOLS_OS_DISTRIBUTION=MacOSX
+        ALLINEA_TOOLS_OS_VERSION="$("${SW_VERS}" -productVersion)"
+        ALLINEA_TOOLS_ARCH="$("${UNAME}" -m)"
+    fi
+    VERSION="${ALLINEA_TOOLS_OS_DISTRIBUTION}-${ALLINEA_TOOLS_OS_VERSION}-${ALLINEA_TOOLS_ARCH}"
+fi
+PROGRAM="$1"
+if [ "$("${BASENAME}" "$("${DIRNAME}" "$0")")" != libexec -a "$("${BASENAME}" "${PROGRAM}")" = "${PROGRAM}" ]; then
+    # If running from a flat directory structure then look in the current directory.
+    ALLINEA_TOOLS_PATH="$("${DIRNAME}" "$0")"
+else
+    ALLINEA_TOOLS_PATH="$("${DIRNAME}" "$("${DIRNAME}" "$0")")"
+fi
+
+if [ -z "${PROGRAM}" ]; then
+    echo "findarch: Missing argument." >&2
+    exit 1
+fi
+
+shift
+for ext in "${VERSION}" "${ALLINEA_TOOLS_ARCH}"; do
+    filename="${ALLINEA_TOOLS_PATH}/${PROGRAM}.${ext}"
+    if [ -f "${filename}" -o -h "${filename}" ]; then
+        # Resolve symlinks (e.g. ddt-debugger.x86_64 may be symlinked to ddt-debugger
+        # from the x86_64 install of Allinea tools) so that the executed program gets the right
+        # ALLINEA_TOOLS_PATH for the architecture.
+        canonical="$(myreadlink "${filename}")"
+        if [ -n "${canonical}" ]; then
+            filename="${canonical}"
+        fi
+        exec "${filename}" "$@"
+    fi
+done
+# Only require the user to provide a symlink for ddt-debugger.ARCH.  Assumes other
+# binaries can be found by resolving that symlink.
+if [ "${filename}" != bin/ddt-debugger ]; then
+    for ext in "${VERSION}" "${ALLINEA_TOOLS_ARCH}"; do
+        filename="${ALLINEA_TOOLS_PATH}/bin/ddt-debugger.${ext}"
+        if [ -f "${filename}" -o -h "${filename}" ]; then
+            # Resolve symlinks (e.g. ddt-debugger.x86_64 may be symlinked to ddt-debugger
+            # from the x86_64 install of Allinea tools) so that the executed program gets the right
+            # ALLINEA_TOOLS_PATH for the architecture.
+            canonical="$(myreadlink "${filename}")"
+            if [ -n "${canonical}" ]; then
+                filename="${canonical}"
+            fi
+            archRoot="$("${DIRNAME}" "$("${DIRNAME}" "${filename}")")"
+            filename="${archRoot}/${PROGRAM}"
+            exec "${filename}" "$@"
+        fi
+    done
+fi
+filename="${ALLINEA_TOOLS_PATH}/${PROGRAM}"
+if ! type ldd >/dev/null 2>&1 || "${LDD}" "${filename}" >/dev/null 2>&1 || [ "$("${HEAD}" -c 2 "${filename}")" = '#!' ]; then
+    shopt -s execfail 2>/dev/null
+    exec "${filename}" "$@"
+    status=$!
+else
+    status=127
+fi
+echo "No ${PROGRAM} found for the ${ALLINEA_TOOLS_ARCH} architecture." >&2
+echo "See the user guide for instructions on installing Allinea tools on heterogeneous systems." >&2
+exit $status

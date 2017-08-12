@@ -1,0 +1,435 @@
+#!/bin/bash
+
+MPICC="${MPICC}"
+CFLAGS='-g -fPIC -O0'
+LFLAGS='-shared'
+CRAY_LFLAGS='-hshared'
+
+# If MAP or Performance Reports fails to run this script correctly, you can run
+# it manually with no arguments to generate the wrapper library:
+#
+# ~/.allinea/wrapper/libmap-sampler-pmpi-<hostname>.so.1.0.0
+#
+# with symlinks to
+# ~/.allinea/wrapper/libmap-sampler-pmpi-<hostname>.so
+# ~/.allinea/wrapper/libmap-sampler-pmpi-<hostname>.so.1
+# ~/.allinea/wrapper/libmap-sampler-pmpi-<hostname>.so.1.0
+#
+# To force MAP or Performance Reports to preload this wrapper library (rather
+# than attempt to generate a new one), start MAP or Performance Reports with
+# the environment variable ALLINEA_MPI_WRAPPER set to the full path and name
+# of the library to use.
+#
+# If you manually link your binary with a wrapper library, start MAP or
+# Performance Reports with the environment variable ALLINEA_MPI_WRAPPER=0 to
+# prevent MAP or Performance Reports attempting to compile and preload new
+# wrapper library.
+
+# Postfix to generated files will be created from arguments to script.
+# This is used to avoid name-clashes should multiple MAP or Performance Reports 
+# sessions be opened by the same user.
+
+# First argument is set when this script is called from MAP or Performance
+# Reports. This should be the hostname. Ignore argument if it begins with '-'.
+if [[ -z "$1" || $1 = -* ]]; then
+  MAP_WRAPPER_POSTFIX="-`hostname`"
+else
+  MAP_WRAPPER_POSTFIX="-$1"
+fi
+
+# Second argument is set when this script is called from MAP or Performance
+# Reports. This should be the pid of the MAP or Performance Reports process.
+# Ignore argument if it begins with '-'.
+if [[ -z "$2" || $2 = -* ]]; then 
+  MAP_WRAPPER_PID=""
+else
+  MAP_WRAPPER_POSTFIX="${MAP_WRAPPER_POSTFIX}-"
+  MAP_WRAPPER_PID="$2"
+fi
+
+# Check for command line arguments
+IS_CRAY=no
+IS_MIC=no
+IS_STATIC=no
+WITH_SHMEM=yes
+
+for var in "$@"
+do
+  if [ "$var" = "--cray" ]; then
+    IS_CRAY=yes
+  fi
+
+  if [ "$var" = "--mic" ]; then
+    IS_MIC=yes
+  fi
+  
+  if [ "$var" = "--static" ]; then
+    IS_STATIC=yes
+  fi
+
+  if [ "$var" = "--without-shmem" ]; then
+    WITH_SHMEM=no
+  fi
+done
+
+# Check if ALLINEA_TOOLS_PATH is set. Don't set this in your environment - the
+# MAP or Performance Reports launch script will have set it.
+if [ -z "${ALLINEA_TOOLS_PATH}" ]; then
+    # If ALLINEA_TOOLS_PATH has not been set, work out where MAP or Performance
+    # Reports is located from path to this script
+    ALLINEA_TOOLS_PATH=`dirname "$0"`/../..
+fi
+
+# The wrapper library will be built the 'wrapper' subdirectory to the
+# Allinea tools config directory.
+if [ "x$ALLINEA_CONFIG_DIR" = "x" ]; then
+  # if empty, try ALLINEA_TOOLS_CONFIG_DIR
+  ALLINEA_CONFIG_DIR="$ALLINEA_TOOLS_CONFIG_DIR"
+fi
+if [ "x$ALLINEA_CONFIG_DIR" = "x" ]; then
+  # if still empty, set to default
+  ALLINEA_CONFIG_DIR="$HOME/."allinea
+fi
+
+if [ ! -d "$ALLINEA_CONFIG_DIR" ]; then
+  mkdir "$ALLINEA_CONFIG_DIR"
+  if [ $? -ne 0 ]; then
+    echo "Failed to create directory '$ALLINEA_CONFIG_DIR'"
+    echo "To use a different directory, set the ALLINEA_CONFIG_DIR environment variable."
+    exit $?
+  fi
+fi
+
+MAP_WRAPPER_DIR=${ALLINEA_CONFIG_DIR}/wrapper
+if [ ! -d "$MAP_WRAPPER_DIR" ]; then
+  mkdir "$MAP_WRAPPER_DIR"
+  if [ $? -ne 0 ]; then
+    exit $?
+  fi
+fi
+
+# The library this script is to build.
+if [ "$IS_STATIC" = "yes" ]; then
+  LIBEXT="a"
+else
+  LIBEXT="so"
+fi
+
+# Add -mic suffix when cross-compiling Xeon Phi libraries
+if [ "${IS_MIC}" = "yes" -a -z "${MAP_WRAPPER_PID}" ]; then
+  MAP_WRAPPER_POSTFIX="${MAP_WRAPPER_POSTFIX}-mic"
+fi
+
+MAP_WRAPPER_LIB=${MAP_WRAPPER_DIR}/libmap-sampler-pmpi${MAP_WRAPPER_POSTFIX}${MAP_WRAPPER_PID}.${LIBEXT}
+MAP_WRAPPER_CODE=${MAP_WRAPPER_DIR}/libmap-sampler-pmpi${MAP_WRAPPER_POSTFIX}${MAP_WRAPPER_PID}.c
+MAP_WRAPPER_OBJECT=${MAP_WRAPPER_DIR}/libmap-sampler-pmpi${MAP_WRAPPER_POSTFIX}${MAP_WRAPPER_PID}.o
+MAP_WRAPPER_STATIC_CODE_DIR=${MAP_WRAPPER_DIR}/libmap-sampler-pmpi${MAP_WRAPPER_POSTFIX}${MAP_WRAPPER_PID}
+MAP_WRAPPER_SHMEM_CODE="${ALLINEA_TOOLS_PATH}/map/wrapper/shmemwrapper.c"
+MAP_WRAPPER_SHMEM_OBJECT="${MAP_WRAPPER_DIR}/shmemwrapper${MAP_WRAPPER_POSTFIX}${MAP_WRAPPER_PID}.o"
+
+# Check whether the python version is recent enough to generate a wrapper
+if ! type python >/dev/null 2>&1; then
+    USE_WRAPPER=no
+    echo "Note: the system does not have Python installed."
+else
+    PYTHON_VERSION="$(python -V 2>&1)"
+    if [ -z "${ALLINEA_SKIP_PYTHON_VERSION_CHECK}" ]; then
+        PYTHON_MAJOR="$(echo "${PYTHON_VERSION}" | grep '^Python ' | cut -c8)"
+        PYTHON_MINOR="$(echo "${PYTHON_VERSION}" | grep '^Python ' | cut -c10)"
+        if [ "$PYTHON_MAJOR" = "2" -a "$PYTHON_MINOR" -ge "5" ] || [ "$PYTHON_MAJOR" = "3" ]; then
+            USE_WRAPPER=yes
+        else
+            USE_WRAPPER=no
+            echo "Note: the system Python (${PYTHON_VERSION}) cannot generate a wrapper; 2.5+ is required."
+        fi
+    else
+        USE_WRAPPER=yes
+        echo "Using ${PYTHON_VERSION}."
+    fi
+fi
+if [ "$USE_WRAPPER" = "no" ]; then
+    echo "A pre-generated version of the file (mpiwrapper.c) will be used instead."
+    echo ""
+    echo "If you get errors compiling the wrapper, or linking your program with it, then the pre-generated mpiwrapper.c may be incompatible with your MPI implementation."
+    echo "Please contact Allinea for a compatible file."
+    echo "---"
+fi
+
+# Workaround for ANSYS Fluent setting OPENMPI_ROOT but not shipping mpi.h.
+if [ -n "$OPENMPI_ROOT" ] && $(echo "$OPENMPI_ROOT" | grep '\(ansys_inc\|fluent\)' >/dev/null); then
+    export -n OPENMPI_ROOT
+    export -n OPAL_PREFIX
+fi
+
+FOUND_ONE=no
+
+# Remove the old sampler MPI wrapper library (if it exists). The MPI
+# implementation in the PATH may have changed since the wrapper was last
+# built.
+rm -f ${MAP_WRAPPER_LIB} ${MAP_WRAPPER_CODE}
+
+# Function used to compile the object files when building a static MPI
+# wrapper library.
+function static_compile()
+{
+    code=$1
+    object=${2:-${code%.c}.o}
+    COMPILE_CMD='${MPI_COMPILER} ${TRY_CFLAGS} -DSTATIC -DPIC "-I${ALLINEA_TOOLS_PATH}/map/wrapper" "${code}" -c -o "${object}"'
+    
+    if [ -f "${object}" ]; then
+	rm -f "${object}"
+    fi
+    
+    eval echo "${COMPILE_CMD}"
+    eval "${COMPILE_CMD}" 2>&1
+    
+    if [ ! -s "${object}" ]; then
+	rm -f ${object}
+	echo "Failed to create ${object}"
+	return 1
+    fi
+    return 0
+}
+
+# Function that will try to compile the MPI wrapper library.
+# Its first argument is the MPI compiler command to attempt
+# Its second argument is the LFLAGS to use
+trycompiler()
+{
+  MPI_COMPILER="$1"
+  TRY_CFLAGS="$2"
+  TRY_LFLAGS="$3"
+
+  if [ "$MPI_COMPILER" = "\$MPICC" ]; then
+    if [ -z "${MPICC}" ]; then
+      return 1
+    fi
+    MPI_COMPILER="$MPICC"
+    echo -n "Attempting to generate MPI wrapper using \$MPICC ('${MPI_COMPILER}')..."
+  else
+    # Does the compiler exist?
+    if ! type "${MPI_COMPILER}" >/dev/null 2>&1; then
+      return 1
+    fi
+    echo -n "Attempting to generate MPI wrapper using '${MPI_COMPILER}'..."
+  fi
+
+  FOUND_ONE=yes
+
+  if [ "$USE_WRAPPER" = "yes" ]; then
+      # (Re-)generate the MPI wrapper
+      WRAP_ARGS=-fg
+      if [ -n "${FLUENT_MPIRUN_PRE}" ]; then
+          # The Fortran wrappers are not compatible with Fluent.
+          WRAP_ARGS=-g
+      fi
+      if [ "$IS_STATIC" = "yes" ]; then
+          if [ ! -d ${MAP_WRAPPER_STATIC_CODE_DIR} ]; then
+              mkdir ${MAP_WRAPPER_STATIC_CODE_DIR}
+          elif [ -n "${MAP_WRAPPER_STATIC_CODE_DIR}" ]; then
+              rm ${MAP_WRAPPER_STATIC_CODE_DIR}/*
+          fi
+          "${ALLINEA_TOOLS_PATH}/plugins/wrap/wrap.py" -S "${MAP_WRAPPER_STATIC_CODE_DIR}" -c "${MPI_COMPILER}" ${WRAP_ARGS} "${ALLINEA_TOOLS_PATH}/map/wrapper/mpiwrapper.w" 2>&1
+      else
+          "${ALLINEA_TOOLS_PATH}/plugins/wrap/wrap.py" -c "${MPI_COMPILER}" ${WRAP_ARGS} "${ALLINEA_TOOLS_PATH}/map/wrapper/mpiwrapper.w" -o ${MAP_WRAPPER_CODE} 2>&1
+      fi
+  else
+      echo -n "Copying the pre-generated mpiwrapper.c..."
+      echo "Copying to ${MAP_WRAPPER_CODE}"
+      cp "${ALLINEA_TOOLS_PATH}/map/wrapper/mpiwrapper.c" ${MAP_WRAPPER_CODE}
+  fi
+
+  # Return if wrapper generation failed (probably bad MPI_COMPILER)
+  if [ "$?" -ne "0" ]; then
+    echo "fail"
+    return 1
+  else
+    echo "OK"
+  fi
+
+  # Compile the MPI wrapper library.
+  echo "Attempting to compile MPI wrapper using '${MPI_COMPILER}'..."
+
+  if [ "$IS_STATIC" = "yes" ]; then
+      echo yes
+      if [ "${USE_WRAPPER}" = "no" ]; then
+	  if ! static_compile ${MAP_WRAPPER_CODE}; then
+	      return 1
+	  fi
+      else
+	  for code in ${MAP_WRAPPER_STATIC_CODE_DIR}/*.c; do
+	      if ! static_compile $code; then
+		  return 1
+	      fi
+	  done
+      fi
+
+      if [ "$WITH_SHMEM" = "yes" ]; then
+        if ! static_compile ${MAP_WRAPPER_SHMEM_CODE} ${MAP_WRAPPER_SHMEM_OBJECT}; then
+          return 1
+        fi
+      fi
+  else
+    if [ "$WITH_SHMEM" = "yes" ]; then
+      SOURCES='"${MAP_WRAPPER_CODE}" "${MAP_WRAPPER_SHMEM_CODE}"'
+    else
+      SOURCES='"${MAP_WRAPPER_CODE}"'
+    fi
+    COMPILE_CMD='${MPI_COMPILER} ${TRY_CFLAGS} -DPIC "-I${ALLINEA_TOOLS_PATH}/map/wrapper" '"${SOURCES}"' ${TRY_LFLAGS} "-L${ALLINEA_TOOLS_PATH}/lib/64" "-L${ALLINEA_TOOLS_PATH}/lib/32" -lmap-sampler -o "${MAP_WRAPPER_LIB}"'
+
+    eval echo "${COMPILE_CMD}"
+    eval "${COMPILE_CMD}" 2>&1
+  fi
+
+  # Create static library, if applicable
+  if [ "$IS_STATIC" = "yes" ]; then
+    if [ ! "$WITH_SHMEM" = "yes" ]; then
+      MAP_WRAPPER_SHMEM_OBJECT=
+    fi
+
+    if [ "${USE_WRAPPER}" = "no" ]; then
+      ar rs ${MAP_WRAPPER_LIB} ${MAP_WRAPPER_CODE%.c}.o ${MAP_WRAPPER_SHMEM_OBJECT}
+    else
+      ar rs ${MAP_WRAPPER_LIB} ${MAP_WRAPPER_STATIC_CODE_DIR}/*.o ${MAP_WRAPPER_SHMEM_OBJECT}
+    fi
+    rm -f ${MAP_WRAPPER_OBJECT}
+  fi
+
+  # Return 0 if successful
+  if [ -s "${MAP_WRAPPER_LIB}" ]; then
+    echo "MPI wrapper created: ${MAP_WRAPPER_LIB}"
+    echo ""
+    return 0
+  else
+    echo "Failed to create wrapper"
+    echo ""
+    return 1
+  fi
+}
+
+# Function to determine if the -hshared option is supported by the compiler.
+# This is for use on Cray only.
+test_hshared_supported() 
+{
+    MPI_COMPILER=$1
+    echo -n "Testing for '-hshared' support... "
+    echo "int foo(void) {return 1;}" > conftest.c
+    ${MPI_COMPILER} -hshared conftest.c -o conftest.so 2>conftest.err
+    rm -f conftest.c conftest.so
+
+    if [ -s conftest.err ]; then
+	rm -f conftest.err
+	echo "No"
+	return 1
+    else
+	echo "Yes"
+	return 0
+    fi
+}
+
+if [ "$IS_CRAY" = "yes" ]; then
+  COMPILERS="cc"
+
+  # Remove -hshared flag if it is present but not supported by the compiler.
+  CRAY_LFLAGS_NO_HSHARED_SUPPORT="${CRAY_LFLAGS/-hshared/-shared}"
+  if [ "${CRAY_LFLAGS}" != "${CRAY_LFLAGS_NO_HSHARED_SUPPORT}" ] && ! test_hshared_supported 'cc'; then
+      CRAY_LFLAGS=${CRAY_LFLAGS_NO_HSHARED_SUPPORT}
+  fi
+  trycompiler 'cc' "$CFLAGS" "$CRAY_LFLAGS"
+  if [ "$?" -ne "0" ] && ! [ "$IS_STATIC" = "yes" ]; then
+    # Try again using the normal LFLAGS. If doing static compilation
+    # no need to try again as LFLAGS won't be used.
+    trycompiler 'cc' "$CFLAGS" "$LFLAGS"
+  fi
+elif [ "$IS_MIC" = "yes" ]; then
+  COMPILERS="mpiicc"
+
+  trycompiler 'mpiicc' "-mmic $CFLAGS" "$LFLAGS"
+else
+  # Try various MPI compilers until one works
+  if [ -n "${MPICC}" ]; then
+      COMPILERS="\$MPICC"
+  else
+      COMPILERS="mpixlc_r mpxlc_r mpixlc mpxlc mpiicc mpcc mpicc mpigcc mpgcc mpc_cc"
+  fi
+
+  # Search for mpirun/mpiexec
+  MPIRUN_LOCATION=`which mpirun`
+  MPIEXEC_LOCATION=`which mpiexec`
+
+  # Strip out the trailing mpirun/mpiexec part of the string to get
+  # the bin directory (the '%' forces substitution to only happen at
+  # the end of the string).
+  MPIRUN_LOCATION=${MPIRUN_LOCATION/%\/mpirun/}
+  MPIEXEC_LOCATION=${MPIEXEC_LOCATION/%\/mpiexec/}
+
+  # List directory (or directories if mpiexec/mpirun are in different
+  # locations) where mpirun/mpiexec are found.
+  MPI_LOCATIONS=
+  if [ -n "${MPIEXEC_LOCATION}" ]; then
+    MPI_LOCATIONS="${MPIEXEC_LOCATION}"
+  fi
+  if [ -n "${MPIRUN_LOCATION}" ] && [ "x${MPIEXEC_LOCATION}" != "x${MPIRUN_LOCATION}" ]; then
+    MPI_LOCATIONS="${MPI_LOCATIONS} ${MPIRUN_LOCATION}"
+  fi
+
+  # Try compilers in the known MPI directory/directories
+  compiler_found=false
+  for d in $MPI_LOCATIONS
+  do
+    for i in $COMPILERS
+    do
+      if [ -x "$d/$i" ]; then
+        trycompiler "$d/$i" "$CFLAGS" "$LFLAGS"
+        if [ "$?" -eq "0" ]; then
+          compiler_found=true
+          break 2
+        fi
+      fi
+    done
+  done
+
+  # Finally try compilers from anywhere in PATH
+  if [ "$compiler_found" = false ]; then
+    for i in $COMPILERS
+    do
+      trycompiler "$i" "$CFLAGS" "$LFLAGS"
+      if [ "$?" -eq "0" ]; then
+        break
+      fi
+    done
+  fi
+fi
+
+# If this script was called with an argument (that will have been used
+# as a postfix to the wrapper library's name), then it was probably
+# called from MAP or Performance Reports. Tidy up by deleting the code for the
+# wrapper library.
+if [ ! -z "${MAP_WRAPPER_POSTFIX}" -a -z "${ALLINEA_PRESERVE_WRAPPER}" ]; then
+  rm -f ${MAP_WRAPPER_CODE}
+fi
+
+# Test if the wrapper was successfully compiled
+if [ -s "${MAP_WRAPPER_LIB}" ]; then
+  if [ "$IS_STATIC" != "yes" ]; then
+    # Create symlinks to the MPI wrapper library.
+    ln -sf ${MAP_WRAPPER_LIB} ${MAP_WRAPPER_LIB}.1
+    ln -sf ${MAP_WRAPPER_LIB} ${MAP_WRAPPER_LIB}.1.0
+    ln -sf ${MAP_WRAPPER_LIB} ${MAP_WRAPPER_LIB}.1.0.0
+  fi
+  exit 0
+else
+  if [ "$FOUND_ONE" = "no" ]; then
+      echo "No mpicc command found (tried $COMPILERS)"
+  fi
+  echo
+  if [ "$IS_MIC" = "yes" ]; then
+      echo "Unable to compile MPI wrapper library (needed by the Allinea sampler). Please ensure the Intel compilers and MPI are in your PATH."
+  elif [ "$IS_CRAY" = "yes" ]; then
+      echo "Unable to compile MPI wrapper library (needed by the Allinea sampler)."
+  else
+      echo "Unable to compile MPI wrapper library (needed by the Allinea sampler). Please set the environment variable MPICC to your MPI compiler command and try again."
+  fi
+  exit 1
+fi
+

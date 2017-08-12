@@ -1,0 +1,32 @@
+<partialReport name="InterruptsReport" 
+               xmlns="http://www.allinea.com/2016/AllineaReports"> 
+  <reportMetrics>
+    <!-- multiple <reportMetric> elements can be defined -->
+    <!-- source attribute must be set to "metric" --> 
+    <reportMetric id="interrupts.mean" 
+                  displayName="Mean interrupts" 
+                  units="/s" 
+                  source="metric"
+                  colour="hsl(25, 70, 71)">
+      <sourceDetails metricRef="com.allinea.metrics.custom1.interrupts" sampleValue="mean" aggregation="mean"/>
+    </reportMetric> 
+    <reportMetric id="interrupts.peak" 
+                  displayName="Peak interrupts" 
+                  units="/s" 
+                  source="metric"
+                  colour="hsl(19, 70, 71)">
+      <sourceDetails metricRef="com.allinea.metrics.custom1.interrupts" sampleValue="max" aggregation="max"/>
+    </reportMetric>
+  </reportMetrics> 
+  <subsections> 
+    <!-- multiple <subsection> elements can be defined -->
+    <subsection id="interrupt_metrics"
+                heading="Interrupts"
+                colour="hsl(21, 70, 71)">
+      <text>The number of CPU interrupts raised per second across all ranks</text> 
+      <!-- multiple <entry> elements can be defined --> 
+      <entry reportMetric="interrupts.mean" group="InterruptsGroup"/>
+      <entry reportMetric="interrupts.peak" group="InterruptsGroup"/>
+    </subsection>
+  </subsections> 
+</partialReport> 

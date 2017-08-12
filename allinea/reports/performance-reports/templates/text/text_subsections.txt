@@ -1,0 +1,61 @@
+{{!---------------------------------------------------------------------------}}
+{{#*inline "metricName"~}}
+{{#if displayName}}{{displayName}}{{else}}{{def.displayName}}{{/if}}
+{{~/inline}}
+{{!---------------------------------------------------------------------------}}
+{{#*inline "percentageTemplate"}}
+    {{~#padRight 42}}{{>metricName metric}}:{{/padRight~}}
+    {{#if (isEqual (trim (percent metric.value.mean)) "not supported")}}
+        {{~trim (percent metric.value.mean)}}
+    {{else}}
+        {{~#padLeft 8}}{{{percent metric.value.mean}}}%{{/padLeft}} {{{percentToBar metric.value.mean}}}
+    {{/if}}
+{{/inline}}
+{{!---------------------------------------------------------------------------}}
+{{#*inline "metricValue"}}
+    {{#if useIEC}}
+        {{~#padLeft 8}}{{number (iecValue value)}}{{/padLeft}} {{iecUnits value symbol=def.units}}
+    {{else}}
+        {{~#padLeft 8}}{{number (siValue value)}}{{/padLeft}} {{siUnits value symbol=def.units}}
+    {{/if}}
+{{/inline}}
+{{!---------------------------------------------------------------------------}}
+{{#*inline "numberTemplate"}}
+    {{~#padRight 42}}{{>metricName metric}}:{{/padRight~}}
+    {{#if (isEqual (trim (number metric.value.mean)) "not supported")}}
+        {{~trim (number metric.value.mean)}}
+    {{else}}
+        {{~> metricValue metric value=metric.value.mean }}
+    {{/if}}
+{{/inline}}
+{{!---------------------------------------------------------------------------}}
+{{#*inline "spacerTemplate"}}
+{{/inline}}
+{{!---------------------------------------------------------------------------}}
+{{#each subsections}}
+    {{#if (isVisible this)}}
+        {{#trimLeft}}
+            {{{heading}}}:
+        {{/trimLeft}}
+        {{#trimLeft}}
+            {{#with (trim (eval descriptionHtmlTemplate @root.data self=this)) as |descHtml|}}
+                {{{htmlToText descHtml}}}
+            {{/with}}
+        {{/trimLeft}}
+        {{#each (normaliseMetrics metrics)}}
+            {{#if template}}
+                {{#if (isVisible this)}}
+                    {{!-- {for example, numberTemplate or percentTemplate}} --}}
+                    {{~> (lookup this 'template') metric=this}}
+                {{/if}}
+            {{/if}}
+        {{/each}}
+        {{#each (eval adviceHtmlTemplate @root.data self=this) as |adviceHtml|}}
+            {{#if (trim adviceHtml)}}
+                {{~#trim}}{{{htmlToText adviceHtml}}}{{/trim}}
+            {{/if}}
+        {{/each}}
+        {{!-- {{the below whitespace is here for dramatic effect}} --}}
+
+    {{/if}}
+{{/each}}

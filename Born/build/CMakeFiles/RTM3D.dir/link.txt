@@ -1,0 +1,1 @@
+/usr/bin/g++     -Ofast -std=c++11   CMakeFiles/RTM3D.dir/rtm.cc.o  -o RTM3D -rdynamic base/libbase.a /opt/genericIO/lib/libgenericCpp.a -ltbb 

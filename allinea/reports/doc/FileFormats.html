@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta name="generator" content=
+"HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+<meta http-equiv="CONTENT-TYPE" content=
+"text/html; charset=us-ascii">
+<title></title>
+<meta name="GENERATOR" content="OpenOffice.org 3.2 (Unix)">
+<meta name="CREATED" content="20100217;9182900">
+<meta name="CHANGEDBY" content="Chris January">
+<meta name="CHANGED" content="20100611;11373100">
+<style type="text/css">
+        <!--
+                H1 { font-family: "Liberation Sans", sans-serif; }
+                H2 { font-family: "Liberation Sans", sans-serif; }
+                H3 { font-family: "Liberation Sans", sans-serif; }
+                .title { font-family: "Liberation Sans", sans-serif; text-align: center; page-break-after: avoid; font-weight: bold; font-size: x-large; }
+        -->
+</style>
+</head>
+<body lang="en-GB">
+<p class="title">Allinea Distributed
+Debugging Tool Export File Formats</p>
+<h1>1 File Formats</h1>
+<h2>1.1 Comma Separated Values (CSV)</h2>
+<p>Comma separated values (CSV) files follow the definition found
+in Internet Engineering Task Force (IETF) Request for Comments
+(RFC) 1480, with the following exception:</p>
+<ul>
+<li>
+<p>Records are delimited by just a line feed character (LF), not a
+carriage return and a line feed character (CRLF).</p>
+</li>
+</ul>
+<p>The text of RFC 1480 may be found on the following web page:</p>
+<p><a href=
+"http://tools.ietf.org/html/rfc4180">http://tools.ietf.org/html/rfc4180</a></p>
+<p>The codeset/encoding depends on the values of the <tt>LANG</tt>
+and <tt>LC_CTYPE</tt> environment variables (specified in the
+Single UNIX Specification Version 3 published on the following web
+page:</p>
+<p><a href=
+"http://www.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap08.html#tag_08_02">
+http://www.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap08.html#tag_08_02</a>)</p>
+<h2>1.2 Hierarchical Data Format v5 (HDF5)</h2>
+<p>Hierarchical Data Format v5 (HDF5) files follow the HDF5 File
+Format Specification Version 2.0 as found at the following web
+site:</p>
+<p><a href=
+"http://www.hdfgroup.org/HDF5/doc/H5.format.html">http://www.hdfgroup.org/HDF5/doc/H5.format.html</a></p>
+<h2>1.3 Extensible Markup Language (XML)</h2>
+<p>Extensible Markup Language (XML) files follow the Extensible
+Markup Language (XML) 1.0 (Fifth Edition) specification found on
+the following web page:</p>
+<p><a href=
+"http://www.w3.org/TR/REC-xml/">http://www.w3.org/TR/REC-xml/</a></p>
+<h2>1.4 Plain Text</h2>
+<p>Plain text files use a line feed character (LF) to denote a new
+line.</p>
+<p>The codeset/encoding depends on the values of the <tt>LANG</tt>
+and <tt>LC_CTYPE</tt> environment variables (specified in the
+Single UNIX Specification Version 3 published on the following web
+page:</p>
+<p><a href=
+"http://www.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap08.html#tag_08_02">
+http://www.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap08.html#tag_08_02</a>)</p>
+<h1>2 Common Data Types</h1>
+<h2>2.1 Compact Integer Set</h2>
+<p>When DDT is displaying or exporting a textual representation of
+a set of processes it isn't feasible to list each process
+individually when the set cardinality is large. Instead DDT uses a
+compact integer set representation. This consists of zero or more
+integer distinct ranges represented by <tt>FROM-TO</tt>. If
+<tt>FROM</tt> and <tt>TO</tt> are the same then the <tt>-TO</tt>
+may be omitted. The distinct ranges are separated by commas.</p>
+<p>Examples:</p>
+<p><tt>0-3,7-17</tt></p>
+<p>represents processes 0,1,2,3,7,8,9,10,11,12,13,14,15,16,17.</p>
+<p><tt>0-9,22,26-28,100</tt></p>
+<p>represents processes 0,1,2,3,4,5,6,7,8,9,22,26,27,28,100.</p>
+<h1>3 Schema</h1>
+<h2>3.1 Multi-Dimensional Array (MDA) Viewer</h2>
+<p>The MDA viewer always exports the view of the data as configured
+by the user. To export the whole of an array the view must match
+the layout of the array. Right-clicking on a variable and selecting
+<i>View Array (MDA)</i> will automatically configure the view to
+match the array. Because the HDF5 format uses row major format for
+datasets and Fortran uses column major format for arrays it is not
+possible to export a Fortran array in HDF5 format 'as-is'
+&ndash; the rows and columns must first be
+swapped.</p>
+<h3>3.1.1 Comma Separated Values (CSV)</h3>
+<ol>
+<li>
+<p>No optional header line.</p>
+</li>
+<li>
+<p>View is exported as a two-dimensional table with the same layout
+as that seen on the screen.</p>
+</li>
+<li>
+<p>Filtered values are exported as empty strings
+(<tt>""</tt>).</p>
+</li>
+</ol>
+<h3>3.1.2 Hierarchical Data Format v5 (HDF5)</h3>
+<ol>
+<li>
+<p>Element type must be a basic scalar type (<tt>int</tt>,
+<tt>double</tt>, <tt>INTEGER</tt>, <tt>REAL</tt>, etc.), not a
+composite type, pointer, reference or string.</p>
+</li>
+<li>
+<p>View is exported as an N-dimensional dataset, according to the
+dimensions set by the user.</p>
+</li>
+<li>
+<p>Filtered values are not included in the file (i.e. the file is
+sparse).</p>
+</li>
+</ol>
+<h2>3.2 Parallel Stack View (PSV)</h2>
+<h3>3.2.1 Comma Separated Values (CSV)</h3>
+<ol>
+<li>
+<p>Header line with the column headings (<tt>Depth</tt>,
+<tt>Processes</tt>, <tt>Threads</tt> and <tt>Function</tt>).</p>
+</li>
+<li>
+<p>Columns hidden on screen are not exported.</p>
+</li>
+<li>
+<p>Table is exported 'as-is'.</p>
+</li>
+<li>
+<p><tt>Depth</tt> column is the depth of the stack frame (and depth
+in the PSV tree view).</p>
+</li>
+<li>
+<p><tt>Processes</tt> column is the number of processes with the
+given frame on the stack of one or more of their threads at depth
+<tt>Depth</tt>.</p>
+</li>
+<li>
+<p><tt>Threads</tt> column is the number of threads with the given
+frame on their stack at depth <tt>Depth</tt>.</p>
+</li>
+<li>
+<p><tt>Function</tt> column is the function corresponding to the
+given stack frame. It consists of the function name, optionally
+followed by <tt>(</tt><tt>file:line</tt><tt>)</tt>, if
+available.</p>
+</li>
+</ol>
+<h3>3.2.2 Extensible Markup Language (XML)</h3>
+<ol>
+<li>
+<p>Document Type Definition (DTD) may be found in
+<tt>doc/stacks.dtd</tt>.</p>
+</li>
+<li>
+<p>The nesting of the <tt>frame</tt> elements is in one-to-one
+correspondence with the tree view.</p>
+</li>
+</ol>
+<h2>3.3 Cross Process Comparison (CPC)</h2>
+<h3>3.3.1 Comma Separated Values (CSV)</h3>
+<ol>
+<li>
+<p>Header line with the column headings (<tt>Value</tt> and
+<tt>Processes</tt>).</p>
+</li>
+<li>
+<p>Table is exported 'as-is'.</p>
+</li>
+<li>
+<p><tt>Value</tt> column is free form. Each row contains one of the
+unique values the specified expression takes across all the
+specified processes.</p>
+</li>
+<li>
+<p><tt>Processes</tt> column is a compact integer set of the
+processes for which the specified expression evaluates to value
+<tt>Value</tt>.</p>
+</li>
+</ol>
+<hr>
+<pre>
+doc/stacks.dtd
+
+&lt;<b>?xml</b> version="1.0" encoding="utf-8" <b>?&gt;</b>
+<b>&lt;!DOCTYPE</b> stacks <b>[</b>
+  <b>&lt;!ELEMENT</b> stacks       (frame*)<b>&gt;</b>
+  <b>&lt;!ELEMENT</b> frame        (position,frame*)<b>&gt;</b>
+  <b>&lt;!ELEMENT</b> position     (function?,(file,line)?)<b>&gt;</b>
+  <b>&lt;!ELEMENT</b> function     (<b>#PCDATA</b>)<b>&gt;</b>
+  <b>&lt;!ELEMENT</b> file         (<b>#PCDATA</b>)<b>&gt;</b>
+  <b>&lt;!ELEMENT</b> line         (<b>#PCDATA</b>)<b>&gt;</b>
+  <b>&lt;!--</b> processes is a compact integer set.
+       Examples:
+       0-3,7-17
+       0-9,22,26-28,100
+       Regular expression:
+       (\d+(-\d+)?)+(,(\d+(-\d+)?))*
+
+       threads is a compact integer tuple set.
+       A.B-C.D is the set of threads B-D from processes A-C.
+       Examples:
+       0.0-3.7,7.0-17.7
+       0.0-9.2,22.0-22.2,26.0-28.2,100.0-100.2
+       Regular expression:
+       (\d+\.\d+(-\d+\.\d+)?)+(,(\d+\.\d+(-\d+\.\d+)?))*
+
+       Alternatively only the process and thread counts may be included.
+       DDT outputs the processes and threadcount attributes.
+  <b>--&gt;</b>
+  <b>&lt;!ATTLIST</b> frame 
+   processes    <b>CDATA</b>    <b>#IMPLIED</b>
+   threads      <b>CDATA</b>    <b>#IMPLIED</b>
+   processcount <b>CDATA</b>    <b>#IMPLIED</b>
+   threadcount  <b>CDATA</b>    <b>#IMPLIED</b>
+  <b>&gt;</b>
+<b>]&gt;</b>
+</pre>
+</body>
+</html>

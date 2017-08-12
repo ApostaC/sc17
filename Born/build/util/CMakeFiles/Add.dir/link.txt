@@ -1,0 +1,1 @@
+/usr/bin/g++     -Ofast -std=c++11   CMakeFiles/Add.dir/Add.cc.o  -o Add -rdynamic /opt/genericIO/lib/libgenericCpp.a 

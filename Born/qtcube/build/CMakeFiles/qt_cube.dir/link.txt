@@ -1,0 +1,1 @@
+/usr/bin/g++     -O3 -std=c++11   CMakeFiles/qt_cube.dir/main.cpp.o CMakeFiles/qt_cube.dir/qrc_qt_cube.cxx.o  -o qt_cube  -L/base  -L/gui -rdynamic gui/libgui.a base/libbase.a /opt/genericIO/lib/libgenericCpp.a -ltbb /usr/lib/x86_64-linux-gnu/libQtGui.so /usr/lib/x86_64-linux-gnu/libQtXml.so -ltbb /usr/lib/x86_64-linux-gnu/libQtCore.so -Wl,-rpath,/base:/gui: 

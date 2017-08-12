@@ -1,0 +1,8 @@
+{{#with applicationDetails}}
+    {{#if processes}}
+        {{#with (lookupMetric "applicationDetails.processes.plain") as |value|}}
+            {{#with (lookupMetricUnits "applicationDetails.processes.plain") as |units|}}{{value}} {{customUnits value units}}{{/with ~}}
+        {{/with ~}}
+        {{#if isOpenMp}}, OMP_NUM_THREADS was {{ompNumThreads}}{{/if}}
+    {{/if}}
+{{/with}}

@@ -1,0 +1,229 @@
+<!-- The template for a default/standard performance report.
+
+     NB: Allinea reports use negative values for 'order' so that by default any user defined additions
+     that don't explicitly set 'order' will be appear at the end of the report ('order' defaults to '0').
+     The 'order' is explicitly set for all elements to allow user-specified custom metrics to be
+     inserted in the interior of subsections.
+-->
+
+<report name="com.allinea.performancereports.default"
+        logo="http://content.allinea.com/downloads/performance-report-logo-50.png"
+        logoLink="http://www.allinea.com/products/allinea-performance-reports"
+        xmlns="http://www.allinea.com/2016/AllineaReports">
+    <reportMetrics>
+        <!-- Summary metrics -->
+        <reportMetric id="overview.cpu.percent"       allineaMetricVersion="1" displayName="Compute"   units="%" colour="hsl(108, 65, 50)" breakdownSubsection="cpu"/>
+        <reportMetric id="overview.mpi.percent"       allineaMetricVersion="1" displayName="MPI"       units="%" colour="hsl(208, 83, 59)" breakdownSubsection="mpi"/>
+        <reportMetric id="overview.io.percent"        allineaMetricVersion="1" displayName="I/O"       units="%" colour="hsl( 23, 83, 59)" breakdownSubsection="io"/>
+
+        <!-- Subsection metrics -->
+        <reportMetric id="cpu.singleCorePercent"   allineaMetricVersion="1" displayName="Single-core code"          units="%" colour="hsl(108, 31, 46)"/>
+        <reportMetric id="cpu.openMpPercent"       allineaMetricVersion="1" displayName="OpenMP regions"            units="%" colour="hsl(108, 62, 60)"/>
+        <reportMetric id="cpu.scalarNumPercent"    allineaMetricVersion="1" displayName="Scalar numeric ops"        units="%" colour="hsl(108, 31, 46)"/>
+        <reportMetric id="cpu.vectorNumPercent"    allineaMetricVersion="1" displayName="Vector numeric ops"        units="%" colour="hsl(108, 64, 38)"/>
+        <reportMetric id="cpu.memPercent"          allineaMetricVersion="1" displayName="Memory accesses"           units="%" colour="hsl(108, 64, 24)"/>
+        <reportMetric id="cpu.waitingAccPercent"   allineaMetricVersion="1" displayName="Waiting for accelerators"  units="%" colour="hsl(108, 30, 45)"/>
+
+        <reportMetric id="mpi.collectivePercent"   allineaMetricVersion="1" displayName="Time in collective calls"              units="%"       colour="hsl(208, 83, 59)"/>
+        <reportMetric id="mpi.p2pPercent"          allineaMetricVersion="1" displayName="Time in point-to-point calls"          units="%"       colour="hsl(208, 57, 43)"/>
+        <reportMetric id="mpi.collectiveRate"      allineaMetricVersion="1" displayName="Effective process collective rate"     units="B/s" colour="hsl(208, 57, 34)"/>
+        <reportMetric id="mpi.p2pRate"             allineaMetricVersion="1" displayName="Effective process point-to-point rate" units="B/s" colour="hsl(208, 57, 28)"/>
+
+        <reportMetric id="io.readPercent"          allineaMetricVersion="1" displayName="Time in reads"                         units="%"       colour="hsl(23, 83, 59)"/>
+        <reportMetric id="io.writePercent"         allineaMetricVersion="1" displayName="Time in writes"                        units="%"       colour="hsl(31, 83, 35)"/>
+        <reportMetric id="io.readRate"             allineaMetricVersion="1" displayName="Effective process read rate"           units="B/s" colour="hsl(33, 74, 34)"/>
+        <reportMetric id="io.writeRate"            allineaMetricVersion="1" displayName="Effective process write rate"          units="B/s" colour="hsl(31, 77, 27)"/>
+
+        <reportMetric id="openmp.computePercent"                  allineaMetricVersion="1" displayName="Computation"               units="%"   colour="hsl(108, 62, 60)"/>
+        <reportMetric id="openmp.overheadPercent"                 allineaMetricVersion="1" displayName="Synchronization"           units="%"   colour="hsl(108, 42, 37)"/>
+        <reportMetric id="openmp.physicalCoreUtilizationPercent"  allineaMetricVersion="1" displayName="Physical core utilization" units="%"   colour="hsl(110, 25, 58)"/>
+
+        <reportMetric id="threads.computePercent"                 allineaMetricVersion="1" displayName="Computation"               units="%"   colour="hsl(108, 62, 60)"/>
+        <reportMetric id="threads.syncPercent"                    allineaMetricVersion="1" displayName="Synchronization"           units="%"   colour="hsl(108, 42, 37)"/>
+        <reportMetric id="threads.physicalCoreUtilizationPercent" allineaMetricVersion="1" displayName="Physical core utilization" units="%"   colour="hsl(110, 25, 58)"/>
+
+        <reportMetric id="overview.systemLoadPercent"             allineaMetricVersion="1" displayName="System load"               units="%"   colour="hsl(121, 19, 48)"/>
+
+        <reportMetric id="memory.mean"                            allineaMetricVersion="1" displayName="Mean process memory usage" units="B"   colour="hsl(0, 83, 59)"/>
+        <reportMetric id="memory.peak"                            allineaMetricVersion="1" displayName="Peak process memory usage" units="B"   colour="hsl(0, 57, 45)"/>
+        <reportMetric id="memory.nodePeakPercent"                 allineaMetricVersion="1" displayName="Peak node memory usage"    units="%"   colour="hsl(0, 57, 29)"/>
+
+        <reportMetric id="cuda.gpusInUsePercent"                  allineaMetricVersion="1" displayName="GPU utilization"           units="%"   colour="hsl(303, 30, 45)"/>
+        <reportMetric id="cuda.globalMemoryAccessPercent"         allineaMetricVersion="1" displayName="Global memory accesses"    units="%"   colour="hsl(303, 36, 10)"/>
+        <reportMetric id="cuda.meanMemoryPercent"                 allineaMetricVersion="1" displayName="Mean GPU memory usage"     units="%"   colour="hsl(303, 35, 36)"/>
+        <reportMetric id="cuda.peakMemoryPercent"                 allineaMetricVersion="1" displayName="Peak GPU memory usage"     units="%"   colour="hsl(303, 24, 52)"/>
+
+        <reportMetric id="energy.cpuPercent"                      allineaMetricVersion="1" displayName="CPU"                       units="%"   colour="hsl(53, 93, 37)"/>
+        <reportMetric id="energy.accPercent"                      allineaMetricVersion="1" displayName="Accelerators"              units="%"   colour="hsl(55, 85, 32)"/>
+        <reportMetric id="energy.otherPercent"                    allineaMetricVersion="1" displayName="System"                    units="%"   colour="hsl(47, 86, 42)"/>
+        <reportMetric id="energy.nodeMeanPower"                   allineaMetricVersion="1" displayName="Mean node power"           units="W"   colour="hsl(45,  78, 40)"/>
+        <reportMetric id="energy.nodePeakPower"                   allineaMetricVersion="1" displayName="Peak node power"           units="W"   colour="hsl(41, 100, 38)"/>
+        <reportMetric id="energy.trappedPercent"                  allineaMetricVersion="2" displayName="Trapped capacity"          units="%"   colour="hsl(46, 92, 33)" breakdownSubsection="energy"/>
+
+        <reportMetric id="energy.total.plain"                     allineaMetricVersion="1" displayName="Total energy usage"        units="Wh"  colour="hsl(51, 99, 32)"/>
+        <reportMetric id="energy.cpuTotal.plain"                  allineaMetricVersion="1" displayName="CPU energy usage"          units="Wh"  colour="hsl(51, 99, 32)"/>
+        <reportMetric id="energy.accTotal.plain"                  allineaMetricVersion="1" displayName="GPU energy usage"          units="Wh"  colour="hsl(51, 99, 32)"/>
+        <reportMetric id="energy.trapped"                         allineaMetricVersion="2" displayName="Trapped capacity"          units="Wh"  colour="hsl(51, 99, 32)"/>
+        <reportMetric id="energy.budgetedTotal"                   allineaMetricVersion="2" displayName="Total energy budget"       units="Wh"  colour="hsl(51, 99, 32)"/>
+
+        <!-- Boolean flag metrics -->
+        <reportMetric id="cpu.showWaitingAcc"         allineaMetricVersion="1" type="boolean" displayName="Display time waiting for accelerators" />
+        <reportMetric id="energy.hasAccPower"         allineaMetricVersion="1" type="boolean" displayName="Accelerator power metrics available" />
+        <reportMetric id="energy.hasCpuPower"         allineaMetricVersion="1" type="boolean" displayName="CPU power metric available" />
+        <reportMetric id="energy.hasMetrics"          allineaMetricVersion="1" type="boolean" displayName="Energy metrics available" />
+        <reportMetric id="energy.hasBudgetedMetric"   allineaMetricVersion="2" type="boolean" displayName="Budgeted energy metric available" />
+        <reportMetric id="energy.hasTrappedCapacity"  allineaMetricVersion="2" type="boolean" displayName="Trapped capacity energy metric available" />
+
+        <!-- Error messages metrics -->
+        <reportMetric id="io.rateError"               allineaMetricVersion="1" type="string" displayName="I/O rate error message" />
+        <reportMetric id="cuda.error"                 allineaMetricVersion="1" type="string" displayName="CUDA metrics error message" />
+    </reportMetrics>
+
+    <summary>
+        <heading>Summary: ${allinea.appDetails.exeName} is ${allinea.dominant.metric.bound} in this configuration</heading>
+        <footer>This application run was ${allinea.dominant.metric.bound}. A breakdown of this time and advice
+                for investigating further is in the ${allinea.dominant.metric.subsection}
+                {{#if overview.bound2.type}}
+                    and ${allinea.secondaryDominant.metric.subsection} sections below.
+                {{else}}
+                    section below.
+                {{/if}}
+        </footer>
+        <entry id="overview.cpu" reportMetric="overview.cpu.percent">
+            <description>Time spent running application code. High values are usually good.</description>
+        </entry>
+        <entry id="overview.mpi" reportMetric="overview.mpi.percent">
+            <description>Time spent in MPI calls. High values are usually bad.</description>
+        </entry>
+        <entry id="overview.io" reportMetric="overview.io.percent">
+            <description>Time spent in filesystem I/O. High values are usually bad.</description>
+        </entry>
+    </summary>
+
+    <subsections>
+        <subsection id="cpu"
+                    order="-1000"
+                    maxAdviceStrings="2"
+                    heading="CPU"
+                    colour="hsl(108, 65, 50)">
+            <text>A breakdown of the <span class="{{self.colorName}}">{{percent overview.cpu.percent}}</span>% CPU time:</text>
+            <entry  reportMetric="cpu.singleCorePercent"                  order="-100" requires="applicationDetails.isOpenMp" />
+            <entry  reportMetric="cpu.openMpPercent"                      order="-90"  requires="applicationDetails.isOpenMp" />
+            <spacer requires="applicationDetails.isOpenMp"          order="-80" />
+            <entry  reportMetric="cpu.scalarNumPercent"                   order="-70" />
+            <entry  reportMetric="cpu.vectorNumPercent"                   order="-60" />
+            <entry  reportMetric="cpu.memPercent"                         order="-50" />
+            <entry  reportMetric="cpu.waitingAccPercent"                  order="-40"  requires="cpu.showWaitingAcc" />
+        </subsection>
+
+
+        <subsection id="mpi"
+                    order="-950"
+                    maxAdviceStrings="2"
+                    heading="MPI"
+                    colour="hsl(208, 83, 59)">
+            <text>A breakdown of the <span class="{{self.colorName}}">{{percent overview.mpi.percent}}</span>% MPI time:</text>
+            <entry  reportMetric="mpi.collectivePercent"                  order="-100" />
+            <entry  reportMetric="mpi.p2pPercent"                         order="-90"  />
+            <entry  reportMetric="mpi.collectiveRate"                     order="-80"  group="rates" />
+            <entry  reportMetric="mpi.p2pRate"                            order="-70"  group="rates" />
+        </subsection>
+
+
+        <subsection id="io"
+                    order="-900"
+                    maxAdviceStrings="2"
+                    heading="I/O"
+                    colour="hsl(23, 83, 59)"
+                    errorMetric="io.rateError">
+            <text>A breakdown of the <span class="{{self.colorName}}">{{percent overview.io.percent}}</span>% I/O time:</text>
+            <entry  reportMetric="io.readPercent"                         order="-100" />
+            <entry  reportMetric="io.writePercent"                        order="-90"  />
+            <entry  reportMetric="io.readRate"                            order="-80"
+                    requires="!io.rateError"
+                    group="rate"
+                    />
+            <entry  reportMetric="io.writeRate"                           order="-70"
+                    requires="!io.rateError"
+                    group="rate"
+                    />
+        </subsection>
+
+
+        <subsection id="openmp"
+                    order="-850"
+                    maxAdviceStrings="2"
+                    heading="OpenMP"
+                    colour="hsl(108, 50, 45)"
+                    requires="applicationDetails.isOpenMp">
+            <text>A breakdown of the <span class="{{self.colorName}}">{{percent cpu.openMpPercent}}</span>% time in OpenMP regions:</text>
+            <entry  reportMetric="openmp.computePercent"                  order="-100" />
+            <entry  reportMetric="openmp.overheadPercent"                 order="-90"  />
+            <entry  reportMetric="openmp.physicalCoreUtilizationPercent"  order="-80"  maxBarValue="200" />
+            <entry  reportMetric="overview.systemLoadPercent"             order="-70"  maxBarValue="200" />
+        </subsection>
+
+
+        <subsection id="threads"
+                    order="-800"
+                    maxAdviceStrings="2"
+                    heading="Threads"
+                    colour="hsl(108, 50, 45)"
+                    requires="!applicationDetails.isOpenMp">
+            <text>A breakdown of how multiple threads were used:</text>
+            <entry  reportMetric="threads.computePercent"                 order="-100" />
+            <entry  reportMetric="threads.syncPercent"                    order="-90"  />
+            <entry  reportMetric="threads.physicalCoreUtilizationPercent" order="-80"  maxBarValue="200" />
+            <entry  reportMetric="overview.systemLoadPercent"             order="-70"  maxBarValue="200" />
+        </subsection>
+
+
+        <subsection id="memory"
+                    order="-750"
+                    maxAdviceStrings="2"
+                    heading="Memory"
+                    colour="hsl(0, 83, 59)">
+            <text>Per-process memory usage may also affect scaling:</text>
+            <entry  reportMetric="memory.mean"                            order="-100" group="ram" unitPrefix="iec" />
+            <entry  reportMetric="memory.peak"                            order="-90"  group="ram" unitPrefix="iec" />
+            <entry  reportMetric="memory.nodePeakPercent"                 order="-80"  />
+        </subsection>
+
+
+        <subsection id="cuda"
+                    order="-700"
+                    maxAdviceStrings="2"
+                    heading="Accelerators"
+                    colour="hsl(303, 30, 45)"
+                    errorMetric="cuda.error"
+                    requires="applicationDetails.hasAcceleratorMetricsEnabled">
+            <text>A breakdown of how accelerators were used:</text>
+            <entry  reportMetric="cuda.gpusInUsePercent"                  order="-100"  requires="!cuda.error" />
+            <entry  reportMetric="cuda.globalMemoryAccessPercent"         order="-90"   requires="!cuda.error" />
+            <entry  reportMetric="cuda.meanMemoryPercent"                 order="-80"   requires="!cuda.error" />
+            <entry  reportMetric="cuda.peakMemoryPercent"                 order="-70"   requires="!cuda.error" />
+        </subsection>
+
+
+        <subsection id="energy"
+                    order="-650"
+                    maxAdviceStrings="2"
+                    heading="Energy"
+                    colour="hsl(51, 99, 32)"
+                    requires="applicationDetails.hasEnergyMetricsEnabled">
+            <text>A breakdown of how{{#if energy.hasMetrics}} the ${*energy.total.plain}{{else}} energy{{/if}} was used:</text>
+            <entry  reportMetric="energy.cpuPercent"                      order="-100" />
+            <entry  reportMetric="energy.accPercent"                      order="-90"  requires="energy.hasAccPower" />
+            <entry  reportMetric="energy.otherPercent"                    order="-80"  />
+            <entry  reportMetric="energy.nodeMeanPower"                   order="-70"  group="watts" />
+            <entry  reportMetric="energy.nodePeakPower"                   order="-60"  group="watts" />
+            <entry  reportMetric="energy.trappedPercent"                  order="-50"  requires="energy.hasBudgetedMetric">
+                <description>{{#if energy.hasTrappedCapacity}}${*energy.trapped} unused capacity of ${*energy.budgetedTotal} total available{{/if}}</description>
+            </entry>
+            <entry  reportMetric="energy.total.plain"    machineReadableOnly="true" order="-40"  displayName="Total" />
+            <entry  reportMetric="energy.cpuTotal.plain" machineReadableOnly="true" order="-30"  displayName="CPU"          requires="energy.hasCpuPower" />
+            <entry  reportMetric="energy.accTotal.plain" machineReadableOnly="true" order="-20"  displayName="Accelerators" requires="energy.hasAccPower" />
+            <entry  reportMetric="energy.trapped"   machineReadableOnly="true" order="-10"                             requires="energy.hasBudgetedMetric"/>
+        </subsection>
+    </subsections>
+</report>

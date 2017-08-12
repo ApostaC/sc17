@@ -1,0 +1,19 @@
+<plugin name="History v1.0" description = "A plugin that logs your MPI history.">
+    <preload name="libmpihistory.so" />
+
+<tracepoint location="_MPIHistoryRecordResult" variables="func, status->MPI_SOURCE, status->MPI_TAG" />
+
+{{foreachfn func MPI_Send MPI_Isend MPI_Ibsend MPI_Irsend MPI_Ssend MPI_Rsend MPI_Bsend MPI_Recv MPI_Irecv}}
+<tracepoint location="{{func}}" variables="{{args}}"/>
+{{endforeachfn}}
+
+{{foreachfn func MPI_Sendrecv MPI_Sendrecv_replace MPI_Bcast MPI_Barrier}}
+<tracepoint location="{{func}}" variables="{{args}}"/>
+{{endforeachfn}}
+
+{{foreachfn func MPI_Allgather MPI_Allgatherv MPI_Gather MPI_Gatherv}}
+<tracepoint location="{{func}}" variables="{{args}}"/>
+{{endforeachfn}}
+
+</plugin>
+

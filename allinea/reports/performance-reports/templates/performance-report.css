@@ -1,0 +1,198 @@
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Bitstream Vera Sans",sans-serif;
+    font-size: 1em;
+    color: #2c1a0a;
+    margin-bottom: 0;
+}
+div#content {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.header {
+    padding-top: 16px;
+}
+.header_left {
+    float:left;
+    width: 582px;
+}
+a img {
+    outline: none;
+    border: none;
+}
+.logo {
+    float: left;
+}
+#time_radar {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+table {
+    border-spacing: 0;
+}
+td {
+    padding-left: 0;
+    padding-right: 16px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+#error {
+    border: 1px solid;
+    margin: 16px 0px;
+    padding: 16px 16px 16px 16px;
+    color: #C80000;
+    background-color: #FFC0C0;
+    overflow: hidden;
+}
+#error p {
+    margin: 8px;
+}
+.application_details {
+    margin-top: 8px;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+.application_details .details_key { width: 116px; color: #bdc4d5;}
+.application_details table {
+    table-layout: fixed;
+    width: 100%;
+    color: #37537b;
+}
+.application_details #CommandLine {
+    word-wrap: break-word;
+}
+.application_details #ExePath {
+    word-wrap: break-word;
+}
+.summary {
+}
+hr {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    visibility: hidden;
+}
+.summary .heading {
+    font-family: inherit;
+    font-size: 1.8em;
+    padding-bottom: 8px;
+}
+.summary_class {
+    font-weight: bold;
+}
+.overview_general_advice p {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.subsections .explanation {
+    font-size: 0.9em;
+    color: #404040;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.table_spacer { height: 8px; }
+
+h2 { font-size: 1.5em; margin: 0; font-weight: normal; }
+.subsections h2 { padding-bottom: 8px; }
+
+.bar { padding-left: 0; padding-right: 0; }
+.bar > div { height: 100%; min-width: 1px; }
+.summary_table .bar { width: 200px; height: 2em; }
+.subsection .bar { width: 50px; height: 1em; }
+
+.bar_graph { width: 216px; }
+.summary_table { padding-top: 16px; padding-bottom: 8px; }
+.summary_table td p { margin: 0px; margin-bottom: 4px; }
+.summary_table td { padding-bottom: 8px; }
+.summary_table .details { font-size: 0.9em; }
+.right_cell { text-align: right; white-space: nowrap; }
+
+.metric_chart_table { padding-top: 8px; }
+.metric_chart_table td { font-size: 0.9em; padding-bottom: 8px; }
+
+.subsections .error {
+    font-size: 0.9em;
+    color: #404040;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#subsections {
+    margin-left: -14px;
+    margin-right: -14px;
+}
+
+.subsections > .subsection {
+    float: left;
+    width: 494px;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin-bottom: 32px;
+}
+
+.bar {
+    position: relative;
+    overflow: hidden;
+}
+
+.bar > .barBox {
+    position: absolute;
+    height: 1em;
+    z-index: 100;
+    margin-left: -1px;
+    width: 2px;
+    background-color: #000000;
+}
+
+a.toggle {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+a.toggle:hover {
+    text-decoration: underline;
+}
+
+.tip {
+    transition:all 0.3s ease;
+}
+
+.metricDetail {
+    padding-top: 0;
+    padding-bottom: 0 !important;
+}
+
+.metricDetail > div {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s, margin 1s;
+    border-radius: 4px;
+}
+
+.metricDetail.show > div {
+    margin-bottom: 8px;
+    max-height: 100px;
+}
+
+.inlinedDescription {
+    margin-left: 1em;
+}
+
+table.tip {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table.tip td, table.tip th {
+    padding: 4px !important;
+    margin: 0;
+    font-size: 80%;
+}

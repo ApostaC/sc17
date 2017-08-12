@@ -1,0 +1,16 @@
+{{#with applicationDetails}}
+    {{#if time}}
+        {{#with (lookupMetric "applicationDetails.time.plain") as |value|}}
+            {{#with (lookupMetricUnits "applicationDetails.time.plain") as |units|}}
+                {{value}} {{customUnits value units}}
+            {{/with}}
+        {{/with}}
+        {{#if (greater time.plain 60) }}
+            {{#with (lookupMetric "applicationDetails.time.plain") as |value|}}
+                {{#with (lookupMetricUnits "applicationDetails.time.plain") as |units|}}
+                    (about {{toFixed (div value 60) 0}} {{customUnits value "minutes"}})
+                {{/with}}
+            {{/with}}
+        {{/if}}
+    {{/if}}
+{{/with}}

@@ -1,0 +1,112 @@
+Name,Value
+{{!-- Output header metrics --}}
+{{#each headerData}}
+    {{#unless csvHidden}}
+        {{#if (isVisible this)}}
+            {{#with (lookupMetricUnits metricId) as |units|}}
+                {{~#csvEscape~}}
+                    {{{../../caption}}} ({{units}})
+                {{~/csvEscape~}},
+                {{~#csvEscape~}}
+                    {{{lookupMetric ../../metricId}}}
+                {{~/csvEscape}}
+
+            {{else}}
+                {{~#csvEscape~}}
+                    {{{caption}}}
+                {{~/csvEscape~}},
+                {{~#csvEscape~}}
+                    {{{lookupMetric metricId}}}
+                {{~/csvEscape}}
+
+            {{/with}}
+        {{/if}}
+    {{/unless}}
+{{/each}}
+{{!-- Output bound --}}
+{{#csvEscape~}}
+    Bound
+{{~/csvEscape~}},
+{{~#csvEscape~}}
+    {{{data.overview.bound1.long}}}
+{{~/csvEscape}}
+
+
+{{!-- Output summary metrics --}}
+{{#each summaryData.rows}}
+    {{#if (isVisible this)}}
+        {{#with (lookupMetricUnits metricId) as |units|}}
+            {{~#csvEscape~}}
+                {{#condenseSpace}}{{{../../heading}}}{{/condenseSpace}} ({{units}})
+            {{~/csvEscape}},
+            {{~#csvEscape~}}
+                {{{lookupMetric ../../metricId}}}
+            {{~/csvEscape}}
+
+        {{else}}
+            {{~#csvEscape~}}
+                {{{heading}}}
+            {{~/csvEscape~}},
+            {{~#csvEscape~}}
+                {{{lookupMetric metricId}}}
+            {{~/csvEscape}}
+
+        {{/with}}
+    {{/if}}
+{{/each}}
+{{!-- Output overview advice --}}
+{{#csvEscape~}}
+    Overview advice
+{{~/csvEscape~}},
+{{~#csvEscape~}}
+    {{{htmlToText (eval summaryData.adviceHtmlTemplate @root.data self=summaryData)}}}
+{{~/csvEscape}}
+
+
+{{#*inline "metricName"~}}
+{{#if displayName}}{{{displayName}}}{{else}}{{{lookupMetricDisplayName metricId}}}{{/if}}
+{{~/inline}}
+{{!-- Output subections --}}
+{{#each subsections}}
+    {{#if (isVisible this)}}
+        {{!-- Output subsection metrics --}}
+        {{#each metrics}}
+            {{#if (isVisible this)}}
+                {{#with (lookupMetricUnits metricId) as |units|}}
+                    {{~#csvEscape~}}
+                        {{{../../../heading}}} {{>metricName ../..}} ({{units}})
+                    {{~/csvEscape~}},
+                    {{~#csvEscape~}}
+                        {{{lookupMetric ../../metricId}}}
+                    {{~/csvEscape}}
+
+                {{else}}
+                    {{~#csvEscape~}}
+                        {{{../heading}}} {{>metricName ../..}}
+                    {{~/csvEscape~}},
+                    {{~#csvEscape~}}
+                        {{{lookupMetric metricId}}}
+                    {{~/csvEscape}}
+
+                {{/with}}
+            {{/if}}
+        {{/each}}
+        {{!-- Output subsection advices --}}
+        {{#each (eval adviceHtmlTemplate @root.data self=this)}}
+            {{#with (htmlToText this) as |advice|}}
+                {{~#csvEscape~}}
+                    {{{../../../heading}}} Advice {{add @index 1}}
+                {{~/csvEscape~}},
+                {{~#csvEscape~}}
+                    {{{advice}}}
+                {{~/csvEscape}}
+
+            {{else}}
+                {{~#csvEscape~}}
+                    {{{../heading}}} Advice {{add @index 1}}
+                {{~/csvEscape}},
+            {{/with}}
+        {{/each}}
+
+    {{/if}}
+{{/each}}

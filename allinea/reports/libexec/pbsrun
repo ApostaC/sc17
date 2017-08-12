@@ -1,0 +1,22 @@
+#!/bin/bash
+# $1 -np
+# $2 NUM NODES
+# $3 PROGRAM
+# $... PROGRAM ARGS
+
+mkdir /tmp/.$UID
+SCRIPT=/tmp/.$UID/job.$PPID
+
+echo "#!/bin/bash" > $SCRIPT
+echo "#PBS -l walltime=00:30:00,nodes=$2:ppn=1:prod" >> $SCRIPT
+echo "#PBS -q debug" >> $SCRIPT
+echo "#PBS -V" >> $SCRIPT
+echo "#PBS -o" $SCRIPT.out >> $SCRIPT
+echo "#PBS -e" $SCRIPT.err >> $SCRIPT
+echo "export SCR=\`set_SCR\`" >> $SCRIPT
+echo "cd $SCR" >> $SCRIPT
+shift 3
+echo "vmirun $ALLINEA_TOOLS_PATH/bin/ddt-debugger" $* >> $SCRIPT
+
+qsub $SCRIPT
+

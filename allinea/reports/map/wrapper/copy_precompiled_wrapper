@@ -1,0 +1,201 @@
+#!/bin/bash
+IS_CRAY=no
+IS_MIC=no
+IS_STATIC=no
+
+# First argument is set when this script is called from MAP or Performance
+# Reports. This should be the hostname. Ignore argument if it begins with '-'.
+if [[ -z "$1" || $1 = -* ]]; then
+  MAP_WRAPPER_POSTFIX="-`hostname`"
+else
+  MAP_WRAPPER_POSTFIX="-$1"
+fi
+
+# Second argument is set when this script is called from MAP or Performance
+# Reports. This should be the pid of the MAP or Performance Reports process.
+# Ignore argument if it begins with '-'.
+if [[ -z "$2" || $2 = -* ]]; then 
+  MAP_WRAPPER_PID=""
+else
+  MAP_WRAPPER_POSTFIX="${MAP_WRAPPER_POSTFIX}-"
+  MAP_WRAPPER_PID="$2"
+fi
+
+# Third argument is set when this script is called from MAP or Performance
+# Reports. This should be the mpirun-like script that was called. 
+# Ignore argument if it begins with '-'.
+
+if [[ -z "$3" || $3 = -* ]]; then
+  MPIEXECUTABLE="mpirun"
+else
+  MPIEXECUTABLE="$3"
+fi
+
+if [[ -z "$4" || $4 = -* ]]; then 
+  MPINAME="None"
+else
+  MPINAME="$4"
+fi
+
+for var in "$@"
+do
+  if [ "$var" = "--cray" ]; then
+    IS_CRAY=yes
+  fi
+
+  if [ "$var" = "--mic" ]; then
+    IS_MIC=yes
+  fi
+  
+  if [ "$var" = "--static" ]; then
+    IS_STATIC=yes
+  fi
+done
+
+# Check if ALLINEA_TOOLS_PATH is set. Don't set this in your environment - the
+# MAP or Performance Reports launch script will have set it.
+if [ -z "${ALLINEA_TOOLS_PATH}" ]; then
+    # If ALLINEA_TOOLS_PATH has not been set, work out where MAP or Performance
+    # Reports is located from path to this script
+    ALLINEA_TOOLS_PATH=`dirname "$0"`/../..
+fi
+
+if [ "x$ALLINEA_CONFIG_DIR" = "x" ]; then
+  # if empty, try ALLINEA_TOOLS_CONFIG_DIR
+  ALLINEA_CONFIG_DIR="$ALLINEA_TOOLS_CONFIG_DIR"
+fi
+if [ "x$ALLINEA_CONFIG_DIR" = "x" ]; then
+  # if still empty, set to default
+  ALLINEA_CONFIG_DIR="$HOME/."allinea
+fi
+
+if [ ! -d "$ALLINEA_CONFIG_DIR" ]; then
+  mkdir "$ALLINEA_CONFIG_DIR"
+  if [ $? -ne 0 ]; then
+    echo "Failed to create directory '$ALLINEA_CONFIG_DIR'"
+    echo "To use a different directory, set the ALLINEA_CONFIG_DIR environment variable."
+    exit $?
+  fi
+fi
+
+MAP_WRAPPER_DIR=${ALLINEA_CONFIG_DIR}/wrapper
+if [ ! -d "$MAP_WRAPPER_DIR" ]; then
+  mkdir "$MAP_WRAPPER_DIR"
+  if [ $? -ne 0 ]; then
+    exit $?
+  fi
+fi
+
+# Add -mic suffix when cross-compiling Xeon Phi libraries
+if [ "${IS_MIC}" = "yes" -a -z "${MAP_WRAPPER_PID}" ]; then
+  MAP_WRAPPER_POSTFIX="${MAP_WRAPPER_POSTFIX}-mic"
+fi
+
+MAP_WRAPPER_LIB=${MAP_WRAPPER_DIR}/libmap-sampler-pmpi${MAP_WRAPPER_POSTFIX}${MAP_WRAPPER_PID}.so
+MAP_WRAPPER_CODE=${MAP_WRAPPER_DIR}/libmap-sampler-pmpi${MAP_WRAPPER_POSTFIX}${MAP_WRAPPER_PID}.c
+MAP_WRAPPER_OBJECT=${MAP_WRAPPER_DIR}/libmap-sampler-pmpi${MAP_WRAPPER_POSTFIX}${MAP_WRAPPER_PID}.o
+MAP_WRAPPER_STATIC_CODE_DIR=${MAP_WRAPPER_DIR}/libmap-sampler-pmpi${MAP_WRAPPER_POSTFIX}${MAP_WRAPPER_PID}
+
+# Directory in which to add all needed precompiledwrappers
+PRELOAD_WRAPPER_DIR=${ALLINEA_TOOLS_PATH}/map/wrapper/precompiled
+
+# Remove the old sampler MPI wrapper library (if it exists). The MPI
+# implementation in the PATH may have changed since the wrapper was last
+# built.
+echo "Deleting old wrapper"
+rm -f ${MAP_WRAPPER_LIB}* ${MAP_WRAPPER_CODE}
+
+# Copies everything that is required for the wrapper to work and renames it to how build_wrapper creates them
+function renamecopy(){
+  echo "Renaming precompiled wrappers and copying them"
+  cp ${PRELOAD_WRAPPER_DIR}/$1/wrapper/libmap-sampler-pmpi-precompiled.so.1.0.0 $MAP_WRAPPER_LIB.1.0.0
+  ln -s $(basename $MAP_WRAPPER_LIB.1.0.0) $MAP_WRAPPER_LIB.1.0
+  ln -s $(basename $MAP_WRAPPER_LIB.1.0) $MAP_WRAPPER_LIB.1
+  ln -s $(basename $MAP_WRAPPER_LIB.1) $MAP_WRAPPER_LIB
+
+  echo "MPI wrapper copied: ${MAP_WRAPPER_LIB}"
+  exit 0
+}
+
+# Selects the most appropriate wrapper that we currently have
+function copywrapper()
+{
+  echo "Selecting proper wrapper for $1"
+  case "$1" in
+        cray)
+                renamecopy "mpich3-cray-64"
+                ;;
+        mpich3|intelmpi-5.1|intelmpi-5.0|mvapich2)
+                renamecopy "mpich3-gnu-64"
+                ;;
+        OpenMPI-1.10|OpenMPI-1.9)
+                renamecopy "openmpi110-gnu-64"
+                ;;
+        OpenMPI-1.8|OpenMPI-1.7)
+                renamecopy "openmpi18-gnu-64"
+                ;;
+        OpenMPI-1.6|OpenMPI-1.5|bullxmpi-1.2|bullxmpi-1.1)
+                renamecopy "openmpi16-gnu-64"
+                ;;
+        mpich2|intelmpi-4.1)
+                renamecopy "mpich2-gnu-64"
+                ;;
+        *)
+                echo "Unsupported MPI version $1"
+                exit 1
+                ;;
+  esac
+}
+
+# This function is only called for intelmpi and openmpi currently, since the exact version matters when selecting wrappers
+function copywrapper_with_version(){
+
+  MPIVERSION=$($MPIEXECUTABLE --version 2>&1 | grep -o -e "[0-9]\+\.[0-9]\+" | head -1)
+
+  MPINAME="$1-$MPIVERSION"
+
+  echo "MPI version found is $MPINAME"
+
+  copywrapper $MPINAME
+
+}
+
+# If it's a Cray executable, we give it the mpich3 wrapper (which should work)
+if [ "$IS_CRAY" = "yes" ]; then
+  copywrapper "cray"
+fi
+
+echo "Initial processing of MPI names"
+case $MPINAME in
+        "OpenMPI")
+                copywrapper_with_version $MPINAME
+        ;;
+        "intel-mpi mpmd"|"intel-mpi mpd"|"intel-mpi")
+                copywrapper_with_version "intelmpi"
+        ;;
+        "mpich 3 mpmd"|"mpich 3")
+                copywrapper "mpich3"
+        ;;
+        "mpich 2 mpmd"|"mpich 2")
+                copywrapper "mpich2"
+        ;;
+        "bullx mpi")
+                copywrapper_with_version "bullxmpi"
+        ;;
+        "mvapich 2")
+                copywrapper "mvapich2"
+        ;;
+        *)
+                echo "$MPINAME not currently supported by precompiled wrappers"
+                exit 1
+        ;;
+esac
+
+
+
+
+
+
+
+
+

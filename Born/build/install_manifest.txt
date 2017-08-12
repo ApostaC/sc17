@@ -1,0 +1,6 @@
+/home/aposta/sc17/Born/bin/Model3D
+/home/aposta/sc17/Born/bin/RTM3D
+/home/aposta/sc17/Born/bin/Wavelet
+/home/aposta/sc17/Born/bin/Vel
+/home/aposta/sc17/Born/bin/Data
+/home/aposta/sc17/Born/bin/Add

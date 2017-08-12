@@ -1,0 +1,298 @@
+<metricdefinitions version="1">
+
+<!-- Overview metric group
+    Contains FLOPS and CPI -->
+    <metric id="com.allinea.metrics.papi.flops">
+        <units>/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.allinea_papi_src"
+                functionName="allinea_flops"
+                divideBySampleTime="true"/>
+        <display>
+            <displayName>DP FLOPS</displayName>
+            <description><![CDATA[Rate of double precision floating point operations performed per second (on the main thread only)<br>There are many caveats surrounding this PAPI preset on Intel architectures<br>See http://icl.cs.utk.edu/projects/papi/wiki/PAPITopics:SandyFlops for more details]]></description>
+            <type>other</type>
+            <colour>SpecialLine6</colour>
+        </display>
+        <configFile env="ALLINEA_PAPI_CONFIG"/>
+    </metric>
+
+    <metric id="com.allinea.metrics.papi.cycles_per_instruction">
+        <units></units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.allinea_papi_src"
+                functionName="allinea_cycles_per_instruction"
+                divideBySampleTime="false"/>
+        <display>
+            <displayName>Cycles per instruction</displayName>
+            <description>Number of CPU cycles per instruction executed (on the main thread only)</description>
+            <type>other</type>
+            <colour>SpecialLine6</colour>
+        </display>
+    </metric>
+
+    <metric id="com.allinea.metrics.papi.l2_data_cache_misses_o">
+        <units>/s</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.allinea_papi_src"
+                functionName="allinea_l2_data_cache_misses_o"
+                divideBySampleTime="true"/>
+        <display>
+            <displayName>Level 2 data cache misses</displayName>
+            <description>PAPI_L2_DCM (on the main thread only)</description>
+            <type>other</type>
+            <colour>SpecialLine6</colour>
+        </display>
+    </metric>
+
+    <metricGroup id="PAPI_Overview">
+        <displayName>PAPI Overview (main thread only)</displayName>
+        <description>PAPI FLOPS and CPI metrics (on the main thread only)</description>
+        <metric ref="com.allinea.metrics.papi.flops"/>
+        <metric ref="com.allinea.metrics.papi.cycles_per_instruction"/>
+        <metric ref="com.allinea.metrics.papi.l2_data_cache_misses_o"/>
+    </metricGroup>
+
+<!-- Cache misses metric group
+    Contains L1, L2, L3 and total cache misses.
+    If total cache misses are unavailable then data cache misses
+    will be collected instead. -->
+    <metric id="com.allinea.metrics.papi.l1_total_cache_misses">
+        <units>/s</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.allinea_papi_src"
+                functionName="allinea_l1_total_cache_misses"
+                divideBySampleTime="true"/>
+        <display>
+            <displayName>Level 1 total cache misses</displayName>
+            <description>PAPI_L1_TCM (on the main thread only)</description>
+            <type>other</type>
+            <colour>SpecialLine6</colour>
+        </display>
+    </metric>
+
+    <metric id="com.allinea.metrics.papi.l2_total_cache_misses">
+        <units>/s</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.allinea_papi_src"
+                functionName="allinea_l2_total_cache_misses"
+                divideBySampleTime="true"/>
+        <display>
+            <displayName>Level 2 total cache misses</displayName>
+            <description>PAPI_L2_TCM (on the main thread only)</description>
+            <type>other</type>
+            <colour>SpecialLine6</colour>
+        </display>
+    </metric>
+
+    <metric id="com.allinea.metrics.papi.l3_total_cache_misses">
+        <units>/s</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.allinea_papi_src"
+                functionName="allinea_l3_total_cache_misses"
+                divideBySampleTime="true"/>
+        <display>
+            <displayName>Level 3 total cache misses</displayName>
+            <description>PAPI_L3_TCM (on the main thread only)</description>
+            <type>other</type>
+            <colour>SpecialLine6</colour>
+        </display>
+    </metric>
+
+    <metric id="com.allinea.metrics.papi.l1_data_cache_misses">
+        <units>/s</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.allinea_papi_src"
+                functionName="allinea_l1_data_cache_misses"
+                divideBySampleTime="true"/>
+        <display>
+            <displayName>Level 1 data cache misses</displayName>
+            <description>PAPI_L1_DCM (on the main thread only), recorded only if the total cache misses metric (PAPI_L1_TCM) is unavailable</description>
+            <type>other</type>
+            <colour>SpecialLine6</colour>
+        </display>
+    </metric>
+
+    <metric id="com.allinea.metrics.papi.l2_data_cache_misses">
+        <units>/s</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.allinea_papi_src"
+                functionName="allinea_l2_data_cache_misses"
+                divideBySampleTime="true"/>
+        <display>
+            <displayName>Level 2 data cache misses</displayName>
+            <description>PAPI_L2_DCM (on the main thread only), recorded only if the total cache misses metric (PAPI_L2_TCM) is unavailable</description>
+            <type>other</type>
+            <colour>SpecialLine6</colour>
+        </display>
+    </metric>
+
+    <metric id="com.allinea.metrics.papi.l3_data_cache_misses">
+        <units>/s</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.allinea_papi_src"
+                functionName="allinea_l3_data_cache_misses"
+                divideBySampleTime="true"/>
+        <display>
+            <displayName>Level 3 data cache misses</displayName>
+            <description>PAPI_L3_DCM (on the main thread only), recorded only if the total cache misses metric (PAPI_L3_TCM) is unavailable</description>
+            <type>other</type>
+            <colour>SpecialLine6</colour>
+        </display>
+    </metric>
+
+    <metricGroup id="PAPI_cache_misses">
+        <displayName>PAPI Data Cache Misses (main thread only)</displayName>
+        <description>PAPI data cache misses for all levels (on the main thread only)</description>
+        <metric ref="com.allinea.metrics.papi.l1_total_cache_misses"/>
+        <metric ref="com.allinea.metrics.papi.l2_total_cache_misses"/>
+        <metric ref="com.allinea.metrics.papi.l3_total_cache_misses"/>
+        <metric ref="com.allinea.metrics.papi.l1_data_cache_misses"/>
+        <metric ref="com.allinea.metrics.papi.l2_data_cache_misses"/>
+        <metric ref="com.allinea.metrics.papi.l3_data_cache_misses"/>
+    </metricGroup>
+
+
+<!-- Branch instructions metric group
+    Contains total and mispredicted branch instructions -->
+    <metric id="com.allinea.metrics.papi.branch_instructions">
+        <units>/s</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.allinea_papi_src"
+                functionName="allinea_branch_instructions"
+                divideBySampleTime="true"/>
+        <display>
+            <displayName>Branch instructions</displayName>
+            <description>Number of branch instructions per second(on the main thread only)</description>
+            <type>other</type>
+            <colour>SpecialLine6</colour>
+        </display>
+    </metric>
+
+    <metric id="com.allinea.metrics.papi.mispredicted_branch_instructions">
+        <units>/s</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.allinea_papi_src"
+                functionName="allinea_mispredicted_branch_instructions"
+                divideBySampleTime="true"/>
+        <display>
+            <displayName>Mispredicted branch instructions</displayName>
+            <description>Number of mispredicted branch instructions per second (on the main thread only)</description>
+            <type>other</type>
+            <colour>SpecialLine6</colour>
+        </display>
+    </metric>
+
+    <metric id="com.allinea.metrics.papi.total_instructions_b">
+        <units>/s</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.allinea_papi_src"
+                functionName="allinea_total_instructions_b"
+                divideBySampleTime="true"/>
+        <display>
+            <displayName>Completed instructions</displayName>
+            <description>Total number of completed instructions per second (on the main thread only)</description>
+            <type>other</type>
+            <colour>SpecialLine6</colour>
+        </display>
+    </metric>
+
+    <metricGroup id="PAPI_branch">
+        <displayName>PAPI Branch Prediction (main thread only)</displayName>
+        <description>PAPI branch prediction metrics (on the main thread only)</description>
+        <metric ref="com.allinea.metrics.papi.branch_instructions"/>
+        <metric ref="com.allinea.metrics.papi.mispredicted_branch_instructions"/>
+        <metric ref="com.allinea.metrics.papi.total_instructions_b"/>
+    </metricGroup>
+
+
+<!-- Floating point instructions metric group -->
+    <metric id="com.allinea.metrics.papi.fp_scalar_instructions">
+        <units>/s</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.allinea_papi_src"
+                functionName="allinea_fp_scalar_instructions"
+                divideBySampleTime="true"/>
+        <display>
+            <displayName>Scalar floating point</displayName>
+            <description>Number of scalar floating point instructions per second (on the main thread only)</description>
+            <type>other</type>
+            <colour>SpecialLine6</colour>
+        </display>
+    </metric>
+
+    <metric id="com.allinea.metrics.papi.fp_vector_instructions">
+        <units>/s</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.allinea_papi_src"
+                functionName="allinea_fp_vector_instructions"
+                divideBySampleTime="true"/>
+        <display>
+            <displayName>Vector floating point</displayName>
+            <description>Number of vector floating point instructions per second (on the main thread only)</description>
+            <type>other</type>
+            <colour>SpecialLine6</colour>
+        </display>
+    </metric>
+
+    <metric id="com.allinea.metrics.papi.vector_instructions">
+        <units>/s</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.allinea_papi_src"
+                functionName="allinea_vector_instructions"
+                divideBySampleTime="true"/>
+        <display>
+            <displayName>Vector instructions</displayName>
+            <description>Number of vector instructions per second, both floating point and integer (on the main thread only). Recorded only if the number of vector floating-point instructions is not available.</description>
+            <type>other</type>
+            <colour>SpecialLine6</colour>
+        </display>
+    </metric>
+
+    <metric id="com.allinea.metrics.papi.total_instructions_f">
+        <units>/s</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.allinea_papi_src"
+                functionName="allinea_total_instructions_f"
+                divideBySampleTime="true"/>
+        <display>
+            <displayName>Completed instructions</displayName>
+            <description>Total number of completed instructions per second (on the main thread only)</description>
+            <type>other</type>
+            <colour>SpecialLine6</colour>
+        </display>
+    </metric>
+
+    <metricGroup id="PAPI_floatpoint">
+        <displayName>PAPI Floating-Point (main thread only)</displayName>
+        <description>PAPI scalar and vector floating point instructions metrics (on the main thread only)</description>
+        <metric ref="com.allinea.metrics.papi.fp_scalar_instructions"/>
+        <metric ref="com.allinea.metrics.papi.fp_vector_instructions"/>
+        <metric ref="com.allinea.metrics.papi.vector_instructions"/>
+        <metric ref="com.allinea.metrics.papi.total_instructions_f"/>
+    </metricGroup>
+
+
+    <source id="com.allinea.metrics.allinea_papi_src">
+        <sharedLibrary>lib-papi.so</sharedLibrary>
+    </source>
+
+</metricdefinitions>
+
+

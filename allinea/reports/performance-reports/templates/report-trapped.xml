@@ -1,0 +1,124 @@
+<partialReport name="com.allinea.performancereports.trapped"
+               xmlns="http://www.allinea.com/2016/AllineaReports">
+    <reportMetrics>
+
+        <!-- Change the colours used for I/O metrics (to avoid clashing with colours
+             used in new energy & cpuEnergy subsections) -->
+        <reportMetric id="io.readPercent"          colour="hsl(51, 99, 32)"/>
+        <reportMetric id="io.writePercent"         colour="hsl(59, 99, 20)"/>
+        <reportMetric id="io.readRate"             colour="hsl(61, 90, 20)"/>
+        <reportMetric id="io.writeRate"            colour="hsl(59, 93, 16)"/>
+
+        <!-- Change the colours used for energy metrics --> 
+        <reportMetric id="energy.cpuTotal.plain"   colour="hsl(25, 77, 64)"/>
+        <reportMetric id="energy.accTotal.plain"   colour="hsl(27, 69, 59)"/>
+        <reportMetric id="energy.total.plain"      colour="hsl(23, 83, 59)"/>
+        <reportMetric id="energy.trapped"          colour="hsl(18, 76, 60)"/>
+        <reportMetric id="energy.nodeMeanPower"    colour="hsl(13, 84, 65)"/>
+        <reportMetric id="energy.nodePeakPower"    colour="hsl(23, 83, 59)"/>
+
+        <!-- Summary metrics -->
+        <reportMetric id="overview.cpu.percentOfBudget"           allineaMetricVersion="3" displayName="CPU"   units="%" colour="hsl(108, 65, 50)" breakdownSubsection="cpuEnergy"/>
+        <reportMetric id="overview.acc.percentOfBudget"           allineaMetricVersion="3" displayName="GPU"   units="%" colour="hsl(303, 30, 45)" breakdownSubsection="energy"/>
+        <reportMetric id="overview.other.percentOfBudget"         allineaMetricVersion="3" displayName="Other" units="%" colour="hsl( 51, 99, 32)" breakdownSubsection="energy"/>
+        <!-- energy.trappedPercent provided by base report -->
+        <reportMetric id="energy.trappedPercent"                  displayName="Trapped&#160;Capacity" colour="hsl(23, 83, 59)" breakdownSubsection="energy"/>
+
+        <!-- Trapped capacity only metrics -->
+        <reportMetric id="energy.budgetedTotal"                   allineaMetricVersion="2" displayName="Total energy budget"       units="Wh"  colour="hsl(23, 83, 59)"/>
+        <reportMetric id="energy.nodePowerBudget"                 allineaMetricVersion="3" displayName="Mean node power budget"    units="W"   colour="hsl(23, 83, 59)"/>
+
+        <reportMetric id="energy.otherCpuPercent"                 allineaMetricVersion="3" displayName="Compute CPU energy usage"  units="%"   colour="hsl(19, 70, 71)"/>
+        <reportMetric id="energy.ompCpuPercent"                   allineaMetricVersion="3" displayName="OpenMP CPU energy usage"   units="%"   colour="hsl(19, 70, 71)"/>
+        <reportMetric id="energy.mpiCpuPercent"                   allineaMetricVersion="3" displayName="MPI CPU energy usage"      units="%"   colour="hsl(19, 70, 71)"/>
+        <reportMetric id="energy.ioCpuPercent"                    allineaMetricVersion="3" displayName="I/O CPU energy usage"      units="%"   colour="hsl(19, 70, 71)"/>
+        <reportMetric id="energy.nodeMeanOtherCpuPower"           allineaMetricVersion="3" displayName="Mean power during compute" units="W"   colour="hsl(19, 70, 71)"/>
+        <reportMetric id="energy.nodeMeanOmpCpuPower"             allineaMetricVersion="3" displayName="Mean power during OpenMP"  units="W"   colour="hsl(19, 70, 71)"/>
+        <reportMetric id="energy.nodeMeanMpiCpuPower"             allineaMetricVersion="3" displayName="Mean power during MPI"     units="W"   colour="hsl(19, 70, 71)"/>
+        <reportMetric id="energy.nodeMeanIoCpuPower"              allineaMetricVersion="3" displayName="Mean power during I/O"     units="W"   colour="hsl(19, 70, 71)"/>
+
+        <!-- Error messages metrics -->
+        <reportMetric id="energy.error"                           allineaMetricVersion="2" type="string" displayName="Energy error" />
+    </reportMetrics>
+
+    <summary overwrite="true">
+        <heading>Energy Usage</heading>
+        <footer>{{energy.error}}</footer>
+        <entry id="overview.cpu"  reportMetric="overview.cpu.percentOfBudget">
+            <description>Energy spent running application code. Higher values will reduce trapped capacity.</description>
+        </entry>
+        <entry id="overview.acc"  reportMetric="overview.acc.percentOfBudget"
+               requires="applicationDetails.hasGpu">
+            <description>Energy spent running accelerator code. Higher values will reduce trapped capacity.</description>
+        </entry>
+        <entry id="overview.other"  reportMetric="overview.other.percentOfBudget">
+            <description>Energy used by other system components. Higher values will reduce trapped capacity.</description>
+        </entry>
+        <entry id="overview.trapped"  reportMetric="energy.trappedPercent" chartLabel="TC">
+            <description>Unused energy. High values indicate unused energy.</description>
+        </entry>
+    </summary>
+
+    <subsections>
+
+        <!-- Replace the 'default' energy subsection with the following -->
+        <subsection id="energy"
+                    overwrite="true"
+                    order="-1000"
+                    maxAdviceStrings="2"
+                    heading="Overall Energy"
+                    colour="hsl(23, 83, 59)"
+                    errorMetric="energy.error"
+                    requires="applicationDetails.hasEnergyMetricsEnabled">
+            <text>Detailed information on energy usage:</text>
+            <entry  reportMetric="energy.cpuTotal.plain"       group="energy"   order="-100" />
+            <entry  reportMetric="energy.accTotal.plain"       group="energy"
+                    requires="energy.hasAccPower"                               order="-90" />
+            <entry  reportMetric="energy.total.plain"          group="energy"   order="-80" />
+            <entry  reportMetric="energy.trapped"              group="energy"
+                    requires="energy.hasBudgetedMetric"                         order="-70" />
+            <entry  reportMetric="energy.budgetedTotal"        group="energy"
+                    requires="energy.hasBudgetedMetric"                         order="-60" />
+            <entry  reportMetric="energy.nodePowerBudget"      group="power"
+                    requires="energy.hasBudgetedMetric"                         order="-50" />
+            <entry  reportMetric="energy.nodeMeanPower"        group="power"    order="-40" />
+            <entry  reportMetric="energy.nodePeakPower"        group="power"    order="-30" />
+        </subsection>
+
+        <!-- Add a new subsection breaking down CPU energy usage -->
+        <subsection id="cpuEnergy"
+                    order="-900"
+                    maxAdviceStrings="2"
+                    heading="CPU Energy"
+                    colour="hsl(51, 99, 32)"
+                    requires="applicationDetails.hasEnergyMetricsEnabled">
+            <text>A breakdown of the CPU energy usage:</text>
+            <entry  reportMetric="energy.otherCpuPercent"       requires="!applicationDetails.isOpenMp" order="-100" />
+            <entry  reportMetric="energy.otherCpuPercent"       requires="applicationDetails.isOpenMp"  order="-90"
+                    displayName="Single-core CPU energy usage" />
+
+            <entry  reportMetric="energy.ompCpuPercent"         requires="applicationDetails.isOpenMp"  order="-80" />
+            <entry  reportMetric="energy.mpiCpuPercent"                                                 order="-70" />
+            <entry  reportMetric="energy.ioCpuPercent"                                                  order="-60" />
+
+            <entry  reportMetric="energy.nodeMeanOtherCpuPower" requires="!applicationDetails.isOpenMp" order="-50"
+                    group="power" />
+            <entry  reportMetric="energy.nodeMeanOtherCpuPower" requires="applicationDetails.isOpenMp"  order="-40"
+                    group="power" displayName="Mean power during single-core core" />
+
+            <entry  reportMetric="energy.nodeMeanOmpCpuPower"   requires="applicationDetails.isOpenMp"  order="-30"
+                    group="power" />
+            <entry  reportMetric="energy.nodeMeanMpiCpuPower"   group="power"                           order="-20" />
+            <entry  reportMetric="energy.nodeMeanIoCpuPower"    group="power"                           order="-10" />
+        </subsection>
+
+        <!-- Change the order of subsections provided by the parent 'default' report -->
+        <subsection id="cpu"     order="-800" />
+        <subsection id="cuda"    order="-700" />
+        <subsection id="openmp"  order="-600" />
+        <subsection id="threads" order="-500" />
+        <subsection id="mpi"     order="-400" />
+        <subsection id="io"      order="-300" />
+        <subsection id="memory"  order="-200" />
+    </subsections>
+</partialReport>

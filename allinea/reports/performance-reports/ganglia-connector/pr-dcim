@@ -1,0 +1,63 @@
+#!/bin/bash -e
+
+GMETRIC="${ALLINEA_GMETRIC:-`which gmetric`}"
+SCRIPT_DIR="$(dirname $(readlink -f $0))"
+
+# Usage: record_metric (metric-name) (metric-value) [metric-units] [metric-title]
+# Record the value of a metric.
+function record_metric()
+{
+    local metric="$1"
+    local value="$2"
+    local units="$3"
+    local title="$4"
+    local type="$5"
+    local group_list="$6"
+    local description="$7"
+    local args=()
+
+    args+=("-n" "${metric}")
+    args+=("-t" "${type}")
+    args+=("-v" "${value}")
+    args+=("-g" "${group_list}")
+
+    if [ ! "$units" = "" ]
+    then
+        args+=("-u" "${units}")
+    fi
+
+    if [ ! "$title" = "" ]
+    then
+        args+=("-T" "${title}")
+    fi
+
+    if [ ! "$description" = "" ]
+    then
+        args+=("-D" "${description}")
+    fi
+
+    "${GMETRIC}" "${args[@]}"
+}
+
+set -e
+
+# check if file exists
+if [ ! -e "$GMETRIC" ]; then
+    >&2 echo "Cannot execute $GMETRIC. File not found. Abort."
+    exit 1
+fi
+
+# check if it's a file
+if [ ! -f "$GMETRIC" ]; then
+    >&2 echo "Cannot execute $GMETRIC. Is not a file. Abort."
+    exit 1
+fi
+
+# check if it's executable
+if [ ! -x "$GMETRIC" ]; then
+    >&2 echo "Cannot execute $GMETRIC. Permission denied. Abort."
+    exit 1
+fi
+set +e
+
+source "$SCRIPT_DIR/allinea-dcim"

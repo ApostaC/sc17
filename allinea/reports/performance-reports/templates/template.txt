@@ -1,0 +1,95 @@
+Command:\t\t${COMMAND_LINE}
+Resources:\t\t${NUM_NODES} (${PHYSICAL_CORES_PER_NODE} physical, ${LOGICAL_CORES_PER_NODE} logical cores per node<ifdef ${HAS_GPU}>, ${NUM_OF_GPUS} per node available</ifdef>)
+Memory:\t\t\t${HOST_MEM} per node<ifdef ${HAS_GPU}>, ${HOST_GPU_MEM} per GPU</ifdef>
+Tasks:\t\t\t${NUM_PROCS}<ifdef ${IS_OPENMP}>, OMP_NUM_THREADS was ${OMP_NUM_THREADS}</ifdef>
+Machine:\t\t${HOSTNAME}
+Started on:\t\t${START_DATE}
+Total time:\t\t${TIME_SECONDS} (${TIME_MINUTES})
+Executable:\t\t${EXE_NAME}
+Full path:\t\t${EXE_PATH}
+Input file:\t\t${INPUT_FILE}
+Notes:\t\t\t${NOTES}
+
+Summary: ${EXE_NAME} is ${BOUND_1_LONG} in this configuration
+Compute:\t\t\t\t${CPU_PERCENT_ALIGNED} ${CPU_PERCENT_BAR}
+MPI:\t\t\t\t\t${MPI_PERCENT_ALIGNED} ${MPI_PERCENT_BAR}
+I/O:\t\t\t\t\t${IO_PERCENT_ALIGNED} ${IO_PERCENT_BAR}
+This application run was ${BOUND_1_LONG}. A breakdown of this time and advice for investigating further is found in the ${BOUND_1_SHORT}${BOUND_SHORT_AND}${BOUND_2_SHORT} section${S_ENDING} below.
+${OVERVIEW_ADVICE}
+
+CPU:
+A breakdown of the ${CPU_PERCENT} total compute time:
+<ifdef ${IS_OPENMP}>Single-core code:\t\t\t${CPU_SINGLE_CORE_PERCENT_ALIGNED} ${CPU_SINGLE_CORE_PERCENT_BAR}
+OpenMP regions:\t\t\t\t${CPU_OPENMP_PERCENT_ALIGNED} ${CPU_OPENMP_PERCENT_BAR}
+</ifdef>Scalar numeric ops:\t\t\t${CPU_SCALAR_NUM_PERCENT_ALIGNED} ${CPU_SCALAR_NUM_PERCENT_BAR}
+Vector numeric ops:\t\t\t${CPU_VECTOR_NUM_PERCENT_ALIGNED} ${CPU_VECTOR_NUM_PERCENT_BAR}
+Memory accesses:\t\t\t${CPU_MEM_PERCENT_ALIGNED} ${CPU_MEM_PERCENT_BAR}
+<ifdef ${SHOW_CPU_WAITING_ACCELERATOR}>Waiting for accelerators:\t\t${CPU_WAITING_ACC_PERCENT_ALIGNED} ${CPU_WAITING_ACC_PERCENT_BAR}
+</ifdef>${CPU_ADVICE_1}
+${CPU_ADVICE_2}
+<ifdef ${IS_OPENMP}>
+OpenMP:
+A breakdown of the ${CPU_OPENMP_PERCENT} time in OpenMP regions:
+Computation:\t\t\t\t${OPENMP_COMPUTE_PERCENT_ALIGNED} ${OPENMP_COMPUTE_PERCENT_BAR}
+Synchronization:\t\t\t${OPENMP_OVERHEAD_PERCENT_ALIGNED} ${OPENMP_OVERHEAD_PERCENT_BAR}
+Physical core utilization:\t\t${OPENMP_PHYSICAL_CORE_UTILIZATION_PERCENT_ALIGNED} ${OPENMP_PHYSICAL_CORE_UTILIZATION_PERCENT_BAR}
+System load:\t\t\t\t${SYSTEM_LOAD_PERCENT_ALIGNED} ${SYSTEM_LOAD_PERCENT_BAR}
+${OPENMP_ADVICE_1}
+${OPENMP_ADVICE_2}
+<else/>
+Threads:
+A breakdown of how multiple threads were used:
+Computation:\t\t\t\t${THREADS_COMPUTE_PERCENT_ALIGNED} ${THREADS_COMPUTE_PERCENT_BAR}
+Synchronization:\t\t\t${THREADS_SYNC_PERCENT_ALIGNED} ${THREADS_SYNC_PERCENT_BAR}
+Physical core utilization:\t\t${THREADS_PHYSICAL_CORE_UTILIZATION_PERCENT_ALIGNED} ${THREADS_PHYSICAL_CORE_UTILIZATION_PERCENT_BAR}
+System load:\t\t\t\t${SYSTEM_LOAD_PERCENT_ALIGNED} ${SYSTEM_LOAD_PERCENT_BAR}
+${THREADS_ADVICE_1}
+${THREADS_ADVICE_2}
+</ifdef>
+MPI:
+A breakdown of the ${MPI_PERCENT} MPI time:
+Time in collective calls:\t\t${MPI_COLLECTIVE_PERCENT_ALIGNED} ${MPI_COLLECTIVE_PERCENT_BAR}
+Time in point-to-point calls:\t\t${MPI_P2P_PERCENT_ALIGNED} ${MPI_P2P_PERCENT_BAR}
+Effective process collective rate:\t${MPI_COLLECTIVE_RATE_ALIGNED} bytes/s
+Effective process point-to-point rate:\t${MPI_P2P_RATE_ALIGNED} bytes/s
+${MPI_ADVICE_1}
+${MPI_ADVICE_2}
+
+I/O:
+A breakdown of the ${IO_PERCENT} I/O time:
+Time in reads:\t\t\t\t${IO_READ_PERCENT_ALIGNED} ${IO_READ_PERCENT_BAR}
+Time in writes:\t\t\t\t${IO_WRITE_PERCENT_ALIGNED} ${IO_WRITE_PERCENT_BAR}
+<ifdef ${IO_RATE_ERROR}>${IO_RATE_ERROR}
+<else/>Effective process read rate:\t\t${IO_READ_RATE_ALIGNED} bytes/s
+Effective process write rate:\t\t${IO_WRITE_RATE_ALIGNED} bytes/s</ifdef>
+${IO_ADVICE_1}
+${IO_ADVICE_2}
+
+Memory:
+Per-process memory usage may also affect scaling:
+Mean process memory usage:\t\t${MEM_MEAN_ALIGNED} bytes
+Peak process memory usage:\t\t${MEM_PEAK_ALIGNED} bytes
+Peak node memory usage:\t\t\t${MEM_NODE_PEAK_PERCENT_ALIGNED} ${MEM_NODE_PEAK_PERCENT_BAR}
+${MEM_ADVICE_1}
+${MEM_ADVICE_2}<ifdef ${ACCELERATOR_METRICS_ENABLED}>
+
+Accelerators:
+<ifdef ${CUDA_ERROR}>${CUDA_ERROR}<else/>A breakdown of how accelerators were used:
+GPU utilization:\t\t\t${CUDA_GPUS_IN_USE_PERCENT_ALIGNED} ${CUDA_GPUS_IN_USE_PERCENT_BAR}
+Global memory accesses:\t\t\t${CUDA_GLOBAL_MEMORY_ACCESS_PERCENT_ALIGNED} ${CUDA_GLOBAL_MEMORY_ACCESS_PERCENT_BAR}
+Mean GPU memory usage:\t\t\t${CUDA_MEAN_MEMORY_PERCENT_ALIGNED} ${CUDA_MEAN_MEMORY_PERCENT_BAR}
+Peak GPU memory usage:\t\t\t${CUDA_PEAK_MEMORY_PERCENT_ALIGNED} ${CUDA_PEAK_MEMORY_PERCENT_BAR}
+${CUDA_ADVICE_1}
+${CUDA_ADVICE_2}</ifdef></ifdef><ifdef ${ENERGY_METRICS_ENABLED}>
+
+Energy:
+A breakdown of how <ifdef ${HAS_ENERGY_METRICS}>the ${ENERGY_TOTAL}</else>energy</ifdef> was used:
+CPU:\t\t\t\t\t${ENERGY_CPU_PERCENT_ALIGNED} ${ENERGY_CPU_PERCENT_BAR}<ifdef ${ACCELERATOR_POWER_ENABLE}>
+Accelerators:\t\t\t\t${ENERGY_ACC_PERCENT_ALIGNED} ${ENERGY_ACC_PERCENT_BAR}</ifdef>
+System:\t\t\t\t\t${ENERGY_OTHER_PERCENT_ALIGNED} ${ENERGY_OTHER_PERCENT_BAR}
+Mean node power:\t\t\t${ENERGY_MEAN_POWER_ALIGNED} W
+Peak node power:\t\t\t${ENERGY_PEAK_POWER_ALIGNED} W
+<ifdef ${BUDGETED_METRIC_AVAILABLE}>Trapped capacity:\t\t\t${ENERGY_TRAPPED_PERCENT_ALIGNED} ${ENERGY_TRAPPED_PERCENT_BAR}
+<ifdef ${TRAPPED_CAPACITY_AVAILABLE}>\t${ENERGY_TRAPPED} unused capacity of ${ENERGY_BUDGETED} total available
+</ifdef></ifdef>${ENERGY_ADVICE_1}
+${ENERGY_ADVICE_2}</ifdef>

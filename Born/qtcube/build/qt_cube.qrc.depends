@@ -1,0 +1,47 @@
+    <!DOCTYPE RCC><RCC version="1.0">
+    <qresource >
+<file>images/about.png</file>
+<file>images/across-arrow.png</file>
+<file>images/back-play.png</file>
+<file>images/qt_cube.icns</file>
+<file>images/back.png</file>
+<file>images/back-start.png</file>
+<file>images/blob-clear.png</file>
+<file>images/blob.png</file>
+<file>images/blob-undo.png</file>
+<file>images/clear.png</file>
+<file>images/corner.png</file>
+<file>images/deep-arrow.png</file>
+<file>images/down-arrow.png</file>
+<file>images/big.png</file>
+<file>images/small.png</file>
+<file>images/down.png</file>
+<file>images/even-cube.png</file>
+<file>images/forward-end.png</file>
+<file>images/forward-play.png</file>
+<file>images/forward.png</file>
+<file>images/home.png</file>
+<file>images/interpolate.png</file>
+<file>images/interpolate-undo.png</file>
+<file>images/middle-move.png</file>
+<file>images/middle.png</file>
+<file>images/movie.png</file>
+<file>images/open.png</file>
+<file>images/picks-far.png</file>
+<file>images/picks-fix.png</file>
+<file>images/picks-large.png</file>
+<file>images/picks-near.png</file>
+<file>images/picks-small.png</file>
+<file>images/redo.png</file>
+<file>images/refresh.png</file>
+<file>images/ricksep.png</file>
+<file>images/sample.png</file>
+<file>images/save.png</file>
+<file>images/stop.png</file>
+<file>images/true-cube.png</file>
+<file>images/undo.png</file>
+<file>images/up.png</file>
+    </qresource>
+    </RCC>
+
+

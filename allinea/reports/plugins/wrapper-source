@@ -1,0 +1,88 @@
+static long long _MPIHistorySentBytes = 0;
+
+{{forallfn func}}    
+static long long _MPIHistoryCount_{{func}} = 0;
+static long long _MPIHistoryBytes_{{func}} = 0;
+{{endforallfn}}
+ 
+static void _MPIHistoryRecordResult(const char* func, MPI_Status* status)
+{
+    volatile static int x = 0;
+    if (func) x++;                        /* no optimization please! */
+    if (status) x++;
+}
+
+{{fn func MPI_Send MPI_Isend MPI_Ibsend MPI_Irsend MPI_Ssend MPI_Rsend MPI_Bsend}}
+    int _size;
+
+    _MPIHistoryCount_{{func}}++;
+    PMPI_Type_size({{2}}, &_size);
+    _MPIHistorySentBytes += {{1}} * _size;
+    _MPIHistoryBytes_{{func}} += {{1}} * _size;
+    {{callfn}}
+{{endfn}}
+
+{{fn func MPI_Recv}}
+    int _size;
+    PMPI_Type_size({{2}}, &_size); 
+    _MPIHistoryCount_{{func}}++;
+    _MPIHistoryBytes_{{func}} += {{1}} * _size;
+    {{callfn}}
+    _MPIHistoryRecordResult("{{func}}", {{6}});
+{{endfn}}
+
+{{fn func MPI_Irecv}}
+    _MPIHistoryCount_{{func}}++;
+    {{callfn}}
+{{endfn}}
+
+{{fn func MPI_Sendrecv MPI_Sendrecv_replace}}
+    int _size;
+    _MPIHistoryCount_{{func}}++;
+    PMPI_Type_size({{2}}, &_size);
+    _MPIHistorySentBytes += {{1}} * _size;
+    _MPIHistoryBytes_{{func}} += {{1}} * _size;
+    {{callfn}}
+{{endfn}}
+
+
+{{fn func MPI_Bcast}}
+    int _size;
+    int _rank;
+    PMPI_Type_size({{2}}, &_size);
+    _MPIHistoryCount_{{func}}++;
+    PMPI_Comm_rank({{4}}, &_rank);
+    if (_rank == {{3}}) 
+      {    
+        _MPIHistorySentBytes += {{1}} * _size;
+        _MPIHistoryBytes_{{func}} += {{1}} * _size;
+      }
+    {{callfn}}            
+{{endfn}}
+
+{{fn func MPI_Allgather MPI_Alltoall MPI_Gather}}
+    int _size;
+
+    PMPI_Type_size({{2}}, &_size);
+    _MPIHistoryCount_{{func}}++;
+    _MPIHistorySentBytes += {{1}} * _size;
+    _MPIHistoryBytes_{{func}} += {{1}} * _size;
+    {{callfn}}
+{{endfn}}
+
+{{fn func MPI_Barrier MPI_Allgatherv MPI_Alltoallv MPI_Gatherv MPI_Testany MPI_Testsome MPI_Testall }}
+    _MPIHistoryCount_{{func}}++;
+    {{callfn}}
+{{endfn}}
+
+{{fn func MPI_Wait}}
+    _MPIHistoryCount_{{func}}++;
+     {{callfn}}
+    _MPIHistoryRecordResult("{{func}}", {{1}});
+{{endfn}}
+
+{{fn func MPI_Test}}
+    _MPIHistoryCount_{{func}}++;
+     {{callfn}}
+    _MPIHistoryRecordResult("{{func}}", {{2}});
+{{endfn}}

@@ -1,0 +1,20 @@
+{{#with summaryData}}
+    {{#trimLeft}}
+        {{#with (trim (eval headingHtmlTemplate @root.data self=this)) as |valueHtml|}}
+            {{{htmlToText valueHtml}}}
+        {{/with}}
+    {{/trimLeft}}
+    {{#each rows}}
+        {{#trimLeft}}
+            {{#with (lookupMetric metricId) as |value|}}
+                {{#padRight 42}}{{{../../heading}}}:{{/padRight}} {{~#padLeft 8}}{{percent value}}%{{/padLeft}} {{{percentToBar value}}}
+            {{/with}}
+        {{/trimLeft}}
+    {{/each}}
+    {{#trimLeft}}
+        {{{htmlToText (eval footerHtmlTemplate @root.data self=this)}}}
+    {{/trimLeft}}
+    {{#trimLeft}}
+        {{{htmlToText (eval adviceHtmlTemplate @root.data self=this)}}}
+    {{/trimLeft}}
+{{/with}}

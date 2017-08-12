@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<!-- Definitions for OpenMP, OpenACC, and HMPP pragmas. -->
+<language version="1.0" name="Pragmas" section="Other" extensions="" mimetype="" author="Jonathan Byrd (jbyrd@allinea.com)" license="LGPL" hidden="true">
+  <highlighting>
+    <list name="omp_clauses">
+      <item> atomic </item>
+      <item> barrier </item>
+      <item> copyin </item>
+      <item> copyprivate </item>
+      <item> critical </item>
+      <item> default </item>
+      <item> for </item>
+      <item> dynamic </item>
+      <item> firstprivate </item>
+      <item> flush </item>
+      <item> guided </item>
+      <item> if </item>
+      <item> lastprivate </item>
+      <item> master </item>
+      <item> taskwait </item>
+      <item> nowait </item>
+      <item> num_threads </item>
+      <item> ordered </item>
+      <item> parallel </item>
+      <item> private </item>
+      <item> reduction</item>
+      <item> runtime </item>
+      <item> schedule </item>
+      <item> section </item>
+      <item> sections </item>
+      <item> shared </item>
+      <item> single </item>
+      <item> static </item>
+      <item> task </item>
+      <item> threadprivate </item>
+      <item> workshare </item>
+    </list>
+    
+    <list name="acc_clauses">
+      <item> wait </item>
+      <item> declare </item>
+      <item> device_resident </item>
+      <item> if </item>
+      <item> async </item>
+      <item> num_gangs </item>
+      <item> num_workers </item>
+      <item> vector_length </item>
+      <item> kernels </item>
+      <item> end </item>
+      <item> data </item>
+      <item> copy </item>
+      <item> copyout </item>
+      <item> create </item>
+      <item> present </item>
+      <item> present_or_copy </item>
+      <item> pcopy </item>
+      <item> present_or_copyin </item>
+      <item> pcopyin </item>
+      <item> present_or_copyout </item>
+      <item> pcopyout </item>
+      <item> present_or_create </item>
+      <item> pcreate </item>
+      <item> deviceptr </item>
+      <item> host_data </item>
+      <item> use_device </item>
+      <item> loop </item>
+      <item> collapse </item>
+      <item> seq </item>
+      <item> gang </item>
+      <item> worker </item>
+      <item> vector </item>
+      <item> independent </item>
+      <item> cache </item>
+      <item> update </item>
+      <item> host </item>
+      <item> device </item>
+    </list>
+
+    <list name="hmpp_clauses">
+      <item> codelet </item>
+      <item> args </item>
+      <item> advancedload </item>
+      <item> group </item>
+      <item> target </item>
+      <item> map </item>
+      <item> resident </item>
+      <item> mapbyname </item>
+      <item> allocate </item>
+      <item> delegatedstore </item>
+      <item> callsite </item>
+      <item> release </item>
+      <item> addr </item>
+    </list>
+
+    <contexts>
+      <context attribute="Preprocessor" lineEndContext="#pop" name="Pragmas" >
+        <DetectSpaces />
+        <StringDetect attribute="Keyword" context="OMP Pragma" String="omp" />
+        <StringDetect attribute="Keyword" context="OMP Pragma" String="OMP" />
+        <StringDetect attribute="Keyword" context="OpenACC Pragma" String="acc" />
+        <StringDetect attribute="Keyword" context="OpenACC Pragma" String="ACC" />
+        <StringDetect attribute="Keyword" context="HMPP Pragma" String="hmpp" />
+        <StringDetect attribute="Keyword" context="HMPP Pragma" String="HMPP" />
+      </context>
+
+      <context attribute="Preprocessor" lineEndContext="#pop" name="OMP Pragma">
+        <DetectSpaces />
+        <LineContinue attribute="Preprocessor" context="#stay"/>
+        <keyword attribute="Extensions" context="#stay" String="omp_clauses" />
+      </context>
+      
+      <context attribute="Preprocessor" lineEndContext="#pop" name="OpenACC Pragma">
+        <DetectSpaces />
+        <LineContinue attribute="Preprocessor" context="#stay"/>
+        <keyword attribute="Extensions" context="#stay" String="omp_clauses" />
+        <keyword attribute="Extensions" context="#stay" String="acc_clauses" />
+      </context>
+      
+      <context attribute="Preprocessor" lineEndContext="#pop" name="HMPP Pragma">
+        <DetectSpaces />
+        <LineContinue attribute="Preprocessor" context="#stay"/>
+        <keyword attribute="Extensions" context="#stay" String="hmpp_clauses" />
+      </context>
+    </contexts>
+    <itemDatas>
+      <itemData name="Preprocessor" defStyleNum="dsOthers" spellChecking="false"/>
+      <itemData name="Extensions"   defStyleNum="dsExtension" spellChecking="false"/>
+      <itemData name="Keyword"      defStyleNum="dsKeyword" spellChecking="false"/>
+    </itemDatas>
+  </highlighting>
+  <general>
+    <keywords casesensitive="0"/>
+  </general>
+</language>
