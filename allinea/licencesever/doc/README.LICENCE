@@ -1,0 +1,410 @@
+END USER LICENCE AGREEMENT FOR ALLINEA ARM DEVELOPMENT SOLUTION TOOLS
+
+IMPORTANT NOTICE: PLEASE READ CAREFULLY BEFORE INSTALLING THE SOFTWARE: THESE 
+LICENCE TERMS ARE PART OF A LEGAL AGREEMENT BETWEEN YOU ("LICENSEE" OR "YOU") AND 
+ARM LIMITED (OF 110 FULBOURN ROAD, CAMBRIDGE, CB1 9NJ, UNITED KINGDOM) OR ONE OF OUR 
+GROUP COMPANIES ("LICENSOR" OR "US") RELATING TO THE ALLINEA SOFTWARE PRODUCT NAMED 
+IN THE PRODUCT SALE AGREEMENT YOU HAVE AGREED WITH US OR ONE OF OUR RESELLERS.
+
+BY CLICKING ON THE "ACCEPT" BUTTON BELOW YOU AGREE TO THESE LICENCE TERMS TOGETHER 
+WITH THE TERMS AND CONDITIONS IN THE PRODUCT SALE AGREEMENT AND CONFIRM THAT YOU 
+HAVE THE AUTHORITY TO ENTER INTO THIS LICENCE ON BEHALF OF YOUR ORGANIZATION. THE 
+TERMS OF THIS LICENCE SHALL APPLY TO THE SUPPLY BY ARM OF SOFTWARE FOR BOTH 
+COMMERCIAL AND NON-COMMERCIAL USE. IF YOU ARE RECEIVING THE SOFTWARE FOR 
+EVALUATION, ACADEMIC OR EDUCATIONAL PURPOSES, OR THE SOFTWARE OR ANY COMPONENT 
+THEREOF IS IDENTIFIED OR CLASSIFIED AS SUCH (INCLUDING SOFTWARE IDENTIFIED AS A 'BETA' OR 
+'PRE-RELEASE' VERSION), THEN NOTWITHSTANDING ANY OF THE OTHER TERMS AND CONDITIONS 
+OF THIS LICENCE, YOUR USE OF THE SOFTWARE SHALL BE LIMITED BY THE RESTRICTIONS OF USE 
+SET OUT IN CLAUSE 2 BELOW (AS APPLICABLE).
+
+THIS LICENCE CREATES LEGAL OBLIGATIONS. IF YOU DO NOT AGREE TO THE TERMS OF THIS 
+LICENCE, WE ARE UNWILLING TO LICENSE THE SOFTWARE TO YOU AND YOU MUST DISCONTINUE 
+INSTALLATION AND/OR USE OF THE SOFTWARE NOW BY CLICKING ON THE "REJECT" BUTTON BELOW 
+AND RETURN THE MEDIUM ON WHICH THE SOFTWARE IS STORED (IF ANY) AND ALL ACCOMPANYING 
+DOCUMENTATION TO US OR THE RESELLER (AS APPLICABLE) FROM WHICH YOU OBTAINED THE 
+SOFTWARE.
+
+1 	Definitions and interpretation
+1.1 	The capitalised terms used in this Licence have the following meanings:
+"Basic Licence Terms" refers to the terms and conditions in this document;
+"Documentation" means the documentation relating to the Software made available from time to time on our 
+website (whether supplied to you directly from our website or via a reseller);
+"Initial Support Period" means the period of support specified in the Product Sale Agreement, commencing on 
+the date you accept this Licence;
+"Licence" refers to the Basic Licence Terms together with the terms contained in the Product Sale Agreement;
+"New Version" means any new version of the Software containing significant differences from previous versions 
+which from time to time is publicly marketed and offered for purchase by the Licensor in the course of its normal 
+business;
+"Product Fee" means the fee for use of the Software in accordance with this Licence as detailed in the Product 
+Sale Agreement;
+"Product Sale Agreement" means the firm quotation, order form or other document issued to you, whether via 
+our website or by email, whether directly by us or by one of our resellers, which details some or all of the 
+following:
+(a) the name of the product licensed as the Software;
+(b) applicable limitations such as the number of concurrent processes, architectures or GPU devices that may be 
+applicable, the number of users that can use the Software at any time, or the number of CPUs or servers on 
+which the Software may be used;
+(c) the territory in which the Software may be used;
+(d) whether the licence is an evaluation only licence, and if so, any additional terms and restrictions applicable to 
+your use of the Software under this type of licence;
+(e) whether the licence is a term licence and if so the length of the term;
+(f) the Product Fee (if applicable);
+(g) whether support is required and if so the length of the Initial Support Period and the Support Fee applicable to 
+the Initial Support Period;
+(h) customer contact details such as your organisation's name and postal address and your telephone number 
+and email address;
+"Purpose" means your internal business purposes only and does not include using the Software (a) for provision 
+of a service to third parties or (b) for the purposes of competing with us, including for competitive analysis 
+purposes;
+"Software" means the files comprising the software product and any associated Documentation named in the 
+Product Sale Agreement, in non-human readable form only, and includes any Updates;
+"Support Fee" means the fee payable by you in respect of support of the Software, detailed in the Product Sale 
+Agreement or any subsequent agreed additions to the Product Sale Agreement in respect of added or renewed 
+support;
+"Support Renewal Period" means one or more further periods of support agreed in writing between us and you, 
+commencing on the date agreed in writing;
+"Territory" means the territory specified in the Product Sale Agreement;
+"Updates" means any update, enhancement, improvement or modification to the Software and/or Documentation 
+including without limitation error corrections and patches that Licensor may in its discretion make available to its 
+licensees as part of the provision of support, but excludes any New Version.
+
+1.2	These Basic Licence Terms are additional to the terms in your Product Sale Agreement. Where there is 
+any conflict between these Basic Licence Terms and any terms in your Product Sale Agreement, the 
+conflicting terms in your Product Sale Agreement will prevail. For the avoidance of doubt, no terms or 
+conditions contained in any purchase order or other document issued by you shall add to or supersede 
+any terms or conditions of this Licence or otherwise be of any force or effect.
+1.3	Where your Product Sale Agreement was agreed with and refers to another company in our group, 
+references to "the Licensor" (or "us") in this Licence refer to that group company rather than to ARM 
+Limited.
+1.4	If there are any inconsistencies between the English language version of this Licence and any translated 
+version, the English language version shall prevail.
+1.5	If you want to contact us at any time with any questions or comments, send an email to 
+support_allinea@arm.com. Notices which are intended to have legal effect must, for notices to us, be 
+sent to Licensing-DSG@arm.com. We may give notice to you at either the email or postal address you 
+provided when purchasing the Software. Notice will be deemed received and properly served 24 hours 
+after an email is sent, or three days after the date of posting of any letter. In proving the service of any 
+notice, it will be sufficient to prove, in the case of a letter, that the letter was properly addressed, 
+stamped and put in the post and, in the case of an email, that the email was sent to the specified email 
+address of the addressee.
+
+2	Evaluation only Licence (including a 'beta' or 'pre-release' Licence) and restrictions on use
+2.1 	If you are receiving the Software for evaluation, academic or educational purposes, or the software or 
+any component thereof is identified or classified as such (including software identified as a 'beta' or 'pre-
+release' version), then notwithstanding any of the other terms and conditions of this Licence, you agree 
+that the grant of a non-exclusive, non-transferable right and licence to you by ARM is limited as follows:
+2.1.1	you may use the Software only (i) in the case of an evaluation only licence, for a period of 7 days from 
+the date on which you accept this Licence (or such longer period as we consent to in writing), (ii) in the 
+case of beta or pre-release versions, for a period of 30 days from the date on which you accept this 
+Licence (or such longer period as we consent to in writing), and (ii) for the purposes of internal 
+evaluation in a test environment;
+2.1.2	ARM does not grant you any right to distribute or sub-license the Software whatsoever. The Software 
+shall be used only by you, and you shall not (except as otherwise authorised in writing by ARM) allow 
+any third party whatsoever to use the Software;
+2.1.3	no support and/or maintenance shall be provided to you in respect of the Software;
+2.1.4	ARM may immediately terminate this Licence at any time for any reason; 
+2.1.5	ARM gives you no warranty whatsoever in relation to (and accepts no liability in connection with) the 
+Software or your use (as permitted by this Licence) of it; and 
+2.1.6	except as otherwise expressly agreed in writing by ARM, you shall grant to ARM in full the licence set 
+out in clause 4.4 of this Licence (Licence to Feedback).
+
+3 	Grant and scope of Licence
+3.1 	Subject to your compliance with all terms and conditions of this Licence, including the payment of the 
+Product Fee we hereby grant to you a non-exclusive, non-transferable licence to use the Software and 
+the Documentation in the Territory on the terms of this Licence.
+3.2 	You may:
+3.2.1 	install and use the Software for the Purpose only, on the basis, and subject to the restrictions and 
+limitations, set out in the Product Sale Agreement;
+3.2.2 	transfer the Software from one computer to another only as provided by, and subject to the restrictions 
+and limitations set out in, the Product Sale Agreement;
+3.2.3 	use any Documentation in support of the use permitted under Section 3.1 and make copies of the 
+Documentation as are reasonably necessary for use of the Software.
+3.3 	Where the Product Sale Agreement provides that this Licence is a term licence, this Licence will 
+terminate on the expiry date shown in the Product Sale Agreement (unless terminated earlier under 
+Section 9). Otherwise this Licence will continue until terminated under Section 9.
+
+4	Your obligations
+4.1 	Except as expressly set out in this Licence or as otherwise agreed by us in writing (including, for the 
+avoidance of doubt, any licence terms and conditions applicable to third party software referenced in this 
+Licence), or as permitted by any local law, you agree:
+4.1.1 	to provide us with the installation details necessary to generate and issue a permanent licence key 
+within 30 days of accepting this Licence (provided you are not receiving the Software solely for internal 
+evaluation purposes);
+4.1.2 	not to rent, lease, sub-license, loan, translate, merge, adapt, vary or modify the Software or 
+Documentation;
+4.1.3 	not to tamper with or circumvent any licence keys provided by us;
+4.1.4 	not to make alterations to, or modifications of, the whole or any part of the Software nor permit the 
+Software or any part of it to be combined with, or become incorporated in, any other programs;
+4.1.5 	not to disassemble, de-compile, reverse engineer or create derivative works based on the whole or any 
+part of the Software nor attempt to do any such things except to the extent that (because of applicable 
+law) such actions cannot be prohibited because they are essential for the purpose of achieving inter-
+operability of the Software with another software program, and provided that the information obtained by 
+you during such activities:
+(i) is used only for the purpose of achieving inter-operability of the Software with another software 
+program;
+(ii) is not disclosed or communicated without our prior written consent to any third party to whom it is not 
+necessary to disclose or communicate it; and
+(iii) is not used to create any software which is substantially similar to the Software;
+4.1.6 	to ensure that the Software is used by your employees and representatives in accordance with the terms 
+of this Licence;
+4.1.7 	to include the copyright notices and any other attribution notices on all entire and partial copies of the 
+Software in any form;
+4.1.8 	except and to the extent expressly permitted or required by any of the terms of any of the licence 
+agreements referred to in Section 6.3 (and then only in respect of the relevant components) not to 
+provide, or otherwise make available, the Software in any form, in whole or in part (including, but not 
+limited to, program listings, object and source program listings, object code and source code) to any 
+person other than your staff or contractors who are authorised users (or in the case of an academic 
+institution to any person other than staff or students) without our prior written consent;
+4.1.9			in cases where you are expressly permitted under this Licence (including for the avoidance of doubt by 
+inclusion of agreed wording in the Product Sale Agreement) to sub-licence or redistribute any Software 
+to your customers or other third parties, you are responsible for ensuring that (and shall indemnify us in 
+respect of any losses suffered by us caused by your failure to ensure that) such customers and third 
+parties accept, and comply with, the terms and conditions of this Licence; and
+4.1.10 	not by any act or omission to put us in breach of any of the terms of any licence agreement referred to in 
+Section 6.3.
+4.2 	Licensor or its designee shall have the right from time to time to perform an audit of Licensee's books 
+and records to determine if Licensee's use of the Software complies with the provisions of this Licence. 
+Any such audit (i) shall be made during Licensee's normal business hours, (ii) shall be undertaken only 
+after reasonable prior written notice thereof has been given by Licensor to Licensee, and (iii) shall not 
+unreasonably interfere with Licensee's business operations. Licensee agrees to cooperate with Licensor 
+or its designee, in any such audit.
+4.3 	You may at your discretion (or as agreed with ARM in the Product Sale Agreement) deliver suggestions, 
+comments, feedback, ideas, or know-how (whether in oral or written form) to ARM ("Feedback"). 
+Notwithstanding the foregoing, you shall not knowingly give to ARM any Feedback that you are aware 
+(or should reasonably be aware) is subject to any patent, copyright or other intellectual property claim or 
+right of any third party.
+4.4 	Except as expressly notified by you to ARM (in writing which may include email) to the contrary, you 
+hereby grant to ARM and its subsidiaries under your and your affiliates (as applicable) intellectual 
+property, a perpetual, irrevocable, royalty free, non-exclusive, worldwide licence to: (i) use, copy, modify, 
+and create derivative works of the Feedback; (ii) sell, supply or otherwise distribute the whole or any part 
+of the Feedback (and derivative works thereof) as part of any ARM owned or licensed product(s) without 
+obligation or restriction of any kind; and (iii) sub-license to third parties the foregoing rights, including the 
+right to sub-license to further third parties. No right is granted by you to ARM to sub-license your and 
+your affiliates (as applicable) intellectual property except to the extent that it is provided to ARM as 
+Feedback and is embodied in any ARM owned or licensed product(s). Except as expressly licensed to 
+ARM in this clause 4.4, you retain all right, title and interest in and to the Feedback provided by you 
+under this Licence.
+
+5 	Support
+5.1 	If your Product Sale Agreement includes technical support then, for the Initial Support Period and any 
+subsequent Support Renewal Periods, subject to payment of the Support Fee, you will be entitled to:
+5.1.1 	receive and use any supplementary software code or update of the Software incorporating patches and 
+corrections of errors as we may provide from time to time;
+5.1.2 	receive, install and use any Updates of the Software as we may provide from time to time; and
+5.1.3 	receive any other support services and technical advice relating to use of the Software as may be 
+included in the Product Sale Agreement.
+5.2 	Nothing in this Licence entitles Licensee to receive any New Versions.  You will only be entitled to New 
+Versions on payment of an additional fee and agreement to all applicable terms and conditions.
+
+5.3 	To the extent Licensor continues to make available technical support, Licensee may renew technical 
+support for Support Renewal Periods, either before or after the end of the Initial Support Period or then-
+current Support Renewal Period, by contacting us or your reseller, as applicable. Any such renewal shall
+be subject to then-current pricing and terms and conditions.
+5.4 	If your Product Sale Agreement does not include technical support or you do not renew your support you 
+can request that support be added to this Licence at any time by contacting us.
+5.5 	If the Licensor releases an Update for the Software or replaces the current version of the Software with 
+any New Version, you are not obliged to purchase such New Version or download such Update, but the 
+Licensor will not be obliged to provide you with technical support for the current version once a 
+subsequent version has been made available (whether as an Update or New Version).
+5.6 	You should send an email to support_allinea@arm.com in respect of all requests for support.
+
+6 	Intellectual property and confidential information
+6.1 	You acknowledge and agree that, as between you and us, all intellectual property rights throughout the 
+world in the Software and the Documentation belong to us and/or our licensors, that rights in the 
+Software and Documentation are licensed (not sold) to you, and that you have no rights in, or to, the 
+Software or the Documentation other than the right to use them in accordance with the terms of this 
+Licence. You further acknowledge and agree that the Software and Documentation is proprietary and 
+confidential material of Licensor, and agree to use your best efforts to maintain the confidentiality of the 
+Software and Documentation.
+6.2 	You acknowledge that, except where expressly permitted or required by any of the terms of any of the 
+licence agreements listed in Section 6.3 (and then only in respect of the relevant components) you have 
+no right to have access to the Software in source code form.
+6.3 	The Software aggregates and/or contains various open source software components which are used 
+under licence. Your use of the Software under this Licence is also subject to the terms of those following 
+licence agreements a list of which is available at http://content.allinea.com/downloads/eula-6.3.txt. 
+Source code for some of these open source components can be found at 
+http://www.allinea.com/products/source-code/. ARM disclaims any and all liability in respect of your use 
+of the open source software.
+6.4	You further acknowledge and agree that the Software and Documentation and any other written or 
+tangible information disclosed by a party to the other in relation to or arising out of this Licence, including 
+information relating to roadmaps and future product plans and information disclosed by you under 
+clause 4.3, is proprietary and confidential information of the disclosing party, and each party shall 
+maintain, in confidence, the confidential information disclosed by the other party and apply security 
+measures no less stringent than the measures that such party applies to protect its own like information, 
+but in any event not less than a reasonable degree of care, to prevent unauthorised disclosure and use 
+of the confidential information. Except as otherwise expressly agreed or by applicable law, the period of 
+confidentiality shall be indefinite.
+
+7 	Disclaimer of warranties
+7.1 	You acknowledge that the Software has not been developed to meet your individual requirements and 
+that it is your responsibility to ensure that the facilities and functions of the Software as described in the 
+Documentation meet your requirements.
+7.2 	You acknowledge that the Software may not be free of bugs or errors and you agree that the existence 
+of any minor errors shall not constitute a breach of this Licence.
+7.3 	THE SOFTWARE IS LICENSED "AS IS". THIS LICENCE SETS OUT THE FULL EXTENT OF THE 
+LICENSOR'S OBLIGATIONS AND LIABILITIES IN RESPECT OF THE SUPPLY OF THE SOFTWARE 
+AND DOCUMENTATION.  THERE ARE NO CONDITIONS, WARRANTIES, REPRESENTATIONS OR 
+OTHER TERMS, EXPRESS OR IMPLIED, THAT ARE BINDING ON US EXCEPT AS SPECIFICALLY 
+STATED IN THIS LICENCE. ANY CONDITIONS, WARRANTIES, REPRESENTATION OR OTHER 
+TERM CONCERNING THE SOFTWARE AND DOCUMENTATION WHICH MIGHT OTHERWISE BE 
+IMPLIED INTO OR INCORPORATED IN THIS LICENCE, OR ANY COLLATERAL CONTRACT, 
+WHETHER BY STATUTE, COMMON LAW OR OTHERWISE, INCLUDING WITHOUT LIMITATION 
+ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, 
+NONINFRINGEMENT AND ANY WARRANTIES ARISING FROM COURSE OF DEALING, USAGE OR 
+TRADE PRACTICE, ARE EXCLUDED TO THE FULLEST EXTENT PERMITTED BY LAW.
+7.4	Licensee acknowledges and agrees that the Software is not fault-tolerant and is not designed or 
+intended for use in hazardous environments requiring fail-safe performance, including without limitation, 
+in connection with the operation of nuclear facilities, aircraft navigation or communication systems, air 
+traffic control, weapons systems, direct life-support machines, or any other application in which the 
+failure of the Software could lead directly to death, personal injury, or severe physical or property 
+damage (collectively, "High Risk Activities"). LICENSOR EXPRESSLY DISCLAIMS ANY EXPRESS OR 
+IMPLIED WARRANTY OF FITNESS FOR HIGH RISK ACTIVITIES.
+
+8 	Liability
+8.1 	EXCEPT AS OTHERWISE REQUIRED BY APPLICABLE LAW, THIS SECTION 8 SETS OUT THE 
+ENTIRE FINANCIAL LIABILITY OF THE PARTIES (INCLUDING ANY LIABILITY FOR THE ACTS OR 
+OMISSIONS OF THEIR RESPECTIVE EMPLOYEES, AGENTS AND SUBCONTRACTORS) TO EACH 
+OTHER IN RESPECT OF:
+	8.1.1 	ANY BREACH OF THIS LICENCE HOWEVER ARISING;
+8.1.2 	ANY USE MADE OR RESALE OF THE SOFTWARE OR THE DOCUMENTATION BY YOU, OR OF 
+ANY PRODUCT OR SERVICE INCORPORATING ANY OF THE SOFTWARE OR THE 
+DOCUMENTATION; AND
+8.1.3 	ANY REPRESENTATION, STATEMENT OR TORTIOUS ACT OR OMISSION (INCLUDING 
+NEGLIGENCE) ARISING UNDER OR IN CONNECTION WITH THIS LICENCE.
+8.2 	NOTHING IN THIS LICENCE SHALL LIMIT OR EXCLUDE THE LIABILITY OF EITHER PARTY FOR 
+ANY LOSS OR DAMAGE TO THE EXTENT SUCH LOSS OR DAMAGE CANNOT BE LAWFULLY 
+LIMITED OR EXCLUDED, INCLUDING (AS APPLICABLE) LOSS OR DAMAGE ARISING OUT OF 
+DEATH OR PERSONAL INJURY RESULTING FROM NEGLIGENCE, FRAUD OR FRAUDULENT 
+MISREPRESENTATION, OR THE DELIBERATE DEFAULT OR WILFUL MISCONDUCT OF THAT 
+PARTY, ITS EMPLOYEES, AGENTS OR SUBCONTRACTORS.  IN ADDITION, NOTHING IN THIS 
+LICENCE SHALL LIMIT OR EXCLUDE YOUR LIABILITY FOR ANY INFRINGEMENT, VIOLATION OR 
+MISAPPROPRIATION OF THE INTELLECTUAL PROPERTY RIGHTS OF LICENSOR OR ANY OF ITS 
+GROUP COMPANIES.
+8.3 	WITHOUT PREJUDICE TO SECTION 8.2, NEITHER PARTY SHALL UNDER ANY CIRCUMSTANCES 
+WHATEVER BE LIABLE TO THE OTHER, WHETHER IN CONTRACT, TORT (INCLUDING 
+NEGLIGENCE) OR RESTITUTION, OR FOR BREACH OF STATUTORY DUTY OR 
+MISREPRESENTATION, OR OTHERWISE, FOR ANY:
+	8.3.1 	LOSS OF INCOME;
+	8.3.2 	LOSS OF BUSINESS PROFITS OR CONTRACTS;
+	8.3.3 	BUSINESS INTERRUPTION;
+	8.3.4 	LOSS OF THE USE OF MONEY OR ANTICIPATED SAVINGS;
+	8.3.5 	LOSS OF INFORMATION;
+	8.3.6 	LOSS OF OPPORTUNITY, GOODWILL OR REPUTATION;
+	8.3.7 	LOSS OF, DAMAGE TO OR CORRUPTION OF DATA; OR
+8.3.8 	ANY INDIRECT OR CONSEQUENTIAL LOSS OR DAMAGE OF ANY KIND HOWSOEVER
+        ARISING AND WHETHER CAUSED BY TORT (INCLUDING 	NEGLIGENCE), 	BREACH OF  
+        CONTRACT OR OTHERWISE.
+8.4 	SUBJECT TO SECTION 8.2 AND SECTION 8.3, AND EXCEPT AS REQUIRED BY APPLICABLE LAW, 
+THE LICENSOR'S MAXIMUM AGGREGATE LIABILITY UNDER OR IN CONNECTION WITH THIS 
+LICENCE, OR ANY COLLATERAL CONTRACT, WHETHER IN CONTRACT, TORT (INCLUDING 
+NEGLIGENCE) OR OTHERWISE, SHALL IN ALL CIRCUMSTANCES BE LIMITED TO A SUM EQUAL 
+TO THE PRODUCT FEE (IF ANY).
+
+9 	Termination
+9.1 	We, the Licensor, may terminate this Licence immediately by written notice to you if:
+9.1.1 	a petition for a bankruptcy order to be made against you has been presented to the court; or
+9.1.2 	the Licensee (where the Licensee is a company) becomes insolvent or unable to pay its debts (within 
+the meaning of section 123 of the Insolvency Act 1986 or equivalent legislation in the jurisdiction 
+applicable to this Licence), enters into liquidation, whether voluntary or compulsory (other than for 
+reasons of bona fide amalgamation or reconstruction), passes a resolution for its winding-up, has a 
+receiver or administrator manager, trustee, liquidator or similar officer appointed over the whole or any 
+part of its assets, makes any composition or arrangement with its creditors or takes or suffers any similar 
+action in consequence of its debt.
+9.2 	If you (i) breach any term or condition of this Licence; or (ii) are not in possession of a valid licence key 
+this Licence will terminate automatically without further notice or action from Licensor.
+9.3 	Upon termination for any reason:
+	9.3.1 	all rights granted to you under this Licence will cease;
+	9.3.2 	you must cease all activities authorised by this Licence;
+	9.3.3 	you must immediately pay any sums due under this Licence; and
+9.3.4 	you must immediately delete or remove the Software from all computer equipment in your possession 
+and immediately destroy or return to us (at our option) all copies of the Software then in your possession, 
+custody or control and, in the case of destruction, certify that you have done so.
+
+10 	Publicity and marketing
+10.1 	The Licensor is entitled to state in the public domain that you are a customer of the Licensor.
+10.2 	By providing us with your email address and/or telephone number, you consent to our using these 
+details to let you know about our other services or promotions that may be of interest to you.  Please 
+contact us if you do not consent to our using these details.
+
+11 	Export laws
+You may not export, directly or indirectly, any technical data acquired from us under this Licence (or the 
+Software, where it incorporates any such data) in breach of any applicable laws or regulations including 
+United Kingdom and United States export laws and regulations, to any country for which the United 
+Kingdom or the United States or any other government or any agency thereof at the time of export 
+requires an export licence or other governmental approval without first obtaining such licence or 
+approval.
+
+12 	Restricted rights
+12.1 	To the extent that Licensee is an agency or instrumentality of the U.S. Government, the parties agree 
+that the Software and Documentation are commercial computer software and commercial computer 
+software documentation, respectively, and that Licensee's rights therein are as specified in this Licence, 
+per FAR 12.212 and DFARS 227.7202-3, as applicable, or in the case of NASA, subject to NSF 
+1852.22786.
+12.2 	To the extent that Licensee is an agency or instrumentality of the U.S. Government, the U.S. 
+Government authorizes and consents to all use and manufacture, in performing this Licence and the 
+applicable Product Sale Agreement, of any invention described in and covered by a United States patent 
+embodied in the structure or composition of any article the delivery of which is accepted by the 
+Government under such licence or agreement.
+
+13 	Transfer of rights and obligations
+13.1 	This Licence is binding on you and us and on both your and our respective successors and assigns.
+13.2 	You may not transfer, assign, charge or otherwise dispose of this Licence, or any of your rights or 
+obligations arising under it, without our prior written consent. Any merger of Licensee, acquisition of all 
+or substantially all of Licensee's assets or change of control of Licensee shall be deemed an assignment 
+of this Agreement for which prior written consent is required.
+13.3 	The Licensor may transfer, assign, charge, sub-contract or otherwise dispose of this Licence, or any of 
+its rights or obligations arising under it, at any time.
+
+14	Agency
+If you have licensed the Software from a reseller, you acknowledge that your reseller is an independent 
+contractor and there is no partnership, joint venture, agency or fiduciary relationship between your 
+reseller and us. Your reseller has no authority to bind us to any terms and conditions you agree with 
+your reseller.
+
+15 	Waiver
+15.1 	If we do not at any time insist on strict performance of any of your obligations under this Licence, or if we 
+do not exercise any of the rights or remedies to which we are entitled under this Licence, we do not 
+mean to waive those rights or remedies and you will not be relieved from compliance with your 
+obligations.
+15.2 	A waiver by us of any default will not be a waiver of any subsequent default.
+15.3 	No waiver by us of any of these terms and conditions will be effective unless it is expressly stated to be 
+a waiver and is communicated to you in writing.
+
+16 	Severability
+	If any of the terms of this Licence are determined by any competent authority to be invalid, unlawful or 
+unenforceable to any extent, such term, condition or provision will to that extent be severed from the 
+remaining terms, conditions and provisions which will continue to be valid to the fullest extent permitted 
+by law.
+
+17 	Entire agreement
+17.1 	This Licence and any document expressly referred to in it are the whole agreement between us and 
+supersede any previous arrangement, understanding or agreement between us, relating to the licensing 
+of the Software and Documentation.
+17.2 	We each acknowledge that, in entering into this Licence, neither party relies on any statement, 
+representation, assurance or warranty ("Representation") of any person (whether a party to this Licence 
+or not) other than as expressly set out in this Licence.
+17.3 	Each party agrees that the only rights and remedies available to it arising out of or in connection with a 
+Representation shall be for breach of contract as provided in this Licence.
+17.4 	Nothing in this clause shall limit or exclude any liability for fraud.
+17.5 	This Licence may not be modified except by a written variation signed by the parties or an amendment 
+presented electronically by the Licensor to the Licensee and assented to by the Licensee (including 
+through a "click-to-accept" mechanism). It is agreed that no use of trade or other regular practice or 
+method of dealing between the parties hereto shall be used to modify, interpret, supplement, or alter in 
+any manner the terms of this Licence.
+
+18 	Law and jurisdiction
+18.1 	Where the Product Sale Agreement specifies that the Licensor is a group company of ARM Limited 
+incorporated in either any state within the United States of America, Canada, or any country within 
+Central or South America, this Licence, its subject matter or its formation (including non-contractual 
+disputes or claims) shall be governed by and construed in accordance with the laws of the State of 
+Delaware (excluding its conflicts of laws principles) and submitted to the exclusive jurisdiction of the 
+courts of the State of Delaware. Notwithstanding the foregoing, to the extent that Licensee is an agency 
+or instrumentality of the U.S. Government, disputes arising under or relating to this Licence shall be 
+decided under the U.S. federal law of government contracting, including without limitation the Contract 
+Disputes Act. Nothing in this Licence will prevent Licensor from enforcing its intellectual property rights 
+or seeking injunctive or other equitable relief in any court of competent jurisdiction.  The parties hereby 
+disclaim application of the United Nations Convention on Contracts for the International Sale of Goods 
+and the Uniform Computer Information Transactions Act.
+
+18.2 	In every other case, this Licence, its subject matter and its formation (including noncontractual disputes 
+or claims) shall be governed by and construed in accordance with English law (excluding its conflicts of 
+laws principles) and submitted to the nonexclusive jurisdiction of the English courts.

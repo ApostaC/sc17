@@ -1,0 +1,44 @@
+Allinea Licence Server (c) Allinea Software Ltd.
+
+2017-07-26
+
+This is version 7.0.6 of Allinea Licence Server.
+
+Contents
+========
+
+    1.  Installing Allinea Licence Server
+    2.  Running Allinea Licence Server
+    3.  Contacting Us
+
+1.  Installing Allinea Licence Server
+================================
+
+    To install, run the installer program from the distribution archive.
+    You may choose to install just for you or for all users on your system.
+    If you are installing on a cluster, please make sure that it is
+    available at the same path on every machine.
+
+    If you do not have licence files for each product you will need to obtain them
+    from Allinea. Trial licences may be obtained by visiting
+      http://www.allinea.com/products/trials/.
+
+    Full licences may be obtained by emailing sales@allinea.com. The licences
+    should be stored in a directory called licences below the installation 
+    directory. For a default (root) installation, that directory would be:
+      /opt/allinea/licenceserver/licences
+    and for a user-only installation it would be:
+      ${HOME}/allinea/licenceserver/licences
+
+2.  Running Allinea Licence Server
+====================
+
+    The Allinea Licence Server user guide in the doc directory contains further configuration
+    and startup information.
+
+3.  Contacting Us
+=================
+
+    If you have problems with any Allinea product, please contact us at
+        support@allinea.com
+    or  +44 (0)1926 623231

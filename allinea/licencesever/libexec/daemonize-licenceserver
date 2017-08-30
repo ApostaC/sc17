@@ -1,0 +1,16 @@
+#!/bin/bash
+# Wrapper for starting the licenceserver as a daemon on RHEL6 and earlier.
+# Neither the daemon() function in RHEL’s /etc/rc.d/init.d/functions, nor
+# licenceserver itself contain code for running the server in the background,
+# so the init script hangs waiting for it to exit.  Attempting to fudge the
+# daemon() command-line by adding “… &” confuses the PID file handler, causing
+# the init script to fail instead.
+# This wrapper should not be necessary with RHEL7+, which use Systemd instead.
+
+# This script must be called with a full absolute file name!
+WRAPPER="${0}"
+ALLINEA_TOOLS_DIR="${WRAPPER%/libexec/daemonize-licenceserver}"
+ALLINEA_LICENCE_BIN="${ALLINEA_TOOLS_DIR}/bin/licenceserver"
+
+# Launch the licenceserver in the background.
+"${ALLINEA_LICENCE_BIN}" "$@" < /dev/null &> /dev/null &

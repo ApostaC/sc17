@@ -1,0 +1,40 @@
+RELEASE NOTES 2017-07-26
+
+Changes for Allinea Licence Server 6.1.2: Rollup of previous bug fixes.
+
+    Avoid checking for access rights for log files when these are not being used.
+    
+Changes for Allinea Licence Server 6.1:
+
+    Licences are now tied to architectures.  x86_64 and i686 are taken as defaults if no
+    architectures are specified in the licence file.  Customers with other architectures
+    (such as BG/Q) will receive an updated licence file from their Allinea account manager.
+    Please contact support@allinea.com if you require an updated licence and do not receive
+    one.
+
+    Client that lose a connection are now logged as an INFO message.
+
+Changes for Allinea Licence Server 6.0.2: Rollup of previous bug fixes.
+
+    Log "Licence currently fully in use" messages again.
+
+Changes for Allinea Licence Server 6.0.1: Rollup of previous bug fixes.
+
+    Client connection being lost logged as INFO message.
+
+Changes for Allinea Licence Server 6.0:
+
+    Enhanced status page.
+    
+    Extended user guide.
+
+Changes since Allinea Licence Server 5.0:
+
+    5.0.1-41707: Bug fix
+
+    - Allow floating licences to specify the ports available for use by
+      Allinea products.
+
+Changes for Allinea Licence Server 5.0:
+
+    Made Licence Server available for separate download.

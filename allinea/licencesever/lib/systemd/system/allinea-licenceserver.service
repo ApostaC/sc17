@@ -1,0 +1,17 @@
+[Unit]
+Description=Allinea Licence Server
+Documentation=http://www.allinea.com/user-guide/licence-server/userguide.html
+
+[Service]
+Environment=ALLINEA_LICENCE_LOGFILE=/var/log/allinea/allinea.log
+#Environment=ALLINEA_LICENCE_LOGLEVEL=5
+ExecStart=/opt/allinea/licenceserver/bin/licenceserver /opt/allinea/licenceserver/licences /opt/allinea/licenceserver/licenses
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+#SELinuxContext=
+User=allinea
+
+[Install]
+WantedBy=multi-user.target
