@@ -1,0 +1,7 @@
+5		# of Ns
+3000 8000	Minimum and Maximum of N
+5		# of NBs
+4 8 16 32 64	NBs
+2		# of P*Q
+1 2		Ps
+2 1		Qs

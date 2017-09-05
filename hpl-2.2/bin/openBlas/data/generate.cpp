@@ -147,7 +147,7 @@ int main(int argc,char *argv[])
 			for(int i=0;i<npq;i++)
 			{
 				std::string fn;
-				fn="HPL-"+itos(n)+"-"+itos(nb)+"-"+itos(ps[i])+"*"+itos(qs[i]);
+				fn="out/HPL-"+itos(n)+"-"+itos(nb)+"-"+itos(ps[i])+"*"+itos(qs[i]);
 				generateDat(n,nb,ps[i],qs[i],fn.c_str(),cnt++);	
 			}
 
