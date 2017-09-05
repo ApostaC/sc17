@@ -65,9 +65,9 @@ void print_matrix(float **m, int r , int c)
 
 void matrix_multiply(float **a,float **b,float **c,int m,int n,int r)
 {
-#pragma omp parallel for 
-	for(int i=0;i<m;i++){
 //#pragma omp parallel for 
+	for(int i=0;i<m;i++){
+#pragma omp parallel for num_threads(2)
 		for(int j=0;j<r;j++)
 		{
 			float sum=0.0;
