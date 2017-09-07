@@ -1,8 +1,8 @@
+F_C11=-std=c++11
+
 CC=gcc
 CXX=g++
-CXXFLAGS=-std=c++11
-
-
+CXXFLAGS= ${F_C11}
 
 all: generate
 
@@ -10,4 +10,5 @@ all: generate
 generate: generate.cpp
 	${CXX} generate.cpp -o generate ${CXXFLAGS}
 
-
+analysiser: analysiser.cpp
+	${CXX} analysiser.cpp -o analysiser ${F_C11}

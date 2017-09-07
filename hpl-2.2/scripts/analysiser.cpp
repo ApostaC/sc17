@@ -1,123 +1,199 @@
-//#define DEBUG
+//#define DEBUG 
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <map>
+#include <regex>
 #include <iomanip>
-using namespace std;
-ifstream fin;
-#define MAX_NB 4096
-#define MAX_P 10
-#define MAX_Q 10
-struct Node{
-	int nb,p,q;
-	Node(int a=0,int b=0,int c=0):nb(a),p(b),q(c){
-	}
-};
-bool operator<(const Node & l, const Node & r)
-{
-	if(l.nb==r.nb)
-	{
-		if(l.p==r.p) return l.q<r.q;
-		return l.p<r.p;
-	}
-	return l.nb<r.nb;
-}
-map<Node,int> mp;
-double sum[MAX_NB][MAX_P][MAX_Q];
-int count1[MAX_NB][MAX_P][MAX_Q];
+#include <vector>
+#include <algorithm>
 
+using namespace std;
+
+/* Struct Node
+ * It stores data of N, NB, P, Q, SPEED
+ */
+class Node
+{
+public:
+	int n,nb,p,q;
+	vector<float> speeds;
+	
+public:
+	//CONSTRUCTOR
+	Node()
+	{
+		n=0;nb=0;p=0;q=0;
+	}
+	Node(int _n,int _nb,int _p,int _q):n(_n),nb(_nb),p(_p),q(_q)
+	{	
+	}
+
+	//METHOD addSpeed
+	void addSpeed(float spd)
+	{
+		speeds.push_back(spd);
+	}
+
+	//-EQ
+	friend bool operator==(const Node & l,const Node & r);
+
+	//OUTPUT METHOD
+	friend ostream & operator<<(ostream & o,const Node & n);
+
+	//OUTPUT ANALYSIS
+	void analysis(ostream & o)
+	{
+		o<<(*this);
+		//GET MIN AND MAX
+		auto p=std::minmax_element(speeds.begin(),speeds.end());		
+		auto min=*p.first,max=*p.second;
+		//GET AVERAGE
+		float avg=0.0,sum=0.0;
+		for(float spd : speeds)
+		{
+			sum+=spd;
+		}
+		avg=sum/speeds.size();
+		o<<min<<"\t\t\t\tmin speed [GFLOPS]\n"
+			<<max<<"\t\t\t\tmax speed [GFLOPS]\n"
+			<<avg<<"\t\t\t\taverage speed [GFLOPS]\n";
+	}	
+	//TODO: hash function [May use <unordered_map> in the future?]
+};
+
+/*
+ * OPERATOR == for class Node
+ * @returns: true if (n,nb,p,q) are the same
+ */
+bool operator==(const Node & l, const Node & r)
+{
+	return (l.n==r.n && l.nb==r.nb && l.p==r.p && l.q==r.q);
+}
+
+/*
+ * OPERATOR << for class Node (output stream operator)
+ */
+ostream & operator<<(ostream & o,const Node & n)
+{
+	o<<"========================================================="<<std::endl;
+	o<<n.n<<" "<<n.nb<<" "<<n.p<<" "<<n.q<<"\t\t\tDATA: <N> <NB> <P> <Q>"<<std::endl
+		<<n.speeds.size()<<"\t\t\t\t\t# of speed data"<<std::endl;
+	std::for_each(n.speeds.begin(),n.speeds.end(),
+			[&o](float t){o<<t<<" ";});
+	o<<std::endl;
+}
+
+/*
+ * FUNCTION senderr
+ * Display specified message and exit program;
+ *
+ * @param s : error message to display on the screen
+ */
 void senderr(const string & s)
 {
 	cerr<<s<<endl;
 	exit(-1);
 }
 
-void init()
+/*
+ * FUNCTION readTo
+ * Read text specified by an istream object line by line
+ * until find one line matches specified regular expression 
+ * for a specified times
+ * 
+ * @param	in		: the specified input stream
+ *			regExp	: the specified regular expression for matching
+ *			rtimes	: default value is 1
+ */
+void readTo(istream & in,const std::regex & regExp,int rtimes=1)
 {
-	cout<<"reading header..."<<endl;
 	string s;
-	for(int i=0;i<43;i++) {
-		getline(fin,s);
+	while(!in.eof())
+	{
+		getline(in,s);
 #ifdef DEBUG
-		cout<<s<<endl;
+		cout<<s;
+		cin.get();
 #endif
+		if(std::regex_search(s,regExp) && (--rtimes)==0) return;
 	}
+	cerr<<"Cannot find text matches the regular expression "
+		<<" [remain times = "<<rtimes<<" ]"
+		<<std::endl
+		<<"End of File reached"<<std::endl;
 }
 
-float  deal()
+/*
+ * FUNCTION init
+ * Skip the head of HPL*.out
+ */
+void init(istream & in)
 {
-	int n,nb,p,q;float time,ans;
-	string s;
-	getline(fin,s);	//==========================================
 #ifdef DEBUG
-	cout<<s<<endl;
+	cout<<"reading head"<<endl;
 #endif
-	getline(fin,s);	//T/V			N		NB		P		Q
-	getline(fin,s);	//------------------------------------------
-	if(s[0]=='F') return 0.0;
-	fin>>s>>n>>nb>>p>>q>>time>>ans;
-	count1[nb][p][q]++;
-	sum[nb][p][q]+=ans;fin.get();
-	mp[Node(nb,p,q)]++;
-	//getline(fin,s);	//WR00L2L2   2000		 4		2		2
-	getline(fin,s);	//HPL_pdgesv() start time ........
-	getline(fin,s);	//empty line
-	getline(fin,s);	//HPL_pdgesv() end time ......
-	getline(fin,s);	//empty line
-	getline(fin,s);	//------------------------------------------
-	getline(fin,s);	//||Ax-b||_oo/(eps*....),,,,,
-	return ans;
+	readTo(in,std::regex("={3,}"),2);
 }
-struct Ans{
-	Node d;float ans;
-	Ans(Node dd,float a):d(dd),ans(a){
-	}
-};
-bool cmp (const Ans & l, const Ans & r)
+
+//MAIN
+int main(int argc, char * argv[])
 {
-	return l.ans>r.ans;
-}
-#include <vector>
-#include <algorithm>
-int main(int argc,char *argv[])
-{
-	if(argc!=2) senderr("command: ./analysiser <filename>");
-    fin.open(argv[1]);
+	if(argc!=2) senderr("USAGE:	./analysiser <filename>");
+	ifstream fin(argv[1]);
 	ofstream fout(string(argv[1])+".anly",ios::out);
-	init();
-	int cnt=0;
+
+	if(!fin) senderr("cannot open input file!");
+	if(!fout) senderr("cannot open output file!");
+
+	//INIT
+	init(fin);
+#ifdef DEBUG
+	cout<<"about to read data"<<endl;
+#endif
+	int cnt=0;		//count of cases
+	vector<Node> nodes;
+	Node curr;
+	int n,nb,p,q;	//data to fill node
+	string temp;
+	float spd,time;
 	while(!fin.eof())
 	{
-		float tmp=deal();
+		//GET DATA
+		readTo(fin,std::regex("={3,}"));
+		readTo(fin,std::regex("-{3,}"));
+		fin>>temp>>n>>nb>>p>>q>>time>>spd;
+		fin.get();
+		curr=Node(n,nb,p,q);
 #ifdef DEBUG
-		cout<<tmp<<endl;
+		cout<<curr<<time<<spd<<endl;
 #endif
-		if(tmp==0.0) break;
-		++cnt;
+		//Fill Node
+		
+		if(!nodes.empty())
+		{
+			Node & cache=nodes[nodes.size()-1];
+			if(curr==cache) 
+				cache.addSpeed(spd);	//ENQUEUE	
+			else 
+			{
+				curr.addSpeed(spd);		//UPDATE SPEED	
+				nodes.push_back(curr);	//ENQUEUE
+			}
+		}
+		else 	
+		{
+			curr.addSpeed(spd);		//UPDATE SPEED
+			nodes.push_back(curr);	//ENQUEUE
+		}
+		cnt++;
 	}
-	//cout.width(8);cout.fill(' ');
-	//fout.width(8);fout.fill(' ');
-	//
-	cout<<"raw data "<<cnt<<endl;
-	fout<<"raw data "<<cnt<<endl;
-	vector<Ans> v;
-	for(auto m:mp)
+	
+	for(auto n : nodes)
 	{
-		Node n=m.first;
-		int nb=n.nb,p=n.p,q=n.q;
-		cout<<setw(3)<<nb<<" "<<p<<" "<<q<<" "<<sum[nb][p][q]/count1[nb][p][q]<<endl;
-		v.push_back(Ans(n,sum[nb][p][q]/count1[nb][p][q]));
-		fout<<setw(3)<<nb<<" "<<p<<" "<<q<<" "<<sum[nb][p][q]/count1[nb][p][q]<<endl;
+		n.analysis(fout);
 	}
-	std::sort(v.begin(),v.end(),cmp);
-	fout<<endl;
-	fout<<"sorted data"<<endl;
-	for(auto vv:v)
-	{
-		fout<<setw(3)<<vv.d.nb<<" "<<vv.d.p<<" "<<vv.d.q<<" "<<vv.ans<<endl;
-	}
+
+	fin.close();
 	fout.close();
-	cout<<"printed to "<<argv[1]<<".anly"<<endl;
 	return 0;
 }
