@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include <regex>
 #include <iomanip>
 using namespace std;
 ifstream fin;
@@ -33,23 +34,32 @@ void senderr(const string & s)
 	exit(-1);
 }
 
+void readToLine(ifstream & in);
 void init()
 {
 	cout<<"reading header..."<<endl;
-	string s;
-	for(int i=0;i<43;i++) {
-		getline(fin,s);
-#ifdef DEBUG
-		cout<<s<<endl;
-#endif
-	}
+	readToLine(fin);
+	readToLine(fin);
 }
 
+
+const std::regex MAT("={3,}");
+void readToLine(ifstream & in)
+{
+	string s;
+	while(!in.eof())
+	{
+		getline(in,s);
+		bool result=std::regex_search(s,MAT);
+		if(result) break;
+		//else cout<<s<<endl;
+	}
+}
 float  deal()
 {
 	int n,nb,p,q;float time,ans;
 	string s;
-	getline(fin,s);	//==========================================
+	readToLine(fin);	//==========================================
 #ifdef DEBUG
 	cout<<s<<endl;
 #endif
